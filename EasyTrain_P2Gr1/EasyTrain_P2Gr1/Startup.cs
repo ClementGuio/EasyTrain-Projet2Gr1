@@ -1,3 +1,4 @@
+using EasyTrain_P2Gr1.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,6 +17,7 @@ namespace EasyTrain_P2Gr1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews(); // Permet d'utiliser les controller avec vues
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -26,14 +28,20 @@ namespace EasyTrain_P2Gr1
                 app.UseDeveloperExceptionPage();
             }
 
+            using (BddContext ctx = new BddContext()) //Appel de la méthode de création et remplisssage de la bdd
+            {
+                ctx.InitializeDb();
+            }
+
             app.UseRouting();
+
+            app.UseStaticFiles(); // Permet d'utiliser les fichiers statiques de wwwroot
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllerRoute(  //Ajout d'une route par défaut
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
