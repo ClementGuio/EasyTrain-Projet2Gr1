@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyTrain_P2Gr1", "EasyTrain_P2Gr1\EasyTrain_P2Gr1.csproj", "{3844F18B-669F-49EF-97E7-3803EA9CEC31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyTrain_UnitTests", "EasyTrain_UnitTests\EasyTrain_UnitTests.csproj", "{57A966BF-DBE4-4D3B-A639-E252836A60C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3844F18B-669F-49EF-97E7-3803EA9CEC31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3844F18B-669F-49EF-97E7-3803EA9CEC31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3844F18B-669F-49EF-97E7-3803EA9CEC31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A966BF-DBE4-4D3B-A639-E252836A60C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A966BF-DBE4-4D3B-A639-E252836A60C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A966BF-DBE4-4D3B-A639-E252836A60C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A966BF-DBE4-4D3B-A639-E252836A60C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

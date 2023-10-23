@@ -24,5 +24,6 @@ namespace EasyTrain_P2Gr1.Models.DAL
         {
             return this._bddContext.Clients.ToList();
         }
+
     }
 }
