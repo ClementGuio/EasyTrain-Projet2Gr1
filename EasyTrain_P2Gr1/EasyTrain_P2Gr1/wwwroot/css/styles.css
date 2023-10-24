@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-size: 20px;
     font-family: Arial, sans-serif;
+    border: 1px solid yellow;
 }
 
 /* Styles généraux */
@@ -42,7 +43,7 @@ header {
         background-color: navajowhite;
     }
 
-/*------------------------------------------------------------------*/
+/*------------------------Menu-------------------------------*/
 #menu {
     z-index: 2;
     position: fixed;
@@ -50,7 +51,6 @@ header {
     float: left;
     width: 20%;
     background: white;
-    height: 100vh;
 }
 
 .sidebar {
@@ -78,16 +78,16 @@ header {
             text-decoration: underline;
         }
 
-/*-----------------------------------------------------------------*/
+/*----------------------Main---------------------------------------*/
 
 main {
     margin-top: 4em;
     margin-left: 20%;
     width: calc(100%-20%);
-    background: #333;
+    background: green;
     min-height: 100vh;
 }
-
+/* a modifier */
 #experience {
     width: 100%;
     background: rgb(2, 129, 45);
@@ -128,5 +128,5 @@ footer {
     width: 100%;
     height: 3em;
     align-items: center;
-    z-index: 1000;
+    z-index: 1;
 }
