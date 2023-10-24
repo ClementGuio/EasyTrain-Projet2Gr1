@@ -129,8 +129,38 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Empty(clients);
 
         }
-
         [Fact]
+        public void TestUpdateGestionnaire()
+        {
+            //Initialisation
+            DeleteCreateDB();
+            using (BddContext ctx = new BddContext())
+            {
+                ctx.Gestionnaires.Add(new Gestionnaire()
+                {
+                    Nom = "Guibert",
+                    Prenom = "Romain",
+                    AdresseMail = "adresse@mail.com",
+                    MotDePasse = "mdp",
+                    DateNaissance = DateTime.Now,
+                    DateEmbauche = DateTime.Now
+                });
+                ctx.SaveChanges();
+            }
+            //Appel de la méthode à tester
+            Gestionnaire gestionnaire;
+            using (IDalUtilisateur service = new UtilisateurService())
+            {
+                service.UpdateGestionnaire(1, "Michel", "Gibert", DateTime.Now);
+                gestionnaire = service.GetGestionnaire(1);
+            }
+            //Vérifier que les changements ont bien été fait
+            Assert.Equal("Michel", gestionnaire.Prenom);
+            Assert.Equal("Gibert", gestionnaire.Nom);
+        }
+
+
+            [Fact]
         public void TestCreateCoach()
         {
             DeleteCreateDB();
@@ -227,7 +257,7 @@ namespace EasyTrain_UnitTests.TestsDAL
         {
             //initialisation
             DeleteCreateDB();
-            using (BddContext ctx = new BddContext()) 
+            using (BddContext ctx = new BddContext())
             {
                 ctx.Coachs.AddRange(new List<Coach>()
                 {
@@ -244,8 +274,9 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
 
             Assert.Empty(coachs);
-
         }
+           
+        
     }
 }
 

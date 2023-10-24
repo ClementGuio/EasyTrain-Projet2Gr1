@@ -13,7 +13,7 @@ namespace EasyTrain_P2Gr1.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain"); // Chaine de caractères de connexion
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables
@@ -37,7 +37,9 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Gestionnaires.AddRange(new List<Gestionnaire>()
             {
-                new Gestionnaire(){Nom="Smith" , Prenom ="John", DateEmbauche= DateTime.Now}
+                new Gestionnaire(){Nom="Smith" , Prenom ="John", DateEmbauche= DateTime.Now},
+                new Gestionnaire(){Nom="Amira" , Prenom ="Mdghri", DateEmbauche= DateTime.Now},
+                new Gestionnaire(){Nom="Hossame" , Prenom ="Sadeq", DateEmbauche= DateTime.Now}
             });
             //Sauvegarde les changements dans la Bdd
             this.SaveChanges();

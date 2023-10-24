@@ -23,13 +23,15 @@ namespace EasyTrain_P2Gr1.Models.DAL
         public void UpdateCoach(int id, string nom, string prenom, DateTime dateNaissance,
             string adressemail, string motDePasse, DateTime dateEmbauche);
 
-
-
-
         public Client GetClient(int Id);
         public void UpdateClient(int id, string nom, string prenom, DateTime dateDeNaissance, string adresseMail,
                                   string motDePasse, DateTime dateCreationDeCompte, DateTime dateAbonnement);
         public void DeleteClient(int id);
+        List<Gestionnaire> GetGestionnaires();
+        Gestionnaire GetGestionnaire(int id);
+        public void UpdateGestionnaire(int id, string prenom, string nom, DateTime dateEmbauche);
+        public void DeleteGestionnaire(int id);
+
 
     }
 
