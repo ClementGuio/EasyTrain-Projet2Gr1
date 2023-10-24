@@ -7,7 +7,7 @@ namespace EasyTrain_P2Gr1.Models
     public class BddContext : DbContext
     {
         public DbSet<Utilisateur> Utilisateurs { get; set; }
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<Client> Clients { get; set; }  
         public DbSet<Coach> Coachs { get; set; }
         public DbSet<Gestionnaire> Gestionnaires {get; set;}
 
