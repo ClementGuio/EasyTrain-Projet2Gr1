@@ -64,7 +64,9 @@ namespace EasyTrain_P2Gr1.Models.DAL
             if (oldClient != null)
             {
                 _bddContext.Clients.Remove(oldClient);
+                _bddContext.SaveChanges();
             }
+       
         }
 
         /***************************  GESTION COACH ****************************************/
@@ -75,9 +77,17 @@ namespace EasyTrain_P2Gr1.Models.DAL
             return this._bddContext.Coachs.ToList();
         }
 
-        public int CreerCoach(DateTime DateEmbauche)
+        public int CreerCoach(string nom, string prenom, DateTime dateNaissance, string adressemail, 
+            string motDePasse, DateTime dateEmbauche)
         {
-            Coach coach = new Coach() { DateTime = DateEmbauche };
+            Coach coach = new Coach() {
+            Nom = nom,
+            Prenom = prenom,
+            DateNaissance = dateNaissance,
+            AdresseMail = adressemail,
+            MotDePasse = motDePasse,
+            DateEmbauche = dateEmbauche
+        };
             this._bddContext.Coachs.Add(coach);
             this._bddContext.SaveChanges();
             return coach.Id;
@@ -88,7 +98,8 @@ namespace EasyTrain_P2Gr1.Models.DAL
             return this._bddContext.Coachs.Find(id);
         }
 
-        public void UpdateCoach(int id, string nom, string prenom, DateTime dateNaissance, string adressemail, string motDePasse, DateTime dateEmbauche)
+        public void UpdateCoach(int id, string nom, string prenom, DateTime dateNaissance,
+            string adressemail, string motDePasse, DateTime dateEmbauche)
         {
             Coach nouveauCoach = this._bddContext.Coachs.Find(id);
             if (nouveauCoach != null)
