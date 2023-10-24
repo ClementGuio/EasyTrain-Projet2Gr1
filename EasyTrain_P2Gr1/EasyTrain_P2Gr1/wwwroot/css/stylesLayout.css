@@ -91,10 +91,15 @@ header {
 
 /*----------------------Main---------------------------------------*/
 
-main {
+.mainCompte {
     margin-top: 4em;
     margin-left: 20%;
     width: calc(100%-20%);
+    background: green;
+    min-height: 100vh;
+}
+.mainVisiteur {
+    margin-top: 4em;
     background: green;
     min-height: 100vh;
 }
