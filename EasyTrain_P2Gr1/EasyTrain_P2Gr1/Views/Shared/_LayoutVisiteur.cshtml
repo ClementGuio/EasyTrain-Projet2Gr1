@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Salle de Sport";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/stylesLayout.css" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><img src="/images/Logo_easy_train.png" alt="Logo EASY TRAIN"></a>
+        </div>
+
+        <h5>Nos équipement</h5>
+        <h5>Nos Coach</h5>
+        <h5>Nos Tarif</h5>
+        <h5></h5>
+        <h5></h5>
+        <h5></h5>
+        <div>
+            <a class="login" href="#"><img src="/images/user.svg" alt="user"></a>
+        </div>
+    </header>
+<!--inserer ici le main-->
+    @RenderBody()
+    <footer>
+        <div>
+            div1
+        </div>
+        <div>
+            div2
+        </div>
+        <div>
+            div3
+        </div>
+    </footer>
+</body>
+</html>
