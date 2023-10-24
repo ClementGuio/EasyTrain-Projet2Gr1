@@ -24,5 +24,51 @@ namespace EasyTrain_P2Gr1.Models.DAL
         {
             return this._bddContext.Clients.ToList();
         }
+
+        /***************************  GESTION COACH ****************************************/
+
+        //Méthodes spécifiques
+        public List<Coach> GetCoach()
+        {
+            return this._bddContext.Coachs.ToList();
+        }
+
+        public int CreerCoach(DateTime DateEmbauche)
+        {
+            Coach coach = new Coach() { DateTime = DateEmbauche };
+            this._bddContext.Coachs.Add(coach);
+            this._bddContext.SaveChanges();
+            return coach.Id;
+        }
+
+        public Coach GetCoach(int id)
+        {
+            return this._bddContext.Coachs.Find(id);
+        }
+
+        public void UpdateCoach(int id, string nom, string prenom, DateTime dateNaissance, string adressemail, string motDePasse, DateTime dateEmbauche)
+        {
+            Coach nouveauCoach = this._bddContext.Coachs.Find(id);
+            if (nouveauCoach != null)
+            {
+                nouveauCoach.Nom = nom;
+                nouveauCoach.Prenom = prenom;
+                nouveauCoach.DateNaissance = dateNaissance;
+                nouveauCoach.AdresseMail = adressemail;
+                nouveauCoach.MotDePasse = motDePasse;
+                nouveauCoach.DateEmbauche = dateEmbauche;
+                _bddContext.SaveChanges();
+            }
+        }
+
+        public void DeleteCoach(int id)
+        {
+            Coach nouveauCoach = this._bddContext.Coachs.Find(id);
+            if (nouveauCoach != null)
+            {
+                _bddContext.Coachs.Remove(nouveauCoach);
+                _bddContext.SaveChanges();
+            }
+        }
     }
 }
