@@ -1,5 +1,7 @@
 ﻿using EasyTrain_P2Gr1.Models;
 using EasyTrain_P2Gr1.Models.DAL;
+using EasyTrain_P2Gr1.Models.DAL.Interfaces;
+using EasyTrain_P2Gr1.Models.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,7 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult ListeClient() // Le nom de la méthode doit avoir le même nom que la vue
         {
             List<Client> listeClient;
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalClient service = new ClientService())
             {
                 listeClient = service.GetClients();
             }
@@ -28,7 +30,7 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult ListeCoach() // Le nom de la méthode doit avoir le même nom que la vue
         {
             List<Coach> listeCoach;
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalCoach service = new CoachService())
             {
                 listeCoach = service.GetCoachs();
             }
@@ -38,7 +40,7 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult ListeGestionnaire() // Le nom de la méthode doit avoir le même nom que la vue
         {
             List<Gestionnaire> listeGestionnaire;
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalGestionnaire service = new GestionnaireService())
             {
                 listeGestionnaire = service.GetGestionnaires();
             }
@@ -49,9 +51,9 @@ namespace EasyTrain_P2Gr1.Controllers
         {
             if (id != 0)
             {
-                using (IDalUtilisateur dal = new UtilisateurService())
+                using (IDalGestionnaire service = new GestionnaireService())
                 {
-                    Gestionnaire gestionnaire = dal.GetGestionnaires().Where(r => r.Id == id).FirstOrDefault();
+                    Gestionnaire gestionnaire = service.GetGestionnaires().Where(r => r.Id == id).FirstOrDefault();
                     if (gestionnaire == null)
                     {
                         return View("Error");
@@ -61,6 +63,7 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             return View("Error");
         }
+
         [HttpPost]
         public IActionResult ModifierGestionnaire(Gestionnaire gestionnaire)
         {
@@ -69,9 +72,9 @@ namespace EasyTrain_P2Gr1.Controllers
 
             if (gestionnaire.Id != 0)
             {
-                using (IDalUtilisateur dal = new UtilisateurService())
+                using (IDalGestionnaire service = new GestionnaireService())
                 {
-                    dal.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Prenom, gestionnaire.Nom, gestionnaire.DateEmbauche);
+                    service.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Prenom, gestionnaire.Nom, gestionnaire.DateEmbauche);
                     return RedirectToAction("Gestionnaires");
                 }
             }
@@ -84,12 +87,12 @@ namespace EasyTrain_P2Gr1.Controllers
         {
             if (id != 0)
             {
-                using (IDalUtilisateur dal = new UtilisateurService())
+                using (IDalGestionnaire service = new GestionnaireService())
                 {
-                    Gestionnaire gestionnaire = dal.GetGestionnaires().FirstOrDefault(r => r.Id == id);
+                    Gestionnaire gestionnaire = service.GetGestionnaires().FirstOrDefault(r => r.Id == id);
                     if (gestionnaire != null)
                     {
-                        dal.DeleteGestionnaire(gestionnaire.Id);
+                        service.DeleteGestionnaire(gestionnaire.Id);
                         return RedirectToAction("ListeGestionnaire");
                     }
                 }

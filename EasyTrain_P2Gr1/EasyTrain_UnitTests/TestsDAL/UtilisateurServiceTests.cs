@@ -1,5 +1,7 @@
 ﻿using EasyTrain_P2Gr1.Models;
 using EasyTrain_P2Gr1.Models.DAL;
+using EasyTrain_P2Gr1.Models.DAL.Interfaces;
+using EasyTrain_P2Gr1.Models.Services;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -22,7 +24,7 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestCreateClient()
         {
             DeleteCreateDB();
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalClient service = new ClientService())
             {
                 service.CreateClient("BONNER", "Henri", DateTime.Now, "BONNER.Henri@gmail.com", "MonMotDePasse", DateTime.Now);
 
@@ -52,7 +54,7 @@ namespace EasyTrain_UnitTests.TestsDAL
 
             //Execution de la m�thode � tester
             List<Client> clients;
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalClient service = new ClientService())
             {
                 clients = service.GetClients();
             }
@@ -74,7 +76,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.SaveChanges();
             }
             Client client;
-            using (UtilisateurService service = new UtilisateurService())
+            using (IDalClient service = new ClientService())
             {
                 client = service.GetClient(1);
             }
@@ -94,7 +96,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.SaveChanges();
             }
             Client client;
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalClient service = new ClientService())
             {
                 service.UpdateClient(1, "DUPONT", "Jean", DateTime.Now, "Test@gmail.com",
                                   "MDP", DateTime.Now, DateTime.Now);
@@ -120,7 +122,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
             List<Client> clients;
 
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalClient service = new ClientService())
             {
                 service.DeleteClient(1);
                 clients = service.GetClients();
@@ -149,7 +151,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
             //Appel de la méthode à tester
             Gestionnaire gestionnaire;
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalGestionnaire service = new GestionnaireService())
             {
                 service.UpdateGestionnaire(1, "Michel", "Gibert", DateTime.Now);
                 gestionnaire = service.GetGestionnaire(1);
@@ -164,7 +166,7 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestCreateCoach()
         {
             DeleteCreateDB();
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalCoach service = new CoachService())
             {
                 service.CreerCoach("Vince","François",DateTime.Now,"adresse@mail.com","mot de passe", DateTime.Now );
 
@@ -197,7 +199,7 @@ namespace EasyTrain_UnitTests.TestsDAL
 
             //Execution de la m�thode � tester
             List<Coach> coachs;
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalCoach service = new CoachService())
             {
                 coachs = service.GetCoachs();
             }
@@ -219,7 +221,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.SaveChanges();
             }
             Coach coach;
-            using (UtilisateurService service = new UtilisateurService())
+            using (CoachService service = new CoachService())
             {
                 coach = service.GetCoach(1);
             }
@@ -240,7 +242,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.SaveChanges();
             }
             Coach coach;
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalCoach service = new CoachService())
             {
                 service.UpdateCoach(1, "DUPONT", "Jean", DateTime.Now, "Test@gmail.com",
                                   "MDP", DateTime.Now);
@@ -267,7 +269,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
             List<Coach> coachs;
 
-            using (IDalUtilisateur service = new UtilisateurService())
+            using (IDalCoach service = new CoachService())
             {
                 service.DeleteCoach(1);
                 coachs = service.GetCoachs();
@@ -275,8 +277,6 @@ namespace EasyTrain_UnitTests.TestsDAL
 
             Assert.Empty(coachs);
         }
-           
-        
     }
 }
 
