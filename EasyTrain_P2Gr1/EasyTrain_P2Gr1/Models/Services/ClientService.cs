@@ -31,7 +31,6 @@ namespace EasyTrain_P2Gr1.Models.Services
                 DateCreationCompte = DateTime.Now,
                 DateAbonnement = dateAbonnement
             };
-
             this._bddContext.Clients.Add(client);
             this._bddContext.SaveChanges();
             return client.Id;
