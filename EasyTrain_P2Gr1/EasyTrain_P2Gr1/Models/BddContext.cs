@@ -36,7 +36,9 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Gestionnaires.AddRange(new List<Gestionnaire>()
             {
-                new Gestionnaire(){Nom="Smith" , Prenom ="John", DateEmbauche= DateTime.Now}
+                new Gestionnaire(){Nom="Smith" , Prenom ="John", DateEmbauche= DateTime.Now},
+                new Gestionnaire(){Nom="Amira" , Prenom ="Mdghri", DateEmbauche= DateTime.Now},
+                new Gestionnaire(){Nom="Hossame" , Prenom ="Sadeq", DateEmbauche= DateTime.Now}
             });
             //Sauvegarde les changements dans la Bdd
             this.SaveChanges();
