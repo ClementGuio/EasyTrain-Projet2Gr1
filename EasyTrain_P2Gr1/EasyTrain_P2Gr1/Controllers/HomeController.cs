@@ -20,6 +20,18 @@ namespace EasyTrain_P2Gr1.Controllers
                 listeClient = service.GetClients();
             }
             return View(listeClient);
+
+
+        }
+
+        public IActionResult ListeCoach() // Le nom de la méthode doit avoir le même nom que la vue
+        {
+            List<Coach> listeCoach;
+            using (IDalUtilisateur service = new UtilisateurService())
+            {
+                listeCoach = service.GetCoachs();
+            }
+            return View(listeCoach);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace EasyTrain_P2Gr1
                 app.UseDeveloperExceptionPage();
             }
 
-            using (BddContext ctx = new BddContext()) //Appel de la méthode de création et remplisssage de la bdd
+            using (BddContext ctx = new BddContext()) //Appel de la mï¿½thode de crï¿½ation et remplisssage de la bdd
             {
                 ctx.InitializeDb();
             }
@@ -39,7 +39,7 @@ namespace EasyTrain_P2Gr1
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(  //Ajout d'une route par défaut
+                endpoints.MapControllerRoute(  //Ajout d'une route par dï¿½faut
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

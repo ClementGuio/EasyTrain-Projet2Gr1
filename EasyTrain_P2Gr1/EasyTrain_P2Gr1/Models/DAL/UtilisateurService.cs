@@ -28,7 +28,7 @@ namespace EasyTrain_P2Gr1.Models.DAL
         /***************************  GESTION COACH ****************************************/
 
         //Méthodes spécifiques
-        public List<Coach> GetCoach()
+        public List<Coach> GetCoachs()
         {
             return this._bddContext.Coachs.ToList();
         }

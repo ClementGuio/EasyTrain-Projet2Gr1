@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste des Séjours</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de  Naissance</th>
+            <th>adresse Mail</th>
+            <th>Date Embauche</th>
+        </tr>
+        @foreach (EasyTrain_P2Gr1.Models.Coach coach in ViewData["Coach"] as List<EasyTrain_P2Gr1.Models.Coach>)
+        {
+            <tr>
+                <td>@coach.Id</td>
+                <td>@coach.Nom</td>
+                <td>@coach.Prenom</td>
+                <td>@coach.DateNaissance</td>
+                <td>@coach.AdresseMail</td>
+                <td>@coach.DateEmbauche</td>
+                
+                
+            </tr>
+        }
+    </table>
+    <br />
+</body>
+</html>
