@@ -74,7 +74,8 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 using (IDalGestionnaire service = new GestionnaireService())
                 {
-                    service.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Prenom, gestionnaire.Nom, gestionnaire.DateEmbauche);
+                    service.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Nom,gestionnaire.Prenom, gestionnaire.DateNaissance,
+                                               gestionnaire.AdresseMail, gestionnaire.MotDePasse, gestionnaire.DateEmbauche);
                     return RedirectToAction("Gestionnaires");
                 }
             }
@@ -100,6 +101,68 @@ namespace EasyTrain_P2Gr1.Controllers
             return View("Error"); // Gestionnaire non trouvé ou erreur de suppression
         }
 
+        //---------------------------------------------------------------------------- Inscription
+        [HttpGet]
+        public IActionResult Inscription()
+        {
+            
+            return View();
+        }
 
+
+        /*
+                //TODO:-----------------------------------------------------------------Modification de Profil   POST non fonctionnelle
+                [HttpGet]
+                public IActionResult Profil(int id) // Vue de modification de profil GET
+                {
+                    Utilisateur utilisateur;
+                    using (BddContext ctx = new BddContext())
+                    {
+                       utilisateur = ctx.Utilisateurs.Find(id);
+
+                    }
+                    return View(utilisateur);
+
+                }
+
+                [HttpPost]
+                public IActionResult Profil(Utilisateur utilisateur) // Vue de modification de profil Post
+                {
+                    Client client;
+                    Gestionnaire gestionnaire;
+                    Coach coach;
+
+                    if (utilisateur is Client)
+                    {
+                     client = utilisateur as Client;
+
+                        using (IDalClient dal = new ClientService())
+                        {
+                            dal.UpdateClient(client.Id, client.Nom, client.Prenom, client.DateNaissance, client.AdresseMail,
+                                                   client.MotDePasse, client.DateCreationCompte, client.DateAbonnement);
+                        }
+                    }
+                    else if (utilisateur is Gestionnaire)
+                    {
+                        gestionnaire = utilisateur as Gestionnaire;
+                        using (IDalGestionnaire dal = new GestionnaireService())
+                        {
+                            dal.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Nom, gestionnaire.Prenom, gestionnaire.DateNaissance, gestionnaire.AdresseMail,
+                                                   gestionnaire.MotDePasse, gestionnaire.DateEmbauche);
+                        }
+                    }
+                    else if (utilisateur is Coach)
+                    {
+                        coach = utilisateur as Coach;
+                        using (IDalCoach dal = new CoachService())
+                        {
+                            dal.UpdateCoach(coach.Id, coach.Nom, coach.Prenom, coach.DateNaissance, coach.AdresseMail,
+                                                   coach.MotDePasse, coach.DateEmbauche);
+                        }
+                    }
+                    return View(utilisateur);
+
+                }
+                */
     }
 }
