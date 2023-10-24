@@ -23,4 +23,8 @@
     <ProjectReference Include="..\EasyTrain_P2Gr1\EasyTrain_P2Gr1.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestsControllers\" />
+  </ItemGroup>
+
 </Project>
