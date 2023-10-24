@@ -18,6 +18,18 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.Database.EnsureCreated();
             }
         }
+        [Fact]
+        public void TestCreateClient()
+        {
+            DeleteCreateDB();
+
+            using (IDalUtilisateur service = new UtilisateurService())
+            {
+                service.CreateClient();
+            }
+
+            Assert.Equal();
+        }
 
         [Fact]
         public void TestGetClients()
@@ -68,7 +80,28 @@ namespace EasyTrain_UnitTests.TestsDAL
 
             Assert.NotNull(client);
             Assert.Equal("Patpat", client.Nom);
+        }
 
+        [Fact]
+        public void TestUpdateClient()
+        {
+            DeleteCreateDB();
+            using (BddContext ctx = new BddContext())
+            {
+                ctx.Clients.AddRange(new List<Client>()
+                {
+                new Client() {Nom = "Dupont", Prenom = "Pierre", DateCreationCompte = DateTime.Now }
+                });
+                ctx.SaveChanges();
+            }
+
+            using (IDalUtilisateur service = new UtilisateurService())
+            {
+                service.UpdateClient(1, /*à remplir*/);
+            }
+
+            Assert.Equal(/*à remplir*/);
+            Assert.Equal();
 
         }
     }
