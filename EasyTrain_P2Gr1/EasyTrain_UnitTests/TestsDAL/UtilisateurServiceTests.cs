@@ -132,36 +132,6 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Empty(clients);
 
         }
-        [Fact]
-        public void TestUpdateGestionnaire()
-        {
-            //Initialisation
-            //DeleteCreateDB();
-            using (BddContext ctx = new BddContext())
-            {
-                ctx.Gestionnaires.Add(new Gestionnaire()
-                {
-                    Nom = "Guibert",
-                    Prenom = "Romain",
-                    AdresseMail = "adresse@mail.com",
-                    MotDePasse = "mdp",
-                    DateNaissance = DateTime.Now,
-                    DateEmbauche = DateTime.Now
-                });
-                ctx.SaveChanges();
-            }
-            //Appel de la méthode à tester
-            Gestionnaire gestionnaire;
-            using (IDalGestionnaire service = new GestionnaireService())
-            {
-                service.UpdateGestionnaire(1, "Gibert", "Michel", DateTime.Now, "adresse@mail.com", "mdp", DateTime.Now);
-                gestionnaire = service.GetGestionnaire(1);
-            }
-            //Vérifier que les changements ont bien été fait
-            Assert.Equal("Michel", gestionnaire.Prenom);
-            Assert.Equal("Gibert", gestionnaire.Nom);
-        }
-
 
             [Fact]
         public void TestCreateCoach()
@@ -277,6 +247,126 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
 
             Assert.Empty(coachs);
+        }
+
+        [Fact]
+        public void TestUpdateGestionnaire()
+        {
+            //Initialisation
+            DeleteCreateDB();
+            using (BddContext ctx = new BddContext())
+            {
+                ctx.Gestionnaires.Add(new Gestionnaire()
+                {
+                    Nom = "Guibert",
+                    Prenom = "Romain",
+                    AdresseMail = "adresse@mail.com",
+                    MotDePasse = "mdp",
+                    DateNaissance = DateTime.Now,
+                    DateEmbauche = DateTime.Now
+                });
+                ctx.SaveChanges();
+            }
+            //Appel de la méthode à tester
+            Gestionnaire gestionnaire;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                service.UpdateGestionnaire(1, "Gibert", "Michel", DateTime.Now, "Adresse@mail.com", "mdp", DateTime.Now);
+                gestionnaire = service.GetGestionnaire(1);
+            }
+            //Vérifier que les changements ont bien été fait
+
+            Assert.Equal("Michel", gestionnaire.Prenom);
+            Assert.Equal("Gibert", gestionnaire.Nom);
+        }
+
+        [Fact]
+        public void TestCreateGestionnaire()
+        {
+            DeleteCreateDB();
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                service.CreerGestionnaire("Ali", "Jaber", DateTime.Now, "Adresse@mail.com", "mdp", DateTime.Now);
+
+            }
+            Gestionnaire gestionnaire;
+            using (BddContext ctx = new BddContext())
+            {
+                gestionnaire = ctx.Gestionnaires.Find(1);
+            }
+            Assert.Equal("Ali", gestionnaire.Nom);
+        }
+
+        [Fact]
+        public void TestGetGestionnaire()
+        {
+            DeleteCreateDB();
+            using (BddContext ctx = new BddContext())
+            {
+                ctx.Gestionnaires.AddRange(new List<Gestionnaire>()
+                {
+                new Gestionnaire() {Nom = "Mdghri", Prenom = "Amira", DateEmbauche = DateTime.Now }
+                });
+                ctx.SaveChanges();
+            }
+            Gestionnaire gestionnaire;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                gestionnaire = service.GetGestionnaire(1);
+            }
+            Assert.NotNull(gestionnaire);
+            Assert.Equal("Mdghri", gestionnaire.Nom);
+        }
+        [Fact]
+        public void TestDeleteGestionnaire()
+        {
+            DeleteCreateDB();
+            using (BddContext ctx = new BddContext())
+            {
+                ctx.Gestionnaires.AddRange(new List<Gestionnaire>()
+                {
+                new Gestionnaire() {Nom = "ddddd", Prenom = "hhhhhh", DateEmbauche = DateTime.Now }
+                });
+                ctx.SaveChanges();
+            }
+            List<Gestionnaire> gestionnaires;
+
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                service.DeleteGestionnaire(1);
+                gestionnaires = service.GetGestionnaires();
+            }
+
+            Assert.Empty(gestionnaires);
+
+        }
+
+        [Fact]
+        public void TestGetGestionnaires()
+        {
+            //Initialisation
+            DeleteCreateDB(); // Suppression puis cr�ation de la bdd
+
+            using (BddContext ctx = new BddContext()) //Remplissage de la bdd pour le test
+            {
+                ctx.Gestionnaires.AddRange(new List<Gestionnaire>()
+                {
+                    new Gestionnaire() {Nom = "Patpat", Prenom = "Patrick", DateEmbauche = DateTime.Now  },
+                    new Gestionnaire() {Nom = "Dupont", Prenom = "Roger", DateEmbauche = DateTime.Now  }
+                });
+                ctx.SaveChanges();
+            }
+
+            //Execution de la m�thode � tester
+            List<Gestionnaire> gestionnaires;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                gestionnaires = service.GetGestionnaires();
+            }
+
+            //Verification du r�sultat
+            Assert.NotEmpty(gestionnaires);
+            Assert.Equal(2, gestionnaires.Count);
         }
     }
 }
