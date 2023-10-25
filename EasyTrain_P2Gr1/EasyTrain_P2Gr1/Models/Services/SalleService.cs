@@ -35,10 +35,10 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public void DeleteSalle(int id)
         {
-            Salle oldSalle = this._bddContext.Salles.Find(id);
+            Salle oldSalle = this._bddContext.Salles.Include(s => s.Equipements).FirstOrDefault(s => s.Id == id);
             if (oldSalle != null)
             {
-                _bddContext.Entry(oldSalle).State=EntityState.Deleted;
+                _bddContext.Remove(oldSalle);
                 _bddContext.SaveChanges();
             }
         }
