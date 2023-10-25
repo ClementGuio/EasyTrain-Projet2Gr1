@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace EasyTrain_P2Gr1.Models.Services.Interfaces
 {
-    public interface IDalEquipement
+    public interface IDalEquipement: IDisposable
     {
         List<Equipement> GetEquipements();
-        Equipement GetEquipement();
+        Equipement GetEquipement(int Id);
         int CreateEquipement(Equipement equipement);
         void UpdateEquipement(Equipement equipement);
         void DeleteEquipement(int id);
-
+      
     }
 }

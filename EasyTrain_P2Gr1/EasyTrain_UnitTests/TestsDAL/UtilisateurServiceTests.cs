@@ -9,6 +9,7 @@ using Xunit.Sdk;
 
 namespace EasyTrain_UnitTests.TestsDAL
 {
+    [Collection("sequential")]
     [DbCleanUp()]
     public class UtilisateurServiceTests
     {

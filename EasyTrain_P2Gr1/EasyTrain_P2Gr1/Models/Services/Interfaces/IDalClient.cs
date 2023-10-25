@@ -12,5 +12,6 @@ namespace EasyTrain_P2Gr1.Models.DAL.Interfaces
         void UpdateClient(int id, string nom, string prenom, DateTime dateDeNaissance, string adresseMail,
                                   string motDePasse, DateTime dateCreationDeCompte, DateTime dateAbonnement);
         void DeleteClient(int id);
+       
     }
 }
