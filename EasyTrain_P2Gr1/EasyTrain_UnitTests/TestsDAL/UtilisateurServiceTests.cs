@@ -9,22 +9,14 @@ using Xunit.Sdk;
 
 namespace EasyTrain_UnitTests.TestsDAL
 {
-    [DbCleanUp()]
+    [DbCleanUp]
+    [Collection("sequential")]
     public class UtilisateurServiceTests
     {
         
-        private void DeleteCreateDB()
-        {
-            using (BddContext ctx = new BddContext())
-            {
-                ctx.Database.EnsureDeleted();
-                ctx.Database.EnsureCreated();
-            }
-        }
         [Fact]
         public void TestCreateClient()
         {
-            //DeleteCreateDB();
             using (IDalClient service = new ClientService())
             {
                 service.CreateClient("BONNER", "Henri", DateTime.Now, "BONNER.Henri@gmail.com", "MonMotDePasse", DateTime.Now);
@@ -41,8 +33,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestGetClients()
         {
             //Initialisation
-            //DeleteCreateDB(); // Suppression puis cr�ation de la bdd
-
             using (BddContext ctx = new BddContext()) //Remplissage de la bdd pour le test
             {
                 ctx.Clients.AddRange(new List<Client>()
@@ -67,7 +57,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestGetClient()
         {
-            //DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Clients.AddRange(new List<Client>()
@@ -87,7 +76,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestUpdateClient()
         {
-            //DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Clients.AddRange(new List<Client>()
@@ -112,7 +100,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestDeleteClient()
         {
-            //DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Clients.AddRange(new List<Client>()
@@ -136,7 +123,6 @@ namespace EasyTrain_UnitTests.TestsDAL
             [Fact]
         public void TestCreateCoach()
         {
-            //DeleteCreateDB();
             using (IDalCoach service = new CoachService())
             {
                 service.CreerCoach("Vince","François",DateTime.Now,"adresse@mail.com","mot de passe", DateTime.Now );
@@ -153,8 +139,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestGetCoachs()
         {
             //Initialisation
-            //DeleteCreateDB(); // Suppression puis cr�ation de la bdd
-
             using (BddContext ctx = new BddContext()) //Remplissage de la bdd pour le test
             {
                 ctx.Coachs.AddRange(new List<Coach>()
@@ -182,7 +166,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestGetCoach()
         {
-            //DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Coachs.AddRange(new List<Coach>()
@@ -202,7 +185,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestUpdateCoach()
         {
-            //DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Coachs.AddRange(new List<Coach>()
@@ -229,7 +211,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestDeleteCoach()
         {
             //initialisation
-            //DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Coachs.AddRange(new List<Coach>()
@@ -253,7 +234,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestUpdateGestionnaire()
         {
             //Initialisation
-            DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Gestionnaires.Add(new Gestionnaire()
@@ -283,7 +263,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestCreateGestionnaire()
         {
-            DeleteCreateDB();
             using (IDalGestionnaire service = new GestionnaireService())
             {
                 service.CreerGestionnaire("Ali", "Jaber", DateTime.Now, "Adresse@mail.com", "mdp", DateTime.Now);
@@ -300,7 +279,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestGetGestionnaire()
         {
-            DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Gestionnaires.AddRange(new List<Gestionnaire>()
@@ -320,7 +298,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestDeleteGestionnaire()
         {
-            DeleteCreateDB();
             using (BddContext ctx = new BddContext())
             {
                 ctx.Gestionnaires.AddRange(new List<Gestionnaire>()
@@ -345,7 +322,6 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestGetGestionnaires()
         {
             //Initialisation
-            DeleteCreateDB(); // Suppression puis cr�ation de la bdd
 
             using (BddContext ctx = new BddContext()) //Remplissage de la bdd pour le test
             {

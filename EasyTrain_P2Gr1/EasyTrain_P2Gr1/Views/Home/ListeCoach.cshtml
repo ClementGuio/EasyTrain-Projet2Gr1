@@ -1,8 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@model List<EasyTrain_P2Gr1.Models.Coach>
+@{
+    Layout = "_LayoutCompte";
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Liste des Séjours</title>
+    <title>Liste des Coachs</title>
 </head>
 <body>
     <table border="1">
@@ -11,10 +15,10 @@
             <th>Nom</th>
             <th>Prenom</th>
             <th>Date de  Naissance</th>
-            <th>adresse Mail</th>
+            <th>EMail</th>
             <th>Date Embauche</th>
         </tr>
-        @foreach (EasyTrain_P2Gr1.Models.Coach coach in ViewData["Coach"] as List<EasyTrain_P2Gr1.Models.Coach>)
+        @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
         {
             <tr>
                 <td>@coach.Id</td>
