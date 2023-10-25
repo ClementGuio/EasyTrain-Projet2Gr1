@@ -19,6 +19,7 @@ header {
     align-items: center;
     display: flex;
     padding: 1em;
+    transition: top 1s;
 }
 
 .logo img {
