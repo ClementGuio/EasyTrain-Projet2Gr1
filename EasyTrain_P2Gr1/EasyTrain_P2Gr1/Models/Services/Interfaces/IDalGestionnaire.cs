@@ -7,12 +7,8 @@ namespace EasyTrain_P2Gr1.Models.DAL.Interfaces
     {
         List<Gestionnaire> GetGestionnaires();
         Gestionnaire GetGestionnaire(int id);
-        //TODO: passer un Gestionnaire
-        int CreerGestionnaire(string nom, string prenom, DateTime dateNaissance, string adresseMail, string motDePasse,
-                              DateTime dateEmbauche);
-        //TODO: passer un Gestionnaire
-        void UpdateGestionnaire(int id, string nom, string prenom, DateTime dateNaissance, string adresseMail, string motDePasse,
-                                DateTime dateEmbauche);
+        int CreateGestionnaire(Gestionnaire gestionnaire);
+        void UpdateGestionnaire(Gestionnaire gestionnaire);
         void DeleteGestionnaire(int id);
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EasyTrain_UnitTests.TestsDAL
 {
+    [Collection("sequential")]
     [DbCleanUp()]
     public class SalleServiceTests
     {
@@ -223,9 +224,15 @@ namespace EasyTrain_UnitTests.TestsDAL
             {
                 service.DeleteSalle(1);
                 salles = service.GetSalles();
+
+            }
+            using (IDalEquipement service = new EquipementService())
+            {
+                equipements = service.GetEquipements();
             }
 
             Assert.Empty(salles);
+            Assert.NotEmpty(equipements);
 
         }
     }

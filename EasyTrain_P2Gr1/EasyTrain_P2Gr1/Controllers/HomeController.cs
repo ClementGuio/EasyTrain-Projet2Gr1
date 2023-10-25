@@ -74,8 +74,7 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 using (IDalGestionnaire service = new GestionnaireService())
                 {
-                    service.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Nom,gestionnaire.Prenom, gestionnaire.DateNaissance,
-                                               gestionnaire.AdresseMail, gestionnaire.MotDePasse, gestionnaire.DateEmbauche);
+                    service.UpdateGestionnaire(gestionnaire);
                     return RedirectToAction("Gestionnaires");
                 }
             }

@@ -18,39 +18,17 @@ namespace EasyTrain_P2Gr1.Models.Services
             return this._bddContext.Clients.Find(id);
         }
 
-        public int CreateClient(string nom, string prenom, DateTime dateDeNaissance, string adresseMail,
-                                 string motDePasse, DateTime dateAbonnement)
+        public int CreateClient(Client client)
         {
-            Client client = new Client()
-            {
-                Nom = nom,
-                Prenom = prenom,
-                DateNaissance = dateDeNaissance,
-                AdresseMail = adresseMail,
-                MotDePasse = motDePasse,
-                DateCreationCompte = DateTime.Now,
-                DateAbonnement = dateAbonnement
-            };
             this._bddContext.Clients.Add(client);
             this._bddContext.SaveChanges();
             return client.Id;
         }
         
-        public void UpdateClient(int id, string nom, string prenom, DateTime dateDeNaissance, string adresseMail,
-                                  string motDePasse, DateTime dateDeCreationDeCompte, DateTime dateAbonnement)
+        public void UpdateClient(Client client)
         {
-            Client oldClient = this._bddContext.Clients.Find(id);
-            if (oldClient != null)
-            {
-                oldClient.Nom = nom;
-                oldClient.Prenom = prenom;
-                oldClient.DateNaissance = dateDeNaissance;
-                oldClient.AdresseMail = adresseMail;
-                oldClient.MotDePasse = motDePasse;
-                oldClient.DateCreationCompte = dateDeCreationDeCompte;
-                oldClient.DateAbonnement = dateAbonnement;
-                _bddContext.SaveChanges();
-            }
+            this._bddContext.Clients.Update(client);
+            this._bddContext.SaveChanges();
         }
 
         public void DeleteClient(int id)

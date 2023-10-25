@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace EasyTrain_P2Gr1.Models.Services
 {
-    public class EquipementService: DisposableService, IDalEquipement
+    public class EquipementService : DisposableService, IDalEquipement
 
     {
         public List<Equipement> GetEquipements()
@@ -19,7 +19,6 @@ namespace EasyTrain_P2Gr1.Models.Services
         }
         public int CreateEquipement(Equipement equipement)
         {
-            
             this._bddContext.Equipements.Add(equipement);
             this._bddContext.SaveChanges();
             return equipement.Id;
@@ -27,17 +26,15 @@ namespace EasyTrain_P2Gr1.Models.Services
         }
 
         public void UpdateEquipement(Equipement equipement)
-                                      
         {
-
             _bddContext.Equipements.Update(equipement);
-                _bddContext.SaveChanges();
-            
+            _bddContext.SaveChanges();
         }
+
         public void DeleteEquipement(int id)
         {
             Equipement oldEquipement = this._bddContext.Equipements.Find(id);
-            if (oldEquipement!= null)
+            if (oldEquipement != null)
             {
                 _bddContext.Equipements.Remove(oldEquipement);
                 _bddContext.SaveChanges();

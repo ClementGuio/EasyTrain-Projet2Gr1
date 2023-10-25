@@ -17,30 +17,18 @@ namespace EasyTrain_P2Gr1.Models.Services
             return _bddContext.Gestionnaires.Find(id);
         }
 
-        public int CreerGestionnaire(string nom, string prenom, DateTime dateNaissance, string adresseMail, string motDePasse,
-                                     DateTime dateEmbauche)
+        public int CreateGestionnaire(Gestionnaire gestionnaire)
         {
-            Gestionnaire gestionnaire = new Gestionnaire() { Nom = nom, Prenom = prenom, DateNaissance=dateNaissance,
-                                                             AdresseMail=adresseMail, MotDePasse=motDePasse, DateEmbauche = dateEmbauche };
             this._bddContext.Gestionnaires.Add(gestionnaire);
             this._bddContext.SaveChanges();
             return gestionnaire.Id;
         }
 
-        public void UpdateGestionnaire(int id, string nom, string prenom, DateTime dateNaissance, string adresseMail, string motDePasse,
-                                       DateTime dateEmbauche)
+        public void UpdateGestionnaire(Gestionnaire gestionnaire)
         {
-            Gestionnaire oldGestionnaire = this._bddContext.Gestionnaires.Find(id);
-            if (oldGestionnaire != null)
-            {
-                oldGestionnaire.Nom = nom;
-                oldGestionnaire.Prenom = prenom;
-                oldGestionnaire.DateNaissance = dateNaissance;
-                oldGestionnaire.AdresseMail = adresseMail;
-                oldGestionnaire.MotDePasse = motDePasse;
-                oldGestionnaire.DateEmbauche = dateEmbauche;
-                _bddContext.SaveChanges();
-            }
+            _bddContext.Gestionnaires.Update(gestionnaire);
+            _bddContext.SaveChanges();
+
         }
 
         public void DeleteGestionnaire(int id)

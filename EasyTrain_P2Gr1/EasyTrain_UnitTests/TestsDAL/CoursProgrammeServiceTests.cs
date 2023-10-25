@@ -12,7 +12,7 @@ using Xunit;
 
 namespace EasyTrain_UnitTests.TestsDAL
 {
-    [Collection("sequentiel")]
+    [Collection("sequential")]
     [DbCleanUp()]
     public class CoursProgrammeServiceTests
     {

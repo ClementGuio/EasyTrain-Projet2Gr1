@@ -16,38 +16,18 @@ namespace EasyTrain_P2Gr1.Models.Services
             return this._bddContext.Coachs.Find(id);
         }
 
-        public int CreerCoach(string nom, string prenom, DateTime dateNaissance, string adressemail,
-            string motDePasse, DateTime dateEmbauche)
+        public int CreerCoach(Coach coach)
         {
-            Coach coach = new Coach()
-            {
-                Nom = nom,
-                Prenom = prenom,
-                DateNaissance = dateNaissance,
-                AdresseMail = adressemail,
-                MotDePasse = motDePasse,
-                DateEmbauche = dateEmbauche
-            };
             this._bddContext.Coachs.Add(coach);
             this._bddContext.SaveChanges();
             return coach.Id;
         }
 
 
-        public void UpdateCoach(int id, string nom, string prenom, DateTime dateNaissance,
-            string adressemail, string motDePasse, DateTime dateEmbauche)
+        public void UpdateCoach(Coach coach)
         {
-            Coach nouveauCoach = this._bddContext.Coachs.Find(id);
-            if (nouveauCoach != null)
-            {
-                nouveauCoach.Nom = nom;
-                nouveauCoach.Prenom = prenom;
-                nouveauCoach.DateNaissance = dateNaissance;
-                nouveauCoach.AdresseMail = adressemail;
-                nouveauCoach.MotDePasse = motDePasse;
-                nouveauCoach.DateEmbauche = dateEmbauche;
-                this._bddContext.SaveChanges();
-            }
+            this._bddContext.Coachs.Update(coach);
+            this._bddContext.SaveChanges();
         }
 
         public void DeleteCoach(int id)
