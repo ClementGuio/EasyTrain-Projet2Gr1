@@ -20,6 +20,7 @@ header {
     display: flex;
     padding: 1em;
     transition: top 1s;
+
 }
 
 .logo img {
@@ -27,7 +28,56 @@ header {
     height: auto;
 }
 
-.login{
+.dropbtn {
+    background-color: white;
+    color: white;
+    padding: 12px;
+    border-radius: 100px;
+    height: 60px;
+    width: 60px;
+    border: none;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #F2CB05
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #F2CB05;
+}
+
+/*.login{
     justify-content: center;
     align-items:center;
     display:flex;
@@ -39,9 +89,9 @@ header {
     overflow:hidden;
 }
 
-    .login:hover {
+.login:hover {
         background-color: navajowhite;
-    }
+}*/
 
 /*------------------------Menu-------------------------------*/
 
@@ -85,7 +135,7 @@ header {
 }
 
     .button:hover {
-        background-color: #4CAF50; /* Green */
+        background-color: #4CAF50;
         color: white;
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
