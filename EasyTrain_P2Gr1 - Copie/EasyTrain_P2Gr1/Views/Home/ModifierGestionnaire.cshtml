@@ -1,0 +1,30 @@
+﻿@model EasyTrain_P2Gr1.Models.Gestionnaire
+@{
+    Layout = "_LayoutCompte";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ModifierNom</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Modifier un gestionnaire : </legend>
+            @Html.LabelFor(m => Model.Prenom)
+            @Html.TextBoxFor(m => Model.Prenom)
+            @Html.ValidationMessageFor(m => Model.DateEmbauche)
+            <br />
+            @Html.LabelFor(m => Model.Nom)
+            @Html.TextBoxFor(m => Model.Nom)
+            @Html.ValidationMessageFor(m => Model.DateEmbauche)
+            <br />
+            <input type="submit" value="Modifier" />
+        </fieldset>
+    }
+</body>
+</html>
+
+
