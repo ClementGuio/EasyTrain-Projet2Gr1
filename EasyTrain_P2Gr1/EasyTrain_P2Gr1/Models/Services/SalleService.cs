@@ -43,6 +43,9 @@ namespace EasyTrain_P2Gr1.Models.Services
             }
         }
 
-
+        internal static void UpdateSalle(object id, string nom, string type, List<Equipement> equipements)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
