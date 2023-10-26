@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace EasyTrain_P2Gr1.Models.Services.Interfaces
 {
-    public interface IDalCours
+    public interface IDalCours : IDisposable
     {
         List<Cours> GetCours();
         Cours GetCours(int id);
