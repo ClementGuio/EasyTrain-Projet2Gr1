@@ -12,7 +12,6 @@ namespace EasyTrain_P2Gr1.Models.Services
         {
             return this._bddContext.Clients.ToList();
         }
-
         public Client GetClient(int id)
         {
             return this._bddContext.Clients.Find(id);
