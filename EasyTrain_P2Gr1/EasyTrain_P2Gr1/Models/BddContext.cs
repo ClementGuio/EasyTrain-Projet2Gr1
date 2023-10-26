@@ -18,7 +18,7 @@ namespace EasyTrain_P2Gr1.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain"); // Chaine de caractères de connexion
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables
@@ -29,9 +29,26 @@ namespace EasyTrain_P2Gr1.Models
             //Remplissage des tables
             this.Clients.AddRange(new List<Client>()
             {
-                new Client() {Nom = "Patpat", Prenom = "Patrick", DateCreationCompte = DateTime.Now  },
-                new Client() {Nom = "Dupont", Prenom = "Roger", DateCreationCompte = DateTime.Now  }
-            });
+                new Client
+            {
+                Nom = "BONNER",
+                Prenom = "Henri",
+                DateNaissance = new DateTime(1980, 12, 12),
+                AdresseMail = "BONNER.Henri@gmail.com",
+                MotDePasse = "mdp",
+                DateAbonnement = new DateTime(2023, 3, 15),
+                DateCreationCompte = new DateTime(2022, 4, 27)
+            },
+            new Client
+            {
+                Nom = "DUPONT",
+                Prenom = "Pierre",
+                DateNaissance = new DateTime(1975, 12, 12),
+                AdresseMail = "dupont.pierre@gmail.com",
+                MotDePasse = "mdp",
+                DateAbonnement = new DateTime(2022, 3, 15),
+                DateCreationCompte = new DateTime(2022, 7, 27)
+            } });
 
             this.Coachs.AddRange(new List<Coach>()
             {
