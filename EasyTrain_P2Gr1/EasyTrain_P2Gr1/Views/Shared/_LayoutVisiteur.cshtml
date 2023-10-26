@@ -11,20 +11,29 @@
     <script src="~/js/menu.js"> </script>
     <title>@ViewData["Title"]</title>
 </head>
-<body>
-    <header class="menuSlide">
+<body class="bodyLayout">
+    <header id="menuSlide">
         <div class="logo">
             <a href="#"><img src="/images/Logo_easy_train.png" alt="Logo EASY TRAIN"></a>
         </div>
-
-        <h5>Nos équipement</h5>
-        <h5>Nos Coach</h5>
-        <h5>Nos Tarif</h5>
-        <h5></h5>
-        <h5></h5>
-        <h5></h5>
+        <button class="button">Nos Equipements</button>
+        <button class="button">Nos Coach</button>
+        <button class="button">Nos Tarif</button>
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
+        <button class="buttonSinscrire">S'inscrire'</button>
         <div>
-            <a class="login" href="#"><img src="/images/user.svg" alt="user"></a>
+
+            <div class="dropdown">
+                <button class="dropbtn"><img src="/images/user.svg" alt="user"></button>
+                <div class="dropdown-content">
+                    <a href="#">Se connecter</a>
+                    <a href="#">S'inscrire'</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <!-- <a class="login" href="#"></a><img src="/images/user.svg" alt="user"> -->
         </div>
     </header>
     <main class="mainVisiteur">
