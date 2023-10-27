@@ -19,7 +19,7 @@ namespace EasyTrain_P2Gr1.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain"); // Chaine de caractères de connexion
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables
@@ -136,7 +136,8 @@ namespace EasyTrain_P2Gr1.Models
             {
                 new Salle(){Nom = "The Rock", Type = "Musculation", Equipements = Equipements.Where(e => (e.Nom == "Cage de musculation")
                 || (e.Nom == "Set d'haltères") || (e.Nom == "Banc de musculation")).ToList() },
-                new Salle(){Nom = "Maillot jaune", Type = "Cyclisme", Equipements = Equipements.Where(e => (e.Nom.Contains("Vélo"))).ToList()}
+                new Salle(){Nom = "Maillot jaune", Type = "Cyclisme", Equipements = Equipements.Where(e => (e.Nom.Contains("Vélo"))).ToList()},
+                new Salle(){Nom = "exercices collective", Type = "aérobic", Equipements = Equipements.Where(e => (e.Nom.Contains("Vélo"))).ToList()}
             });
             this.SaveChanges();
 
