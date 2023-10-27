@@ -46,9 +46,9 @@ namespace EasyTrain_P2Gr1.Controllers
             Salle salle;
             using (IDalSalle service = new SalleService())
             {
-               salle = service.GetSalle(model.Salle.FirstOrDefault(s => s.Selected == true).Value);
+               salle = service.GetSalle(model.SalleId);
             };
-
+            model.Cours.Salle = salle;
             using (IDalCours service = new CoursService())
             {
                 service.CreateCours(model.Cours);

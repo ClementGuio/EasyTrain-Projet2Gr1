@@ -24,10 +24,10 @@
             @Html.ValidationMessageFor(m => Model.Cours.Prix)
             <br />
             Coach 
-            @Html.DropDownListFor(m => m.Coach, Model.Coach)
+            @Html.DropDownListFor(m => m.CoachId, Model.Coach)
             <br />
             Salle
-            @Html.DropDownListFor(m => m.Salle, Model.Salle)
+            @Html.DropDownListFor(m => m.SalleId, Model.Salle)
             <br /> 
             <input type="submit" value="Creer" />
         </fieldset>
