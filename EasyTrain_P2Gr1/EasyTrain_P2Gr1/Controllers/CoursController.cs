@@ -3,6 +3,7 @@ using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using EasyTrain_P2Gr1.Models.Services;
 using EasyTrain_P2Gr1.Models.Services.Interfaces;
 using EasyTrain_P2Gr1.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -13,6 +14,7 @@ namespace EasyTrain_P2Gr1.Controllers
 {
     public class CoursController : Controller
     {
+        [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
         public ActionResult CreerCours()
         {
@@ -40,6 +42,8 @@ namespace EasyTrain_P2Gr1.Controllers
 
             return View(model);
         }
+
+        [Authorize(Roles = "Gestionnaire")]
         [HttpPost]
         public ActionResult CreerCours(FormulaireCoursViewModel model)
         {
@@ -48,13 +52,15 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                salle = service.GetSalle(model.SalleId);
             };
+            Console.WriteLine($"Salle : {salle.Id}, {salle.Nom}");
             model.Cours.Salle = salle;
             using (IDalCours service = new CoursService())
             {
-                service.CreateCours(model.Cours);
+                //service.CreateCours(model.Cours);
+                service.CreateCours(new Cours() { Titre = "cours 1" });
             }
 
-            return View(model);
+            return RedirectToAction("ListeCours");
         }
 
 
