@@ -1,0 +1,37 @@
+﻿@model List<EasyTrain_P2Gr1.Models.CoursProgramme>
+@{
+    Layout = "_LayoutCompte";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des Cours Programmés</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Date de debut</th>
+            <th>Date de fin</th>
+            <th>Places libres</th>
+            <th>Cours</th>
+            
+
+        </tr>
+        @foreach (EasyTrain_P2Gr1.Models.CoursProgramme coursProgramme in Model)
+        {
+            <tr>
+                <td>@coursProgramme.Id</td>
+                <td>@coursProgramme.DateDebut.ToString("dd/MM/yyyy")</td>
+                <td>@coursProgramme.DateFin.ToString("dd/MM/yyyy")</td>
+                <td>@coursProgramme.PlacesLibres</td>
+                <td>@coursProgramme.Cours</td>
+                
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

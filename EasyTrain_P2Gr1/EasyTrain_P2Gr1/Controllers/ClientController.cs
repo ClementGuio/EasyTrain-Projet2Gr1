@@ -123,6 +123,6 @@ namespace EasyTrain_P2Gr1.Controllers
             HttpContext.SignOutAsync();
             return Redirect("/");
         }
-
+        
     }
 }
