@@ -19,7 +19,15 @@ namespace EasyTrain_P2Gr1.Models.Services
         {
             return this._bddContext.CoursProgrammes.Find(id);
         }
-
+        public CoursProgramme GetCoursProgramme(string strId)
+        {
+            int id;
+            if (int.TryParse(strId, out id))
+            {
+                return GetCoursProgramme(id);
+            }
+            return null;
+        }
         public int CreateCoursProgramme(CoursProgramme coursProgramme)
         {
 
@@ -43,5 +51,7 @@ namespace EasyTrain_P2Gr1.Models.Services
                 _bddContext.SaveChanges();
             }
         }
+
+        
     }
 }
