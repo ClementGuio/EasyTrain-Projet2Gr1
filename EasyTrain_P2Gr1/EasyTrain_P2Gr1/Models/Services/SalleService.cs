@@ -18,6 +18,15 @@ namespace EasyTrain_P2Gr1.Models.Services
         {
             return this._bddContext.Salles.Find(id);
         }
+        public Salle GetSalle(string strId)
+        {
+            int id;
+            if (int.TryParse(strId, out id))
+            {
+                return GetSalle (id);
+            }
+            return null;
+        }
 
         public int CreateSalle(Salle salle)
         {

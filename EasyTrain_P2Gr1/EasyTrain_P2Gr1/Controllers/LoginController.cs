@@ -41,7 +41,7 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 using (IDalUtilisateur service = new UtilisateurService())
                 {
-                    Utilisateur utilisateur = service.Authentifier(viewModel.Utilisateur.Prenom, viewModel.Utilisateur.MotDePasse); // On vérifie les identifiants en base de données
+                    Utilisateur utilisateur = service.Authentifier(viewModel.Utilisateur.AdresseMail, viewModel.Utilisateur.MotDePasse); // On vérifie les identifiants en base de données
                     if (utilisateur != null)
                     {
                         //On construit le cookie
