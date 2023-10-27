@@ -32,7 +32,6 @@ header {
     max-width: 11em;
     height: auto;
 }
-
 .dropbtn {
     background-color: white;
     color: white;
@@ -128,7 +127,7 @@ header {
 
 .button {
     transition-duration: 0.1s;
-    background-color: transparent;
+    background-color: darkred;
     width: 2em;
     border-radius: 100px;
     width: 10em;
