@@ -7,8 +7,9 @@ namespace EasyTrain_P2Gr1.Models.DAL.Interfaces
     {
         List<Coach> GetCoachs();
         public Coach GetCoach(int Id);
-        public int CreerCoach(Coach coach);
+        public int CreateCoach(Coach coach);
         public void UpdateCoach(Coach coach);
         public void DeleteCoach(int id);
+        Coach GetCoach(string strId);
     }
 }

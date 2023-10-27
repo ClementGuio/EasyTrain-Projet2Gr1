@@ -7,6 +7,7 @@ namespace EasyTrain_P2Gr1.Models.DAL.Interfaces
     {
         List<Gestionnaire> GetGestionnaires();
         Gestionnaire GetGestionnaire(int id);
+        Gestionnaire GetGestionnaire(string strId);
         int CreateGestionnaire(Gestionnaire gestionnaire);
         void UpdateGestionnaire(Gestionnaire gestionnaire);
         void DeleteGestionnaire(int id);

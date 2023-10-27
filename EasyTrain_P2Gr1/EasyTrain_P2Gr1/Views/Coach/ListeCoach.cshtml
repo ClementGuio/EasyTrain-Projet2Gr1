@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<EasyTrain_P2Gr1.Models.Coach>
+@{
+    Layout = "_LayoutCompte";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des coachs</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date de naissance</th>
+            <th>Adresse mail</th>
+            <th>Mot de passe</th>
+            <th>Date d'embauche</th>
+
+        </tr>
+        @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
+        {
+            <tr>
+                <td>@coach.Id</td>
+                <td>@coach.Nom</td>
+                <td>@coach.Prenom</td>
+                <td>@coach.DateNaissance</td>
+                <td>@coach.AdresseMail</td>
+                <td>@coach.MotDePasse</td>
+                <td>@coach.DateEmbauche.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

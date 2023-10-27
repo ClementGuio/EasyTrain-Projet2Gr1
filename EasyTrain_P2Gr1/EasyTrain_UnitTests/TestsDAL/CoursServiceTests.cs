@@ -19,9 +19,9 @@ namespace EasyTrain_UnitTests.TestsDAL
         [Fact]
         public void TestGetCours()
         {
-            using(BddContext ctx = new BddContext())
+            using (BddContext ctx = new BddContext())
             {
-                ctx.Cours.AddRange(new List<Cours>() { 
+                ctx.Cours.AddRange(new List<Cours>() {
                 new Cours()
                 {
                     Titre = "Musculation débutant",
@@ -30,20 +30,19 @@ namespace EasyTrain_UnitTests.TestsDAL
                     Coach = new Coach() {Nom="Jean" }
 
                 },
-                                new Cours()
+                new Cours()
                                 {
-                                    Titre = "Musculation expert",
-                                    NbParticipants = 5,
-                                    Prix = 30,
-                                    Coach = new Coach() { Nom = "Pierre" }
-
-                                }
+                    Titre = "Musculation expert",
+                    NbParticipants = 5,
+                    Prix = 30,
+                    Coach = new Coach() { Nom = "Pierre" }
+                }
                 });
                 ctx.SaveChanges();
             }
 
             List<Cours> cours;
-        using(IDalCours service = new CoursService())
+            using (IDalCours service = new CoursService())
             {
                 cours = service.GetCours();
             }
@@ -71,7 +70,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 service.CreateCours(cours);
 
             }
-            
+
 
             using (BddContext ctx = new BddContext())
             {
@@ -86,7 +85,8 @@ namespace EasyTrain_UnitTests.TestsDAL
 
 
         [Fact]
-        public void TestDeleteCours() {
+        public void TestDeleteCours()
+        {
 
             using (BddContext ctx = new BddContext())
             {
@@ -97,7 +97,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                     Titre = "Musculation débutant",
                     NbParticipants = 10,
                     Prix = 23.5,
-                    Coach = new Coach() {Nom="Jean" }
+                    Coach = new Coach() { Nom = "Jean" }
 
                 }
                 );
@@ -107,7 +107,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             Cours cours;
             using (IDalCours service = new CoursService())
             {
-               cours = service.GetCours(1);
+                cours = service.GetCours(1);
             }
 
             using (IDalCours service = new CoursService())
@@ -115,11 +115,11 @@ namespace EasyTrain_UnitTests.TestsDAL
                 service.DeleteCours(cours.Id);
                 cours = service.GetCours(1);
             }
-            
+
             Assert.Null(cours);
         }
 
 
-        
+
     }
 }

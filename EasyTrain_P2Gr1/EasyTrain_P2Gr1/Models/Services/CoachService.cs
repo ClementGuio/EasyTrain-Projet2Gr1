@@ -16,7 +16,17 @@ namespace EasyTrain_P2Gr1.Models.Services
             return this._bddContext.Coachs.Find(id);
         }
 
-        public int CreerCoach(Coach coach)
+        public Coach GetCoach(string strId)
+        {
+            int id;
+            if (int.TryParse(strId, out id))
+            {
+                return GetCoach(id);
+            }
+            return null;
+        }
+
+        public int CreateCoach(Coach coach)
         {
             this._bddContext.Coachs.Add(coach);
             this._bddContext.SaveChanges();

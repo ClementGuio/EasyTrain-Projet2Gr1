@@ -5,10 +5,6 @@
 @{  
     Layout = "_LayoutCompte";
 }
-
-
-
-
 <main>
     @using (Html.BeginForm())
     {
@@ -23,13 +19,13 @@
             @Html.TextBoxFor(m => Model.Nom)
             @Html.ValidationMessageFor(m => Model.Nom)
             <br />
+            @Html.LabelFor(m => Model.AdresseMail)
+            @Html.TextBoxFor(m => Model.AdresseMail)
+            @Html.ValidationMessageFor(m => Model.AdresseMail)
+            <br />
             @Html.LabelFor(m => Model.DateNaissance)
             @Html.TextBoxFor(m => Model.DateNaissance)
-            @Html.ValidationMessageFor(m => Model.Nom)
-            <br />
-            @Html.LabelFor(m => Model.AdresseMail)
-            @Html.TextBoxFor(m => Model.DateNaissance)
-            @Html.ValidationMessageFor(m => Model.AdresseMail)
+            @Html.ValidationMessageFor(m => Model.DateNaissance)
             <br />
             @Html.LabelFor(m => Model.MotDePasse)
             @Html.TextBoxFor(m => Model.MotDePasse)
@@ -38,8 +34,8 @@
             @Html.LabelFor(m => Model.DateEmbauche)
             @Html.TextBoxFor(m => Model.DateEmbauche)
             @Html.ValidationMessageFor(m => Model.DateEmbauche)
-            <br />
-            <input type="submit" value="Modifier" />
+            <br /> 
+            <input type="submit" value="Creer" />
         </fieldset>
     }
 </main>

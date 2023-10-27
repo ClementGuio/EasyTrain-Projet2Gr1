@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EasyTrain_P2Gr1.Models.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<Salle> Salles { get; set; }
         public DbSet<Equipement> Equipements { get; set; }
         public DbSet<Cours> Cours { get; set; }
-        public DbSet<CoursProgramme> CoursProgrammes {get; set;}
+        public DbSet<CoursProgramme> CoursProgrammes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
@@ -30,38 +31,80 @@ namespace EasyTrain_P2Gr1.Models
             this.Clients.AddRange(new List<Client>()
             {
                 new Client
-            {
-                Nom = "BONNER",
+                {
+                Nom = "Bonner",
                 Prenom = "Henri",
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
-                MotDePasse = "mdp",
+                MotDePasse = UtilisateurService.EncodeMD5("Prune"),
                 DateAbonnement = new DateTime(2023, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             },
             new Client
             {
-                Nom = "DUPONT",
+                Nom = "Dupond",
                 Prenom = "Pierre",
                 DateNaissance = new DateTime(1975, 12, 12),
                 AdresseMail = "dupont.pierre@gmail.com",
-                MotDePasse = "mdp",
+                MotDePasse = UtilisateurService.EncodeMD5("Datte"),
                 DateAbonnement = new DateTime(2022, 3, 15),
                 DateCreationCompte = new DateTime(2022, 7, 27)
             } });
 
             this.Coachs.AddRange(new List<Coach>()
             {
-                new Coach() {Nom = "Frau" , Prenom = "Richard", DateEmbauche = DateTime.Now},
-                new Coach() {Nom = "Vida" , Prenom = "Thibault", DateEmbauche = DateTime.Now},
-                new Coach() {Nom = "Vince" , Prenom = "Charles", DateEmbauche = DateTime.Now}
-            });
+                new Coach() {
+                    Nom = "Dupont",
+                    Prenom = "Pierre",
+                    DateNaissance = new DateTime(1975, 12, 12),
+                    AdresseMail = "dupont.pierre@gmail.com",
+                    MotDePasse = UtilisateurService.EncodeMD5("Kiwi"),
+                    DateEmbauche = new DateTime(2022, 3, 15)
+                },
+                new Coach() {
+                    Nom = "Amery",  
+                    Prenom = "Smet",
+                    DateNaissance = new DateTime(1985,12,1),
+                    AdresseMail = "a-smet@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("Abricot"),
+                    DateEmbauche = new DateTime(2023,1,23)
+                 },
+                new Coach() {
+                    Nom = "May",
+                    Prenom = "Berger",
+                    DateNaissance = new DateTime(1961,2,13),
+                    AdresseMail = "bergermay@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("Poire"),
+                    DateEmbauche = new DateTime(2023,3,14)
+    }
+            }); ;
 
             this.Gestionnaires.AddRange(new List<Gestionnaire>()
             {
-                new Gestionnaire(){Nom="Smith" , Prenom ="John", DateEmbauche= DateTime.Now},
-                new Gestionnaire(){Nom="Amira" , Prenom ="Mdghri", DateEmbauche= DateTime.Now},
-                new Gestionnaire(){Nom="Hossame" , Prenom ="Sadeq", DateEmbauche= DateTime.Now}
+                new Gestionnaire(){
+                    Nom = "Dubois",
+                    Prenom = "Stella",
+                    DateNaissance = new DateTime(1989,6,10),
+                    AdresseMail = "stella.dubois@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("Fraise"),
+                    DateEmbauche = new DateTime(2023,2,13)
+                },
+                new Gestionnaire(){
+                    Nom = "Lester",
+                    Prenom = "Vincent",
+                    DateNaissance = new DateTime(2003,9,22),
+                    AdresseMail = "vincent.lester@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("Framboise"),
+                    DateEmbauche = new DateTime(2023,8,5)
+                },
+                new Gestionnaire(){
+                    Nom="Sadeq",
+                    Prenom ="Hossame",
+                    DateNaissance= new DateTime(1997,5,17),
+                    AdresseMail = "hossame.sadeq@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("Pomme"),
+                    DateEmbauche = new DateTime(2023,8,5)
+                }
             });
             //Sauvegarde les changements dans la Bdd
             this.SaveChanges();

@@ -1,6 +1,7 @@
 using EasyTrain_P2Gr1.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,6 +18,10 @@ namespace EasyTrain_P2Gr1
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Login/Connexion";
+            });
             services.AddControllersWithViews(); // Permet d'utiliser les controller avec vues
         }
 
@@ -33,11 +38,15 @@ namespace EasyTrain_P2Gr1
                 ctx.InitializeDb();
             }
 
-            app.UseRouting();
+            app.UseRouting(); // ????
 
             app.UseStaticFiles(); // Permet d'utiliser les fichiers statiques de wwwroot
 
-            app.UseEndpoints(endpoints =>
+            app.UseAuthentication(); //Permet d'utiliser l'authentification
+            
+            app.UseAuthorization(); // Permet d'utiliser les autorisations selon les roles
+
+            app.UseEndpoints(endpoints => // Permet de redéfinir le routing
             {
                 endpoints.MapControllerRoute(  //Ajout d'une route par d�faut
                     name: "default",

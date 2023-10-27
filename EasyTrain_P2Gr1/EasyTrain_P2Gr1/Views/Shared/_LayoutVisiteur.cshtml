@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Salle de Sport";
+    ViewData["Title"] = "EasyTrain - Bienvenue";
 }
 
 <!DOCTYPE html>
@@ -14,23 +14,22 @@
 <body class="bodyLayout">
     <header id="menuSlide">
         <div class="logo">
-            <a href="#"><img src="/images/Logo_easy_train.png" alt="Logo EASY TRAIN"></a>
+            <a href="/"><img src="/images/Logo_easy_train.png" alt="Logo EASY TRAIN"></a>
         </div>
         <button class="button">Nos Equipements</button>
-        <button class="button">Nos Coach</button>
-        <button class="button">Nos Tarif</button>
+        <button class="button" onclick="window.location.href='/coach/listecoach'">Nos Coach</button>
+        <button class="button">Nos Tarifs</button>
         <h1></h1>
         <h1></h1>
         <h1></h1>
-        <button class="buttonSinscrire">S'inscrire'</button>
+        <button class="buttonSinscrire" onclick="window.location.href='/client/creerclient'">S'inscrire</button>
         <div>
 
             <div class="dropdown">
                 <button class="dropbtn"><img src="/images/user.svg" alt="user"></button>
                 <div class="dropdown-content">
-                    <a href="#">Se connecter</a>
-                    <a href="#">S'inscrire'</a>
-                    <a href="#">Link 3</a>
+                    <a href="/login/connexion">Se connecter</a>
+                    <a href="/client/creerclient">S'inscrire'</a>
                 </div>
             </div>
             <!-- <a class="login" href="#"></a><img src="/images/user.svg" alt="user"> -->

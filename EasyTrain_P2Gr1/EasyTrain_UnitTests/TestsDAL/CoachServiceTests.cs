@@ -93,7 +93,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             //Execution
             using (IDalCoach service = new CoachService())
             {
-                service.CreerCoach(coach);
+                service.CreateCoach(coach);
             }
             //Verification
             Coach coachDb;
