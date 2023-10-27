@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EasyTrain_P2Gr1.ViewModels.FormulaireCoursViewModel;
+@{  
+    Layout = "_LayoutCompte";
+}
+<main>
+    @using (Html.BeginForm())
+    {
+        //-----------Formulaire Cours
+        <fieldset>
+            <legend>Creer un cours : </legend>
+            @Html.LabelFor(m => Model.Cours.Titre)
+            @Html.TextBoxFor(m => Model.Cours.Titre)
+            @Html.ValidationMessageFor(m => Model.Cours.Titre)
+            <br />
+            @Html.LabelFor(m => Model.Cours.NbParticipants)
+            @Html.TextBoxFor(m => Model.Cours.NbParticipants)
+            @Html.ValidationMessageFor(m => Model.Cours.NbParticipants)
+            <br />
+            @Html.LabelFor(m => Model.Cours.Prix)
+            @Html.TextBoxFor(m => Model.Cours.Prix)
+            @Html.ValidationMessageFor(m => Model.Cours.Prix)
+            <br />
+            Coach 
+            @Html.DropDownListFor(m => m.CoachId, Model.Coach)
+            <br />
+            Salle
+            @Html.DropDownListFor(m => m.SalleId, Model.Salle)
+            <br /> 
+            <input type="submit" value="Creer" />
+        </fieldset>
+    }
+</main>
