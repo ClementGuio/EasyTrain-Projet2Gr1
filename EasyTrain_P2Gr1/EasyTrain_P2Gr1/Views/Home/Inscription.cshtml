@@ -10,11 +10,15 @@
 <main>
     @using (Html.BeginForm())
     {
-        //-----------Formulaire Utilisateur
-        <fieldset>
+
+         
+             <fieldset>
             <legend>Modifier un gestionnaire : </legend>
             @Html.Partial("_FormulaireUtilisateur")
             <input type="submit" value="Modifier" />
         </fieldset>
+      
+        //-----------Formulaire Utilisateur
+        
     }
 </main>

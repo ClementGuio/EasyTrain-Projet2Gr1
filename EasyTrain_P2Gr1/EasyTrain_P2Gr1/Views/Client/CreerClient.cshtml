@@ -6,24 +6,31 @@
 @{
     Layout = "_LayoutVisiteur";
 }
-@using (Html.BeginForm())
-{
-    
 
-@Html.LabelFor(c => c.Nom)
-@Html.TextBoxFor(c => c.Nom)
-<br />
-@Html.LabelFor(c => c.Prenom)
-@Html.TextBoxFor(c => c.Prenom)
-<br />
-@Html.LabelFor(c => c.DateNaissance)
-@Html.TextBoxFor(c => c.DateNaissance)
-<br />
-@Html.LabelFor(c => c.AdresseMail)
-@Html.TextBoxFor(c => c.AdresseMail)
-<br />
-@Html.LabelFor(c => c.MotDePasse)
-@Html.TextBoxFor(c => c.MotDePasse)
-<br />
-<input type="submit" value="Valider">
-}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+
+            <div style="display:flex">
+                <!--@Html.LabelFor(c => c.Nom)-->
+                @Html.TextBoxFor(c => c.Nom, new { @class = "InputText", placeholder = "Nom" })
+                
+                <!-- // @Html.LabelFor(c => c.Prenom)-->
+            @Html.TextBoxFor(c => c.Prenom, new { @class = "InputText", placeholder = "Prenom"  })
+                </div>
+
+            <br />
+            //@Html.LabelFor(c => c.DateNaissance)
+            @Html.TextBoxFor(c => c.DateNaissance, new { @class = "InputText", placeholder = "DateNaissance" })
+            <br />
+            //@Html.LabelFor(c => c.AdresseMail)
+            @Html.TextBoxFor(c => c.AdresseMail, new { @class = "InputText", placeholder = "Mail" })
+            <br />
+            //@Html.LabelFor(c => c.MotDePasse)
+            @Html.TextBoxFor(c => c.MotDePasse, new { @class = "InputText", placeholder = "Mot de passe" })
+            <br />
+            <input type="submit" value="Valider">
+        }
+    </div>
