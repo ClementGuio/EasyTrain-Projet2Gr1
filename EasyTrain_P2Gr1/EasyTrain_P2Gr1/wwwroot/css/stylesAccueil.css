@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.topContainer {
+    background-image: url(/images/CoursCollectif1/fitness-room-1180062_1920.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    display: flex;
+    height: 100vh;
+}
+

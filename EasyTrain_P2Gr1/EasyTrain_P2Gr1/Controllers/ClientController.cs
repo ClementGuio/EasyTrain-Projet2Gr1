@@ -56,7 +56,7 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             return View();
         }
-
+        
         
 
         [Authorize(Roles = "Client")]

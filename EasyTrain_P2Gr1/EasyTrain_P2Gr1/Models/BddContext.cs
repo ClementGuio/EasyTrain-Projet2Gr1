@@ -20,12 +20,12 @@ namespace EasyTrain_P2Gr1.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
-
-
             try{
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
-            }finally {
                 optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=EasyTrain"); // Chaine de caractères de connexion
+            }
+            finally {
+                
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
             }
              // Chaine de caractères de connexion
         }
