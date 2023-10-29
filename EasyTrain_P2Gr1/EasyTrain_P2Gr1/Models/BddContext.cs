@@ -57,6 +57,7 @@ namespace EasyTrain_P2Gr1.Models
                 AdresseMail = "dupont.pierre@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Datte"),
                 DateAbonnement = new DateTime(2022, 3, 15),
+                Abonnement= Abonnement.FirstOrDefault(a => a.Id==1),
                 DateCreationCompte = new DateTime(2022, 7, 27)
             } });
 
@@ -139,6 +140,14 @@ namespace EasyTrain_P2Gr1.Models
                 new Equipement(){ Nom = "Vélo elliptique"}
             });
 
+            this.SaveChanges();
+
+
+            this.Abonnement.AddRange(new List<Abonnement>()
+            {
+                new Abonnement(){Titre= "Mensuel", Prix = 20},
+                new Abonnement(){Titre= "Annuel", Prix = 200},
+            });
             this.SaveChanges();
 
             this.Salles.AddRange(new List<Salle>()
