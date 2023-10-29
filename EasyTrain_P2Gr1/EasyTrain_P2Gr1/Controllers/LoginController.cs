@@ -25,7 +25,7 @@ namespace EasyTrain_P2Gr1.Controllers
                 {
                     using (IDalClient service = new ClientService()) // Et on le récupère en base de données
                     {
-                        utilisateurViewModel.Utilisateur = service.GetClient(HttpContext.User.Identity.Name); //On récupère l'id stocké dans le jeton d'authentification
+                        utilisateurViewModel.Utilisateur = service.GetClient(HttpContext.User.Identity.Name); //On récupère l'id stocké dans le cookie
                         return View(utilisateurViewModel); // Il est déjà authentifié donc on lui renvoie une page (à définir)
                     }
                 }
@@ -36,14 +36,17 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult Connexion(ClientViewModel viewModel, string returnUrl)
         {
+            Console.WriteLine("OK");
 
-            if (ModelState.IsValid) //On vérifie le format de l'adresse mail et du mot de passe 
-            {
+            //if (ModelState.IsValid) //TODO : Pourquoi la validation empêche la connexion ??
+            //{
+                Console.WriteLine("model valid");
                 using (IDalUtilisateur service = new UtilisateurService())
                 {
                     Utilisateur utilisateur = service.Authentifier(viewModel.Utilisateur.AdresseMail, viewModel.Utilisateur.MotDePasse); // On vérifie les identifiants en base de données
                     if (utilisateur != null)
                     {
+                        Console.WriteLine("Authentifié");
                         //On construit le cookie
                         var userClaims = new List<Claim>()
                         {
@@ -67,7 +70,7 @@ namespace EasyTrain_P2Gr1.Controllers
                     }
                     ModelState.AddModelError("Utilisateur.AdresseMail","AdresseMail incorrect");
                     ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
-                }
+                //}
             }
             return View(viewModel);
         }

@@ -2,19 +2,19 @@
 EasyTrain Css
 
 Propriétées de base et variables   */
-* {
+/** {*/
     /* supprimer les valeurs par default de navigateur*/
-    margin: 0;
-    padding: 0;
+    /*margin: 0;
+    padding: 0;*/
 
     /* comportement par default des box */
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
 
     /* police par default */
-    font-family: 'Roboto', sans-serif;
+    /*font-family: 'Roboto', sans-serif;*/
 
     /* Variables */
-    --main-color-principale: #F2CB05;
+    /*--main-color-principale: #F2CB05;
     --main-color-secondaire: #95D904;
     --main-color-intermediaire: #84BF04;
 
@@ -33,14 +33,14 @@ Propriétées de base et variables   */
 h2 {
     font-size: 5em;
     margin-bottom: 1em;
-}
+}*/
 
 
 /* composants */
 
 
 /* Organisations */
-.container {
+/*.container {
     padding: 4em;
     display: flex;
     align-items: center;
@@ -131,10 +131,10 @@ h2 {
 .g {
     background-color: #3b3b3b;
     padding: 10vh 0;
-}
+}*/
 
 /* bouttons */
-.btn {
+/*.btn {
     font-size: 2em;
     padding: 0.5em;
     border-radius: 15px;
@@ -168,11 +168,11 @@ h2 {
 .btn-secondaire:hover {
     color: var(--main-text-color-fort);
     background-color: var(--main-color-secondaire);
-}
+}*/
 
 /* autres */
 
-.herO01 {
+/*.herO01 {
     display: flex;
     height: 100vh;
     padding-right: 30em;
@@ -196,11 +196,11 @@ h2 {
     width: 4em;
     line-height: 0.7em;
     font-size: 13em;
-}
+}*/
 
 /* Cartes */
 
-.cardsurvole {
+/*.cardsurvole {
     position: relative;
     overflow: hidden;
     height: 35em;
@@ -237,9 +237,9 @@ h2 {
     margin: 1em;
     display: flex;
     overflow: hidden;
-    height: 24em;
+    height: 24em;*/
     /*width: 35em; */
-    align-items: center;
+    /*align-items: center;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -283,7 +283,7 @@ h2 {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-}
+}*/
 
 /*     Css Specifique   */
 
@@ -294,7 +294,7 @@ h2 {
 
 
 /*    affichage mobile deskktop    */
-@media only screen and (min-width: 1224px) {
+/*@media only screen and (min-width: 1224px) {
     :root {
         font-size: 10px;
     }
@@ -360,11 +360,11 @@ h2 {
     }
 
 
-}
+}*/
 
 /*    affichage deskktop    */
-@media only screen and (min-width: 1824px) { /*Faire ça pour tous les types d'écran*/
-    :root {
+/*@media only screen and (min-width: 1824px) {*/ /*Faire ça pour tous les types d'écran*/
+    /*:root {
         font-size: 100%;
     }
 
@@ -375,5 +375,5 @@ h2 {
     }
 
 
-}
+}*/
 

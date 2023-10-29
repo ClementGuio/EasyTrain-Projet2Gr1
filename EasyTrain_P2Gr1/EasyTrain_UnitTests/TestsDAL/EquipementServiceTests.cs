@@ -18,7 +18,7 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestGetEquipements()
         {
             //Initialisation
-            Salle salle = new Salle();
+            Salle salle = new Salle { Nom = "Jean Lasalle", Type = "Débarras" };
             using (BddContext ctx = new BddContext())
             {
                 ctx.Salles.Add(salle);
@@ -48,9 +48,13 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestGetEquipement()
         {
             //Initialisation
-            Equipement equipement = new Equipement() { Nom = "La barre fixe", Salle = new Salle() };
+            Equipement equipement = new Equipement()
+            {
+                Nom = "La barre fixe",
+                Salle = new Salle { Nom = "Jean Lasalle", Type = "Débarras" }
+            };
             using (BddContext ctx = new BddContext())
-            { 
+            {
                 ctx.Equipements.Add(equipement);
                 ctx.SaveChanges();
             }
@@ -70,15 +74,14 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestCreateEquipement()
         {
             //Initialisation
-            Equipement equipement;
-            Salle salle = new Salle();
+            Salle salle = new Salle { Nom = "Jean Lasalle", Type = "Débarras" };
             using (BddContext ctx = new BddContext())
             {
                 ctx.Salles.AddRange(salle);
                 ctx.SaveChanges();
-                equipement = new Equipement() { Nom = "les althères", Salle = salle };
             }
             //Execution
+            Equipement equipement = new Equipement() { Nom = "les althères", Salle = salle };
             using (IDalEquipement service = new EquipementService())
             {
                 service.CreateEquipement(equipement);
@@ -100,8 +103,8 @@ namespace EasyTrain_UnitTests.TestsDAL
             //Initialisation
             List<Salle> salles = new List<Salle>
             {
-                new Salle() { Nom = "Salle A" },
-                new Salle() { Nom = "Salle B" }
+                new Salle() { Nom = "Salle A" , Type = "cardio" },
+                new Salle() { Nom = "Salle B" , Type = "Muscu"}
 
             };
             Equipement equipement = new Equipement { Nom = "Corde à sautez", Salle = salles[0] };
@@ -111,8 +114,12 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.SaveChanges();
             }
             //Execution
-            Equipement equipementModif = new Equipement { Id = equipement.Id, Nom = "Corde à sauter", 
-                Salle = salles[1] };
+            Equipement equipementModif = new Equipement
+            {
+                Id = equipement.Id,
+                Nom = "Corde à sauter",
+                Salle = salles[1]
+            };
             using (IDalEquipement service = new EquipementService())
             {
                 service.UpdateEquipement(equipementModif);
@@ -135,7 +142,11 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestDeleteEquipement()
         {
             //Initialisation
-            Equipement equipement = new Equipement() { Nom = "Salle A", Salle = new Salle() };
+            Equipement equipement = new Equipement()
+            {
+                Nom = "Salle A",
+                Salle = new Salle { Nom = "Jean Lasalle", Type = "Débarras" }
+            };
             using (BddContext ctx = new BddContext())
             {
                 ctx.Equipements.Add(equipement);
@@ -144,7 +155,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             //Execution
             using (IDalEquipement service = new EquipementService())
             {
-                service.DeleteEquipement(1);
+                service.DeleteEquipement(equipement.Id);
             }
             //Verification
             List<Equipement> equipementsDb;

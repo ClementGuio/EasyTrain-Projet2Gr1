@@ -191,13 +191,13 @@ namespace EasyTrain_P2Gr1.Models
             this.Cours.AddRange(new List<Cours>()
             {
                 new Cours(){Titre = "Musculation débutant", NbParticipants = 10, Prix = 23.5,
-                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Frau") && (c.Prenom == "Richard")),
+                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Patrick") && (c.Prenom == "Akeem")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "The Rock") },
                 new Cours(){Titre = "Musculation avancé", NbParticipants = 7, Prix = 26.5,
-                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Frau") && (c.Prenom == "Richard")),
+                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Patrick") && (c.Prenom == "Akeem")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "The Rock") },
                 new Cours(){Titre = "Cyclisme", NbParticipants = 5, Prix = 20,
-                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Vida") && (c.Prenom == "Thibault")),
+                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "May") && (c.Prenom == "Berger")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "Maillot jaune") }
             });
             this.SaveChanges();
