@@ -21,8 +21,26 @@ namespace EasyTrain_UnitTests.TestsDAL
             {
                 ctx.Clients.AddRange(new List<Client>()
                 {
-                    new Client() {Nom = "Patpat", Prenom = "Patrick", DateCreationCompte = DateTime.Now  },
-                    new Client() {Nom = "Dupont", Prenom = "Roger", DateCreationCompte = DateTime.Now  }
+                    new Client
+                    {
+                        Nom = "DEBONNER",
+                        Prenom = "Jacques-Eude-Henri",
+                        DateNaissance = new DateTime(1978, 12, 12),
+                        AdresseMail = "DEBONNER.JacquesEudeHenri@gmail.com",
+                        MotDePasse = "NEWmdp",
+                        DateAbonnement = new DateTime(2024, 3, 15),
+                        DateCreationCompte = new DateTime(2022, 4, 25)
+                    },
+                    new Client
+                    {
+                        Nom = "DEBONNER",
+                        Prenom = "Jacques-Eude",
+                        DateNaissance = new DateTime(1978, 12, 12),
+                        AdresseMail = "DEBONNER.JacquesEude@gmail.com",
+                        MotDePasse = "NEWmdp",
+                        DateAbonnement = new DateTime(2024, 3, 15),
+                        DateCreationCompte = new DateTime(2022, 4, 25)
+                    }
                 });
                 ctx.SaveChanges();
             }
@@ -78,7 +96,8 @@ namespace EasyTrain_UnitTests.TestsDAL
         public void TestCreateClient()
         {
             //Initialisation
-            Client client = new Client {
+            Client client = new Client
+            {
                 Nom = "BONNER",
                 Prenom = "Henri",
                 DateNaissance = new DateTime(1980, 12, 12),
@@ -168,8 +187,17 @@ namespace EasyTrain_UnitTests.TestsDAL
             {
                 ctx.Clients.AddRange(new List<Client>()
                 {
-                new Client() {Nom = "Dupont", Prenom = "Pierre", DateCreationCompte = DateTime.Now },
-                });
+                    new Client
+                    {
+                        Nom = "DEBONNER",
+                        Prenom = "Jacques-Eude-Henri",
+                        DateNaissance = new DateTime(1978, 12, 12),
+                        AdresseMail = "DEBONNER.JacquesEudeHenri@gmail.com",
+                        MotDePasse = "NEWmdp",
+                        DateAbonnement = new DateTime(2024, 3, 15),
+                        DateCreationCompte = new DateTime(2022, 4, 25)
+                    }
+            });
                 ctx.SaveChanges();
             }
             //Execution

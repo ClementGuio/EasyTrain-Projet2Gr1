@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication;
+using System;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -49,6 +50,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult CreerGestionnaire(Gestionnaire gestionnaire) // Vue de création de profil Post
         {
+            gestionnaire.DateCreationCompte = DateTime.Now;
             using (IDalGestionnaire dal = new GestionnaireService())
             {
                 dal.CreateGestionnaire(gestionnaire);

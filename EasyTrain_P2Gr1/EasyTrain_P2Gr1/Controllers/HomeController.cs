@@ -152,7 +152,7 @@ namespace EasyTrain_P2Gr1.Controllers
                         using (IDalGestionnaire dal = new GestionnaireService())
                         {
                             dal.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Nom, gestionnaire.Prenom, gestionnaire.DateNaissance, gestionnaire.AdresseMail,
-                                                   gestionnaire.MotDePasse, gestionnaire.DateEmbauche);
+                                                   gestionnaire.MotDePasse, gestionnaire.DateCreationCompte);
                         }
                     }
                     else if (utilisateur is Coach)
@@ -161,7 +161,7 @@ namespace EasyTrain_P2Gr1.Controllers
                         using (IDalCoach dal = new CoachService())
                         {
                             dal.UpdateCoach(coach.Id, coach.Nom, coach.Prenom, coach.DateNaissance, coach.AdresseMail,
-                                                   coach.MotDePasse, coach.DateEmbauche);
+                                                   coach.MotDePasse, coach.DateCreationCompte);
                         }
                     }
                     return View(utilisateur);

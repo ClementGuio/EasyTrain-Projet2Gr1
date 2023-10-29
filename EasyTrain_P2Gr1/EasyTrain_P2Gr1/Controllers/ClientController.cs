@@ -48,6 +48,10 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult CreerClient(Client client)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(client);
+            }
             client.DateCreationCompte = DateTime.Now;
             client.DateAbonnement = DateTime.Now;
             using (IDalClient service = new ClientService())
@@ -84,6 +88,10 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult ModifierClient(Client client)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(client);
+            }
             using (IDalClient service = new ClientService())
             {
                 service.UpdateClient(client);

@@ -27,15 +27,30 @@ namespace EasyTrain_UnitTests.TestsDAL
                     Titre = "Musculation débutant",
                     NbParticipants = 10,
                     Prix = 23.5,
-                    Coach = new Coach() {Nom="Jean" }
-
-                },
+                    Coach = new Coach()
+                    {
+                        Nom = "Benani",
+                        Prenom = "Alba",
+                        AdresseMail = "albabenani@mail.com",
+                        MotDePasse = "mdp",
+                        DateNaissance = new DateTime(1995, 2, 13),
+                        DateCreationCompte = new DateTime(2023, 5, 9)
+                    }
+            },
                 new Cours()
                                 {
                     Titre = "Musculation expert",
                     NbParticipants = 5,
                     Prix = 30,
-                    Coach = new Coach() { Nom = "Pierre" }
+                    Coach = new Coach()
+                    {
+                        Nom = "Benani",
+                        Prenom = "Maria",
+                        AdresseMail = "mariabenani@mail.com",
+                        MotDePasse = "mdp",
+                        DateNaissance = new DateTime(1995, 2, 13),
+                        DateCreationCompte = new DateTime(2023, 5, 9)
+                    }
                 }
                 });
                 ctx.SaveChanges();
@@ -60,9 +75,16 @@ namespace EasyTrain_UnitTests.TestsDAL
                 Titre = "Musculation débutant",
                 NbParticipants = 10,
                 Prix = 23.5,
-                Coach = new Coach() { Nom = "Pierre" }
-
-            };
+                Coach = new Coach()
+                {
+                    Nom = "Benani",
+                    Prenom = "Alba",
+                    AdresseMail = "albabenani@mail.com",
+                    MotDePasse = "mdp",
+                    DateNaissance = new DateTime(1995, 2, 13),
+                    DateCreationCompte = new DateTime(2023, 5, 9)
+                }
+        };
 
 
             using (IDalCours service = new CoursService())
@@ -97,9 +119,16 @@ namespace EasyTrain_UnitTests.TestsDAL
                     Titre = "Musculation débutant",
                     NbParticipants = 10,
                     Prix = 23.5,
-                    Coach = new Coach() { Nom = "Jean" }
-
-                }
+                    Coach = new Coach()
+                    {
+                        Nom = "Benani",
+                        Prenom = "Alba",
+                        AdresseMail = "albabenani@mail.com",
+                        MotDePasse = "mdp",
+                        DateNaissance = new DateTime(1995, 2, 13),
+                        DateCreationCompte = new DateTime(2023, 5, 9)
+                    }
+            }
                 );
                 ctx.SaveChanges();
             }

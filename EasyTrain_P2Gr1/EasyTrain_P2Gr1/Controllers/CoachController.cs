@@ -50,7 +50,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult CreerCoach(Coach coach)
         {
-            coach.DateEmbauche = DateTime.Now;
+            coach.DateCreationCompte = DateTime.Now;
             using (IDalCoach service = new CoachService())
             {
                 service.CreateCoach(coach);
