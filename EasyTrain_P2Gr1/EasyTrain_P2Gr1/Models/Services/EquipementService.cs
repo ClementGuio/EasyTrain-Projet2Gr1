@@ -1,4 +1,5 @@
 ﻿using EasyTrain_P2Gr1.Models.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,20 @@ namespace EasyTrain_P2Gr1.Models.Services
     {
         public List<Equipement> GetEquipements()
         {
-            return this._bddContext.Equipements.ToList();
+            return this._bddContext.Equipements.Include(c => c.Salle).ToList();
         }
 
         public Equipement GetEquipement(int id)
         {
-            return _bddContext.Equipements.Find(id);
+            return _bddContext.Equipements.Include(c => c.Salle).FirstOrDefault(e => e.Id == id);
         }
+
         public int CreateEquipement(Equipement equipement)
         {
+            if (equipement.Salle != null)
+            {
+                this._bddContext.Attach(equipement.Salle);
+            }
             this._bddContext.Equipements.Add(equipement);
             this._bddContext.SaveChanges();
             return equipement.Id;

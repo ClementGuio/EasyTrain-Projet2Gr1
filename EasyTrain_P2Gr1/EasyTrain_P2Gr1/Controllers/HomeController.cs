@@ -32,7 +32,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
         }
 
-        public IActionResult ListeCoach() // Le nom de la méthode doit avoir le même nom que la vue
+        public IActionResult CartesCoachs() // Le nom de la méthode doit avoir le même nom que la vue
         {
             List<Coach> listeCoach;
             using (IDalCoach service = new CoachService())

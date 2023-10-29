@@ -21,7 +21,14 @@ namespace EasyTrain_P2Gr1.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
             try{
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=EasyTrain"); // Chaine de caractères de connexion
+                try
+                {
+                    optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain");
+                }
+                finally
+                {
+                    optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=EasyTrain"); // Chaine de caractères de connexion
+                }
             }
             finally {
                 
@@ -84,7 +91,32 @@ namespace EasyTrain_P2Gr1.Models
                     AdresseMail = "bergermay@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Poire"),
                     DateEmbauche = new DateTime(2023,3,14)
-    }
+                },
+                new Coach() {
+                    Nom = "Reed",
+                    Prenom = "Shaeleigh",
+                    DateNaissance = new DateTime(1977, 7, 11),
+                    AdresseMail = "r.shaeleigh@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("terre"),
+                    DateEmbauche = new DateTime(2022, 3, 15)
+                },
+                new Coach() {
+                    Nom = "Patrick",
+                    Prenom = "Akeem",
+                    DateNaissance = new DateTime(1989,10,1),
+                    AdresseMail = "p.akeem@mail.com",
+                    MotDePasse = UtilisateurService.EncodeMD5("cassette"),
+                    DateEmbauche = new DateTime(2023,1,23)
+                 },
+                new Coach() {
+                    Nom = "Levine",
+                    Prenom = "Madison",
+                    DateNaissance = new DateTime(1991,2,13),
+                    AdresseMail = "madisonlevine4169@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("orphelin"),
+                    DateEmbauche = new DateTime(2023,3,14)
+                }
+
             }); ;
 
             this.Gestionnaires.AddRange(new List<Gestionnaire>()
