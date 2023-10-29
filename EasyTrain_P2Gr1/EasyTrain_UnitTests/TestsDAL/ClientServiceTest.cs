@@ -223,7 +223,16 @@ namespace EasyTrain_UnitTests.TestsDAL
             {
                 ctx.Clients.AddRange(new List<Client>()
                 {
-                new Client() {Nom = "Dupont", Prenom = "Pierre", DateCreationCompte = DateTime.Now },
+                new Client
+                    {
+                        Nom = "DEBONNER",
+                        Prenom = "Jacques-Eude-Henri",
+                        DateNaissance = new DateTime(1978, 12, 12),
+                        AdresseMail = "DEBONNER.JacquesEudeHenri@gmail.com",
+                        MotDePasse = "NEWmdp",
+                        DateAbonnement = new DateTime(2024, 3, 15),
+                        DateCreationCompte = new DateTime(2022, 4, 25)
+                    }
                 });
                 ctx.SaveChanges();
             }

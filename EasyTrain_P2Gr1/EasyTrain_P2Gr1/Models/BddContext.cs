@@ -18,6 +18,7 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<Cours> Cours { get; set; }
         public DbSet<CoursProgramme> CoursProgrammes { get; set; }
         public DbSet<Abonnement> Abonnement { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
@@ -35,7 +36,6 @@ namespace EasyTrain_P2Gr1.Models
                 
                 optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
             }
-             // Chaine de caractères de connexion
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables
@@ -227,6 +227,17 @@ namespace EasyTrain_P2Gr1.Models
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation débutant").NbParticipants}
             });
             this.SaveChanges();
+
+            this.Reservations.AddRange(new List<Reservation>()
+            {
+
+                new Reservation(){CoursProgramme=this.CoursProgrammes.Find(1), Client=this.Clients.Find(2)},
+                new Reservation(){CoursProgramme=this.CoursProgrammes.Find(2), Client=this.Clients.Find(2)}
+
+            });
+           this.SaveChanges();
+
         }
+        
     }
 }

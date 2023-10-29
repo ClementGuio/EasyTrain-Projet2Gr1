@@ -12,7 +12,7 @@ namespace EasyTrain_P2Gr1.Models.Services
     {   
         public List<Client> GetClients()
         {
-            return this._bddContext.Clients.Include(abonnement => abonnement.Id).ToList();
+            return this._bddContext.Clients.Include(c => c.Abonnement).ToList();
         }
 
         public Client GetClient(int id)

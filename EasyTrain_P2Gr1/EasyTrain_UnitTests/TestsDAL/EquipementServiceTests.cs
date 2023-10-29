@@ -50,7 +50,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             //Initialisation
             Equipement equipement = new Equipement() { Nom = "La barre fixe", Salle = new Salle() };
             using (BddContext ctx = new BddContext())
-            {
+            { 
                 ctx.Equipements.Add(equipement);
                 ctx.SaveChanges();
             }
@@ -157,7 +157,6 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
             Assert.Empty(equipementsDb);
             Assert.NotEmpty(sallesDb);
-
         }
     }
 }
