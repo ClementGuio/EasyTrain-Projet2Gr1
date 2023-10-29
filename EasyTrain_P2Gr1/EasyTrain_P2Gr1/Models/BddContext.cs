@@ -35,7 +35,12 @@ namespace EasyTrain_P2Gr1.Models
         {
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
-
+            this.Abonnement.AddRange(new List<Abonnement>()
+            {
+                new Abonnement(){Titre= "Mensuel", Prix = 20},
+                new Abonnement(){Titre= "Annuel", Prix = 200},
+            });
+            this.SaveChanges();
             //Remplissage des tables
             this.Clients.AddRange(new List<Client>()
             {
@@ -46,6 +51,7 @@ namespace EasyTrain_P2Gr1.Models
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Prune"),
+                Abonnement= Abonnement.First(a => a.Titre == "Mensuel"),
                 DateAbonnement = new DateTime(2023, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             },
@@ -57,7 +63,7 @@ namespace EasyTrain_P2Gr1.Models
                 AdresseMail = "dupont.pierre@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Datte"),
                 DateAbonnement = new DateTime(2022, 3, 15),
-                Abonnement= Abonnement.FirstOrDefault(a => a.Id==1),
+                Abonnement= Abonnement.First(a => a.Titre == "Annuel"),
                 DateCreationCompte = new DateTime(2022, 7, 27)
             } });
 
@@ -143,12 +149,7 @@ namespace EasyTrain_P2Gr1.Models
             this.SaveChanges();
 
 
-            this.Abonnement.AddRange(new List<Abonnement>()
-            {
-                new Abonnement(){Titre= "Mensuel", Prix = 20},
-                new Abonnement(){Titre= "Annuel", Prix = 200},
-            });
-            this.SaveChanges();
+           
 
             this.Salles.AddRange(new List<Salle>()
             {
