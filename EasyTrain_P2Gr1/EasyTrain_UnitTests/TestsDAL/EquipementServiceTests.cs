@@ -14,8 +14,6 @@ namespace EasyTrain_UnitTests.TestsDAL
     {
        
 
-
-
         [Fact]
         public void TestGetEquipements()
         {
@@ -27,7 +25,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.Equipements.AddRange(new List<Equipement>()
                 {
                     new Equipement() {Nom = "Banc de musculation" },
-                   new Equipement() {Nom = "Vélo elliptique" }
+                    new Equipement() {Nom = "Vélo elliptique" }
                 });
                 ctx.SaveChanges();
             }
@@ -54,10 +52,11 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.Equipements.AddRange(new List<Equipement>()
                 {
                 new Equipement() {Nom = "La barre fixe" },
-                 new Equipement() {Nom = "La cage à squat" }
+                new Equipement() {Nom = "La cage à squat" }
                 });
                 ctx.SaveChanges();
             }
+
             Equipement equipement;
             using (IDalEquipement service = new EquipementService())
             {
@@ -142,7 +141,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
 
             Assert.Equal("Esaytrain", equipement.Nom);
-           
+
 
         }
 

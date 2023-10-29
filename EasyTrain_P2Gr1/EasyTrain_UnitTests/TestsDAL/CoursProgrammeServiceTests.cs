@@ -35,6 +35,7 @@ namespace EasyTrain_UnitTests.TestsDAL
 
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 9, 10, 30, 0), DateFin = new DateTime(2023, 11, 9, 11, 15, 0),
                     Cours = ctx.Cours.First(c => c.Titre == "Musculation débutant"),
+                    
                     PlacesLibres = ctx.Cours.First(c => c.Titre == "Musculation débutant").NbParticipants},
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 16, 0, 0), DateFin = new DateTime(2023, 11, 8, 16, 45, 0),
                     Cours = ctx.Cours.First(c => c.Titre == "Musculation débutant"),
