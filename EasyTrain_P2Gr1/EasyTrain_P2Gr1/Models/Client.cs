@@ -11,7 +11,7 @@ namespace EasyTrain_P2Gr1.Models
         {
             coursProgramme.PlacesLibres--;
         }
-        // TODO : Créer et Ajouter Abonnement
+        public virtual Abonnement Abonnement { get; set; }
         // TODO : AJouter Points
         // TODO : Ajouter Client parrain
         // TODO : Ajouter bool peutParrainer

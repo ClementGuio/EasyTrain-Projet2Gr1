@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace EasyTrain_UnitTests.TestsDAL
 {
@@ -185,6 +186,33 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
             Assert.Empty(clients);
 
+        }
+        [Fact]
+        public void TestSoftSupprimerClient()
+        {
+
+            using (BddContext ctx = new BddContext())
+            {
+                ctx.Clients.AddRange(new List<Client>()
+                {
+                new Client() {Nom = "Dupont", Prenom = "Pierre", DateCreationCompte = DateTime.Now },
+                });
+                ctx.SaveChanges();
+            }
+
+            // Execution
+
+            using (IDalClient service = new ClientService())
+            {
+                service.SoftSupprimerClient(1);
+            }
+           
+            //Verification
+            List<Client> clients;
+            using (BddContext ctx = new BddContext())
+            {
+                clients = ctx.Clients.ToList();
+            }         
         }
 
     }

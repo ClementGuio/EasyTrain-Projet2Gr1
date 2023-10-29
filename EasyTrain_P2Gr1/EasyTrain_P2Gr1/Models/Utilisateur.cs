@@ -10,5 +10,10 @@ namespace EasyTrain_P2Gr1.Models
         public DateTime DateNaissance { get; set; }
         public string AdresseMail { get; set; }
         public string MotDePasse { get; set; }
+
+        /* RGPD */
+
+        public DateTime? DeletedAt { get; set; }
+
     }
 }

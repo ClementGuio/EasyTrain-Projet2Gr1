@@ -6,8 +6,11 @@
 {
     <h3>
         Vous êtes déjà authentifié avec le login :
-        @Model.Utilisateur.AdresseMail
-       
+        @if (Model.Utilisateur != null)
+        {
+            @Model.Utilisateur.Nom
+        }
+
     </h3>
     @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
 }

@@ -52,9 +52,18 @@ namespace EasyTrain_P2Gr1.Controllers
             client.DateAbonnement = DateTime.Now;
             using (IDalClient service = new ClientService())
             {
-                service.CreateClient(client);
+               
+                if (!service.ClientExists(client.AdresseMail))
+                {
+                    ModelState.AddModelError("mail", "Ce client existe déjà.");
+                    return View();
+                }
+                else
+                {
+                    service.CreateClient(client);
+                    return View();
+                }
             }
-            return View();
         }
 
         
@@ -124,6 +133,24 @@ namespace EasyTrain_P2Gr1.Controllers
             return Redirect("/");
         }
 
-       
+
+        public IActionResult SoftSupprimerClient(int clientId)
+        {
+            using (IDalClient service = new ClientService())
+            {
+                // Au lieu de supprimer le client, marquez-le comme supprimé en définissant la date de suppression
+                Client client = service.GetClient(clientId);
+                if (client != null)
+                {
+                    client.DeletedAt = DateTime.Now;
+                    service.UpdateClient(client); // Mettre à jour le client pour enregistrer la date de suppression
+                }
+            }
+
+            HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
+
+
     }
 }

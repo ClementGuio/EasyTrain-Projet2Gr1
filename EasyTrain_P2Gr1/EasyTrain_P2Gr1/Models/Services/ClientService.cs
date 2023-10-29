@@ -4,6 +4,7 @@ using EasyTrain_P2Gr1.Models.DAL;
 using System.Linq;
 using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace EasyTrain_P2Gr1.Models.Services
 {
@@ -11,8 +12,9 @@ namespace EasyTrain_P2Gr1.Models.Services
     {   
         public List<Client> GetClients()
         {
-            return this._bddContext.Clients.ToList();
+            return this._bddContext.Clients.Include(abonnement => abonnement.Id).ToList();
         }
+
         public Client GetClient(int id)
         {
             return this._bddContext.Clients.Find(id);
@@ -51,5 +53,24 @@ namespace EasyTrain_P2Gr1.Models.Services
                 _bddContext.SaveChanges();
             }
         }
+
+        /* Soft delete */
+        public void SoftSupprimerClient(int clientId)
+        {
+            Client client = GetClient(clientId);
+            if (client != null)
+            {
+                client.DeletedAt = DateTime.Now;
+                UpdateClient(client);
+            }
+        }
+
+        /* Si le client existe identifier par son adresse mail */
+        public bool ClientExists(string adresseMail)
+        {
+            List<Client> clients = GetClients();
+            return clients.Any(c => c.AdresseMail == adresseMail);
+        }
+
     }
 }
