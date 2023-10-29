@@ -5,7 +5,7 @@ namespace EasyTrain_P2Gr1.Models
     public class Client : Utilisateur
     {
         public DateTime DateAbonnement { get; set; }
-        // TODO : Créer et Ajouter Abonnement
+        public virtual Abonnement Abonnement { get; set; }
         // TODO : AJouter Points
         // TODO : Ajouter Client parrain
         // TODO : Ajouter bool peutParrainer

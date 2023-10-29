@@ -57,8 +57,7 @@ namespace EasyTrain_P2Gr1.Controllers
             foreach( Cours cours in listCours)
             {
                 model.Cours.Add(new SelectListItem() { Text = cours.Titre, Value = cours.Id.ToString(), Selected = false });
-            }
-            
+            }  
 
             return View(model);
     }
@@ -118,8 +117,6 @@ namespace EasyTrain_P2Gr1.Controllers
     }
 
 
-
-
     [HttpGet]
     public IActionResult SupprimerCoursProgramme(int id)
     {
@@ -134,7 +131,6 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 return View(coursProgramme);
             }
-
         }
         return View("Error");
     }

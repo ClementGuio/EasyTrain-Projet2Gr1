@@ -11,5 +11,7 @@ namespace EasyTrain_P2Gr1.Models.DAL.Interfaces
         int CreateClient(Client client);
         void UpdateClient(Client client);
         void DeleteClient(int id);
+        bool ClientExists(string adresseMail);
+        void SoftSupprimerClient(int v);
     }
 }

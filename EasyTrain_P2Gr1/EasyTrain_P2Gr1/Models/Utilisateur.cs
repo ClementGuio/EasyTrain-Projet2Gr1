@@ -32,5 +32,9 @@ namespace EasyTrain_P2Gr1.Models
         public string MotDePasse { get; set; }
         
         public DateTime DateCreationCompte { get; set; }
+
+        public DateTime? DeletedAt { get; set; } // Permet de désactiver le compte sans le supprimer -> Si DeletedAt est null le compte est actif, sinon le compte a été supprimé (désactivé)
+
+
     }
 }
