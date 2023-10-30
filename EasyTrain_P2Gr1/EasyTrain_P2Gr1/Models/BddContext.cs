@@ -19,7 +19,7 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<CoursProgramme> CoursProgrammes { get; set; }
         public DbSet<Abonnement> Abonnement { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-
+         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
             try{
