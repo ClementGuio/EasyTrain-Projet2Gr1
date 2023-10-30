@@ -60,10 +60,10 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Coach")]
         [HttpGet]
-        public IActionResult ModifierCoach(int id)
+        public IActionResult ModifierCoach()
         {
-            if (id != 0)
-            {
+            string id = HttpContext.User.Identity.Name;
+            
                 Coach coach;
                 using (IDalCoach service = new CoachService())
                 {
@@ -75,7 +75,7 @@ namespace EasyTrain_P2Gr1.Controllers
                     return View(coach);
                 }
 
-            }
+            
             return View("Error");
         }
 
@@ -92,10 +92,10 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Coach")]
         [HttpGet]
-        public IActionResult SupprimerCoach(int id)
+        public IActionResult SupprimerCoach()
         {
-            if (id != 0)
-            {
+            string id = HttpContext.User.Identity.Name;
+            
                 Coach coach;
                 using (IDalCoach service = new CoachService())
                 {
@@ -106,7 +106,7 @@ namespace EasyTrain_P2Gr1.Controllers
                     return View(coach);
                 }
 
-            }
+            
             return View("Error");
         }
 

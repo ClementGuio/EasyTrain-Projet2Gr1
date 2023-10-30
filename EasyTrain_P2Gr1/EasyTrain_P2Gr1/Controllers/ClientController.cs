@@ -74,10 +74,10 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpGet]
-        public IActionResult ModifierClient(int id)
+        public IActionResult ModifierClient()
         {
-            if (id != 0)
-            {
+            string id = HttpContext.User.Identity.Name;
+            
                 Client client;
                 using (IDalClient service = new ClientService())
                 {
@@ -89,7 +89,7 @@ namespace EasyTrain_P2Gr1.Controllers
                     return View(client);
                 }
 
-            }
+            
             return View("Error");
         }
 
@@ -110,10 +110,10 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpGet]
-        public IActionResult SupprimerClient(int id)
+        public IActionResult SupprimerClient()
         {
-            if (id != 0)
-            {
+            string id = HttpContext.User.Identity.Name;
+            
                 Client client;
                 using (IDalClient service = new ClientService())
                 {
@@ -124,7 +124,7 @@ namespace EasyTrain_P2Gr1.Controllers
                     return View(client);
                 }
 
-            }
+            
             return View("Error");
         }
 
@@ -137,7 +137,7 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 service.DeleteClient(client.Id);
             }
-            HttpContext.SignOutAsync();
+            HttpContext.SignOutAsync();//suppression du cookie de l'utilisateur
             return Redirect("/");
         }
 
