@@ -16,13 +16,13 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public Cours GetCours(int id)
         {
-            return this._bddContext.Cours.Find(id);
+            return this._bddContext.Cours.Include(c => c.Coach).Include(c => c.Salle).FirstOrDefault(c => c.Id == id);
         }
 
         public Cours GetCours(string strId)
         {
-            int id; 
-            if (int.TryParse(strId,out id))
+            int id;
+            if (int.TryParse(strId, out id))
             {
                 return GetCours(id);
             }
@@ -31,7 +31,8 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public int CreateCours(Cours cours)
         {
-
+            this._bddContext.Attach(cours.Salle);
+            this._bddContext.Attach(cours.Coach);
             this._bddContext.Cours.Add(cours);
             this._bddContext.SaveChanges();
             return cours.Id;

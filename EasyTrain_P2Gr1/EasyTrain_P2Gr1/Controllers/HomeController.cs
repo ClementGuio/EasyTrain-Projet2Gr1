@@ -15,6 +15,16 @@ namespace EasyTrain_P2Gr1.Controllers
             return View();
         }
 
+        public IActionResult Accueil()
+        {
+            return View();
+        }
+
+        public IActionResult Dev()
+        {
+            return View("DevIndex");
+        }
+
         public IActionResult ListeClient() // Le nom de la méthode doit avoir le même nom que la vue
         {
             List<Client> listeClient;
@@ -27,7 +37,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
         }
 
-        public IActionResult ListeCoach() // Le nom de la méthode doit avoir le même nom que la vue
+        public IActionResult CartesCoachs() // Le nom de la méthode doit avoir le même nom que la vue
         {
             List<Coach> listeCoach;
             using (IDalCoach service = new CoachService())
@@ -147,7 +157,7 @@ namespace EasyTrain_P2Gr1.Controllers
                         using (IDalGestionnaire dal = new GestionnaireService())
                         {
                             dal.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Nom, gestionnaire.Prenom, gestionnaire.DateNaissance, gestionnaire.AdresseMail,
-                                                   gestionnaire.MotDePasse, gestionnaire.DateEmbauche);
+                                                   gestionnaire.MotDePasse, gestionnaire.DateCreationCompte);
                         }
                     }
                     else if (utilisateur is Coach)
@@ -156,7 +166,7 @@ namespace EasyTrain_P2Gr1.Controllers
                         using (IDalCoach dal = new CoachService())
                         {
                             dal.UpdateCoach(coach.Id, coach.Nom, coach.Prenom, coach.DateNaissance, coach.AdresseMail,
-                                                   coach.MotDePasse, coach.DateEmbauche);
+                                                   coach.MotDePasse, coach.DateCreationCompte);
                         }
                     }
                     return View(utilisateur);

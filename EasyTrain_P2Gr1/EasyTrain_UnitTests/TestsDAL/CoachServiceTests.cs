@@ -23,9 +23,9 @@ namespace EasyTrain_UnitTests.TestsDAL
                 ctx.Coachs.AddRange(new List<Coach>()
                 {
                     new Coach() {Nom = "Patpat", Prenom = "Patrick", DateNaissance = DateTime.Now,
-                        AdresseMail ="adresse1@mail.com", MotDePasse="moots", DateEmbauche = DateTime.Now},
+                        AdresseMail ="adresse1@mail.com", MotDePasse="moots", DateCreationCompte = DateTime.Now},
                     new Coach() {Nom = "Dupont", Prenom = "Roger", DateNaissance= DateTime.Now,
-                        AdresseMail="adresse@mail.com", MotDePasse= "passed", DateEmbauche = DateTime.Now}
+                        AdresseMail="adresse@mail.com", MotDePasse= "passed", DateCreationCompte = DateTime.Now}
                 });
                 ctx.SaveChanges();
             }
@@ -53,7 +53,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "albabenani@mail.com",
                 MotDePasse = "mdp",
                 DateNaissance = new DateTime(1995, 2, 13),
-                DateEmbauche = new DateTime(2023, 5, 9)
+                DateCreationCompte = new DateTime(2023, 5, 9)
             };
             using (BddContext ctx = new BddContext())
             {
@@ -74,7 +74,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(coach.AdresseMail, coachDb.AdresseMail);
             Assert.Equal(coach.MotDePasse, coachDb.MotDePasse);
             Assert.Equal(coach.DateNaissance, coachDb.DateNaissance);
-            Assert.Equal(coach.DateEmbauche, coachDb.DateEmbauche);
+            Assert.Equal(coach.DateCreationCompte, coachDb.DateCreationCompte);
         }
 
         [Fact]
@@ -88,7 +88,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "albabenani@mail.com",
                 MotDePasse = "mdp",
                 DateNaissance = new DateTime(1995, 2, 13),
-                DateEmbauche = new DateTime(2023, 5, 9)
+                DateCreationCompte = new DateTime(2023, 5, 9)
             };
             //Execution
             using (IDalCoach service = new CoachService())
@@ -108,7 +108,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(coach.AdresseMail, coachDb.AdresseMail);
             Assert.Equal(coach.MotDePasse, coachDb.MotDePasse);
             Assert.Equal(coach.DateNaissance, coachDb.DateNaissance);
-            Assert.Equal(coach.DateEmbauche, coachDb.DateEmbauche);
+            Assert.Equal(coach.DateCreationCompte, coachDb.DateCreationCompte);
         }
 
         [Fact]
@@ -122,7 +122,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "albabenani@mail.com",
                 MotDePasse = "mdp",
                 DateNaissance = new DateTime(1995, 2, 13),
-                DateEmbauche = new DateTime(2023, 5, 9)
+                DateCreationCompte = new DateTime(2023, 5, 9)
             };
             using (BddContext ctx = new BddContext())
             {
@@ -138,7 +138,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "mariealbabenani@mail.com",
                 MotDePasse = "NEWmdp",
                 DateNaissance = new DateTime(1992, 2, 13),
-                DateEmbauche = new DateTime(2023, 7, 9)
+                DateCreationCompte = new DateTime(2023, 7, 9)
             };
             using (IDalCoach service = new CoachService())
             {
@@ -156,7 +156,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(coachModif.AdresseMail, coachDb.AdresseMail);
             Assert.Equal(coachModif.MotDePasse, coachDb.MotDePasse);
             Assert.Equal(coachModif.DateNaissance, coachDb.DateNaissance);
-            Assert.Equal(coachModif.DateEmbauche, coachDb.DateEmbauche);
+            Assert.Equal(coachModif.DateCreationCompte, coachDb.DateCreationCompte);
         }
 
         [Fact]
@@ -170,7 +170,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "albabenani@mail.com",
                 MotDePasse = "mdp",
                 DateNaissance = new DateTime(1995, 2, 13),
-                DateEmbauche = new DateTime(2023, 5, 9)
+                DateCreationCompte = new DateTime(2023, 5, 9)
             };
             using (BddContext ctx = new BddContext())
             {

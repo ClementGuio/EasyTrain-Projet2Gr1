@@ -50,7 +50,7 @@ namespace EasyTrain_P2Gr1.Controllers
             Salle salle;
             using (IDalSalle service = new SalleService())
             {
-               salle = service.GetSalle(model.SalleId);
+                salle = service.GetSalle(model.SalleId);
             };
             Console.WriteLine($"Salle : {salle.Id}, {salle.Nom}");
             model.Cours.Salle = salle;
@@ -59,10 +59,8 @@ namespace EasyTrain_P2Gr1.Controllers
                 //service.CreateCours(model.Cours);
                 service.CreateCours(new Cours() { Titre = "cours 1" });
             }
-
             return RedirectToAction("ListeCours");
         }
-
 
     }
 }

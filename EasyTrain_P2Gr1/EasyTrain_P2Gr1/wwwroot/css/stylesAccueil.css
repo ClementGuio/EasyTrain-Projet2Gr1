@@ -1,0 +1,131 @@
+﻿.gris {
+    background-color: #3b3b3b;
+}
+
+.jaune {
+    background-color: #F2CB05;
+    padding: 10px;
+}
+
+.conteneur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.conteneurWrap{
+    justify-content:center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.haut {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 23%, rgba(4, 4, 4, 1) 96%);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenuHaut {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 23%, rgba(4, 4, 4, 1) 96%), url(/images/CoursCollectif1/fitness-room-1180062_1920.jpg);
+    background-size: inherit;
+    background-repeat: no-repeat;
+    background-position: top center;
+    width: 80%;
+    height: 100vh;
+}
+
+.btn {
+    font-size: 2em;
+    padding: 0.5em;
+    border-radius: 15px;
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.btn:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.btn-principal {
+    font-size: 2em;
+    padding: 0.5em;
+    color: #ffffff;
+    background-color: #84BF04;
+}
+
+    .btn-principal:hover {
+        color: #2d2b2b;
+        background-color: #95D904;
+    }
+
+.carouselElement {
+    display: block;
+    width: 100%;
+}
+
+.start {
+    color: white;
+    margin-bottom: 0.7em;
+    width: 4em;
+    line-height: 0.7em;
+    font-size: 13em;
+    display: flex;
+    align-content: center;
+    margin-top: 30px;
+}
+
+.carteCarousel {
+    height: 35em;
+    width: 27em;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.carteCarousel h3 {
+    font-size: 3em;
+    width: 5em;
+    color: white;
+    position: absolute;
+    top: 38%;
+    left: 5vw;
+    text-align: center;
+}
+
+.carteCoach {
+    background-color: white;
+    margin: 1em;
+    display: flex;
+    /*overflow: hidden;*/
+    height: 24em;
+    width: 35em;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.23) 10px 10px 20px 10px;
+}
+
+    .carteCoach div {
+        background-color: white;
+        height: 80%;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-content: stretch;
+        align-items: center;
+        
+    }
+
+    .carteCoach img {
+        width: 20em;
+        aspect-ratio: 0.5;
+        height: 100%;
+    }
+
+.carteTitre {
+    font-size: 5em;
+}

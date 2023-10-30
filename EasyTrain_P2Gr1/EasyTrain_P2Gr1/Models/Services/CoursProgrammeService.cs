@@ -6,19 +6,20 @@ using System.Linq;
 
 namespace EasyTrain_P2Gr1.Models.Services
 {
-    public class CoursProgrammeService:DisposableService,IDalCoursProgramme
+    public class CoursProgrammeService : DisposableService, IDalCoursProgramme
     {
         public List<CoursProgramme> GetCoursProgrammes()
         {
-           
+
             return this._bddContext.CoursProgrammes.Include(c => c.Cours).ToList();
         }
-        
 
-       public CoursProgramme GetCoursProgramme(int id)
+
+        public CoursProgramme GetCoursProgramme(int id)
         {
-            return this._bddContext.CoursProgrammes.Find(id);
+            return this._bddContext.CoursProgrammes.Include(c => c.Cours).FirstOrDefault(c => c.Id == id);
         }
+
         public CoursProgramme GetCoursProgramme(string strId)
         {
             int id;
@@ -28,9 +29,10 @@ namespace EasyTrain_P2Gr1.Models.Services
             }
             return null;
         }
+
         public int CreateCoursProgramme(CoursProgramme coursProgramme)
         {
-
+            this._bddContext.Attach(coursProgramme.Cours);
             this._bddContext.CoursProgrammes.Add(coursProgramme);
             this._bddContext.SaveChanges();
             return coursProgramme.Id;
@@ -52,6 +54,6 @@ namespace EasyTrain_P2Gr1.Models.Services
             }
         }
 
-        
+
     }
 }

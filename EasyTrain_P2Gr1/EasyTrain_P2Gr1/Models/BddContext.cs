@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace EasyTrain_P2Gr1.Models
 {
@@ -16,17 +17,37 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<Equipement> Equipements { get; set; }
         public DbSet<Cours> Cours { get; set; }
         public DbSet<CoursProgramme> CoursProgrammes { get; set; }
+        public DbSet<Abonnement> Abonnement { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
+            try{
+                try
+                {
+                    optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain");
+                }
+                finally
+                {
+                    optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=EasyTrain"); // Chaine de caractères de connexion
+                }
+            }
+            finally {
+                
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
+            }
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables
         {
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
-
+            this.Abonnement.AddRange(new List<Abonnement>()
+            {
+                new Abonnement(){Titre= "Mensuel", Prix = 20},
+                new Abonnement(){Titre= "Annuel", Prix = 200},
+            });
+            this.SaveChanges();
             //Remplissage des tables
             this.Clients.AddRange(new List<Client>()
             {
@@ -37,6 +58,7 @@ namespace EasyTrain_P2Gr1.Models
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Prune"),
+                Abonnement= Abonnement.First(a => a.Titre == "Mensuel"),
                 DateAbonnement = new DateTime(2023, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             },
@@ -48,6 +70,7 @@ namespace EasyTrain_P2Gr1.Models
                 AdresseMail = "dupont.pierre@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Datte"),
                 DateAbonnement = new DateTime(2022, 3, 15),
+                Abonnement= Abonnement.First(a => a.Titre == "Annuel"),
                 DateCreationCompte = new DateTime(2022, 7, 27)
             } });
 
@@ -59,7 +82,8 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance = new DateTime(1975, 12, 12),
                     AdresseMail = "dupont.pierre@gmail.com",
                     MotDePasse = UtilisateurService.EncodeMD5("Kiwi"),
-                    DateEmbauche = new DateTime(2022, 3, 15)
+                    DateCreationCompte = new DateTime(2019, 7, 27),
+                    Description = "Je reviens d'un treck de 12 ans dans l'Hymalaya."
                 },
                 new Coach() {
                     Nom = "Amery",  
@@ -67,7 +91,8 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance = new DateTime(1985,12,1),
                     AdresseMail = "a-smet@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Abricot"),
-                    DateEmbauche = new DateTime(2023,1,23)
+                    DateCreationCompte = new DateTime(2020, 10, 20),
+                    Description = "J'adore la raquette: tennis, ping pong, badminton et squash."
                  },
                 new Coach() {
                     Nom = "May",
@@ -75,8 +100,37 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance = new DateTime(1961,2,13),
                     AdresseMail = "bergermay@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Poire"),
-                    DateEmbauche = new DateTime(2023,3,14)
-    }
+                    DateCreationCompte = new DateTime(2021, 5, 27),
+                    Description = "Le vélo c'est toute ma vie."
+                },
+                new Coach() {
+                    Nom = "Reed",
+                    Prenom = "Shaeleigh",
+                    DateNaissance = new DateTime(1977, 7, 11),
+                    AdresseMail = "r.shaeleigh@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("terre"),
+                    DateCreationCompte = new DateTime(2022, 1, 7),
+                    Description = "Ancien bodybuilder, si vous voulez devenir énorme et sec, prenez rendez-vous avec moi."
+                },
+                new Coach() {
+                    Nom = "Patrick",
+                    Prenom = "Akeem",
+                    DateNaissance = new DateTime(1989,10,1),
+                    AdresseMail = "p.akeem@mail.com",
+                    MotDePasse = UtilisateurService.EncodeMD5("cassette"),
+                    DateCreationCompte = new DateTime(2015, 3, 30),
+                    Description = "J'aime la natation et le yoga."
+                 },
+                new Coach() {
+                    Nom = "Levine",
+                    Prenom = "Madison",
+                    DateNaissance = new DateTime(1991,2,13),
+                    AdresseMail = "madisonlevine4169@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("orphelin"),
+                    DateCreationCompte = DateTime.Now,
+                    Description = "Je pratique les sports de combats depuis 15 ans."
+                }
+
             }); ;
 
             this.Gestionnaires.AddRange(new List<Gestionnaire>()
@@ -87,7 +141,7 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance = new DateTime(1989,6,10),
                     AdresseMail = "stella.dubois@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Fraise"),
-                    DateEmbauche = new DateTime(2023,2,13)
+                    DateCreationCompte = new DateTime(2019, 7, 27),
                 },
                 new Gestionnaire(){
                     Nom = "Lester",
@@ -95,7 +149,7 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance = new DateTime(2003,9,22),
                     AdresseMail = "vincent.lester@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Framboise"),
-                    DateEmbauche = new DateTime(2023,8,5)
+                    DateCreationCompte = new DateTime(2020, 3, 25),
                 },
                 new Gestionnaire(){
                     Nom="Sadeq",
@@ -103,7 +157,7 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance= new DateTime(1997,5,17),
                     AdresseMail = "hossame.sadeq@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Pomme"),
-                    DateEmbauche = new DateTime(2023,8,5)
+                    DateCreationCompte = new DateTime(2018, 2, 15),
                 }
             });
             //Sauvegarde les changements dans la Bdd
@@ -132,6 +186,9 @@ namespace EasyTrain_P2Gr1.Models
 
             this.SaveChanges();
 
+
+           
+
             this.Salles.AddRange(new List<Salle>()
             {
                 new Salle(){Nom = "The Rock", Type = "Musculation", Equipements = Equipements.Where(e => (e.Nom == "Cage de musculation")
@@ -144,13 +201,13 @@ namespace EasyTrain_P2Gr1.Models
             this.Cours.AddRange(new List<Cours>()
             {
                 new Cours(){Titre = "Musculation débutant", NbParticipants = 10, Prix = 23.5,
-                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Frau") && (c.Prenom == "Richard")),
+                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Patrick") && (c.Prenom == "Akeem")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "The Rock") },
                 new Cours(){Titre = "Musculation avancé", NbParticipants = 7, Prix = 26.5,
-                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Frau") && (c.Prenom == "Richard")),
+                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Patrick") && (c.Prenom == "Akeem")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "The Rock") },
                 new Cours(){Titre = "Cyclisme", NbParticipants = 5, Prix = 20,
-                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "Vida") && (c.Prenom == "Thibault")),
+                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "May") && (c.Prenom == "Berger")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "Maillot jaune") }
             });
             this.SaveChanges();
@@ -180,6 +237,17 @@ namespace EasyTrain_P2Gr1.Models
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation débutant").NbParticipants}
             });
             this.SaveChanges();
+
+            this.Reservations.AddRange(new List<Reservation>()
+            {
+
+                new Reservation(){CoursProgramme=this.CoursProgrammes.Find(1), Client=this.Clients.Find(2)},
+                new Reservation(){CoursProgramme=this.CoursProgrammes.Find(2), Client=this.Clients.Find(2)}
+
+            });
+           this.SaveChanges();
+
         }
+        
     }
 }

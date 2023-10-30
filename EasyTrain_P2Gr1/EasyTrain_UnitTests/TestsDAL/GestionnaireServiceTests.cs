@@ -22,8 +22,24 @@ namespace EasyTrain_UnitTests.TestsDAL
             {
                 ctx.Gestionnaires.AddRange(new List<Gestionnaire>()
                 {
-                    new Gestionnaire() {Nom = "Patpat", Prenom = "Patrick", DateEmbauche = DateTime.Now  },
-                    new Gestionnaire() {Nom = "Dupont", Prenom = "Roger", DateEmbauche = DateTime.Now  }
+                    new Gestionnaire()
+                    {
+                        Nom = "Malkovich",
+                        Prenom = "John",
+                        AdresseMail = "johnmalkovich@mail.com",
+                        MotDePasse = "mdp",
+                        DateNaissance = new DateTime(1963, 2, 13),
+                        DateCreationCompte = new DateTime(2023, 5, 9)
+                    },
+                    new Gestionnaire()
+                    {
+                        Nom = "Malkovichh",
+                        Prenom = "Johhn",
+                        AdresseMail = "johhnmalkovich@mail.com",
+                        MotDePasse = "mdp",
+                        DateNaissance = new DateTime(1963, 2, 13),
+                        DateCreationCompte = new DateTime(2023, 5, 9)
+                    }
                 });
                 ctx.SaveChanges();
             }
@@ -49,7 +65,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "johnmalkovich@mail.com",
                 MotDePasse = "mdp",
                 DateNaissance = new DateTime(1963, 2, 13),
-                DateEmbauche = new DateTime(2023, 5, 9)
+                DateCreationCompte = new DateTime(2023, 5, 9)
             };
             using (BddContext ctx = new BddContext())
             {
@@ -68,7 +84,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(gestionnaire.AdresseMail, gestionnaireDb.AdresseMail);
             Assert.Equal(gestionnaire.MotDePasse, gestionnaireDb.MotDePasse);
             Assert.Equal(gestionnaire.DateNaissance, gestionnaireDb.DateNaissance);
-            Assert.Equal(gestionnaire.DateEmbauche, gestionnaireDb.DateEmbauche);
+            Assert.Equal(gestionnaire.DateCreationCompte, gestionnaireDb.DateCreationCompte);
         }
 
         [Fact]
@@ -82,7 +98,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "johnmalkovich@mail.com",
                 MotDePasse = "mdp",
                 DateNaissance = new DateTime(1963, 2, 13),
-                DateEmbauche = new DateTime(2023, 5, 9)
+                DateCreationCompte = new DateTime(2023, 5, 9)
             };
             //Execution
             using (IDalGestionnaire service = new GestionnaireService())
@@ -102,7 +118,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(gestionnaire.AdresseMail, gestionnaireDb.AdresseMail);
             Assert.Equal(gestionnaire.MotDePasse, gestionnaireDb.MotDePasse);
             Assert.Equal(gestionnaire.DateNaissance, gestionnaireDb.DateNaissance);
-            Assert.Equal(gestionnaire.DateEmbauche, gestionnaireDb.DateEmbauche);
+            Assert.Equal(gestionnaire.DateCreationCompte, gestionnaireDb.DateCreationCompte);
         }
 
         [Fact]
@@ -116,7 +132,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "johnmalkovich@mail.com",
                 MotDePasse = "mdp",
                 DateNaissance = new DateTime(1963, 2, 13),
-                DateEmbauche = new DateTime(2023, 5, 9)
+                DateCreationCompte = new DateTime(2023, 5, 9)
             };
             using (BddContext ctx = new BddContext())
             {
@@ -132,7 +148,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 AdresseMail = "superjohnmalkovich@mail.com",
                 MotDePasse = "SUPERmdp",
                 DateNaissance = new DateTime(1689, 2, 13),
-                DateEmbauche = new DateTime(2022, 5, 9)
+                DateCreationCompte = new DateTime(2022, 5, 9)
             };
             using (IDalGestionnaire service = new GestionnaireService())
             {
@@ -151,7 +167,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(gestionnaireModif.AdresseMail, gestionnaireDb.AdresseMail);
             Assert.Equal(gestionnaireModif.MotDePasse, gestionnaireDb.MotDePasse);
             Assert.Equal(gestionnaireModif.DateNaissance, gestionnaireDb.DateNaissance);
-            Assert.Equal(gestionnaireModif.DateEmbauche, gestionnaireDb.DateEmbauche);
+            Assert.Equal(gestionnaireModif.DateCreationCompte, gestionnaireDb.DateCreationCompte);
         }
 
         [Fact]
@@ -167,7 +183,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                     AdresseMail = "johnmalkovich@mail.com",
                     MotDePasse = "mdp",
                     DateNaissance = new DateTime(1963, 2, 13),
-                    DateEmbauche = new DateTime(2023, 5, 9)
+                    DateCreationCompte = new DateTime(2023, 5, 9)
                 });
                 ctx.SaveChanges();
             }

@@ -48,15 +48,28 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult CreerClient(Client client)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(client);
+            }
             client.DateCreationCompte = DateTime.Now;
             client.DateAbonnement = DateTime.Now;
             using (IDalClient service = new ClientService())
             {
-                service.CreateClient(client);
+               
+                if (service.ClientExists(client.AdresseMail))
+                {
+                    ModelState.AddModelError("mail", "Ce client existe déjà.");
+                    return View();
+                }
+                else
+                {
+                    service.CreateClient(client);
+                    return View();
+                }
             }
-            return View();
         }
-
+        
         
 
         [Authorize(Roles = "Client")]
@@ -84,6 +97,10 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult ModifierClient(Client client)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(client);
+            }
             using (IDalClient service = new ClientService())
             {
                 service.UpdateClient(client);
@@ -124,6 +141,24 @@ namespace EasyTrain_P2Gr1.Controllers
             return Redirect("/");
         }
 
-       
+
+        public IActionResult SoftSupprimerClient(int clientId)
+        {
+            using (IDalClient service = new ClientService())
+            {
+                // Au lieu de supprimer le client, marquez-le comme supprimé en définissant la date de suppression
+                Client client = service.GetClient(clientId);
+                if (client != null)
+                {
+                    client.DeletedAt = DateTime.Now;
+                    service.UpdateClient(client); // Mettre à jour le client pour enregistrer la date de suppression
+                }
+            }
+
+            HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
+
+
     }
 }

@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EasyTrain_P2Gr1.Models.Abonnement;
+@{
+    Layout = "_LayoutCompte";
+}
+<main>
+
+    @if (TempData.ContainsKey("Message"))
+    {
+        <div>@TempData["Message"]</div>
+    }
+
+    @using (Html.BeginForm())
+    {
+        //-----------Formulaire Abonnements
+        <fieldset>
+            <legend>Modifier un Abonnements : </legend>
+    
+            @Html.TextBoxFor(m => Model.Titre, new { @class = "InputText", placeholder = Model.Titre, Value = Model.Titre })
+            @Html.ValidationMessageFor(m => Model.Titre)
+            <br />
+            
+            @Html.TextBoxFor(m => Model.Prix, new { @class = "InputText", placeholder = Model.Prix, Value = Model.Prix })
+            @Html.ValidationMessageFor(m => Model.Prix)
+            <input type="submit" value="Modifier" />
+        </fieldset>
+    }
+</main>
