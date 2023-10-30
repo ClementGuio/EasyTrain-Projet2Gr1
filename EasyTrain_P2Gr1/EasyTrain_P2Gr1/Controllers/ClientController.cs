@@ -141,7 +141,6 @@ namespace EasyTrain_P2Gr1.Controllers
             return Redirect("/");
         }
 
-
         public IActionResult SoftSupprimerClient(int clientId)
         {
             using (IDalClient service = new ClientService())
@@ -158,7 +157,6 @@ namespace EasyTrain_P2Gr1.Controllers
             HttpContext.SignOutAsync();
             return Redirect("/");
         }
-
 
     }
 }
