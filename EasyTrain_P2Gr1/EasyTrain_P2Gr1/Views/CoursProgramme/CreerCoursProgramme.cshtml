@@ -1,22 +1,21 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model EasyTrain_P2Gr1.ViewModels.CoursProgrammeViewModel
+@model EasyTrain_P2Gr1.ViewModels.FormulaireCoursProgrammeViewModel
 @{
-    Layout = "_LayoutVisiteur";
+    Layout = "_LayoutCoach";
 }
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(c => c.CoursProgramme.DateDebut)
-    @Html.TextBoxFor(c => c.CoursProgramme.DateDebut)
+    @Html.LabelFor(c => c.DateDebut)
+    @Html.TextBoxFor(c => c.DateDebut)
     <br />
-    @Html.LabelFor(c => c.CoursProgramme.DateFin)
-    @Html.TextBoxFor(c => c.CoursProgramme.DateFin)
+    @Html.LabelFor(c => c.DateFin)
+    @Html.TextBoxFor(c => c.DateFin)
     <br />
-    @Html.LabelFor(c => c.CoursProgramme.PlacesLibres)
-    @Html.TextBoxFor(c => c.CoursProgramme.PlacesLibres)
+  
     <br />
-    @Html.DropDownListFor(m => m.Cours, Model.Cours)
+    @Html.DropDownListFor(m => m.CoursId, new SelectList(Model.Cours, "Id", "Titre"))
     
     <input type="submit" value="Valider">
 }
