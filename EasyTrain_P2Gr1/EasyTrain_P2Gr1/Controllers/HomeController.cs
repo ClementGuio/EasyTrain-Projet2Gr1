@@ -20,6 +20,11 @@ namespace EasyTrain_P2Gr1.Controllers
             return View();
         }
 
+        public IActionResult Dev()
+        {
+            return View("DevIndex");
+        }
+
         public IActionResult ListeClient() // Le nom de la méthode doit avoir le même nom que la vue
         {
             List<Client> listeClient;

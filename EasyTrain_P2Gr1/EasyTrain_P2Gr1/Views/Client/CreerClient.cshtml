@@ -13,15 +13,15 @@
     @using (Html.BeginForm())
     {
 
-        <div style="display:flex">
-            <!--@Html.LabelFor(c => c.Nom)-->
-            @Html.TextBoxFor(c => c.Nom, new { @class = "InputText", placeholder = "Nom" })
-            @Html.ValidationMessageFor(c => c.Nom)
 
-            <!-- // @Html.LabelFor(c => c.Prenom)-->
-            @Html.TextBoxFor(c => c.Prenom, new { @class = "InputText", placeholder = "Prenom"  })
-            @Html.ValidationMessageFor(c => c.Prenom)
-        </div>
+        <!--@Html.LabelFor(c => c.Nom)-->
+        @Html.TextBoxFor(c => c.Nom, new { @class = "InputText", placeholder = "Nom" })
+        @Html.ValidationMessageFor(c => c.Nom)
+
+        <!-- // @Html.LabelFor(c => c.Prenom)-->
+        @Html.TextBoxFor(c => c.Prenom, new { @class = "InputText", placeholder = "Prenom"  })
+        @Html.ValidationMessageFor(c => c.Prenom)
+
 
         <br />
         //@Html.LabelFor(c => c.DateNaissance)

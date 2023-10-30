@@ -78,7 +78,7 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult Deconnexion()
         {
             HttpContext.SignOutAsync();
-            return Redirect("/Home/Index");
+            return Redirect("/");
         }
     }
 }

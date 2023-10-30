@@ -57,7 +57,7 @@ namespace EasyTrain_P2Gr1.Controllers
             using (IDalClient service = new ClientService())
             {
                
-                if (!service.ClientExists(client.AdresseMail))
+                if (service.ClientExists(client.AdresseMail))
                 {
                     ModelState.AddModelError("mail", "Ce client existe déjà.");
                     return View();
