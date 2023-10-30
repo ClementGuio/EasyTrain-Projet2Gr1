@@ -64,8 +64,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult ModifierGestionnaire() // Vue de modification de profil GET
         {
-            string id = HttpContext.User.Identity.Name;
-
+            string id = HttpContext.User.Identity.Name;// on recupère l'id dans les cookies
 
 
             Gestionnaire gestionnaire;
@@ -98,25 +97,23 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [Authorize(Roles = "Gestionnaire")]
-
         [HttpGet]
-
         public IActionResult SupprimerGestionnaire() // Vue de suppression de profil GET
         {
             string id = HttpContext.User.Identity.Name;
 
-            {
-                Gestionnaire gestionnaire;
-                using (IDalGestionnaire service = new GestionnaireService())
-                {
-                    gestionnaire = service.GetGestionnaire(id);
 
-                }
-                if (gestionnaire != null)
-                {
-                    return View(gestionnaire);
-                }
+            Gestionnaire gestionnaire;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                gestionnaire = service.GetGestionnaire(id);
+
             }
+            if (gestionnaire != null)
+            {
+                return View(gestionnaire);
+            }
+
             return View("Error");
 
         }
