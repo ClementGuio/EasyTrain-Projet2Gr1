@@ -10,34 +10,48 @@
 <head>
     <meta charset="UTF-8" />
     <title>Liste des coachs</title>
+    <link rel="stylesheet" href="/css/Sabrine.css">
 </head>
 <body>
     <table class="mytable">
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Date de naissance</th>
-            <th>Adresse mail</th>
-            <th>Mot de passe</th>
-            <th>Date d'embauche</th>
 
-        </tr>
-        @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
-        {
+
+      <thead>
+
             <tr>
-                <td>@coach.Id</td>
-                <td>@coach.Nom</td>
-                <td>@coach.Prenom</td>
-                <td>@coach.DateNaissance</td>
-                <td>@coach.AdresseMail</td>
-                <td>@coach.MotDePasse</td>
-                <td>@coach.DateCreationCompte.ToString("dd/MM/yyyy")</td>
+
+                <td>Id</td>
+                <td>Nom</td>
+                <td>Prenom</td>
+                <td>Date de naissance</td>
+                <td>Adresse mail</td>
+                <td>Mot de passe</td>
+                <td>Date d'embauche</td>
+
             </tr>
-        }
+      </thead>
+       
+    
+
+            @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
+            {
+            <tbody>
+                <tr>
+                    <td>@coach.Id</td>
+                    <td>@coach.Nom</td>
+                    <td>@coach.Prenom</td>
+                    <td>@coach.DateNaissance</td>
+                    <td>@coach.AdresseMail</td>
+                    <td>@coach.MotDePasse</td>
+                    <td>@coach.DateCreationCompte.ToString("dd/MM/yyyy")</td>
+                </tr>
+            </tbody>
+            }
+     
+       
     </table>
-    <button class="btnRouge" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button>
-    <button class="btnRouge" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
+    <button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button>
+    <button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
 
 
 </body>
