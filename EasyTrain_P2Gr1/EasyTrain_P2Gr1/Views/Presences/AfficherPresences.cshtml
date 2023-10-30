@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model EasyTrain_P2Gr1.Models.Presences
+@model EasyTrain_P2Gr1.Models.Presence
 @{
     Layout = "_LayoutCompte";
 }
@@ -14,9 +14,6 @@
 @Html.LabelFor(c => c.HeureDepart)
 @Html.DisplayFor(c => c.HeureDepart)
 <br />
-@Html.LabelFor(c => c.Date)
-@Html.DisplayFor(c => c.Date)
-<br />
-@Html.LabelFor(c => c.IdClient)
-@Html.DisplayFor(c => c.IdClient)
+@Html.LabelFor(c => c.Client.Id)
+@Html.DisplayFor(c => c.Client.Id)
 <br />

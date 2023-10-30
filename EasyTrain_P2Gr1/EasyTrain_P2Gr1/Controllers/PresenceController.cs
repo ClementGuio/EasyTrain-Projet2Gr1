@@ -12,14 +12,14 @@ using System.Collections.Generic;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
-    public class PresencesController : Controller
+    public class PresenceController : Controller
     {
 
         [HttpGet]
         public IActionResult ListePresences()
         {
-            List<Presences> listePresences;
-            using (IDalPresences service = new PresencesService())
+            List<Presence> listePresences;
+            using (IDalPresence service = new PresenceService())
             {
                 listePresences = service.GetPresences();
 
@@ -36,9 +36,9 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreerPresences(Presences Presences)
+        public IActionResult CreerPresences(Presence Presences)
         { 
-                using (IDalPresences service= new PresencesService())
+                using (IDalPresence service= new PresenceService())
               
                     service.CreatePresences(Presences);
                     TempData["Message"] = "nouvel Presences crée";
@@ -48,9 +48,9 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult SupprimerPresences(int id)
         {
-            using (IDalPresences service = new PresencesService())
+            using (IDalPresence service = new PresenceService())
             {
-                Presences Presences = service.GetPresence(id);
+                Presence Presences = service.GetPresence(id);
 
                 if (Presences != null)
                 {
