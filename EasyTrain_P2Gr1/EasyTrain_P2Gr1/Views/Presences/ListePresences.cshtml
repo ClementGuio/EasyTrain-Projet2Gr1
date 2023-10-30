@@ -10,6 +10,14 @@
     <title>Liste des presences</title>
 </head>
 <body>
+
+    @if (TempData.ContainsKey("Message"))
+    {
+        <div>@TempData["Message"]</div>
+    }
+
+    <a href="creerpresences"> Ajouter </a>
+
     <table border="1">
         <tr>
             <th>Id</th>
@@ -17,6 +25,7 @@
             <th>heure départ</th>
             <th>Date</th>
             <th>id client</th>
+            <th>Action</th>
         </tr>
         @foreach (EasyTrain_P2Gr1.Models.Presences presences in Model)
         {
@@ -26,6 +35,10 @@
                 <td>@presences.HeureDepart</td>
                 <td>@presences.Date</td>
                 <td>@presences.IdClient</td>
+                <td>
+                    <a class=" btn btn-secondaire" href="supprimerpresence/@presences.Id"> suprimer </a>
+                </td>
+
             </tr>
         }
     </table>
