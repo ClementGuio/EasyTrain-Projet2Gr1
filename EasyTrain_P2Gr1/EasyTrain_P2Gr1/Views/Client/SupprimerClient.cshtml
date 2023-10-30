@@ -7,7 +7,8 @@
     Layout = "_LayoutCompte";
 }
 @Html.Partial("_InfoCompteClient")
-@using (Html.BeginForm()){
+@using (Html.BeginForm())
+{
     @Html.Label("Etes-vous sûr de vouloir supprimer le compte ?")
     <input type="submit" value="Confirmer">
 
