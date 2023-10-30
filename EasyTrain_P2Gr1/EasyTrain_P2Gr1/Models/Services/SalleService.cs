@@ -30,7 +30,7 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public int CreateSalle(Salle salle)
         {
-            foreach (Equipement equipement in salle.Equipements)
+            foreach (Equipement equipement in salle.Equipements) //TODO: utiliser AttachRange
             {
                 if (equipement.Id > 0)
                 {
@@ -54,7 +54,6 @@ namespace EasyTrain_P2Gr1.Models.Services
                 salleDb.Equipements.Add(equipement);
             }
             _bddContext.SaveChanges();
-
         }
 
         public void DeleteSalle(int id)

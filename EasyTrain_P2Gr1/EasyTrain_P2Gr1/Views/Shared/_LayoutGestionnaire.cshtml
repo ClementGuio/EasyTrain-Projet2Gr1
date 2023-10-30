@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Salle de Sport";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/stylesLayout.css" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body class="bodyLayout">
+    <header>
+        <div class="logo">
+            <a href="#"><img src="/images/Logo_easy_train.png" alt="Logo EASY TRAIN"></a>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn"><img src="/images/deconnexion.svg" alt="log-out"></button>
+            <div class="dropdown-content">
+                <a href="#">Mon profile</a>
+                <a href="/Login/Deconnexion">Se deconnecter</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <div class="sidebarLink">
+            <a href="#">RDV Coach</a>
+        </div>
+        <div class="sidebarLink">
+            <a href="#">Mon planning</a>
+        </div>
+        <div class="sidebarLink">
+            <a href="#">Le blog</a>
+        </div>
+        <div class="sidebarLink">
+            <a href="#">Messagerie</a>
+        </div>
+        <div class="sidebarLink">
+            <a href="#">Mon espace récompense</a>
+        </div>
+
+    </nav>
+    <!--Render section jusque la-->
+    <main class="mainCompte">
+        <!--inserer ici le main-->
+        @RenderBody()
+    </main>
+    <footer>
+        <div>
+            div1
+        </div>
+        <div>
+            div2
+        </div>
+        <div>
+            div3
+        </div>
+    </footer>
+</body>
+</html>
