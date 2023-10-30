@@ -1,0 +1,9 @@
+﻿namespace EasyTrain_P2Gr1.wwwroot.css
+
+
+.mytable {
+    width: 70%;
+    height: 300px;
+    background-color: beige;
+    border: 2px solid;
+}

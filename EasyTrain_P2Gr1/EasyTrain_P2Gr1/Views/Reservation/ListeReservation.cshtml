@@ -1,0 +1,35 @@
+﻿@model List<EasyTrain_P2Gr1.Models.Reservation>
+@{
+    Layout = "_LayoutClient";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des Reservations</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th> Cours programmé</th>
+            <th>Clients</th>
+           
+          
+        </tr>
+        @foreach (EasyTrain_P2Gr1.Models.Reservation reservation in Model)
+        {
+            <tr>
+                <td>@reservation.Id</td>
+                <td>@reservation.CoursProgramme.Cours</td>
+                <td>@reservation.CoursProgramme.DateDebut</td>
+                 <td>@reservation.Client.Id</td>
+                 
+              
+            </tr>
+        }
+    </table>
+    <button class="btnRouge" onclick="window.location.href='/Reservation/CreerReservation'">Réserver</button>
+</body>
+</html>
