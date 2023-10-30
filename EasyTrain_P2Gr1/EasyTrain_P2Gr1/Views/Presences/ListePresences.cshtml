@@ -1,0 +1,33 @@
+﻿@model List<EasyTrain_P2Gr1.Models.Presences>
+@{
+    Layout = "_LayoutCompte";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des presences</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>heure arrivee</th>
+            <th>heure départ</th>
+            <th>Date</th>
+            <th>id client</th>
+        </tr>
+        @foreach (EasyTrain_P2Gr1.Models.Presences presences in Model)
+        {
+            <tr>
+                <td>@presences.Id</td>
+                <td>@presences.HeureArrivee</td>
+                <td>@presences.HeureDepart</td>
+                <td>@presences.Date</td>
+                <td>@presences.IdClient</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

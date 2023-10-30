@@ -13,7 +13,7 @@
      police par default 
     font-family: 'Roboto', sans-serif;
 
-     Variables 
+   /* Variables */
     --main-color-principale: #F2CB05;
     --main-color-secondaire: #95D904;
     --main-color-intermediaire: #84BF04;
@@ -35,8 +35,10 @@ h2 {
     margin-bottom: 1em;
 }
 
-
  /*composants*/ 
+
+
+
 
 
  /*Organisations*/ 
@@ -290,9 +292,6 @@ h2 {
 
 
 
-
-
-
     /*affichage mobile deskktop*/    
 @media only screen and (min-width: 1224px) {
     :root {
@@ -361,6 +360,8 @@ h2 {
 
 
 }
+
+
 
     /*affichage deskktop*/    
 @media only screen and (min-width: 1824px) { /*Faire ça pour tous les types d'écran*/

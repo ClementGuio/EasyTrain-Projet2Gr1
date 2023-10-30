@@ -19,10 +19,11 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<CoursProgramme> CoursProgrammes { get; set; }
         public DbSet<Abonnement> Abonnement { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-         
+        public DbSet<Presences> Presences { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
-            try{
+           
                 try
                 {
                     optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain");
@@ -31,11 +32,7 @@ namespace EasyTrain_P2Gr1.Models
                 {
                     optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=EasyTrain"); // Chaine de caractères de connexion
                 }
-            }
-            finally {
-                
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
-            }
+           
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables

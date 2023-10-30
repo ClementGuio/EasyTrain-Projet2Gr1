@@ -16,9 +16,11 @@
   <ItemGroup>
     <Folder Include="Views\Utilisateur\" />
     <Folder Include="Views\Cours\" />
+    <Folder Include="Views\Presences\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Views\Cours\" />
+    <None Remove="Views\Presences\" />
   </ItemGroup>
 </Project>
