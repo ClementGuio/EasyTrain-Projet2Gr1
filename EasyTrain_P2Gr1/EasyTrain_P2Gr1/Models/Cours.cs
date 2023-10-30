@@ -4,6 +4,7 @@ namespace EasyTrain_P2Gr1.Models
 {
     public class Cours
     {
+        [Key]
         public int Id { get; set; }
         
         [Required(ErrorMessage = "Le titre doit être renseigné.")]

@@ -11,66 +11,62 @@ namespace EasyTrain_P2Gr1.Controllers
 {
     public class CoursProgrammeController : Controller
     {
+
         public IActionResult Index()
         {
-            return View();
-        }
+            List<CoursProgramme> listeCoursProgramme;
 
-    public IActionResult ListeCoursProgramme()
-    {
-        List<CoursProgramme> listeCoursProgramme;
-
-        using (IDalCoursProgramme service = new CoursProgrammeService())
-        {
+            using (IDalCoursProgramme service = new CoursProgrammeService())
+            {
                 listeCoursProgramme = service.GetCoursProgrammes();
+            }
+            return View(listeCoursProgramme);
         }
-        return View(listeCoursProgramme);
-    }
 
-    public IActionResult AfficherCoursProgramme(int id)
-    {
-        CoursProgramme coursProgramme;
-        using (IDalCoursProgramme service = new CoursProgrammeService())
+        public IActionResult AfficherCoursProgramme(int id)
         {
-            coursProgramme = service.GetCoursProgramme(id);
+            CoursProgramme coursProgramme;
+            using (IDalCoursProgramme service = new CoursProgrammeService())
+            {
+                coursProgramme = service.GetCoursProgramme(id);
 
+            }
+            if (coursProgramme != null)
+            {
+                return View(coursProgramme);
+            }
+            return View("Error");
         }
-        if (coursProgramme != null)
+
+
+        [HttpGet]
+        public IActionResult CreerCoursProgramme()
         {
-            return View(coursProgramme);
-        }
-        return View("Error");
-    }
-
-
-    [HttpGet]
-    public IActionResult CreerCoursProgramme()
-    {
             CoursProgrammeViewModel model = new CoursProgrammeViewModel();
-            
+
             model.Cours = new List<SelectListItem>();
             List<Cours> listCours;
             using (IDalCours service = new CoursService())
             {
                 listCours = service.GetCours();
             }
-            foreach( Cours cours in listCours)
+            foreach (Cours cours in listCours)
             {
                 model.Cours.Add(new SelectListItem() { Text = cours.Titre, Value = cours.Id.ToString(), Selected = false });
-            }  
+            }
 
             return View(model);
-    }
-
-
-    [HttpPost]
-    public IActionResult CreerCoursProgramme(CoursProgrammeViewModel model)
-    {
-            Cours cours; 
-        using (IDalCours service = new CoursService())
-        {
-                cours = service.GetCours (model.CoursId);
         }
+
+
+        [HttpPost]
+        public IActionResult CreerCoursProgramme(CoursProgrammeViewModel model)
+        {
+            Cours cours;
+            using (IDalCours service = new CoursService())
+            {
+                cours = service.GetCours(model.CoursId);
+            }
             model.CoursProgramme.Cours = cours;
 
             using (IDalCoursProgramme service = new CoursProgrammeService())
@@ -78,72 +74,72 @@ namespace EasyTrain_P2Gr1.Controllers
                 service.CreateCoursProgramme(model.CoursProgramme);
             }
 
-        return View();
+            return View();
 
 
-    }
+        }
 
 
-    [HttpGet]
-    public IActionResult ModifierCoursProgramme(int id)
-    {
-
-        if (id != 0)
+        [HttpGet]
+        public IActionResult ModifierCoursProgramme(int id)
         {
-            CoursProgramme coursProgramme;
+
+            if (id != 0)
+            {
+                CoursProgramme coursProgramme;
+                using (IDalCoursProgramme service = new CoursProgrammeService())
+                {
+                    coursProgramme = service.GetCoursProgramme(id);
+
+                }
+                if (coursProgramme != null)
+                {
+                    return View(coursProgramme);
+                }
+
+            }
+            return View("Error");
+        }
+
+
+        [HttpPost]
+        public IActionResult ModifierCoursProgramme(CoursProgramme coursProgramme)
+        {
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                coursProgramme = service.GetCoursProgramme(id);
-
+                service.UpdateCoursProgramme(coursProgramme);
             }
-            if (coursProgramme != null)
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult SupprimerCoursProgramme(int id)
+        {
+            if (id != 0)
             {
-                return View(coursProgramme);
+                CoursProgramme coursProgramme;
+                using (IDalCoursProgramme service = new CoursProgrammeService())
+                {
+                    coursProgramme = service.GetCoursProgramme(id);
+                }
+                if (coursProgramme != null)
+                {
+                    return View(coursProgramme);
+                }
             }
-
+            return View("Error");
         }
-        return View("Error");
-    }
 
-
-    [HttpPost]
-    public IActionResult ModifierCoursProgramme(CoursProgramme coursProgramme)
-    {
-        using (IDalCoursProgramme service = new CoursProgrammeService())
+        [HttpPost]
+        public IActionResult SupprimerCoursProgramme(CoursProgramme coursProgramme)
         {
-            service.UpdateCoursProgramme(coursProgramme);
-        }
-        return View();
-    }
-
-
-    [HttpGet]
-    public IActionResult SupprimerCoursProgramme(int id)
-    {
-        if (id != 0)
-        {
-            CoursProgramme coursProgramme;
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                coursProgramme = service.GetCoursProgramme(id);
+                service.DeleteCoursProgramme(coursProgramme.Id);
             }
-            if (coursProgramme != null)
-            {
-                return View(coursProgramme);
-            }
+            return View();
         }
-        return View("Error");
-    }
-
-    [HttpPost]
-    public IActionResult SupprimerCoursProgramme(CoursProgramme coursProgramme)
-    {
-        using (IDalCoursProgramme service = new CoursProgrammeService())
-        {
-            service.DeleteCoursProgramme(coursProgramme.Id);
-        }
-        return View();
-    }
 
 
     }

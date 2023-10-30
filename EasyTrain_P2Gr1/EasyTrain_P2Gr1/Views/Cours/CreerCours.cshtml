@@ -3,7 +3,7 @@
 *@
 @model EasyTrain_P2Gr1.ViewModels.FormulaireCoursViewModel;
 @{  
-    Layout = "_LayoutCompte";
+    Layout = "_LayoutGestionnaire";
 }
 <main>
     @using (Html.BeginForm())
@@ -11,23 +11,25 @@
         //-----------Formulaire Cours
         <fieldset>
             <legend>Creer un cours : </legend>
-            @Html.LabelFor(m => Model.Cours.Titre)
-            @Html.TextBoxFor(m => Model.Cours.Titre)
-            @Html.ValidationMessageFor(m => Model.Cours.Titre)
+            @Html.LabelFor(m => Model.Titre)
+            @Html.TextBoxFor(m => Model.Titre)
+            @Html.ValidationMessageFor(m => Model.Titre)
             <br />
-            @Html.LabelFor(m => Model.Cours.NbParticipants)
-            @Html.TextBoxFor(m => Model.Cours.NbParticipants)
-            @Html.ValidationMessageFor(m => Model.Cours.NbParticipants)
+            @Html.LabelFor(m => Model.NbParticipants)
+            @Html.TextBoxFor(m => Model.NbParticipants)
+            @Html.ValidationMessageFor(m => Model.NbParticipants)
             <br />
-            @Html.LabelFor(m => Model.Cours.Prix)
-            @Html.TextBoxFor(m => Model.Cours.Prix)
-            @Html.ValidationMessageFor(m => Model.Cours.Prix)
+            @Html.LabelFor(m => Model.Prix)
+            @Html.TextBoxFor(m => Model.Prix)
+            @Html.ValidationMessageFor(m => Model.Prix)
             <br />
-            Coach 
-            @Html.DropDownListFor(m => m.CoachId, Model.Coach)
+            @Html.LabelFor(m => m.Coachs) 
+            @Html.DropDownListFor(m => m.CoachId, new SelectList(Model.Coachs, "Id", "Nom" ))
+            @Html.ValidationMessageFor(m => Model.CoachId)
             <br />
-            Salle
-            @Html.DropDownListFor(m => m.SalleId, Model.Salle)
+            @Html.LabelFor(m => m.Salles)
+            @Html.DropDownListFor(m => m.SalleId, new SelectList(Model.Salles, "Id", "Nom" ))
+            @Html.ValidationMessageFor(m => Model.SalleId)
             <br /> 
             <input type="submit" value="Creer" />
         </fieldset>

@@ -1,6 +1,6 @@
 ﻿@model List<EasyTrain_P2Gr1.Models.Cours>
 @{
-    Layout = "_LayoutCompte";
+    Layout = "_LayoutGestionnaire";
 }
 
 <!DOCTYPE html>
@@ -29,9 +29,12 @@
                 <td>@cours.Prix</td>
                 <td>@cours.Coach.Nom @cours.Coach.Prenom </td>
                 <td>@cours.Salle.Nom</td>
+                <td><a href="/cours/modifiercours/@cours.Id">Modifier</a></td>
+                <td><a href="cours/supprimercours/@cours.Id">Supprimer</a></td>
 
             </tr>
         }
     </table>
+    <button class="btnRouge" onclick="window.location.href='/Cours/CreerCours'">Nouveau cours</button>
 </body>
 </html>
