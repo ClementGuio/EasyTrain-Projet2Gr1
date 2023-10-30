@@ -29,12 +29,12 @@ namespace EasyTrain_P2Gr1.Models
                 }
                 finally
                 {
-                    optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=EasyTrain"); // Chaine de caractères de connexion
+                    optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain"); // Chaine de caractères de connexion
                 }
             }
             finally {
                 
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain"); // Chaine de caractères de connexion
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain"); // Chaine de caractères de connexion
             }
         }
 

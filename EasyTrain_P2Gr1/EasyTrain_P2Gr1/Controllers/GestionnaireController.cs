@@ -22,7 +22,7 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             if (gestionnaire != null)
             {
-                return View("AfficherProfilGestionnaire",gestionnaire);
+                return View("AfficherProfilGestionnaire", gestionnaire);
             }
 
             return View("Error");
@@ -62,21 +62,24 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
-        public IActionResult ModifierGestionnaire(int id) // Vue de modification de profil GET
+        public IActionResult ModifierGestionnaire() // Vue de modification de profil GET
         {
-            if (id != 0)
-            {
-                Gestionnaire gestionnaire;
-                using (IDalGestionnaire service = new GestionnaireService())
-                {
-                    gestionnaire = service.GetGestionnaire(id);
+            string id = HttpContext.User.Identity.Name;
 
-                }
-                if (gestionnaire != null)
-                {
-                    return View(gestionnaire);
-                }
+
+
+            Gestionnaire gestionnaire;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                gestionnaire = service.GetGestionnaire(id);
+
             }
+
+            if (gestionnaire != null)
+            {
+                return View(gestionnaire);
+            }
+
             return View("Error");
 
         }
@@ -95,10 +98,13 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [Authorize(Roles = "Gestionnaire")]
+
         [HttpGet]
-        public IActionResult SupprimerGestionnaire(int id) // Vue de suppression de profil GET
+
+        public IActionResult SupprimerGestionnaire() // Vue de suppression de profil GET
         {
-            if (id != 0)
+            string id = HttpContext.User.Identity.Name;
+
             {
                 Gestionnaire gestionnaire;
                 using (IDalGestionnaire service = new GestionnaireService())
