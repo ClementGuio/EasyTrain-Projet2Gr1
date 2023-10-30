@@ -1,9 +1,51 @@
-﻿namespace EasyTrain_P2Gr1.wwwroot.css
+﻿
 
 
 .mytable {
     width: 70%;
     height: 300px;
-    background-color: beige;
+  color:black;
     border: 2px solid;
+
 }
+
+    .mytable thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        
+    }
+    .mytable tbody tr {
+      
+        border-bottom: 1px solid #dddddd;
+    }
+
+.mytable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.mytable tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+
+
+
+
+.btnlisteCoach {
+    background-color: #009879;
+    color: black;
+}
+
+
+
+table, th, td {
+    border: 1px solid #000;
+    border-collapse: collapse; 
+}
+
+th, td {
+       
+        text-align: center; 
+        
+    }
