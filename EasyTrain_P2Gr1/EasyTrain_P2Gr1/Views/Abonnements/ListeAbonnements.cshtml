@@ -1,4 +1,4 @@
-﻿@model List<EasyTrain_P2Gr1.Models.Abonnement>
+@model List<EasyTrain_P2Gr1.Models.Abonnement>
 @{
     Layout = "_LayoutGestionnaire";
 }
@@ -69,8 +69,6 @@
         }
         }
         }
-
-
     </style>
 
 </head>
@@ -98,8 +96,10 @@
                     <td>@abonnement.Id</td>
                     <td>@abonnement.Titre</td>
                     <td>@abonnement.Prix</td>
-                    <td><a class=" btn btn-secondaire" href="modifierabonnement/@abonnement.Id"> modifier </a>
-                    <a class=" btn btn-secondaire"  href="supprimerabonnement/@abonnement.Id"> suprimer </a> </td>
+                    <td>
+                        <a class=" btn btn-secondaire" href="modifierabonnement/@abonnement.Id"> modifier </a>
+                        <a class=" btn btn-secondaire" href="supprimerabonnement/@abonnement.Id"> suprimer </a>
+                    </td>
                 </tr>
             }
         </table>
