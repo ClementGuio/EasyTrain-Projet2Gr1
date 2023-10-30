@@ -1,16 +1,79 @@
 ﻿@model List<EasyTrain_P2Gr1.Models.CoursProgramme>
 @{
-    Layout = "_LayoutCompte";
+    Layout = "_LayoutCoach";
 }
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Liste des Cours Programmés</title>
+    <title>Liste des Cours</title>
+    <style>
+
+        table {
+            width: 900px;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        th {
+            text-align: left;
+        }
+
+        thead {
+            th
+
+        {
+            background-color: #55608f;
+        }
+
+        }
+
+        tbody {
+            tr
+
+        {
+            &:hover
+
+        {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        }
+
+        td {
+            position: relative;
+            &:hover
+
+        {
+            &:before
+
+        {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: -1;
+        }
+
+        }
+        }
+        }
+    </style>
+
 </head>
 <body>
-    <table border="1">
+    <table border="3">
         <tr>
             <th>Id</th>
             <th>Date de debut</th>
@@ -27,11 +90,14 @@
                 <td>@coursProgramme.DateDebut.ToString("dd/MM/yyyy")</td>
                 <td>@coursProgramme.DateFin.ToString("dd/MM/yyyy")</td>
                 <td>@coursProgramme.PlacesLibres</td>
-                <td>@coursProgramme.Cours</td>
-                
+                <td>@coursProgramme.Cours.Titre</td>
+                <td><button class="btnRouge" 
+                    onclick="window.location.href='/CoursProgramme/SupprimerCoursProgramme/@coursProgramme.Id'">supprimer un cours</button></td>
             </tr>
         }
     </table>
-
+    
+    <button class="btnRouge" onclick="window.location.href='/CoursProgramme/CreerCoursProgramme'">planifier un cours</button>
+    
 </body>
 </html>

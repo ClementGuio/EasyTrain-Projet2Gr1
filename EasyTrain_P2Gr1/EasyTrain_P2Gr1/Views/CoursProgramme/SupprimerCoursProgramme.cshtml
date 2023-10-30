@@ -3,9 +3,11 @@
 *@
 @model EasyTrain_P2Gr1.Models.CoursProgramme
 @{
-    Layout = "_LayoutCompte";
+    Layout = "_LayoutCoach";
 }
 @using(Html.BeginForm()){
 @Html.Partial("_InfoCoursProgramme")
-<input type="submit" value="Supprimer" />
+
+@Html.Label("Etes-vous sûr de vouloir supprimer le compte ?")
+<input type="submit" value="Confirmer">
 }

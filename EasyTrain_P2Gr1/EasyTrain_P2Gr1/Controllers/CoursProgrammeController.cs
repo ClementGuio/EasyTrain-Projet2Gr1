@@ -6,17 +6,15 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using EasyTrain_P2Gr1.ViewModels;
 using System.Linq;
+using Microsoft.AspNetCore.Authentication;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
     public class CoursProgrammeController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
 
-    public IActionResult ListeCoursProgramme()
+    public IActionResult Index()
     {
         List<CoursProgramme> listeCoursProgramme;
 
@@ -24,7 +22,7 @@ namespace EasyTrain_P2Gr1.Controllers
         {
                 listeCoursProgramme = service.GetCoursProgrammes();
         }
-        return View(listeCoursProgramme);
+        return View("ListeCoursProgramme",listeCoursProgramme);
     }
 
     public IActionResult AfficherCoursProgramme(int id)
@@ -46,39 +44,44 @@ namespace EasyTrain_P2Gr1.Controllers
     [HttpGet]
     public IActionResult CreerCoursProgramme()
     {
-            CoursProgrammeViewModel model = new CoursProgrammeViewModel();
+            FormulaireCoursProgrammeViewModel model = new FormulaireCoursProgrammeViewModel();
             
-            model.Cours = new List<SelectListItem>();
-            List<Cours> listCours;
             using (IDalCours service = new CoursService())
             {
-                listCours = service.GetCours();
+                model.Cours = service.GetCours();
             }
-            foreach( Cours cours in listCours)
-            {
-                model.Cours.Add(new SelectListItem() { Text = cours.Titre, Value = cours.Id.ToString(), Selected = false });
-            }  
+            
 
             return View(model);
     }
 
 
     [HttpPost]
-    public IActionResult CreerCoursProgramme(CoursProgrammeViewModel model)
+    public IActionResult CreerCoursProgramme(FormulaireCoursProgrammeViewModel model)
     {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             Cours cours; 
         using (IDalCours service = new CoursService())
         {
                 cours = service.GetCours (model.CoursId);
         }
-            model.CoursProgramme.Cours = cours;
+            
 
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                service.CreateCoursProgramme(model.CoursProgramme);
+                service.CreateCoursProgramme(new CoursProgramme 
+                {
+                    DateDebut = model.DateDebut,
+                    DateFin = model.DateFin,
+                    Cours = cours,
+                    PlacesLibres = cours.NbParticipants
+                });
             }
 
-        return View();
+        return RedirectToAction("index");
 
 
     }
@@ -118,10 +121,11 @@ namespace EasyTrain_P2Gr1.Controllers
 
 
     [HttpGet]
-    public IActionResult SupprimerCoursProgramme(int id)
+    public IActionResult SupprimerCoursProgramme()
     {
-        if (id != 0)
-        {
+            string id = HttpContext.User.Identity.Name;
+           
+        
             CoursProgramme coursProgramme;
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
@@ -131,7 +135,7 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 return View(coursProgramme);
             }
-        }
+        
         return View("Error");
     }
 
@@ -142,8 +146,9 @@ namespace EasyTrain_P2Gr1.Controllers
         {
             service.DeleteCoursProgramme(coursProgramme.Id);
         }
-        return View();
-    }
+            HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
 
 
     }
