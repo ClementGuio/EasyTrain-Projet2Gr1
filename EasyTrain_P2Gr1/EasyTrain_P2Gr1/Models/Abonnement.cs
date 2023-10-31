@@ -11,7 +11,6 @@ namespace EasyTrain_P2Gr1.Models
         public bool AccesPiscine { get; set; }
         //TODO: rajouter les tarifs des features
         public double Mensualite { get; set; }
-  
         public DateTime DateAbonnement { get; set; }
 
     }
