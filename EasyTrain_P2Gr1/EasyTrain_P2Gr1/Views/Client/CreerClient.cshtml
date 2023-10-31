@@ -19,7 +19,7 @@
         @Html.ValidationMessageFor(c => c.Nom)
 
         <!-- // @Html.LabelFor(c => c.Prenom)-->
-        @Html.TextBoxFor(c => c.Prenom, new { @class = "InputText", placeholder = "Prenom"  })
+        @Html.TextBoxFor(c => c.Prenom, new { @class = "InputText", placeholder = "Prenom" })
         @Html.ValidationMessageFor(c => c.Prenom)
 
 
@@ -36,6 +36,9 @@
         @Html.TextBoxFor(c => c.MotDePasse, new { @class = "InputText", placeholder = "Mot de passe" })
         @Html.ValidationMessageFor(c => c.MotDePasse)
         <br />
+        //@Html.LabelFor(c => c.MotDePasse)
+        @Html.TextBoxFor(c => c.VerifMotDePasse, new { @class = "InputText", placeholder = "mdp verrification Mot de passe" })
+        @Html.ValidationMessageFor(c => c.VerifMotDePasse)
         <input type="submit" value="Valider">
     }
 </div>

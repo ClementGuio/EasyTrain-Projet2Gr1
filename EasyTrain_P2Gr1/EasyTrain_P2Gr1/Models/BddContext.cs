@@ -32,6 +32,7 @@ namespace EasyTrain_P2Gr1.Models
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
 
+
             this.Abonnements.AddRange(new List<Abonnement>()
             {
                 new Abonnement(){Titre= "Mensuel", Mensualite = 20},
