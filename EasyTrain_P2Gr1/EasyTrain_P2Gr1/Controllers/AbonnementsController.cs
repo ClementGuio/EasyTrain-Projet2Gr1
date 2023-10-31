@@ -106,25 +106,34 @@ namespace EasyTrain_P2Gr1.Controllers
             }
         }
 
-        [HttpPost]
+
+        [HttpGet]
         public IActionResult SupprimerAbonnement(int id)
+        {
+            if (id != 0)
+            {
+                Abonnement abonnement;
+                using (IDalAbonnement service = new AbonnementService())
+                {
+                    abonnement = service.GetAbonnement(id);
+                }
+                if (abonnement != null)
+                {
+                    return View(abonnement);
+                }
+
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public IActionResult SupprimerAbonnement(Abonnement abonnement)
         {
             using (IDalAbonnement service = new AbonnementService())
             {
-                Abonnement abonnement = service.GetAbonnement(id);
-
-                if (abonnement != null)
-                {
-                    service.DeleteAbonnement(id);
-                    TempData["Message"] = "Abonnement supprimé avec succès";
-                }
-                else
-                {
-                    TempData["Message"] = "Abonnement introuvable";
-                }
-
-                return RedirectToAction("ListeAbonnements");
+                service.DeleteAbonnement(abonnement.Id);
             }
+            return RedirectToAction("ListeAbonnements");
         }
     }
 

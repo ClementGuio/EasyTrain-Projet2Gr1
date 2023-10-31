@@ -115,7 +115,7 @@ namespace EasyTrain_P2Gr1.Controllers
         {
             service.DeleteEquipement(equipement.Id);
         }
-        return View();
-    }
+            return View();
+        }
     }
 }
