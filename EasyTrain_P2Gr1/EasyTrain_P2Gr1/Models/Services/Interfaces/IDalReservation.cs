@@ -7,8 +7,10 @@ namespace EasyTrain_P2Gr1.Models.Services.Interfaces
     {
         List<Reservation> GetReservations();
         Reservation GetReservation(int Id);
+        Reservation GetReservation(string StrId);
         int CreateReservation(Reservation reservation);
         void UpdateReservation(Reservation reservation);
         void DeleteReservation(int id);
+       
     }
 }
