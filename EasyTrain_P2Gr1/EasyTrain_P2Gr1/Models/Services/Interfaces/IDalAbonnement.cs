@@ -10,7 +10,6 @@ namespace EasyTrain_P2Gr1.Models.Services.Interfaces
         Abonnement GetAbonnement(string StrId);
         int CreateAbonnement(Abonnement Abonnement);
         void UpdateAbonnement(Abonnement Abonnement);
-        bool AbonnementExiste(string nomAbonnement);
         void DeleteAbonnement(int id);
     }
 }

@@ -40,9 +40,10 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreerClient()
+        public IActionResult CreerClient(Abonnement abonnement)
         {
-            return View();
+            Client client = new Client { Abonnement = abonnement };
+            return View(client);
         }
 
         [HttpPost]
@@ -52,12 +53,12 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 return View(client);
             }
-            client.DateCreationCompte = DateTime.Now;
-            client.DateAbonnement = DateTime.Now;
+            client.DateCreationCompte = client.Abonnement.DateAbonnement;
+            
             using (IDalClient service = new ClientService())
             {
                
-                if (service.ClientExists(client.AdresseMail))
+                if (service.ClientExists(client.AdresseMail)) //TODO : Créer annotation pour tester l'existence des mails
                 {
                     ModelState.AddModelError("mail", "Ce client existe déjà.");
                     return View();
@@ -130,7 +131,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpPost]
-        public IActionResult SupprimerClient(Client client)
+        public IActionResult SupprimerClient(Client client) //TODO Remplacer par la version soft
         {
             
             using (IDalClient service = new ClientService())

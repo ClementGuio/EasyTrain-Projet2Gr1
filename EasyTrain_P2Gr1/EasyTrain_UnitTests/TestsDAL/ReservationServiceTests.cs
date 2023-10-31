@@ -80,7 +80,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = "mdp",
-                DateAbonnement = new DateTime(2023, 3, 15),
+                //DateAbonnement = new DateTime(2023, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             };
             Cours cours = new Cours()

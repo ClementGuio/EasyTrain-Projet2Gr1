@@ -14,7 +14,7 @@ namespace EasyTrain_P2Gr1.Controllers
 {
     public class AbonnementsController : Controller
     {
-
+        [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
         public IActionResult ListeAbonnements()
         {
@@ -24,7 +24,7 @@ namespace EasyTrain_P2Gr1.Controllers
                 listeAbonnements = service.GetAbonnements();
 
             }
-            
+
             return View(listeAbonnements);
         }
 
@@ -37,48 +37,25 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [HttpPost]
         public IActionResult CreerAbonnements(Abonnement abonnement)
-        { 
-                using (IDalAbonnement service= new AbonnementService())
-                {
-                if (!service.AbonnementExiste(abonnement.Titre))
-
-                {
-                    service.CreateAbonnement(abonnement);
-                    TempData["Message"] = "nouvel abonnement crée";
-                    return RedirectToAction("ListeAbonnements");
-                }
-                else
-                {
-                    TempData["Message"] = "Un abonnement similaire existe !";
-                    return View();
-                }
-
-            }
-        
-        }
-
-        [HttpGet]
-        public IActionResult ModifierAbonnement(int id)
         {
+            abonnement.DateAbonnement = DateTime.Now;
+            return View("~/Views/Client/CreerClient", abonnement);
 
-            if (id != 0)
+        }
+        [Authorize(Roles = "Client")]
+        [HttpGet]
+        public IActionResult ModifierAbonnement()
+        {
+            Client client;
+            using (IDalClient service = new ClientService())
             {
-                Abonnement abonnement;
-                using (IDalAbonnement service = new AbonnementService())
-                {
-                    abonnement = service.GetAbonnement(id);
-                }
-                if (abonnement != null)
-                {
-                    return View(abonnement);
-                }
-
+                client = service.GetClient(HttpContext.User.Identity.Name);
             }
-            TempData["Message"] = "Abonnement introuvable";
-            return RedirectToAction("ListeAbonnements");
-
-
-
+            if (client != null)
+            {
+                return View(client.Abonnement);
+            }
+            return View("Error");
         }
 
         [HttpPost]
@@ -95,8 +72,6 @@ namespace EasyTrain_P2Gr1.Controllers
                 }
                 else
                 {
-                    existingAbonnement.Titre = abonnement.Titre;
-                    existingAbonnement.Mensualite = abonnement.Mensualite;
                     // Mettez à jour d'autres propriétés si nécessaire
 
                     service.UpdateAbonnement(existingAbonnement);

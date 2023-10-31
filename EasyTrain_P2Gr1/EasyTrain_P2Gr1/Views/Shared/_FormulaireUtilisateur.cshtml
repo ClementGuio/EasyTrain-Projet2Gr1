@@ -30,8 +30,5 @@
     @Html.TextBoxFor(m => Model.MotDePasse)
     @Html.ValidationMessageFor(m => Model.MotDePasse)
     <br />
-    <!--Ci dessous il faut ajouter du controle pour le cast, suivant le type d'utilisateur a afficher-->
-    @Html.LabelFor(m => ((EasyTrain_P2Gr1.Models.Client)Model).DateAbonnement)
-    @Html.DisplayFor(m => ((EasyTrain_P2Gr1.Models.Client)Model).DateAbonnement)
-    <br />
+
 </div>
