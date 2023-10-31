@@ -12,46 +12,55 @@
     <title>Liste des coachs</title>
     <link rel="stylesheet" href="/css/Sabrine.css">
 </head>
-<body>
-    <table class="mytable">
+  <body>
+
+    <div class= "container">
+
+        <table>
+            <caption> Liste Des Coachs De EASYTRAIN</caption>
+
+            <thead>
+               
+                <tr>
 
 
-      <thead>
+                    <th width="100">Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Date de naissance</th>
+                    <th>Adresse mail</th>
+                    <th width="400">Mot de passe</th>
+                    <th>Date d'embauche</th>
+                    <th>Modification</th>
+                    <th>Suppression</th>
 
-            <tr>
+                </tr>
+            </thead>
 
-                <td>Id</td>
-                <td>Nom</td>
-                <td>Prenom</td>
-                <td>Date de naissance</td>
-                <td>Adresse mail</td>
-                <td>Mot de passe</td>
-                <td>Date d'embauche</td>
 
-            </tr>
-      </thead>
-       
-    
 
             @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
             {
-            <tbody>
-                <tr>
-                    <td>@coach.Id</td>
-                    <td>@coach.Nom</td>
-                    <td>@coach.Prenom</td>
-                    <td>@coach.DateNaissance</td>
-                    <td>@coach.AdresseMail</td>
-                    <td>@coach.MotDePasse</td>
-                    <td>@coach.DateCreationCompte.ToString("dd/MM/yyyy")</td>
-                </tr>
-            </tbody>
+                <tbody>
+                    <tr>
+                        <td> @coach.Id </td>
+                        <td>@coach.Nom</td>
+                        <td>@coach.Prenom</td>
+                        <td>@coach.DateNaissance</td>
+                        <td>@coach.AdresseMail</td>
+                        <td>@coach.MotDePasse</td>
+                        <td>@coach.DateCreationCompte.ToString("dd/MM/yyyy")</td>
+                        <td><button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button></td>
+                        <td> <button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button></td>
+                    </tr>
+                </tbody>
             }
-     
-       
-    </table>
-    <button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button>
-    <button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
+
+
+        </table>
+
+    </div>
+    
 
 
 </body>
