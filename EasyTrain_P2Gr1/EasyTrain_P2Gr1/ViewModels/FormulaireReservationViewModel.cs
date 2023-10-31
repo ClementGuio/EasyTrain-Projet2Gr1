@@ -10,6 +10,7 @@ namespace EasyTrain_P2Gr1.ViewModels
         public Reservation Reservation { get; set; }
         public int CoursProgrammeId { get; set; }
 
+
         
     }
 }

@@ -29,7 +29,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                         DateNaissance = new DateTime(1978, 12, 12),
                         AdresseMail = "DEBONNER.JacquesEudeHenri@gmail.com",
                         MotDePasse = "NEWmdp",
-                        DateAbonnement = new DateTime(2024, 3, 15),
+                        //DateAbonnement = new DateTime(2024, 3, 15),
                         DateCreationCompte = new DateTime(2022, 4, 25)
                     },
                     new Client
@@ -39,7 +39,7 @@ namespace EasyTrain_UnitTests.TestsDAL
                         DateNaissance = new DateTime(1978, 12, 12),
                         AdresseMail = "DEBONNER.JacquesEude@gmail.com",
                         MotDePasse = "NEWmdp",
-                        DateAbonnement = new DateTime(2024, 3, 15),
+                        //DateAbonnement = new DateTime(2024, 3, 15),
                         DateCreationCompte = new DateTime(2022, 4, 25)
                     }
                 });

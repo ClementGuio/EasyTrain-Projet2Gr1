@@ -1,5 +1,7 @@
-﻿using EasyTrain_P2Gr1.Models;
+﻿using Dynamitey.DynamicObjects;
+using EasyTrain_P2Gr1.Models;
 using System;
+using System.Collections.Generic;
 
 namespace EasyTrain_P2Gr1.ViewModels
 {
@@ -7,7 +9,6 @@ namespace EasyTrain_P2Gr1.ViewModels
     {
         public Reservation Reservation { get; set; }
         public int CoursProgrammeId { get; set; }
-        public DateTime DateDebut { get; set; }
-
+        public List<CoursProgramme> CoursProgrammes {get; set;}
     }
 }

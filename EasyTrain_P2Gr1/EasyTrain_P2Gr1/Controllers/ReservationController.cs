@@ -28,55 +28,48 @@ namespace EasyTrain_P2Gr1.Controllers
             return View(listeReservation);
         }
 
+        [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult CreerReservation()
         {
-            List<Reservation> reservations;
-            using (IDalReservation service = new ReservationService())
+            
+            List<CoursProgramme> coursProgrammes;
+            using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                reservations = service.GetReservations();  
+                coursProgrammes = service.GetCoursProgrammes();
             }
-            List<TestReservationViewModel> rvm = new List<TestReservationViewModel>();
-            foreach (Reservation res in reservations)
+            TestReservationViewModel rvm = new TestReservationViewModel
             {
-                rvm.Add(new TestReservationViewModel
-                {
-                    Reservation = res,
-                    CoursProgrammeId = res.CoursProgramme.Id,
-                    DateDebut = res.CoursProgramme.DateDebut
-                }); 
-            }
+                CoursProgrammes = coursProgrammes
+            };             
 
             return View(rvm);
         }
 
+        [Authorize(Roles = "Client")]
         [HttpPost]
-
         public IActionResult CreerReservation(TestReservationViewModel rvm)
         {
 
-            CoursProgramme cours;
+            CoursProgramme coursProgramme;
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                cours = service.GetCoursProgramme(rvm.CoursProgrammeId);
+                coursProgramme = service.GetCoursProgramme(rvm.CoursProgrammeId);
             }
             Client client;
-            using(IDalClient service = new ClientService())
+            using (IDalClient service = new ClientService())
             {
                 client = service.GetClient(HttpContext.User.Identity.Name);
             }
             Reservation reservation = new Reservation
             {
-                CoursProgramme = cours,
+                CoursProgramme = coursProgramme,
                 Client = client
             };
-            using (IDalReservation service = new ReservationService())
-            {
-                service.CreateReservation(reservation);
+            
 
-            }
-
-            if (reservation.Client.ReserverCoursProgramme(coursProgramme)) { //Si la réservation a réussi
+            if (reservation.Client.ReserverCoursProgramme(coursProgramme))
+            { //Si la réservation a réussi
                 using (IDalReservation service = new ReservationService())
                 {
                     service.CreateReservation(reservation);
@@ -84,15 +77,17 @@ namespace EasyTrain_P2Gr1.Controllers
                 using (IDalCoursProgramme service = new CoursProgrammeService())
                 {
                     service.UpdateCoursProgramme(coursProgramme);
-                    return RedirectToAction("ConfirmationReservation");
                 }
-
+                return RedirectToAction("ConfirmationReservation");
             }
             else  // Si la réseservation a échoué
             {
                 return View(reservation);
             }
         }
+
+        [Authorize(Roles = "Client")]
+        [HttpGet]
         public IActionResult SupprimerReservation()
         {
             string id = HttpContext.User.Identity.Name;
@@ -106,12 +101,12 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 return View(reservation);
             }
-          
+
 
             return View("Error");
         }
 
-       
+        [Authorize(Roles = "Client")]
         [HttpPost]
         public IActionResult SupprimerReservation(Reservation reservation)
         {
@@ -120,22 +115,23 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 service.DeleteReservation(reservation.Id);
             }
-         
-        
+
+
             DateTime firstDate = DateTime.Now;
             DateTime secondDate = DateTime.Now.AddDays(2);
             TimeSpan diffOfDate = firstDate - secondDate;
 
-            if (diffOfDate.Hours > 48)
+            if (diffOfDate.Hours > 48) //TODO : Faire un fichier de constantes
             {
                 Console.WriteLine(" vous avez droit à un remboursement...");
             }
 
             return Redirect("/");
         }
-      
+
 
         //TODO : methode POST/GET SupprimerReservation
         //TODO : Si un client supprime une réservation, on le rembourse (voir les conditions dans le cdc) 
-    
+    }
+}
 
