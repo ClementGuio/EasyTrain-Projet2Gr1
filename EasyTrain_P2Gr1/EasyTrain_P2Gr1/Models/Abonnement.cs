@@ -8,5 +8,6 @@
         public bool ReservEquipement { get; set; }
         public bool AccesPiscine { get; set; }
         public double Mensualite { get; set; }
+        public virtual Client client { get; set; }
     }
 }

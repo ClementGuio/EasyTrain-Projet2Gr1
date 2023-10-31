@@ -43,7 +43,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
             return View(reservation);
         }
-        //TODO : dfsdf
+
 
         //TODO : methode POST/GET SupprimerReservation
         //TODO : Si un client supprime une réservation, on le rembourse (voir les conditions dans le cdc) 
