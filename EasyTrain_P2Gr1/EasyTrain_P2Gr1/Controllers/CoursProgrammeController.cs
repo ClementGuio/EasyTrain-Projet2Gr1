@@ -134,7 +134,7 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             return View("Error");
         }
-
+        
         //TODO : Si un coach ou un gestionnaire supprime un CoursProgramme, on rembourse les clients        
         [Authorize(Roles = "Coach,Gestionnaire")] 
         [HttpPost]

@@ -21,7 +21,7 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Presence> Presences { get; set; }
 
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain");
@@ -204,6 +204,9 @@ namespace EasyTrain_P2Gr1.Models
 
             this.CoursProgrammes.AddRange(new List<CoursProgramme>()
             {
+                new CoursProgramme(){ DateDebut = DateTime.Now , DateFin = DateTime.Now.AddHours(1),
+                    Cours = Cours.First(c => c.Titre == "Cyclisme"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Cyclisme").NbParticipants},
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 16, 30, 0), DateFin = new DateTime(2023, 11, 8, 17, 15, 0),
                     Cours = Cours.First(c => c.Titre == "Cyclisme"),
                     PlacesLibres = Cours.First(c => c.Titre == "Cyclisme").NbParticipants},
