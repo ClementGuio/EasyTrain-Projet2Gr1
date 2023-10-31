@@ -10,8 +10,7 @@ namespace EasyTrain_P2Gr1.Models.Services
     {
         public List<CoursProgramme> GetCoursProgrammes()
         {
-
-            return this._bddContext.CoursProgrammes.Include(c => c.Cours).ToList();
+         return this._bddContext.CoursProgrammes.Include(c => c.Cours).Include(c => c.Cours.Coach).ToList();
         }
 
 
@@ -54,6 +53,10 @@ namespace EasyTrain_P2Gr1.Models.Services
             }
         }
 
+        public List<CoursProgramme> GetListCoursProgramme()
+        {
+            return this._bddContext.CoursProgrammes.ToList();
 
+        }
     }
 }
