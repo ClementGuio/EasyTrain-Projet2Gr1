@@ -31,7 +31,7 @@ namespace EasyTrain_P2Gr1.Models
         [RegularExpression("^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).*$", ErrorMessage = "Le mot de passe doit avoir au moins 8 caractères et contenir 1 minuscule, 1 majuscule et 1 chiffre.")]
         public string MotDePasse { get; set; }
 
-        [Required(ErrorMessage = "La vérification du mot de passe doit être renseignée.")]
+        //[Required(ErrorMessage = "La vérification du mot de passe doit être renseignée.")]
         [Compare("MotDePasse", ErrorMessage = "Les mots de passe ne correspondent pas.")] // Permet de comparrer les deux champs et retourne un d'erreur
         public string VerifMotDePasse { get; set; }
 
