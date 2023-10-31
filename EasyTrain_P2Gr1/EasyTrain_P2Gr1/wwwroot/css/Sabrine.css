@@ -49,3 +49,11 @@ th, td {
         text-align: center; 
         
     }
+.nonDispo{
+    background-color:crimson;
+}
+
+.reservationTable {
+    border: 1px solid #000;
+    border-collapse: collapse;
+}

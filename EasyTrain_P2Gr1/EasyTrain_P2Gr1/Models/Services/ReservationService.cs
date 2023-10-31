@@ -44,6 +44,9 @@ namespace EasyTrain_P2Gr1.Models.Services
             }
         }
 
-    
+        Reservation IDalReservation.GetReservation(string StrId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

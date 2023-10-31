@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Dynamitey;
+using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 namespace EasyTrain_P2Gr1.Models
 {
@@ -8,13 +10,20 @@ namespace EasyTrain_P2Gr1.Models
         public virtual Abonnement Abonnement { get; set; }
         public virtual List<Presence> Presences { get; set; }
         // TODO : AJouter Points
+
         // TODO : Ajouter Client parrain
         // TODO : Ajouter bool peutParrainer
         // TODO : Ajouter Client parrainé
 
-        public void ReserverCoursProgramme(CoursProgramme coursProgramme)
+        public bool ReserverCoursProgramme(CoursProgramme coursProgramme)
         {
-            coursProgramme.PlacesLibres--;
+            if (coursProgramme.PlacesLibres > 0)
+            {
+                coursProgramme.PlacesLibres--;
+                return true;
+            }
+            return false;
         }
+        
     }
 }

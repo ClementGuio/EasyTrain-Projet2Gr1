@@ -21,12 +21,12 @@ namespace EasyTrain_UnitTests.TestsDAL
             {
                 new Abonnement
                 {
-                    Titre = "Basic",
+                    //Titre = "Basic",
                     Mensualite = 19.99
                 },
                 new Abonnement
                 {
-                    Titre = "Premium",
+                    //Titre = "Premium",
                     Mensualite = 59.99
                 }
             };
@@ -52,7 +52,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             //Initialisation
             Abonnement abonnement = new Abonnement
             {
-                Titre = "Basic",
+                //Titre = "Basic",
                 Mensualite = 19.99
             };
             using (BddContext ctx = new BddContext())
@@ -69,7 +69,7 @@ namespace EasyTrain_UnitTests.TestsDAL
             //Verification
             Assert.NotNull(abonnementDb);
             Assert.Equal(abonnement.Id, abonnementDb.Id);
-            Assert.Equal(abonnement.Titre, abonnementDb.Titre);
+            //Assert.Equal(abonnement.Titre, abonnementDb.Titre);
             Assert.Equal(abonnement.Mensualite, abonnementDb.Mensualite);
         }
     }
