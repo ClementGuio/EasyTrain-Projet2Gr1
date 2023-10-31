@@ -3,6 +3,7 @@ using EasyTrain_P2Gr1.Models.Services;
 using EasyTrain_P2Gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -12,7 +13,7 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult ListeReservation()
         {
             List<Reservation> listeReservation;
-           
+
 
             using (IDalReservation service = new ReservationService())
             {
@@ -32,20 +33,40 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult CreerReservation(Reservation reservation)
         {
 
-
-            using (IDalReservation service = new ReservationService())
+            CoursProgramme coursProgramme;
+            using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-
-                service.CreateReservation(reservation);
-
-
+                coursProgramme = service.GetCoursProgramme(reservation.CoursProgramme.Id);
             }
 
-            return View(reservation);
+            if (reservation.Client.ReserverCoursProgramme(coursProgramme)) { //Si la réservation a réussi
+                using (IDalReservation service = new ReservationService())
+                {
+                    service.CreateReservation(reservation);
+                }
+                using (IDalCoursProgramme service = new CoursProgrammeService())
+                {
+                    service.UpdateCoursProgramme(coursProgramme);
+                    return RedirectToAction("ConfirmationReservation");
+                }
+
+            }
+            else  // Si la réseservation a échoué
+            {
+                return View(reservation);
+            }
         }
 
+    }
 
+
+    }
+
+               
+        
+
+        
         //TODO : methode POST/GET SupprimerReservation
         //TODO : Si un client supprime une réservation, on le rembourse (voir les conditions dans le cdc) 
-    }
-}
+    
+

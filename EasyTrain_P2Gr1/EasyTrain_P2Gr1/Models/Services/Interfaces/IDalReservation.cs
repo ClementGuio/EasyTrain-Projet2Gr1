@@ -10,5 +10,6 @@ namespace EasyTrain_P2Gr1.Models.Services.Interfaces
         int CreateReservation(Reservation reservation);
         void UpdateReservation(Reservation reservation);
         void DeleteReservation(int id);
+       
     }
 }
