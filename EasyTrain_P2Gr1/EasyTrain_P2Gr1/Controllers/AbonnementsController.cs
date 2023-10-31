@@ -39,7 +39,7 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult CreerAbonnements(Abonnement abonnement)
         {
             abonnement.DateAbonnement = DateTime.Now;
-            return RedirectToAction()
+            return RedirectToAction();//TODO : trouver comment rediriger vers une page externe au controller
         }
         [Authorize(Roles = "Client")]
         [HttpGet]

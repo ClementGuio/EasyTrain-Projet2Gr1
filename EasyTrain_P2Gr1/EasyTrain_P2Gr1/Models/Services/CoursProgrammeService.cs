@@ -10,9 +10,16 @@ namespace EasyTrain_P2Gr1.Models.Services
     {
         public List<CoursProgramme> GetCoursProgrammes()
         {
-         return this._bddContext.CoursProgrammes.Include(c => c.Cours).Include(c => c.Cours.Coach).ToList();
+         return this._bddContext.CoursProgrammes
+                .Include(c => c.Cours)
+                .Include(c => c.Cours.Coach)
+                .OrderBy(c => c.DateDebut).ToList(); //TODO: Filtrer pour ne garder que les cours à venir
         }
 
+        public List<CoursProgramme> GetCoursProgrammesAVenir()
+        {
+            return GetCoursProgrammes().Where(c => c.DateDebut.CompareTo(DateTime.Now) > 0).ToList();
+        }
 
         public CoursProgramme GetCoursProgramme(int id)
         {

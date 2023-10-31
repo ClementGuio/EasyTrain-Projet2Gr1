@@ -32,7 +32,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult CreerReservation()
         {
-            
+
             List<CoursProgramme> coursProgrammes;
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
@@ -41,7 +41,7 @@ namespace EasyTrain_P2Gr1.Controllers
             TestReservationViewModel rvm = new TestReservationViewModel
             {
                 CoursProgrammes = coursProgrammes
-            };             
+            };
 
             return View(rvm);
         }
@@ -66,7 +66,7 @@ namespace EasyTrain_P2Gr1.Controllers
                 CoursProgramme = coursProgramme,
                 Client = client
             };
-            
+
 
             if (reservation.Client.ReserverCoursProgramme(coursProgramme))
             { //Si la réservation a réussi
@@ -115,7 +115,6 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 service.DeleteReservation(reservation.Id);
             }
-
 
             DateTime firstDate = DateTime.Now;
             DateTime secondDate = DateTime.Now.AddDays(2);

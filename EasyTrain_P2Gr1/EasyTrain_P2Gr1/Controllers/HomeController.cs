@@ -3,6 +3,7 @@ using EasyTrain_P2Gr1.Models.DAL;
 using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using EasyTrain_P2Gr1.Models.Services;
 using EasyTrain_P2Gr1.Models.Services.Interfaces;
+using EasyTrain_P2Gr1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -31,8 +32,9 @@ namespace EasyTrain_P2Gr1.Controllers
             List<CoursProgramme> listeCoursProgrammes;
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                listeCoursProgrammes = service.GetCoursProgrammes();
+                listeCoursProgrammes = service.GetCoursProgrammesAVenir();
             }
+            CalendrierViewModel cvm = new CalendrierViewModel(listeCoursProgrammes, 90);
             return View(listeCoursProgrammes);
         }
 
