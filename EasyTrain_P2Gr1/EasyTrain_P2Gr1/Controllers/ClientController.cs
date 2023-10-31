@@ -47,7 +47,7 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreerClient(Client client)
+        public IActionResult CreerClient(Client client) 
         {
             if (!ModelState.IsValid)
             {
