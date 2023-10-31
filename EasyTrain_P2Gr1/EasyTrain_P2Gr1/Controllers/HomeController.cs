@@ -2,6 +2,7 @@
 using EasyTrain_P2Gr1.Models.DAL;
 using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using EasyTrain_P2Gr1.Models.Services;
+using EasyTrain_P2Gr1.Models.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,15 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult Dev()
         {
             return View("DevIndex");
+        }
+        public IActionResult CalendrierUtilisateur()
+        {
+            List<CoursProgramme> listeCoursProgrammes;
+            using (IDalCoursProgramme service = new CoursProgrammeService())
+            {
+                listeCoursProgrammes = service.GetCoursProgrammes();
+            }
+            return View(listeCoursProgrammes);
         }
 
         [HttpGet]
