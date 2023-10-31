@@ -18,10 +18,10 @@ namespace EasyTrain_P2Gr1.Models.Services
         {
             return this._bddContext.Salles.Include(c => c.Equipements).FirstOrDefault(s => s.Id == id);
         }
+
         public Salle GetSalle(string strId)
         {
-            int id;
-            if (int.TryParse(strId, out id))
+            if (int.TryParse(strId, out int id))
             {
                 return GetSalle(id);
             }
@@ -30,13 +30,7 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public int CreateSalle(Salle salle)
         {
-            foreach (Equipement equipement in salle.Equipements) //TODO: utiliser AttachRange
-            {
-                if (equipement.Id > 0)
-                {
-                    this._bddContext.Attach(equipement);
-                }
-            }
+            this._bddContext.AttachRange(salle.Equipements);
             this._bddContext.Salles.Add(salle);
             this._bddContext.SaveChanges();
             return salle.Id;
@@ -49,7 +43,7 @@ namespace EasyTrain_P2Gr1.Models.Services
             salleDb.Nom = salle.Nom;
             salleDb.Type = salle.Type;
             salleDb.Equipements.Clear();
-            foreach(Equipement equipement in salle.Equipements)
+            foreach (Equipement equipement in salle.Equipements)
             {
                 salleDb.Equipements.Add(equipement);
             }
@@ -58,10 +52,10 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public void DeleteSalle(int id)
         {
-            Salle oldSalle = this._bddContext.Salles.Include(s => s.Equipements).FirstOrDefault(s => s.Id == id);
-            if (oldSalle != null)
+            Salle salle = this._bddContext.Salles.Include(s => s.Equipements).FirstOrDefault(s => s.Id == id);
+            if (salle != null)
             {
-                _bddContext.Remove(oldSalle);
+                _bddContext.Remove(salle);
                 _bddContext.SaveChanges();
             }
         }

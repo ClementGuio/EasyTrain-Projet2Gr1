@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using EasyTrain_P2Gr1.ViewModels;
 using System.Linq;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -25,9 +26,7 @@ namespace EasyTrain_P2Gr1.Controllers
             return View("ListeCoursProgramme", listeCoursProgramme);
         }
 
-
-
-
+        [HttpGet]
         public IActionResult AfficherCoursProgramme(int id)
         {
             CoursProgramme coursProgramme;
@@ -44,7 +43,7 @@ namespace EasyTrain_P2Gr1.Controllers
             return View("Error");
         }
 
-
+        [Authorize(Roles = "Coach")]
         [HttpGet]
         public IActionResult CreerCoursProgramme()
         {
@@ -57,10 +56,7 @@ namespace EasyTrain_P2Gr1.Controllers
             return View(model);
         }
 
-
-
-
-
+        [Authorize(Roles = "Coach")]
         [HttpPost]
         public IActionResult CreerCoursProgramme(FormulaireCoursProgrammeViewModel model)
         {
@@ -87,40 +83,40 @@ namespace EasyTrain_P2Gr1.Controllers
             return RedirectToAction("index");
         }
 
+        //TODO : on peut pas modifier de CoursProgramme
+        //[HttpGet]
+        //public IActionResult ModifierCoursProgramme(int id)
+        //{
 
-        [HttpGet]
-        public IActionResult ModifierCoursProgramme(int id)
-        {
+        //    if (id != 0)
+        //    {
+        //        CoursProgramme coursProgramme;
+        //        using (IDalCoursProgramme service = new CoursProgrammeService())
+        //        {
+        //            coursProgramme = service.GetCoursProgramme(id);
 
-            if (id != 0)
-            {
-                CoursProgramme coursProgramme;
-                using (IDalCoursProgramme service = new CoursProgrammeService())
-                {
-                    coursProgramme = service.GetCoursProgramme(id);
+        //        }
+        //        if (coursProgramme != null)
+        //        {
+        //            return View(coursProgramme);
+        //        }
 
-                }
-                if (coursProgramme != null)
-                {
-                    return View(coursProgramme);
-                }
-
-            }
-            return View("Error");
-        }
-
-
-        [HttpPost]
-        public IActionResult ModifierCoursProgramme(CoursProgramme coursProgramme)
-        {
-            using (IDalCoursProgramme service = new CoursProgrammeService())
-            {
-                service.UpdateCoursProgramme(coursProgramme);
-            }
-            return View();
-        }
+        //    }
+        //    return View("Error");
+        //}
 
 
+        //[HttpPost]
+        //public IActionResult ModifierCoursProgramme(CoursProgramme coursProgramme)
+        //{
+        //    using (IDalCoursProgramme service = new CoursProgrammeService())
+        //    {
+        //        service.UpdateCoursProgramme(coursProgramme);
+        //    }
+        //    return View();
+        //}
+
+        [Authorize(Roles = "Coach")]
         [HttpGet]
         public IActionResult SupprimerCoursProgramme(int id)
         {
@@ -139,19 +135,25 @@ namespace EasyTrain_P2Gr1.Controllers
             return View("Error");
         }
 
-
+        //TODO : Si un coach ou un gestionnaire supprime un CoursProgramme, on rembourse les clients        
+        [Authorize(Roles = "Coach,Gestionnaire")] 
         [HttpPost]
         public IActionResult SupprimerCoursProgramme(CoursProgramme coursProgramme)
         {
+            if (HttpContext.User.IsInRole("Coach"))//AIDE : On teste les roles des utilisateurs
+            {
+
+            }
+            if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+
+            }
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
                 service.DeleteCoursProgramme(coursProgramme.Id);
             }
             HttpContext.SignOutAsync();
             return Redirect("/");
-
         }
-
-
     }
 }

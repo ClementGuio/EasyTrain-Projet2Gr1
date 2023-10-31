@@ -21,7 +21,8 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public int CreateReservation(Reservation reservation)
         {
-
+            this._bddContext.Attach(reservation.Client);
+            this._bddContext.Attach(reservation.CoursProgramme);
             this._bddContext.Reservations.Add(reservation);
             this._bddContext.SaveChanges();
             return reservation.Id;

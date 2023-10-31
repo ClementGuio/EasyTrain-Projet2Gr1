@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "_LayoutVisiteur";
+    List<String> message = new List<String> { " \\o/ ","Youpi !!", "Un controller de vues partielles !!!!" };
 }
 
     <main>
@@ -28,4 +29,6 @@
                 </li>
             </ul>    
         </div>
+        <br />
+        @Html.Partial("TestPartialView",message)
     </main>

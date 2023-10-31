@@ -14,13 +14,12 @@ namespace EasyTrain_P2Gr1.Controllers
 {
     public class AbonnementsController : Controller
     {
-        public object ListeAbennements { get; private set; }
 
         [HttpGet]
         public IActionResult ListeAbonnements()
         {
             List<Abonnement> listeAbonnements;
-            using (IDalAbonnement service = new AbonnementsService())
+            using (IDalAbonnement service = new AbonnementService())
             {
                 listeAbonnements = service.GetAbonnements();
 
@@ -39,7 +38,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult CreerAbonnements(Abonnement abonnement)
         { 
-                using (IDalAbonnement service= new AbonnementsService())
+                using (IDalAbonnement service= new AbonnementService())
                 {
                 if (!service.AbonnementExiste(abonnement.Titre))
 
@@ -65,7 +64,7 @@ namespace EasyTrain_P2Gr1.Controllers
             if (id != 0)
             {
                 Abonnement abonnement;
-                using (IDalAbonnement service = new AbonnementsService())
+                using (IDalAbonnement service = new AbonnementService())
                 {
                     abonnement = service.GetAbonnement(id);
                 }
@@ -85,7 +84,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult ModifierAbonnement(Abonnement abonnement)
         {
-            using (IDalAbonnement service = new AbonnementsService())
+            using (IDalAbonnement service = new AbonnementService())
             {
                 Abonnement existingAbonnement = service.GetAbonnement(abonnement.Id);
 
@@ -97,7 +96,7 @@ namespace EasyTrain_P2Gr1.Controllers
                 else
                 {
                     existingAbonnement.Titre = abonnement.Titre;
-                    existingAbonnement.Prix = abonnement.Prix;
+                    existingAbonnement.Mensualite = abonnement.Mensualite;
                     // Mettez à jour d'autres propriétés si nécessaire
 
                     service.UpdateAbonnement(existingAbonnement);
@@ -110,7 +109,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult SupprimerAbonnement(int id)
         {
-            using (IDalAbonnement service = new AbonnementsService())
+            using (IDalAbonnement service = new AbonnementService())
             {
                 Abonnement abonnement = service.GetAbonnement(id);
 

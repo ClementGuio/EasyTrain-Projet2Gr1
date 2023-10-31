@@ -63,19 +63,19 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult ModifierCoach()
         {
             string id = HttpContext.User.Identity.Name;
-            
-                Coach coach;
-                using (IDalCoach service = new CoachService())
-                {
-                    coach = service.GetCoach(id);
 
-                }
-                if (coach != null)
-                {
-                    return View(coach);
-                }
+            Coach coach;
+            using (IDalCoach service = new CoachService())
+            {
+                coach = service.GetCoach(id);
 
-            
+            }
+            if (coach != null)
+            {
+                return View(coach);
+            }
+
+
             return View("Error");
         }
 
@@ -95,18 +95,16 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult SupprimerCoach()
         {
             string id = HttpContext.User.Identity.Name;
-            
-                Coach coach;
-                using (IDalCoach service = new CoachService())
-                {
-                    coach = service.GetCoach(id);
-                }
-                if (coach != null)
-                {
-                    return View(coach);
-                }
 
-            
+            Coach coach;
+            using (IDalCoach service = new CoachService())
+            {
+                coach = service.GetCoach(id);
+            }
+            if (coach != null)
+            {
+                return View(coach);
+            }
             return View("Error");
         }
 

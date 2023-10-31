@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Titre { get; set; }
-        public double Prix { get; set; }
+        public double Mensualite { get; set; }
     }
 }

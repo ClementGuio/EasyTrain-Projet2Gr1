@@ -28,6 +28,7 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public int CreateGestionnaire(Gestionnaire gestionnaire)
         {
+            gestionnaire.MotDePasse = UtilisateurService.EncodeMD5(gestionnaire.MotDePasse);
             this._bddContext.Gestionnaires.Add(gestionnaire);
             this._bddContext.SaveChanges();
             return gestionnaire.Id;

@@ -28,6 +28,7 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public int CreateCoach(Coach coach)
         {
+            coach.MotDePasse = UtilisateurService.EncodeMD5(coach.MotDePasse);
             this._bddContext.Coachs.Add(coach);
             this._bddContext.SaveChanges();
             return coach.Id;
@@ -40,7 +41,7 @@ namespace EasyTrain_P2Gr1.Models.Services
             this._bddContext.SaveChanges();
         }
 
-        public void DeleteCoach(int id)
+        public void DeleteCoach(int id) // TODO : supprimer ses CoursProgramme 
         {
             Coach nouveauCoach = this._bddContext.Coachs.Find(id);
             if (nouveauCoach != null)

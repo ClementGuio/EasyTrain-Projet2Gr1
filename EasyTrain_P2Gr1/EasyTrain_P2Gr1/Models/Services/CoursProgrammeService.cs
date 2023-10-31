@@ -44,7 +44,7 @@ namespace EasyTrain_P2Gr1.Models.Services
             _bddContext.SaveChanges();
         }
 
-        public void DeleteCoursProgramme(int id)
+        public void DeleteCoursProgramme(int id) // TODO : Supprimer les réservations
         {
             CoursProgramme nouveauCoursProgramme = this._bddContext.CoursProgrammes.Find(id);
             if (nouveauCoursProgramme != null)

@@ -22,8 +22,8 @@
             @Html.ValidationMessageFor(m => Model.Titre)
             <br />
             
-            @Html.TextBoxFor(m => Model.Prix, new { @class = "InputText", placeholder = Model.Prix, Value = Model.Prix })
-            @Html.ValidationMessageFor(m => Model.Prix)
+            @Html.TextBoxFor(m => Model.Mensualite, new { @class = "InputText", placeholder = Model.Mensualite, Value = Model.Mensualite })
+            @Html.ValidationMessageFor(m => Model.Mensualite)
             <input type="submit" value="Modifier" />
         </fieldset>
     }

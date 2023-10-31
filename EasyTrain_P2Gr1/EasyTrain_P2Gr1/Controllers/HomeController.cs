@@ -3,6 +3,7 @@ using EasyTrain_P2Gr1.Models.DAL;
 using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using EasyTrain_P2Gr1.Models.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,6 +24,13 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult Dev()
         {
             return View("DevIndex");
+        }
+
+        [HttpGet]
+        public IActionResult TestPartialView(List<String> id)
+        {
+            //List<String> message = new List<String> { "Youpi", "Controller de vues partielles" };
+            return View(id);
         }
 
         public IActionResult ListeClient() // Le nom de la méthode doit avoir le même nom que la vue
@@ -114,64 +122,8 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult Inscription()
         {
-            
+
             return View();
         }
-
-
-        /*
-                //TODO:-----------------------------------------------------------------Modification de Profil   POST non fonctionnelle
-                [HttpGet]
-                public IActionResult Profil(int id) // Vue de modification de profil GET
-                {
-                    Utilisateur utilisateur;
-                    using (BddContext ctx = new BddContext())
-                    {
-                       utilisateur = ctx.Utilisateurs.Find(id);
-
-                    }
-                    return View(utilisateur);
-
-                }
-
-                [HttpPost]
-                public IActionResult Profil(Utilisateur utilisateur) // Vue de modification de profil Post
-                {
-                    Client client;
-                    Gestionnaire gestionnaire;
-                    Coach coach;
-
-                    if (utilisateur is Client)
-                    {
-                     client = utilisateur as Client;
-
-                        using (IDalClient dal = new ClientService())
-                        {
-                            dal.UpdateClient(client.Id, client.Nom, client.Prenom, client.DateNaissance, client.AdresseMail,
-                                                   client.MotDePasse, client.DateCreationCompte, client.DateAbonnement);
-                        }
-                    }
-                    else if (utilisateur is Gestionnaire)
-                    {
-                        gestionnaire = utilisateur as Gestionnaire;
-                        using (IDalGestionnaire dal = new GestionnaireService())
-                        {
-                            dal.UpdateGestionnaire(gestionnaire.Id, gestionnaire.Nom, gestionnaire.Prenom, gestionnaire.DateNaissance, gestionnaire.AdresseMail,
-                                                   gestionnaire.MotDePasse, gestionnaire.DateCreationCompte);
-                        }
-                    }
-                    else if (utilisateur is Coach)
-                    {
-                        coach = utilisateur as Coach;
-                        using (IDalCoach dal = new CoachService())
-                        {
-                            dal.UpdateCoach(coach.Id, coach.Nom, coach.Prenom, coach.DateNaissance, coach.AdresseMail,
-                                                   coach.MotDePasse, coach.DateCreationCompte);
-                        }
-                    }
-                    return View(utilisateur);
-
-                }
-                */
     }
 }

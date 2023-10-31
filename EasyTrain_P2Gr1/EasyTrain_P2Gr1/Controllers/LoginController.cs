@@ -38,7 +38,7 @@ namespace EasyTrain_P2Gr1.Controllers
         {
             Console.WriteLine("OK");
 
-            //if (ModelState.IsValid) //TODO : Pourquoi la validation empêche la connexion ??
+            //if (ModelState.IsValid) // TODO: Devons nous vraiment faire la validation ici?
             //{
                 Console.WriteLine("model valid");
                 using (IDalUtilisateur service = new UtilisateurService())

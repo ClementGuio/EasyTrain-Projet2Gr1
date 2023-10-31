@@ -17,7 +17,7 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<Equipement> Equipements { get; set; }
         public DbSet<Cours> Cours { get; set; }
         public DbSet<CoursProgramme> CoursProgrammes { get; set; }
-        public DbSet<Abonnement> Abonnement { get; set; }
+        public DbSet<Abonnement> Abonnements { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Presence> Presences { get; set; }
 
@@ -32,10 +32,10 @@ namespace EasyTrain_P2Gr1.Models
             this.Database.EnsureDeleted();
             this.Database.EnsureCreated();
 
-            this.Abonnement.AddRange(new List<Abonnement>()
+            this.Abonnements.AddRange(new List<Abonnement>()
             {
-                new Abonnement(){Titre= "Mensuel", Prix = 20},
-                new Abonnement(){Titre= "Annuel", Prix = 200},
+                new Abonnement(){Titre= "Mensuel", Mensualite = 20},
+                new Abonnement(){Titre= "Annuel", Mensualite = 200},
             });
             this.SaveChanges();
             //Remplissage des tables
@@ -48,7 +48,7 @@ namespace EasyTrain_P2Gr1.Models
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Prune"),
-                Abonnement= Abonnement.First(a => a.Titre == "Mensuel"),
+                Abonnement= Abonnements.First(a => a.Titre == "Mensuel"),
                 DateAbonnement = new DateTime(2023, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             },
@@ -60,7 +60,7 @@ namespace EasyTrain_P2Gr1.Models
                 AdresseMail = "dupont.pierre@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Datte"),
                 DateAbonnement = new DateTime(2022, 3, 15),
-                Abonnement= Abonnement.First(a => a.Titre == "Annuel"),
+                Abonnement= Abonnements.First(a => a.Titre == "Annuel"),
                 DateCreationCompte = new DateTime(2022, 7, 27)
             } });
 
