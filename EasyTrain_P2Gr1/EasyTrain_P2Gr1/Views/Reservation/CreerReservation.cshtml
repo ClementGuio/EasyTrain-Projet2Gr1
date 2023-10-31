@@ -1,18 +1,32 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model EasyTrain_P2Gr1.ViewModels.FormulaireReservationViewModel;
+@model EasyTrain_P2Gr1.Models.Reservation
 @{
     Layout = "_LayoutClient";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(c => c.CoursProgrammeId)
-    @Html.TextBoxFor(c => c.CoursProgrammeId)
-
-
+<main>
+    @using (Html.BeginForm())
+    {
+        
+        <fieldset>
+            <legend>Effectuer une réservation: </legend>
+            @Html.LabelFor(m => Model.Id)
+            @Html.TextBoxFor(m => Model.Id)
     
-
-    <input type="submit" value="Valider">
-}
+            <br />
+            @Html.LabelFor(m => Model.CoursProgramme)
+            @Html.TextBoxFor(m => Model.CoursProgramme)
+        
+            <br />
+            @Html.LabelFor(m => Model.Client)
+            @Html.TextBoxFor(m => Model.Client)
+           
+            <br />
+           
+            <br />
+            <input type="submit" value="Valider la réservation" />
+        </fieldset>
+    }
+</main>
