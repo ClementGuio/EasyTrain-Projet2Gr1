@@ -1,50 +1,46 @@
-﻿@model List<EasyTrain_P2Gr1.Models.Presence>
+﻿@model List<EasyTrain_P2Gr1.Models.Presences>
 @{
-    Layout = "_LayoutClient";
+    Layout = "_LayoutCompte";
 }
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Liste des Cours programmés</title>
-    <link href="~/css/vincent.css" rel="stylesheet">
+    <title>Liste des presences</title>
 </head>
-
 <body>
 
-    <div class="container">
+    @if (TempData.ContainsKey("Message"))
+    {
+        <div>@TempData["Message"]</div>
+    }
 
-        @if (TempData.ContainsKey("Message"))
+    <a href="CreerPresences"> Ajouter </a>
+
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>heure arrivee</th>
+            <th>heure départ</th>
+            <th>Date</th>
+            <th>id client</th>
+            <th>Action</th>
+        </tr>
+        @foreach (EasyTrain_P2Gr1.Models.Presences presences in Model)
         {
-            <div>@TempData["Message"]</div>
-        }
-
-        <a href="creerpresences"> Ajouter </a>
-
-        <table border="1">
             <tr>
-                <th>Id</th>
-                <th>heure arrivee</th>
-                <th>heure départ</th>
-                <th>Date</th>
-                <th>id client</th>
-                <th>Action</th>
-            </tr>
-            @foreach (EasyTrain_P2Gr1.Models.Presence presences in Model)
-            {
-                <tr>
-                    <td>@presences.Id</td>
-                    <td>@presences.HeureArrivee</td>
-                    <td>@presences.HeureDepart</td>
-                    <td>@presences.Client.Id</td>
-                    <td>
-                        <a class=" btn btn-secondaire" href="supprimerpresence/@presences.Id"> suprimer </a>
-                    </td>
+                <td>@presences.Id</td>
+                <td>@presences.HeureArrivee</td>
+                <td>@presences.HeureDepart</td>
+                <td>@presences.Date</td>
+                <td>@presences.IdClient</td>
+                <td>
+                    <a class=" btn btn-secondaire" href="supprimerpresence/@presences.Id"> suprimer </a>
+                </td>
 
-                </tr>
-            }
-        </table>
-    </div>
+            </tr>
+        }
+    </table>
 </body>
 </html>
