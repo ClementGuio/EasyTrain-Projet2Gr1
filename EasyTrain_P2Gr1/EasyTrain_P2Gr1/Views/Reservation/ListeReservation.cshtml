@@ -13,8 +13,9 @@
     <table border="1">
         <tr>
             <th>Id</th>
-            <th> Cours programmé</th>
-            <th>Clients</th>
+            <th>Titre du cours</th>
+            <th>Date du cours</th>
+            <th>Client</th>
            
           
         </tr>
@@ -22,11 +23,9 @@
         {
             <tr>
                 <td>@reservation.Id</td>
-                <td>@reservation.CoursProgramme.Cours</td>
+                <td>@reservation.CoursProgramme.Cours.Titre</td>
                 <td>@reservation.CoursProgramme.DateDebut</td>
-                 <td>@reservation.Client.Id</td>
-                 
-              
+                <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
             </tr>
         }
     </table>

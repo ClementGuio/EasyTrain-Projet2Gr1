@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
+    //TODO : Créer viewmodel pour modifier (problème de validation)
     public class ClientController : Controller
     {
         [Authorize(Roles = "Client")]

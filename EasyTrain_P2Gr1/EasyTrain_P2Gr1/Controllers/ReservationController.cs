@@ -15,14 +15,19 @@ namespace EasyTrain_P2Gr1.Controllers
 {
     public class ReservationController : Controller
     {
+        [Authorize(Roles = "Gestionnaire, Client, Coach")]
         [HttpGet]
         public IActionResult ListeReservation() //TODO : ListeReservation pour le Client affiches SES reservations
         {
-            List<Reservation> listeReservation;
+            List<Reservation> listeReservation = new List<Reservation>();
 
             using (IDalReservation service = new ReservationService())
             {
-                listeReservation = service.GetReservations();
+                if (HttpContext.User.IsInRole("Client"))
+                {
+                    listeReservation = service.GetReservationsClient(HttpContext.User.Identity.Name);
+                }
+                //listeReservation = service.GetReservations();
             }
             return View(listeReservation);
         }
@@ -37,7 +42,7 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 coursProgrammes = service.GetCoursProgrammes();
             }
-            TestReservationViewModel rvm = new TestReservationViewModel
+            FormulaireReservationViewModel rvm = new FormulaireReservationViewModel
             {
                 CoursProgrammes = coursProgrammes
             };
@@ -47,7 +52,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpPost]
-        public IActionResult CreerReservation(TestReservationViewModel rvm)
+        public IActionResult CreerReservation(FormulaireReservationViewModel rvm)
         {
 
             CoursProgramme coursProgramme;

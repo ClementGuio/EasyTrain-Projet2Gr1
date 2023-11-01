@@ -9,6 +9,7 @@ using System;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
+    //TODO : Créer viewmodel pour modifier (problème de validation)
     public class GestionnaireController : Controller
     {
         [Authorize(Roles = "Gestionnaire")]

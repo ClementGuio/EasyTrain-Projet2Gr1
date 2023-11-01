@@ -19,6 +19,20 @@ namespace EasyTrain_P2Gr1.Models.Services
             return this._bddContext.Reservations.Include(c => c.CoursProgramme).Include(c => c.Client).ToList();
         }
 
+        public List<Reservation> GetReservationsClient(int idClient)
+        {
+            return GetReservations().Where(r => r.Client.Id == idClient).ToList();
+        }
+
+        public List<Reservation> GetReservationsClient(string strId)
+        {
+            if (int.TryParse(strId, out int id))
+            {
+                return GetReservationsClient(id);
+            }
+            return new List<Reservation>();
+        }
+
         public int CreateReservation(Reservation reservation)
         {
             this._bddContext.Attach(reservation.Client);
