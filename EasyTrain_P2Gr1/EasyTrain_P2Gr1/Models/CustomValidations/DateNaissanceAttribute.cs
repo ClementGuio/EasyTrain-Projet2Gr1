@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EasyTrain_P2Gr1.Models.CustomValidations
 {
-    //TODO : Faire pareil pour existence des mails
     public class DateNaissanceAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)

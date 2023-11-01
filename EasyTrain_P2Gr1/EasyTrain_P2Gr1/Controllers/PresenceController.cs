@@ -12,6 +12,7 @@ using System.Collections.Generic;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
+    //TODO : Afficher et liste ne fonctionnent pas
     public class PresenceController : Controller
     {
 

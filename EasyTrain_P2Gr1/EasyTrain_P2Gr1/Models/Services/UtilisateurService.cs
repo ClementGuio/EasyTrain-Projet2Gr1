@@ -20,5 +20,10 @@ namespace EasyTrain_P2Gr1.Models.Services
             string motDePasseSel = "Ag4@ug5@u13MfRRe" + motDePasse + "EasyTrainXPTDR";
             return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
         }
+
+        public bool MailExists(string mail)
+        {
+            return _bddContext.Utilisateurs.Any(u => u.AdresseMail == mail);
+        }
     }
 }

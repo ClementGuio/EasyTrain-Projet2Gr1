@@ -18,6 +18,8 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult Connexion()
         {
             //TODO : revoir le code
+            //TODO : Vérifier le champ deletedAt
+            //TODO : comprendre le bug de vincent (problème de validation)
             ClientViewModel utilisateurViewModel = new ClientViewModel { Authentifie = HttpContext.User.Identity.IsAuthenticated }; //On stocke le bool d'athentification
             if (utilisateurViewModel.Authentifie)// On vérifie si l'utilisateur est déjà authentifié
             {
@@ -38,7 +40,7 @@ namespace EasyTrain_P2Gr1.Controllers
         {
             Console.WriteLine("OK");
 
-            //if (ModelState.IsValid) // TODO: Devons nous vraiment faire la validation ici?
+            //if (ModelState.IsValid) 
             //{
                 Console.WriteLine("model valid");
                 using (IDalUtilisateur service = new UtilisateurService())

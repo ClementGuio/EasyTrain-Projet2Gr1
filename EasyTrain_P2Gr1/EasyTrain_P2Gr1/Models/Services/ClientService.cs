@@ -64,13 +64,5 @@ namespace EasyTrain_P2Gr1.Models.Services
                 UpdateClient(client);
             }
         }
-
-        /* Si le client existe identifier par son adresse mail */
-        public bool ClientExists(string adresseMail)
-        {
-            List<Client> clients = GetClients();
-            return clients.Any(c => c.AdresseMail == adresseMail);
-        }
-
     }
 }

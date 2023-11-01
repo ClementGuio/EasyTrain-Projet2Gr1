@@ -7,10 +7,12 @@ using System.Collections.Generic;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
+    //TODO : supprimer modifier, creer, supprimer
+    //TODO : ajouter AjouterEquipement(salleId)
     public class SalleController : Controller
     {
         [HttpGet]
-        public IActionResult AfficherSalle(int id)
+        public IActionResult AfficherSalle(int id) //TODO : ne fonctionne pas
         {
             Salle salle;
 

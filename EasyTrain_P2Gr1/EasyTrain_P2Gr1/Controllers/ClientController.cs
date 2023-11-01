@@ -23,7 +23,7 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             if (client != null)
             {
-                return View("AfficherProfilClient",client);
+                return View("AfficherProfilClient", client);
             }
             return View("Error");
         }
@@ -47,50 +47,42 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreerClient(Client client) 
+        public IActionResult CreerClient(Client client)
         {
             if (!ModelState.IsValid)
             {
                 return View(client);
             }
-            client.DateCreationCompte = client.Abonnement.DateAbonnement;
-            
+
+            //client.DateCreationCompte = client.Abonnement.DateAbonnement;
+
             using (IDalClient service = new ClientService())
             {
-               
-                if (service.ClientExists(client.AdresseMail)) //TODO : Créer annotation pour tester l'existence des mails
-                {
-                    ModelState.AddModelError("mail", "Ce client existe déjà.");
-                    return View();
-                }
-                else
-                {
-                    service.CreateClient(client);
-                    return View();
-                }
+                service.CreateClient(client);
             }
+            return View();
         }
-        
-        
+
+
 
         [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult ModifierClient()
         {
             string id = HttpContext.User.Identity.Name;
-            
-                Client client;
-                using (IDalClient service = new ClientService())
-                {
-                    client = service.GetClient(id);
 
-                }
-                if (client != null)
-                {
-                    return View(client);
-                }
+            Client client;
+            using (IDalClient service = new ClientService())
+            {
+                client = service.GetClient(id);
 
-            
+            }
+            if (client != null)
+            {
+                return View(client);
+            }
+
+
             return View("Error");
         }
 
@@ -114,18 +106,18 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult SupprimerClient()
         {
             string id = HttpContext.User.Identity.Name;
-            
-                Client client;
-                using (IDalClient service = new ClientService())
-                {
-                    client = service.GetClient(id);
-                }
-                if (client != null)
-                {
-                    return View(client);
-                }
 
-            
+            Client client;
+            using (IDalClient service = new ClientService())
+            {
+                client = service.GetClient(id);
+            }
+            if (client != null)
+            {
+                return View(client);
+            }
+
+
             return View("Error");
         }
 
@@ -133,7 +125,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult SupprimerClient(Client client) //TODO Remplacer par la version soft
         {
-            
+
             using (IDalClient service = new ClientService())
             {
                 service.DeleteClient(client.Id);

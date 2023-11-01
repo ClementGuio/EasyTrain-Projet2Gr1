@@ -25,6 +25,7 @@ namespace EasyTrain_P2Gr1.Models
 
         [Required(ErrorMessage = "L'adresse mail doit être renseignée.")]
         [EmailAddress(ErrorMessage = "Le format de votre adresse mail n'est pas valide.")]
+        [NouvelleAdresseMail(ErrorMessage = "Cette adresse mail est déjà utilisé")]
         public string AdresseMail { get; set; }
 
         [Required(ErrorMessage = "Le mot de passe doit être renseigné.")]

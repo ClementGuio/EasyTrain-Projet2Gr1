@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
+    //TODO: pas besoin de modifier et supprimer equipement
     public class EquipementController : Controller
     {
         public IActionResult Index()

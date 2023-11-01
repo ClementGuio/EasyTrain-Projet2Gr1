@@ -37,7 +37,7 @@
         @Html.ValidationMessageFor(c => c.MotDePasse)
         <br />
         //@Html.LabelFor(c => c.MotDePasse)
-        @Html.TextBoxFor(c => c.VerifMotDePasse, new { @class = "InputText", placeholder = "mdp verrification Mot de passe" })
+        @Html.TextBoxFor(c => c.VerifMotDePasse, new { @class = "InputText", placeholder = "Retapez votre mot de passe" })
         @Html.ValidationMessageFor(c => c.VerifMotDePasse)
         <input type="submit" value="Valider">
     }

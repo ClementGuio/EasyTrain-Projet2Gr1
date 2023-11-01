@@ -208,6 +208,9 @@ namespace EasyTrain_P2Gr1.Models
                 new CoursProgramme(){ DateDebut = DateTime.Now , DateFin = DateTime.Now.AddHours(1),
                     Cours = Cours.First(c => c.Titre == "Cyclisme"),
                     PlacesLibres = Cours.First(c => c.Titre == "Cyclisme").NbParticipants},
+                new CoursProgramme(){ DateDebut = DateTime.Now.AddDays(1) , DateFin = DateTime.Now.AddDays(1).AddHours(1),
+                    Cours = Cours.First(c => c.Titre == "Cyclisme"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Cyclisme").NbParticipants},
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 16, 30, 0), DateFin = new DateTime(2023, 11, 8, 17, 15, 0),
                     Cours = Cours.First(c => c.Titre == "Cyclisme"),
                     PlacesLibres = Cours.First(c => c.Titre == "Cyclisme").NbParticipants},
@@ -236,7 +239,8 @@ namespace EasyTrain_P2Gr1.Models
             {
 
                 new Reservation(){CoursProgramme=this.CoursProgrammes.Find(1), Client=this.Clients.Find(2)},
-                new Reservation(){CoursProgramme=this.CoursProgrammes.Find(2), Client=this.Clients.Find(2)}
+                new Reservation(){CoursProgramme=this.CoursProgrammes.Find(2), Client=this.Clients.Find(2)},
+
 
             });
            this.SaveChanges();

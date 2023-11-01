@@ -16,10 +16,9 @@ namespace EasyTrain_P2Gr1.Controllers
     public class ReservationController : Controller
     {
         [HttpGet]
-        public IActionResult ListeReservation()
+        public IActionResult ListeReservation() //TODO : ListeReservation pour le Client affiches SES reservations
         {
             List<Reservation> listeReservation;
-
 
             using (IDalReservation service = new ReservationService())
             {
@@ -54,7 +53,7 @@ namespace EasyTrain_P2Gr1.Controllers
             CoursProgramme coursProgramme;
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                coursProgramme = service.GetCoursProgramme(rvm.CoursProgrammeId);
+                coursProgramme = service.GetCoursProgramme(rvm.SelectCoursProgrammeId);
             }
             Client client;
             using (IDalClient service = new ClientService())
@@ -88,9 +87,8 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpGet]
-        public IActionResult SupprimerReservation()
+        public IActionResult SupprimerReservation(int id) //TODO : faire un viewmodel
         {
-            string id = HttpContext.User.Identity.Name;
 
             Reservation reservation;
             using (IDalReservation service = new ReservationService())
@@ -102,7 +100,6 @@ namespace EasyTrain_P2Gr1.Controllers
                 return View(reservation);
             }
 
-
             return View("Error");
         }
 
@@ -110,27 +107,23 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult SupprimerReservation(Reservation reservation)
         {
-
-            using (IDalReservation service = new ReservationService())
-            {
-                service.DeleteReservation(reservation.Id);
-            }
-
             DateTime firstDate = DateTime.Now;
-            DateTime secondDate = DateTime.Now.AddDays(2);
+            DateTime secondDate = reservation.CoursProgramme.DateDebut;
             TimeSpan diffOfDate = firstDate - secondDate;
-
             if (diffOfDate.Hours > 48) //TODO : Faire un fichier de constantes
             {
                 Console.WriteLine(" vous avez droit à un remboursement...");
+            }
+            using (IDalReservation service = new ReservationService())
+            {
+                service.DeleteReservation(reservation.Id);
             }
 
             return Redirect("/");
         }
 
 
-        //TODO : methode POST/GET SupprimerReservation
-        //TODO : Si un client supprime une réservation, on le rembourse (voir les conditions dans le cdc) 
+       
     }
 }
 
