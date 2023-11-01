@@ -1,59 +1,63 @@
-﻿
-
+﻿<html >
+<head >
+<meta charset="UTF-8" / >
+<title > Liste des coachs</title >
+<style >
 
 .mytable {
-    width: 70%;
-    height: 300px;
-  color:black;
-    border: 2px solid;
-
-}
-
-    .mytable thead tr {
-        background-color: #009879;
-        color: #ffffff;
-        text-align: left;
-        
-    }
-    .mytable tbody tr {
-      
-        border-bottom: 1px solid #dddddd;
-    }
-
-.mytable tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.mytable tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-
-
-
-
-
-.btnlisteCoach {
-    background-color: #009879;
-    color: black;
-}
-
-
-
-table, th, td {
-    border: 1px solid #000;
-    border-collapse: collapse; 
-}
-
-th, td {
-       
-        text-align: center; 
-        
-    }
-.nonDispo{
-    background-color:crimson;
-}
-
-.reservationTable {
-    border: 1px solid #000;
+    width: 800px;
     border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
+
+th,
+td {
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+}
+
+th {
+    text-align: left;
+}
+
+thead {
+    th
+
+{
+    background-color: #55608f;
+}
+
+tbody tr {
+    &:hover background-color: rgba(255,255,255,0.3);
+}
+
+
+
+td {
+    position: relative;
+    &:hover
+
+{
+    &:before
+
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgba(255,255,255,0.2);
+    z-index: -1;
+}
+
+
+</style >
+
+
+
+
+
+
+
