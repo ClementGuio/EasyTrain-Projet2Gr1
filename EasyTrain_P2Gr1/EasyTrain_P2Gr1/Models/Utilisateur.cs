@@ -21,19 +21,22 @@ namespace EasyTrain_P2Gr1.Models
 
         [Required(ErrorMessage = "La date de naissance doit être renseignée.")]
         [DateNaissance(ErrorMessage = "Vous devez être majeur pour pouvoir vous inscrire")]
+        [Display(Name ="Date de naissance")]
         public DateTime DateNaissance { get; set; }
 
         [Required(ErrorMessage = "L'adresse mail doit être renseignée.")]
         [EmailAddress(ErrorMessage = "Le format de votre adresse mail n'est pas valide.")]
         [NouvelleAdresseMail(ErrorMessage = "Cette adresse mail est déjà utilisé")]
+        [Display(Name ="Email")]
         public string AdresseMail { get; set; }
 
         [Required(ErrorMessage = "Le mot de passe doit être renseigné.")]
         [RegularExpression("^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).*$", ErrorMessage = "Le mot de passe doit avoir au moins 8 caractères et contenir 1 minuscule, 1 majuscule et 1 chiffre.")]
+        [Display(Name = "Mot de passe")]
         public string MotDePasse { get; set; }
 
         //[Required(ErrorMessage = "La vérification du mot de passe doit être renseignée.")]
-        [Compare("MotDePasse", ErrorMessage = "Les mots de passe ne correspondent pas.")] // Permet de comparrer les deux champs et retourne un d'erreur
+        [Compare("MotDePasse", ErrorMessage = "Les mots de passe ne correspondent pas.")]// Permet de comparer les deux champs et retourne un message d'erreur
         public string VerifMotDePasse { get; set; }
 
         public DateTime DateCreationCompte { get; set; }

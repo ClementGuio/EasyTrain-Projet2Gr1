@@ -13,45 +13,51 @@
     <link rel="stylesheet" href="/css/Sabrine.css">
 </head>
 <body>
-    <table class="mytable">
+
+    <div class="container">
+
+        <table>
+           
+
+            <thead>
+
+                <tr>
 
 
-      <thead>
+                    <th width="100">Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Date de naissance</th>
+                    <th>Adresse mail</th>
+                  
+                   
 
-            <tr>
+                </tr>
+            </thead>
 
-                <td>Id</td>
-                <td>Nom</td>
-                <td>Prenom</td>
-                <td>Date de naissance</td>
-                <td>Adresse mail</td>
-                <td>Mot de passe</td>
-                <td>Date d'embauche</td>
 
-            </tr>
-      </thead>
-       
-    
 
             @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
             {
-            <tbody>
-                <tr>
-                    <td>@coach.Id</td>
-                    <td>@coach.Nom</td>
-                    <td>@coach.Prenom</td>
-                    <td>@coach.DateNaissance</td>
-                    <td>@coach.AdresseMail</td>
-                    <td>@coach.MotDePasse</td>
-                    <td>@coach.DateCreationCompte.ToString("dd/MM/yyyy")</td>
-                </tr>
-            </tbody>
+                <tbody>
+                    <tr>
+                        <td> @coach.Id </td>
+                        <td>@coach.Nom</td>
+                        <td>@coach.Prenom</td>
+                        <td>@coach.DateNaissance</td>
+                        <td>@coach.AdresseMail</td>
+                   
+                        
+                    </tr>
+                </tbody>
             }
-     
-       
-    </table>
-    <button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button>
-    <button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
+
+        </table>
+        <br />
+        <button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button>
+        <button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
+    </div>
+
 
 
 </body>
