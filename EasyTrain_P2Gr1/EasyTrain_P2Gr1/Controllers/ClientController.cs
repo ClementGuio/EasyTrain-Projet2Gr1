@@ -12,6 +12,8 @@ namespace EasyTrain_P2Gr1.Controllers
     //TODO : Créer viewmodel pour modifier (problème de validation)
     public class ClientController : Controller
     {
+        public bool ReservEquipement { get; private set; }
+
         [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult Index()
@@ -58,21 +60,26 @@ namespace EasyTrain_P2Gr1.Controllers
             client.Abonnement = new Abonnement();
 
             client.DateCreationCompte = DateTime.Now;
+
             client.Abonnement.DateAbonnement = DateTime.Now;
-            bool isReservEquipement = Request.Form["ReservEquipement"] == "true";
-            bool isAccesPiscine = Request.Form["AccesPiscine"] == "true";
-
-            client.Abonnement.ReservEquipement = isReservEquipement;
-            client.Abonnement.AccesPiscine = isAccesPiscine;
-
-            client.DateCreationCompte = client.Abonnement.DateAbonnement;
 
             using (IDalClient service = new ClientService())
             {
+                
+                    client.Abonnement = new Abonnement
+                    {
 
-                service.CreateClient(client);
-                return RedirectToAction("Index"); // Rediriger vers la page d'accueil ou une autre page
-
+                        ReservEquipement = client.Abonnement.ReservEquipement,
+                        AccesPiscine = client.Abonnement.AccesPiscine,
+                        DateAbonnement = DateTime.Now,
+                       
+                    };
+                    bool isReservEquipement = Request.Form["ReservEquipement"] == "true";
+                    bool isAccesPiscine = Request.Form["AccesPiscine"] == "true";
+                    Console.WriteLine(ReservEquipement);
+                    service.CreateClient(client);
+                    return RedirectToAction("Index");
+                
 
             }
             return View();
