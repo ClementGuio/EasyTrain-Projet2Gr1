@@ -28,10 +28,7 @@ header {
     transition: top 1s;
 }
 
-.logo img {
-    max-width: 11em;
-    height: auto;
-}
+
 
 .dropbtn {
     background-color: white;

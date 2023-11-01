@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model EasyTrain_P2Gr1.ViewModels.FormulaireAbonnementsViewModel;
-@{  
+@{
     Layout = "_LayoutGestionnaire";
 }
 <main>
@@ -17,10 +17,7 @@
         //-----------Formulaire Abonnements
         <fieldset>
             <legend>Creer un Abonnements : </legend>
-            @Html.LabelFor(m => Model.Abonnement.Titre)
-            @Html.TextBoxFor(m => Model.Abonnement.Titre)
-            @Html.ValidationMessageFor(m => Model.Abonnement.Titre)
-            <br />
+
             @Html.LabelFor(m => Model.Abonnement.Mensualite)
             @Html.TextBoxFor(m => Model.Abonnement.Mensualite)
             @Html.ValidationMessageFor(m => Model.Abonnement.Mensualite)

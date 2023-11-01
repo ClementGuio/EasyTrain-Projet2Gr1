@@ -50,11 +50,5 @@ namespace EasyTrain_P2Gr1.Models.Services
                 _bddContext.SaveChanges();
             }
         }
-
-        public bool AbonnementExiste(string nomAbonnement)
-        {
-            List<Abonnement> abonnements = GetAbonnements();
-            return abonnements.Any(ab => ab.Titre == nomAbonnement);
-        }
     }
 }

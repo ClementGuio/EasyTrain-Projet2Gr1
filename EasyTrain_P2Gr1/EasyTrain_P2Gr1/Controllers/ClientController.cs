@@ -52,30 +52,37 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 return View(client);
             }
+            client.Abonnement = new Abonnement();
+
             client.DateCreationCompte = DateTime.Now;
             client.DateAbonnement = DateTime.Now;
+            bool isReservEquipement = Request.Form["ReservEquipement"] == "true";
+            bool isAccesPiscine = Request.Form["AccesPiscine"] == "true";
+
+            client.Abonnement.ReservEquipement = isReservEquipement;
+            client.Abonnement.AccesPiscine = isAccesPiscine;
+
+            client.DateCreationCompte = client.Abonnement.DateAbonnement;
+
             using (IDalClient service = new ClientService())
             {
-               
-                if (service.ClientExists(client.AdresseMail))
+                if (service.ClientExists(client.AdresseMail)) //TODO : Créer annotation pour tester l'existence des mails
                 {
-                    ModelState.AddModelError("mail", "Ce client existe déjà.");
-                    return View();
+                    ModelState.AddModelError("AdresseMail", "Ce client existe déjà.");
+                    return View(client);
                 }
                 else
                 {
                     service.CreateClient(client);
-                    return View();
+                    return RedirectToAction("Index"); // Rediriger vers la page d'accueil ou une autre page
                 }
             }
         }
-        
-        
 
         [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult ModifierClient()
-        {
+            {
             string id = HttpContext.User.Identity.Name;
             
                 Client client;

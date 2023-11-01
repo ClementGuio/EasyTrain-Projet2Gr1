@@ -17,11 +17,6 @@
         //-----------Formulaire Abonnements
         <fieldset>
             <legend>Modifier un Abonnements : </legend>
-    
-            @Html.TextBoxFor(m => Model.Titre, new { @class = "InputText", placeholder = Model.Titre, Value = Model.Titre })
-            @Html.ValidationMessageFor(m => Model.Titre)
-            <br />
-            
             @Html.TextBoxFor(m => Model.Mensualite, new { @class = "InputText", placeholder = Model.Mensualite, Value = Model.Mensualite })
             @Html.ValidationMessageFor(m => Model.Mensualite)
             <input type="submit" value="Modifier" />

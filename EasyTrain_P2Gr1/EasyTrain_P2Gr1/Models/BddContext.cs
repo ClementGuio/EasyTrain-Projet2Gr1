@@ -35,8 +35,8 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Abonnements.AddRange(new List<Abonnement>()
             {
-                new Abonnement(){Titre= "Mensuel", Mensualite = 20},
-                new Abonnement(){Titre= "Annuel", Mensualite = 200},
+                new Abonnement(){ Mensualite = 20},
+                new Abonnement(){ Mensualite = 200},
             });
             this.SaveChanges();
             //Remplissage des tables
@@ -49,8 +49,8 @@ namespace EasyTrain_P2Gr1.Models
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Prune"),
-                Abonnement= Abonnements.First(a => a.Titre == "Mensuel"),
-                DateAbonnement = new DateTime(2023, 3, 15),
+                /*Abonnement= Abonnements.First(a => a.Titre == "Mensuel"),*/
+                //DateAbonnement = new DateTime(2023, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             },
             new Client
@@ -60,8 +60,8 @@ namespace EasyTrain_P2Gr1.Models
                 DateNaissance = new DateTime(1975, 12, 12),
                 AdresseMail = "dupont.pierre@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Datte"),
-                DateAbonnement = new DateTime(2022, 3, 15),
-                Abonnement= Abonnements.First(a => a.Titre == "Annuel"),
+                //DateAbonnement = new DateTime(2022, 3, 15),
+                //Abonnement= Abonnements.First(a => a.Titre == "Annuel"),
                 DateCreationCompte = new DateTime(2022, 7, 27)
             } });
 
@@ -77,7 +77,7 @@ namespace EasyTrain_P2Gr1.Models
                     Description = "Je reviens d'un treck de 12 ans dans l'Hymalaya."
                 },
                 new Coach() {
-                    Nom = "Amery",  
+                    Nom = "Amery",
                     Prenom = "Smet",
                     DateNaissance = new DateTime(1985,12,1),
                     AdresseMail = "a-smet@mail.fr",
@@ -178,7 +178,7 @@ namespace EasyTrain_P2Gr1.Models
             this.SaveChanges();
 
 
-           
+
 
             this.Salles.AddRange(new List<Salle>()
             {
@@ -205,6 +205,9 @@ namespace EasyTrain_P2Gr1.Models
 
             this.CoursProgrammes.AddRange(new List<CoursProgramme>()
             {
+                new CoursProgramme(){ DateDebut = DateTime.Now , DateFin = DateTime.Now.AddHours(1),
+                    Cours = Cours.First(c => c.Titre == "Cyclisme"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Cyclisme").NbParticipants},
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 16, 30, 0), DateFin = new DateTime(2023, 11, 8, 17, 15, 0),
                     Cours = Cours.First(c => c.Titre == "Cyclisme"),
                     PlacesLibres = Cours.First(c => c.Titre == "Cyclisme").NbParticipants},
@@ -236,9 +239,10 @@ namespace EasyTrain_P2Gr1.Models
                 new Reservation(){CoursProgramme=this.CoursProgrammes.Find(2), Client=this.Clients.Find(2)}
 
             });
-           this.SaveChanges();
+            this.SaveChanges();
 
         }
-        
+
     }
+
 }
