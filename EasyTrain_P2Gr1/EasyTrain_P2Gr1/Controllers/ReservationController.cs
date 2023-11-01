@@ -94,7 +94,6 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult SupprimerReservation(int id) //TODO : faire un viewmodel
         {
-
             Reservation reservation;
             using (IDalReservation service = new ReservationService())
             {
@@ -126,9 +125,6 @@ namespace EasyTrain_P2Gr1.Controllers
 
             return Redirect("/");
         }
-
-
-       
     }
 }
 
