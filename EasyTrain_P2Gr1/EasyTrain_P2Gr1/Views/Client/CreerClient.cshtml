@@ -10,79 +10,73 @@
 
 @if (TempData.ContainsKey("Message"))
 {
-    <div>@TempData["Message"]</div>
+    <div class="message">@TempData["Message"]</div>
 }
 
-<div class="container" id="registration-form">
-    <div id="step1">
-        @using (Html.BeginForm("CreerClient", "VotreController", FormMethod.Post, new { id = "client-form" }))
+<div class="container" id="registration-form" style="height: 100VH; padding-top:10em"> 
+
+    @using (Html.BeginForm("CreerClient", "VotreController", FormMethod.Post, new { id = "client-form" }))
             {
+            <div id="step1">
             <div>
                 @Html.LabelFor(c => c.Abonnement.ReservEquipement)
-        @Html.CheckBoxFor(c => c.Abonnement.ReservEquipement)
-            <br />
-        @Html.LabelFor(c => c.Abonnement.AccesPiscine)
-        @Html.CheckBoxFor(c => c.Abonnement.AccesPiscine)
-
+                @Html.CheckBoxFor(c => c.Abonnement.ReservEquipement, new { @id = "ReservEquipement" })
+                <br />
+                @Html.LabelFor(c => c.Abonnement.AccesPiscine)
+                @Html.CheckBoxFor(c => c.Abonnement.AccesPiscine, new { @id = "AccesPiscine" })
             </div>
-}
             <button id="next-step">Étape suivante</button>
         </div>
-
     <div id="step2" style="display: none;">
-        <!-- Étape 2 : Saisie des informations du client -->
-        @using (Html.BeginForm("CreerClient", "Client", FormMethod.Post, new { id = "client-form" }))
-        {
-            <!--@Html.LabelFor(c => c.Nom)-->
+
             @Html.TextBoxFor(c => c.Nom, new { @class = "InputText", placeholder = "Nom" })
             @Html.ValidationMessageFor(c => c.Nom)
 
-            <!-- // @Html.LabelFor(c => c.Prenom)-->
             @Html.TextBoxFor(c => c.Prenom, new { @class = "InputText", placeholder = "Prenom" })
             @Html.ValidationMessageFor(c => c.Prenom)
-            <br />
-            //@Html.LabelFor(c => c.DateNaissance)
+            <br />  
             @Html.TextBoxFor(c => c.DateNaissance, new { @class = "InputText", placeholder = "DateNaissance" })
             @Html.ValidationMessageFor(c => c.DateNaissance)
-            <br />
-            //@Html.LabelFor(c => c.AdresseMail)
+            <br />  
             @Html.TextBoxFor(c => c.AdresseMail, new { @class = "InputText", placeholder = "Mail" })
             @Html.ValidationMessageFor(c => c.AdresseMail)
-            <br />
-            //@Html.LabelFor(c => c.MotDePasse)
+            <br />  
             @Html.TextBoxFor(c => c.MotDePasse, new { @class = "InputText", placeholder = "Mot de passe" })
             @Html.ValidationMessageFor(c => c.MotDePasse)
-            <br />
-            //@Html.LabelFor(c => c.MotDePasse)
+            <br />        
             @Html.TextBoxFor(c => c.VerifMotDePasse, new { @class = "InputText", placeholder = "mdp verrification Mot de passe" })
             @Html.ValidationMessageFor(c => c.VerifMotDePasse)
             <input type="submit" value="Valider">
-        }
-    </div>
+
+    </div>}
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>$(document).ready(function () {
-        $("#next-step").click(function () {
-            $("#step1").slideUp("fast", function () {
-                $("#step2").slideDown("fast");
-            });
+    $("#next-step").click(function () {
+        $("#step1").slideUp("fast", function () {
+            $("#step2").slideDown("fast");
         });
-        $("#client-form").submit(function (e) {
-            e.preventDefault();
-            var formData = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                 url: "@Url.Action("CreerClient", "ClientController")",
-                data: formData,
-                success: function (data) {
-                    console.log("Le client a été créé avec succès.");
-                   // return Json(new { message = "Le client a été créé avec succès." });
+    });
 
-                },
-                error: function () {
-                    console.log("Une erreur s'est produite lors de la création du client.");
-                   // return BadRequest(new { message = "Une erreur est survenue lors de la création du client." });
-                }
-            });
+    $("#client-form").submit(function (e) {
+        e.preventDefault();
+        var formData = $(this).serializeArray();
+        console.log(formData);
+        
+        formData.push({ name: "Abonnement.ReservEquipement", value: $("#ReservEquipement").is(":checked") });
+        formData.push({ name: "Abonnement.AccesPiscine", value: $("#AccesPiscine").is(":checked") });
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("CreerClient", "Client")",
+            data: formData,
+            success: function (data) {
+                console.log("Le client a été créé avec succès.");
+
+            },
+            error: function () {
+                console.log("Une erreur s'est produite lors de la création du client.");
+            }
         });
-    });</script>
+    });
+});</script>

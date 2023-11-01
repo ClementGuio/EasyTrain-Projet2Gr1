@@ -33,6 +33,14 @@ namespace EasyTrain_P2Gr1.Models.Services
         public int CreateClient(Client client)
         {
             client.MotDePasse = UtilisateurService.EncodeMD5(client.MotDePasse);
+
+            Abonnement abonnement = new Abonnement
+            {
+                ReservEquipement = client.Abonnement.ReservEquipement,
+                AccesPiscine = client.Abonnement.AccesPiscine,
+            };
+
+            client.Abonnement = abonnement;
             this._bddContext.Clients.Add(client);
             this._bddContext.SaveChanges();
             return client.Id;
