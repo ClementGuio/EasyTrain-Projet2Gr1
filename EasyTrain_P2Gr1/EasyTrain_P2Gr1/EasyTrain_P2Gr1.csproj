@@ -18,7 +18,7 @@
     <Folder Include="Views\Calendrier\" />
     <Folder Include="Views\Utilisateur\" />
     <Folder Include="Views\Cours\" />
-    <Folder Include="Views\Presences\" />
+    <Folder Include="Views\Presence\" />
   </ItemGroup>
 
   <ItemGroup>
