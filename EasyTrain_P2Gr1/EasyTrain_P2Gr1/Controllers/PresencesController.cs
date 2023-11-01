@@ -28,21 +28,20 @@ namespace EasyTrain_P2Gr1.Controllers
             return View(listePresences);
         }
 
+       
 
         [HttpGet]
-        public IActionResult CreerPresences()
+        public IActionResult CreerPresences(Presences presences)
         {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreerPresences(Presences Presences)
-        { 
-                using (IDalPresences service= new PresencesService())
-              
-                    service.CreatePresences(Presences);
-                    TempData["Message"] = "nouvel Presences crée";
-                    return RedirectToAction("ListePresencess");        
+            if (ModelState.IsValid)
+            {
+                using (IDalPresences service = new PresencesService())
+                {
+                    service.CreatePresences(presences);
+                    TempData["Message"] = "Nouvelle Présence créée";
+                }
+            }
+            return RedirectToAction("ListePresences");
         }
 
         [HttpPost]
