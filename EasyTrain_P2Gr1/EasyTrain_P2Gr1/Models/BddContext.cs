@@ -245,6 +245,7 @@ namespace EasyTrain_P2Gr1.Models
             });
             this.SaveChanges();
 
+
             this.Presences.AddRange(new List<Presence>
             {
                 new Presence
@@ -264,7 +265,9 @@ namespace EasyTrain_P2Gr1.Models
             });
             this.SaveChanges();
 
+
         }
-        
+
     }
+
 }

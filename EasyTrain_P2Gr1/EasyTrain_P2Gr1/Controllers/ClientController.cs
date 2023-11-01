@@ -55,15 +55,28 @@ namespace EasyTrain_P2Gr1.Controllers
                 return View(client);
             }
 
-            //client.DateCreationCompte = client.Abonnement.DateAbonnement;
+            client.Abonnement = new Abonnement();
+
+            client.DateCreationCompte = DateTime.Now;
+            client.Abonnement.DateAbonnement = DateTime.Now;
+            bool isReservEquipement = Request.Form["ReservEquipement"] == "true";
+            bool isAccesPiscine = Request.Form["AccesPiscine"] == "true";
+
+            client.Abonnement.ReservEquipement = isReservEquipement;
+            client.Abonnement.AccesPiscine = isAccesPiscine;
+
+            client.DateCreationCompte = client.Abonnement.DateAbonnement;
 
             using (IDalClient service = new ClientService())
             {
+
                 service.CreateClient(client);
+                return RedirectToAction("Index"); // Rediriger vers la page d'accueil ou une autre page
+
+
             }
             return View();
         }
-
 
 
         [Authorize(Roles = "Client")]
