@@ -21,6 +21,8 @@ namespace EasyTrain_P2Gr1.Models.Services
             return GetCoursProgrammes().Where(c => c.DateDebut.CompareTo(DateTime.Now) > 0).ToList();
         }
 
+
+
         public CoursProgramme GetCoursProgramme(int id)
         {
             return this._bddContext.CoursProgrammes.Include(c => c.Cours).FirstOrDefault(c => c.Id == id);

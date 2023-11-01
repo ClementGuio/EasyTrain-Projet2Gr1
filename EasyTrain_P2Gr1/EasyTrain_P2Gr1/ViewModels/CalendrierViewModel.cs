@@ -35,7 +35,7 @@ namespace EasyTrain_P2Gr1.ViewModels
                     //System.Threading.Thread.Sleep(1000);
                     Console.WriteLine("=> "+dateCourante);
                     List<CoursProgramme> coursDate = new List<CoursProgramme>();
-                    while (enumerator.Current != null && enumerator.Current.DateDebut.Day == dateCourante.Day)
+                    while (enumerator.Current != null && enumerator.Current.DateDebut.Day == dateCourante.Day) //Tan que 
                     {
                         Console.WriteLine("Add "+enumerator.Current.DateDebut);
                         coursDate.Add(enumerator.Current);

@@ -77,7 +77,7 @@ namespace EasyTrain_P2Gr1.Models
                     Description = "Je reviens d'un treck de 12 ans dans l'Hymalaya."
                 },
                 new Coach() {
-                    Nom = "Amery",  
+                    Nom = "Amery",
                     Prenom = "Smet",
                     DateNaissance = new DateTime(1985,12,1),
                     AdresseMail = "a-smet@mail.fr",
@@ -178,7 +178,7 @@ namespace EasyTrain_P2Gr1.Models
             this.SaveChanges();
 
 
-           
+
 
             this.Salles.AddRange(new List<Salle>()
             {
@@ -243,7 +243,26 @@ namespace EasyTrain_P2Gr1.Models
 
 
             });
-           this.SaveChanges();
+            this.SaveChanges();
+
+            this.Presences.AddRange(new List<Presence>
+            {
+                new Presence
+                {
+                    HeureArrivee = new DateTime(2023, 10, 9, 10, 30, 0), HeureDepart = new DateTime(2023, 10, 9, 11, 30, 0), Client = this.Clients.Find(1)
+                },
+                new Presence
+                {
+                    HeureArrivee = DateTime.Now, Client = this.Clients.Find(1)
+                },
+                new Presence
+                {
+                    HeureArrivee = DateTime.Now,
+                    HeureDepart = DateTime.Now.AddHours(1),
+                    Client = this.Clients.Find(2)
+                }
+            });
+            this.SaveChanges();
 
         }
         
