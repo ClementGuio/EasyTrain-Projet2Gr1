@@ -22,7 +22,7 @@
                                 <td>@Html.ValidationMessageFor(m => m.Prenom) </td>
                         </tr>
                            
-                            <td>@Html.ValidationMessageFor(m => m.AdresseMail) </td>
+                           
                          <tr>
                                 <td>@Html.LabelFor(m => m.Nom) </td>
                                 <td> @Html.TextBoxFor(m => m.Nom)  </td>
@@ -42,9 +42,12 @@
                                 <td>@Html.LabelFor(m => m.VerifMotDePasse) </td>
                                 <td> @Html.TextBoxFor(m => m.VerifMotDePasse) </td>
                                 <td> @Html.ValidationMessageFor(m => m.VerifMotDePasse) </td>
+                                <td>@Html.ValidationMessageFor(m => m.AdresseMail) </td>
                             </tr>
-                            <td>@Html.HiddenFor(m => m.AdresseMail) </td>
+                            
                     </table></div>
+                    <td>@Html.ValidationMessageFor(m => m.AdresseMail)</td>
+                    <td>@Html.HiddenFor(m => m.AdresseMail) </td>
                        <div class="btnCoachModifier">
                         <input type="submit" value="Modifier" />
                        </div>
