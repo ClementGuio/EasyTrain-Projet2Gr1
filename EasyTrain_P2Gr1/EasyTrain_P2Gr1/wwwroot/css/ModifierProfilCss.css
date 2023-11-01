@@ -1,0 +1,28 @@
+﻿
+.fieldsetModifier {
+    border: 2px solid #999;
+    border-radius: 5px;
+    padding: 40px;
+    position: relative;
+}
+
+
+legend {
+    font-weight: bold; 
+    color: goldenrod; 
+}
+td {
+   
+    padding: 10px;
+}
+input[type="submit"] {
+    position: absolute; /* Position absolue par rapport au fieldset */
+    bottom: -10px; /* Positionner 10 pixels en bas du fieldset */
+    left: 50%; /* Centrer horizontalement par rapport au fieldset */
+    transform: translateX(-50%); 
+    width: 150px; 
+    height: 40px;
+}
+
+
+
