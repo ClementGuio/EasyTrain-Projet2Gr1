@@ -13,6 +13,7 @@ namespace EasyTrain_P2Gr1.Models.Services
          return this._bddContext.CoursProgrammes
                 .Include(c => c.Cours)
                 .Include(c => c.Cours.Coach)
+                .Include(c => c.Cours.Salle)
                 .OrderBy(c => c.DateDebut).ToList(); 
         }
 
