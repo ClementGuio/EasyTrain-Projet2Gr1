@@ -26,9 +26,19 @@ namespace EasyTrain_P2Gr1.Controllers
                 if (HttpContext.User.IsInRole("Client"))
                 {
                     listeReservation = service.GetReservationsClient(HttpContext.User.Identity.Name);
+                }else if (HttpContext.User.IsInRole("Coach"))
+                {
+                    //TODO : Récupérer les réservations au cours programme du coach
+                }else if (HttpContext.User.IsInRole("Gestionnaire")){
+                    listeReservation = service.GetReservations();
                 }
-                //listeReservation = service.GetReservations();
             }
+            List<AffichageReservationViewModel> affichageReservations = new List<AffichageReservationViewModel>();
+            foreach(Reservation reservation in listeReservation)
+            {
+                //TODO : récupérer les cours
+            }
+            
             return View(listeReservation);
         }
 

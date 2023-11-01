@@ -83,38 +83,7 @@ namespace EasyTrain_P2Gr1.Controllers
             return RedirectToAction("index");
         }
 
-        //TODO : on peut pas modifier de CoursProgramme
-        //[HttpGet]
-        //public IActionResult ModifierCoursProgramme(int id)
-        //{
-
-        //    if (id != 0)
-        //    {
-        //        CoursProgramme coursProgramme;
-        //        using (IDalCoursProgramme service = new CoursProgrammeService())
-        //        {
-        //            coursProgramme = service.GetCoursProgramme(id);
-
-        //        }
-        //        if (coursProgramme != null)
-        //        {
-        //            return View(coursProgramme);
-        //        }
-
-        //    }
-        //    return View("Error");
-        //}
-
-
-        //[HttpPost]
-        //public IActionResult ModifierCoursProgramme(CoursProgramme coursProgramme)
-        //{
-        //    using (IDalCoursProgramme service = new CoursProgrammeService())
-        //    {
-        //        service.UpdateCoursProgramme(coursProgramme);
-        //    }
-        //    return View();
-        //}
+       
 
         [Authorize(Roles = "Coach")]
         [HttpGet]
