@@ -15,6 +15,21 @@ namespace EasyTrain_P2Gr1.Controllers
     {
         public IActionResult Index()
         {
+            if (HttpContext.User.Identity.Name != null)
+            {
+                if (HttpContext.User.IsInRole("Client"))
+                {
+                    ViewData["role"] = "Client";
+                }
+                else if (HttpContext.User.IsInRole("Coach"))
+                {
+                    ViewData["role"] = "Coach";
+                }
+                else if (HttpContext.User.IsInRole("Gestionnaire"))
+                {
+                    ViewData["role"] = "Gestionnaire";
+                }
+            }
             return View();
         }
 

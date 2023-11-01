@@ -5,30 +5,38 @@
 @{
 }
 
-
-
-
-<div style="border:solid; width:30%;">
-
-    @Html.LabelFor(m => Model.Prenom)
-    @Html.TextBoxFor(m => Model.Prenom)
-    @Html.ValidationMessageFor(m => Model.Prenom)
-    <br />
-    @Html.LabelFor(m => Model.Nom)
-    @Html.TextBoxFor(m => Model.Nom)
-    @Html.ValidationMessageFor(m => Model.Nom)
-    <br />
-    @Html.LabelFor(m => Model.DateNaissance)
-    @Html.TextBoxFor(m => Model.DateNaissance)
-    @Html.ValidationMessageFor(m => Model.Nom)
-    <br />
-    @Html.LabelFor(m => Model.AdresseMail)
-    @Html.TextBoxFor(m => Model.DateNaissance)
-    @Html.ValidationMessageFor(m => Model.AdresseMail)
-    <br />
-    @Html.LabelFor(m => Model.MotDePasse)
-    @Html.TextBoxFor(m => Model.MotDePasse)
-    @Html.ValidationMessageFor(m => Model.MotDePasse)
-    <br />
-
-</div>
+        <div class="tableModifier">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Prenom) </td>
+                    <td>@Html.TextBoxFor(m => m.Prenom, new { @class = "InputText"}) </td>
+                    <td>@Html.ValidationMessageFor(m => m.Prenom) </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Nom) </td>
+                    <td>@Html.TextBoxFor(m => m.Nom, new { @class = "InputText"})  </td>
+                    <td>@Html.ValidationMessageFor(m => m.Nom) </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.AdresseMail)</td>
+                    <td>@Html.TextBoxFor(m => m.AdresseMail, new { @class = "InputText"}) </td>
+                    <td>@Html.ValidationMessageFor(m => m.AdresseMail)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.DateNaissance) </td>
+                    <td><input type="date" class="InputText" value="@Model.DateNaissance" /></td>
+                    <td>@Html.ValidationMessageFor(m => m.DateNaissance) </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.MotDePasse) </td>
+                    <td>@Html.PasswordFor(m => m.MotDePasse, new { @class = "InputText"}) </td>
+                    <td>@Html.ValidationMessageFor(m => m.MotDePasse) </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.VerifMotDePasse) </td>
+                    <td>@Html.PasswordFor(m => m.VerifMotDePasse, new { @class = "InputText"}) </td>
+                    <td>@Html.ValidationMessageFor(m => m.VerifMotDePasse) </td>
+                </tr>
+            </table>
+        </div>
+        

@@ -14,20 +14,35 @@ namespace EasyTrain_P2Gr1.Models.Services
             return this._bddContext.Presences.Include(p => p.Client).ToList();
         }
 
+        public List<Presence> GetPresencesClient(int clientId)
+        {
+            return this._bddContext.Presences.Include(p => p.Client).Where(p => p.Client.Id == clientId).ToList();
+        }
+
         public Presence GetPresence(int id)
         {
             return _bddContext.Presences.Include(p => p.Client).FirstOrDefault(p => p.Id == id);
         }
 
-        public void CreatPresence(Presence presence)
+        public Presence GetPresence(string strId)
+        {
+            if (int.TryParse(strId, out int id))
+            {
+                return GetPresence(id);
+            }
+            return null;
+        }
+
+        public int CreatePresence(Presence presence)
         {
             _bddContext.Presences.Add(presence);
             _bddContext.SaveChanges();
+            return presence.Id;
         }
 
         public void UpdatePresence(Presence presence)
         {
-            _bddContext.Entry(presence).State = EntityState.Modified;
+            _bddContext.Presences.Update(presence);
             _bddContext.SaveChanges();
         }
 
@@ -39,26 +54,6 @@ namespace EasyTrain_P2Gr1.Models.Services
                 _bddContext.Presences.Remove(presence);
                 _bddContext.SaveChanges();
             }
-        }
-
-        public Presence GetPresences(string StrId)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        int IDalPresence.CreatPresence(Presence presences)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Presence> GetPresences(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void CreatePresences(Presence presences)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

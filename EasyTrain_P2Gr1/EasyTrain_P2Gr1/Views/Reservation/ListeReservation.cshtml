@@ -1,6 +1,6 @@
 ﻿@model List<EasyTrain_P2Gr1.Models.Reservation>
 @{
-    Layout = "_LayoutClient";
+    Layout = (string) ViewData["Layout"];
 }
 
 <!DOCTYPE html>
@@ -28,9 +28,9 @@
             {
                 <tr>
                     <td>@reservation.Id</td>
-               
+                    <td>@reservation.CoursProgramme.Cours.Titre</td>
                     <td>@reservation.CoursProgramme.DateDebut</td>
-                  
+                    <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
 
                 </tr>
             }

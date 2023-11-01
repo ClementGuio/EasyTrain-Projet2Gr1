@@ -3,58 +3,8 @@
     Layout = "_LayoutCoach";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="~/css/ModifierProfilCss.css">
-</head>
-<body>
-    <main>
-        @using (Html.BeginForm())
-        {
-            <div class="fieldsetModifier">
-                <fieldset>
-                    <legend><h2>Modifier le profil</h2></legend>
-                    <div class="tableModifier"><table>
-                        <tr>
-                                <td>@Html.LabelFor(m => m.Prenom) </td>
-                                <td>@Html.TextBoxFor(m => m.Prenom) </td>
-                                <td>@Html.ValidationMessageFor(m => m.Prenom) </td>
-                        </tr>
-                           
-                           
-                         <tr>
-                                <td>@Html.LabelFor(m => m.Nom) </td>
-                                <td> @Html.TextBoxFor(m => m.Nom)  </td>
-                                <td>@Html.ValidationMessageFor(m => m.Nom) </td>
-                         </tr>
-                         <tr>
-                                <td> @Html.LabelFor(m => m.DateNaissance) </td>
-                                <td> @Html.TextBoxFor(m => m.DateNaissance) </td>
-                                <td>@Html.ValidationMessageFor(m => m.DateNaissance) </td>
-                         </tr>
-                         <tr>
-                                <td>@Html.LabelFor(m => m.MotDePasse) </td>
-                                <td> @Html.TextBoxFor(m => m.MotDePasse) </td>
-                            <td> @Html.ValidationMessageFor(m => m.MotDePasse) </td>
-                         </tr>
-                            <tr>
-                                <td>@Html.LabelFor(m => m.VerifMotDePasse) </td>
-                                <td> @Html.TextBoxFor(m => m.VerifMotDePasse) </td>
-                                <td> @Html.ValidationMessageFor(m => m.VerifMotDePasse) </td>
-                                <td>@Html.ValidationMessageFor(m => m.AdresseMail) </td>
-                            </tr>
-                            
-                    </table></div>
-                    <td>@Html.ValidationMessageFor(m => m.AdresseMail)</td>
-                    <td>@Html.HiddenFor(m => m.AdresseMail) </td>
-                       <div class="btnCoachModifier">
-                        <input type="submit" value="Modifier" />
-                       </div>
-                   
-                </fieldset>
-            </div>
-        }
-    </main>
-</body>
-</html>
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_ModifierUtilisateur")
+}

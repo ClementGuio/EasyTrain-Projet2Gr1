@@ -44,7 +44,8 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult CreerCoach()
         {
-            return View();
+            Coach coach = new Coach { DateCreationCompte = DateTime.Now };
+            return View(coach);
         }
 
         [Authorize(Roles = "Gestionnaire")]

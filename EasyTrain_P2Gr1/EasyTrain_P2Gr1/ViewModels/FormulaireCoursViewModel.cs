@@ -24,6 +24,9 @@ namespace EasyTrain_P2Gr1.ViewModels
         [Required(ErrorMessage = "Un coach doit être sélectionné.")]
         public int CoachId { get; set; }
 
+        [Required(ErrorMessage = "Une durée doit être sélectionné.")]
+        public int DureeMinutes { get; set; }
+
         [Display(Name = "Coach")]
         public IEnumerable<Coach> Coachs{ get; set; }
 

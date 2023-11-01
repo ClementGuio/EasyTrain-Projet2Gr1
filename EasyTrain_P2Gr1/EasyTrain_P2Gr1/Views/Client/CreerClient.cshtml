@@ -29,25 +29,17 @@
 
     <div id="step2" style="display: none;">
 
-            @Html.TextBoxFor(c => c.Nom, new { @class = "InputText", placeholder = "Nom" })
-            @Html.ValidationMessageFor(c => c.Nom)
+            <div class="fieldsetModifier">
+                <fieldset>
+                    <legend><h2>Inscription</h2></legend>
 
-            @Html.TextBoxFor(c => c.Prenom, new { @class = "InputText", placeholder = "Prenom" })
-            @Html.ValidationMessageFor(c => c.Prenom)
+                    @Html.Partial("_CreerUtilisateur")
 
-            @Html.TextBoxFor(c => c.DateNaissance, new { @class = "InputText", placeholder = "DateNaissance" })
-            @Html.ValidationMessageFor(c => c.DateNaissance)
-            <br />  
-            @Html.TextBoxFor(c => c.AdresseMail, new { @class = "InputText", placeholder = "Mail" })
-            @Html.ValidationMessageFor(c => c.AdresseMail)
-            <br />  
-            @Html.TextBoxFor(c => c.MotDePasse, new { @class = "InputText", placeholder = "Mot de passe" })
-            @Html.ValidationMessageFor(c => c.MotDePasse)
-
-            <br />        
-            @Html.TextBoxFor(c => c.VerifMotDePasse, new { @class = "InputText", placeholder = "mdp verrification Mot de passe" })
-            @Html.ValidationMessageFor(c => c.VerifMotDePasse)
-            <input type="submit" value="Valider">
+                    <div class="btnCoachModifier">
+                        <input type="submit" value="Confirmer" />
+                    </div>
+                </fieldset>
+            </div>
 
     </div>}
 </div>

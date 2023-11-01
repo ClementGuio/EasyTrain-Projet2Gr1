@@ -12,7 +12,6 @@ namespace EasyTrain_P2Gr1.Controllers
     //TODO : Créer viewmodel pour modifier (problème de validation)
     public class ClientController : Controller
     {
-        public bool ReservEquipement { get; private set; }
 
         [Authorize(Roles = "Client")]
         [HttpGet]
@@ -76,7 +75,6 @@ namespace EasyTrain_P2Gr1.Controllers
                     };
                     bool isReservEquipement = Request.Form["ReservEquipement"] == "true";
                     bool isAccesPiscine = Request.Form["AccesPiscine"] == "true";
-                    Console.WriteLine(ReservEquipement);
                     service.CreateClient(client);
                     return RedirectToAction("Index");
                 

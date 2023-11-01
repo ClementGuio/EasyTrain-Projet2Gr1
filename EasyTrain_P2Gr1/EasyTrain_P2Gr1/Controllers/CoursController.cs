@@ -52,8 +52,6 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 return View(model);
             }
-
-            //Console.WriteLine($"SalleId : {model.SalleId} ; CoachId : {model.CoachId}");
             Salle salle;
             using (IDalSalle service = new SalleService())
             {
@@ -64,12 +62,12 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 coach = service.GetCoach(model.CoachId);
             }
-            //Console.WriteLine($"Salle : {salle.Id}, {salle.Nom}");
             Cours cours = new Cours
             {
                 Titre = model.Titre,
                 NbParticipants = model.NbParticipants,
                 Prix = model.Prix,
+                DureeMinutes = model.DureeMinutes,
                 Salle = salle,
                 Coach = coach
             };
@@ -80,8 +78,28 @@ namespace EasyTrain_P2Gr1.Controllers
             return RedirectToAction("Index");
         }
 
-        
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult SupprimerCours(int id)
+        {
+            Cours cours;
+            using (IDalCours service = new CoursService())
+            {
+                cours = service.GetCours(id);
+            }
+            return View(cours);
+        }
 
-        //TODO : Il manque les methodes GET/POST SupprimerCours
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult SupprimerCours(Cours cours)
+        {
+            cours.Supprime = true;
+            using (IDalCours service = new CoursService())
+            {
+                service.UpdateCours(cours);
+            }
+            return View("Index");
+        }
     }
 }

@@ -13,6 +13,9 @@ namespace EasyTrain_P2Gr1.Models
         [Required(ErrorMessage = "Le nombre de participants doit être renseigné.")]
         public int NbParticipants { get; set; }
 
+        [Required(ErrorMessage = "La durée du cours doit être renseignée")]
+        public int DureeMinutes { get; set; }
+
         [Required(ErrorMessage = "Le prix doit être renseigné.")]
         public double Prix { get; set; }
 
@@ -22,5 +25,7 @@ namespace EasyTrain_P2Gr1.Models
         [Required(ErrorMessage = "Une salle doit être sélectionnée.")]
         public virtual Salle Salle { get; set; }
 
+        
+        public bool Supprime { get; set; }
     }
 }

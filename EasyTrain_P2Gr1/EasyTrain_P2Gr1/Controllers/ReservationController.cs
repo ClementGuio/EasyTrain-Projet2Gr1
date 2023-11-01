@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using System;
 using EasyTrain_P2Gr1.ViewModels;
-
+using EasyTrain_P2Gr1.Controllers.Outils;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -17,7 +17,7 @@ namespace EasyTrain_P2Gr1.Controllers
     {
         [Authorize(Roles = "Gestionnaire, Client, Coach")]
         [HttpGet]
-        public IActionResult ListeReservation() //TODO : ListeReservation pour le Client affiches SES reservations
+        public IActionResult Index() 
         {
             List<Reservation> listeReservation = new List<Reservation>();
 
@@ -28,25 +28,19 @@ namespace EasyTrain_P2Gr1.Controllers
                     listeReservation = service.GetReservationsClient(HttpContext.User.Identity.Name);
                 }else if (HttpContext.User.IsInRole("Coach"))
                 {
-                    //TODO : Récupérer les réservations au cours programme du coach
+                    listeReservation = service.GetReservationsCoach(HttpContext.User.Identity.Name);
                 }else if (HttpContext.User.IsInRole("Gestionnaire")){
                     listeReservation = service.GetReservations();
                 }
-            }
-            List<AffichageReservationViewModel> affichageReservations = new List<AffichageReservationViewModel>();
-            foreach(Reservation reservation in listeReservation)
-            {
-                //TODO : récupérer les cours
-            }
-            
-            return View(listeReservation);
+                ViewData["Layout"] = LayoutResolver.GetRoleLayout(HttpContext);
+            } 
+            return View("ListeReservation",listeReservation);
         }
 
         [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult CreerReservation()
         {
-
             List<CoursProgramme> coursProgrammes;
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
@@ -56,11 +50,10 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 CoursProgrammes = coursProgrammes
             };
-
             return View(rvm);
         }
 
-        [Authorize(Roles = "Client")]
+        [Authorize(Roles = "Client")] //TODO: un client ne doit pas pouvoir réserver 2 fois le même cours
         [HttpPost]
         public IActionResult CreerReservation(FormulaireReservationViewModel rvm)
         {

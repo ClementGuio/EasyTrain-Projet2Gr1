@@ -4,25 +4,9 @@
 @model EasyTrain_P2Gr1.Models.Client
 
 @{
-    Layout = "_LayoutVisiteur";
+    Layout = "_LayoutClient";
 }
 @using (Html.BeginForm())
 {
-
-    @Html.LabelFor(c => c.Nom)
-    @Html.TextBoxFor(c => c.Nom)
-    <br />
-    @Html.LabelFor(c => c.Prenom)
-    @Html.TextBoxFor(c => c.Prenom)
-    <br />
-    @Html.LabelFor(c => c.DateNaissance)
-    @Html.TextBoxFor(c => c.DateNaissance)
-    <br />
-    @Html.LabelFor(c => c.AdresseMail)
-    @Html.TextBoxFor(c => c.AdresseMail)
-    <br />
-    @Html.LabelFor(c => c.MotDePasse)
-    @Html.TextBoxFor(c => c.MotDePasse)
-    <br />
-    <input type="submit" value="Valider">
+    @Html.Partial("_ModifierUtilisateur")
 }
