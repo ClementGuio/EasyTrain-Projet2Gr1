@@ -34,8 +34,8 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 listeCoursProgrammes = service.GetCoursProgrammesAVenir();
             }
-            CalendrierViewModel cvm = new CalendrierViewModel(listeCoursProgrammes, 90);
-            return View(listeCoursProgrammes);
+            CalendrierViewModel cvm = new CalendrierViewModel(listeCoursProgrammes, 30);
+            return View(cvm);
         }
 
         [HttpGet]

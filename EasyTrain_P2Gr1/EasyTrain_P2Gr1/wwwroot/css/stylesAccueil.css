@@ -1,5 +1,5 @@
 ﻿.gris {
-    background-color: #3b3b3b;
+    background-color: #3B3B3B;
 }
 
 .jaune {
@@ -14,8 +14,8 @@
     flex-direction: column;
 }
 
-.conteneurWrap{
-    justify-content:center;
+.conteneurWrap {
+    justify-content: center;
     display: flex;
     flex-wrap: wrap;
 }
@@ -46,19 +46,19 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.btn:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
+    .btn:hover {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
 
 .btn-principal {
     font-size: 2em;
     padding: 0.5em;
-    color: #ffffff;
+    color: #FFFFFF;
     background-color: #84BF04;
 }
 
     .btn-principal:hover {
-        color: #2d2b2b;
+        color: #2D2B2B;
         background-color: #95D904;
     }
 
@@ -86,15 +86,15 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.carteCarousel h3 {
-    font-size: 3em;
-    width: 5em;
-    color: white;
-    position: absolute;
-    top: 38%;
-    left: 5vw;
-    text-align: center;
-}
+    .carteCarousel h3 {
+        font-size: 3em;
+        width: 5em;
+        color: white;
+        position: absolute;
+        top: 38%;
+        left: 5vw;
+        text-align: center;
+    }
 
 .carteCoach {
     background-color: white;
@@ -117,7 +117,6 @@
         justify-content: space-evenly;
         align-content: stretch;
         align-items: center;
-        
     }
 
     .carteCoach img {
