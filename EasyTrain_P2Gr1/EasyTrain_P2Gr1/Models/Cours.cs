@@ -2,7 +2,7 @@
 
 namespace EasyTrain_P2Gr1.Models
 {
-    public class Cours
+    public class Cours //TODO : ajouter durée 
     {
         [Key]
         public int Id { get; set; }

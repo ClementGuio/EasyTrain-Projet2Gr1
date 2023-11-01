@@ -8,7 +8,7 @@ namespace EasyTrain_P2Gr1.Models
 
         public DateTime DateDebut { get; set; }
         
-        public DateTime DateFin { get; set; }
+        public DateTime DateFin { get; set; } //TODO : caluler dateFin : DateDebut + cours.duree
         
         public int PlacesLibres { get; set; }
         
