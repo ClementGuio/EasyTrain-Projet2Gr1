@@ -18,14 +18,17 @@
     {
         <fieldset>
             <legend>Supprimer une Réservation : </legend>
+            @Html.LabelFor(m => Model.Client.Prenom)
+            @Html.DisplayFor(m => Model.Client.Prenom)
             <br />
-            @Html.LabelFor(m => Model.Client)
-            @Html.TextBoxFor(m => Model.Client)
-            @Html.ValidationMessageFor(m => Model.Client)
+            @Html.LabelFor(m => Model.Client.Nom)
+            @Html.DisplayFor(m => Model.Client.Nom)
             <br />
-            @Html.LabelFor(m => Model.CoursProgramme)
-            @Html.TextBoxFor(m => Model.CoursProgramme)
-            @Html.ValidationMessageFor(m => Model.CoursProgramme)
+            @Html.LabelFor(m => Model.CoursProgramme.Cours.Titre)
+            @Html.DisplayFor(m => Model.CoursProgramme.Cours.Titre)
+            <br />
+            @Html.LabelFor(m => Model.CoursProgramme.DateDebut)
+            @Html.DisplayFor(m => Model.CoursProgramme.DateDebut)
             <br />
             <input type="submit" value="Supprimer" />
         </fieldset>

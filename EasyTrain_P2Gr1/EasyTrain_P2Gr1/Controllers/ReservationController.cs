@@ -88,9 +88,9 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpGet]
-        public IActionResult SupprimerReservation()
+        public IActionResult SupprimerReservation(int id)
         {
-            string id = HttpContext.User.Identity.Name;
+        
 
             Reservation reservation;
             using (IDalReservation service = new ReservationService())
@@ -129,8 +129,7 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
 
-        //TODO : methode POST/GET SupprimerReservation
-        //TODO : Si un client supprime une réservation, on le rembourse (voir les conditions dans le cdc) 
+      
     }
 }
 

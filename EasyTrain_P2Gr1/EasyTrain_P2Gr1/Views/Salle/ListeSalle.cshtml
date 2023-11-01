@@ -8,8 +8,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ListeSalle</title>
+    <meta charset="UTF-8" />
+    <title>Liste des Cours programmés</title>
+    <style>
+
+        table {
+            width: 900px;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            background: coral;
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn1Rouge {
+            margin: 0;
+            position: absolute;
+            top: 90%;
+            left: 34%;
+            background-color: #F2CB05;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        th {
+            text-align: left;
+        }
+
+        thead {
+            th
+
+        {
+            background-color: #55608f;
+        }
+
+        }
+
+        tbody {
+            tr
+
+        {
+            &:hover;
+
+
+        {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        }
+
+        td {
+            position: relative;
+            &:hover;
+
+        {
+            &:before;
+
+        {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: -1;
+        }
+
+        }
+        }
+        }
+    </style>
+
 </head>
 <body>
 <table border="1">
@@ -29,6 +107,8 @@
         </tr>
     }
 </table>
+   
+
 </body>
 
 </html>
