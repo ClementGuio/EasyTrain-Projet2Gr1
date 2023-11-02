@@ -8,6 +8,14 @@
 
 @using (Html.BeginForm())
 {
-    @Html.Partial("_ModifierUtilisateur")
+    <div class="fieldsetModifier">
+        <fieldset>
+            <legend><h2>Modifier votre profil</h2></legend>
+
+            @Html.Partial("_ModifierUtilisateur")
+
+        </fieldset>
+    </div>
+
 }
 

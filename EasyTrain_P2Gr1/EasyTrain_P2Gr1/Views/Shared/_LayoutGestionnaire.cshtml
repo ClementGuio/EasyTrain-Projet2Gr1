@@ -15,9 +15,9 @@
     <title>@ViewData["Title"]</title>
 </head>
 <body class="bodyLayout">
-    <header>
+    <header class="headerUtilisateur">
         <div class="logo">
-            <a href="/"><img src="/images/Logo_easy_train.png" alt="Logo EASY TRAIN"></a>
+            <a href="/"><img src="/images/Logo_easy_trainSF.png" alt="Logo EASY TRAIN"></a>
         </div>
         <div class="dropdown">
             <button class="dropbtn"><img src="/images/deconnexion.svg" alt="log-out"></button>
@@ -30,10 +30,13 @@
     <!--Modifier les boutons dans la sidebar-->
     <nav class="sidebar">
         <div class="sidebarLink">
-            <a href="/gestionnaire">Profil</a>
+            <a href="/gestionnaire/ListeGestionnaire">Gérer les gestionnaires</a>
         </div>
         <div class="sidebarLink">
             <a href="/cours">Gérer les cours</a>
+        </div>
+        <div class="sidebarLink">
+            <a href="/coach/ListeCoach">Gérer les coachs non fonctionnelle</a>
         </div>
     </nav>
     <!--Render section jusque la-->
