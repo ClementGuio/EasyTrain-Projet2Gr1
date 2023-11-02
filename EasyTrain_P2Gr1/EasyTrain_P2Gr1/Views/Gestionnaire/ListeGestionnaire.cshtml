@@ -30,8 +30,8 @@
                         <td>@gestionnaire.AdresseMail</td>
                         <td>@gestionnaire.DateCreationCompte.ToString("dd/MM/yyyy")</td>
                         <td>
-                            <button class="btnStandard  " onclick="window.location.href='/Gestionnaire/ModifierGestionnaire'">Modifier</button>
-                            <button class="btnSuppression" onclick="window.location.href='/Gestionnaire/SupprimerGestionnaire'">Supprimer</button>
+                            <button class="btnStandard  " onclick="window.location.href='/Gestionnaire/ModifierGestionnaire/@gestionnaire.Id'">Modifier</button>
+                            <button class="btnSuppression" onclick="window.location.href='/Gestionnaire/SupprimerGestionnaire/@gestionnaire.Id'">Supprimer</button>
                         </td>
                     </tr>
                 }
