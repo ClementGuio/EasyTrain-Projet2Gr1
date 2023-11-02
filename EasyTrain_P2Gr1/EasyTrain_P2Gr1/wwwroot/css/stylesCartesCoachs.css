@@ -5,6 +5,10 @@
     flex-direction: column;
 }
 
+.gris {
+    background-color: #3B3B3B;
+}
+
 .conteneurWrap {
     justify-content: center;
     display: flex;
@@ -41,4 +45,4 @@
 
 .carteTitre {
     font-size: 5em;
-}/**/
+}

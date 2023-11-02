@@ -12,22 +12,28 @@
     <div class="message">@TempData["Message"]</div>
 }
 
-<div class="container" id="registration-form" style="height: 100VH; padding-top:10em"> 
+<div class="container" id="registration-form" style="height: 100vh; padding-top:10em">
 
-    @using (Html.BeginForm("CreerClient", "VotreController", FormMethod.Post, new { id = "client-form" }))
-            {
-            <div id="step1">
+    @using (Html.BeginForm("CreerClient", "Client", FormMethod.Post))
+    {
+        <div id="step1">
             <div>
-                @Html.LabelFor(c => c.Abonnement.ReservEquipement)
-                @Html.CheckBoxFor(c => c.Abonnement.ReservEquipement, new { @id = "ReservEquipement" })
+                @Html.LabelFor(c => c.Abonnement.NbCours)
+                @Html.TextBoxFor(c => c.Abonnement.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })
                 <br />
                 @Html.LabelFor(c => c.Abonnement.AccesPiscine)
-                @Html.CheckBoxFor(c => c.Abonnement.AccesPiscine, new { @id = "AccesPiscine" })
+                @Html.CheckBoxFor(c => c.Abonnement.AccesPiscine)
+                <br />
+                @Html.LabelFor(c => c.Abonnement.AccesEscalade)
+                @Html.CheckBoxFor(c => c.Abonnement.AccesEscalade)
+                <br />
+                @Html.LabelFor(c => c.Abonnement.AccompagenementCoach)
+                @Html.CheckBoxFor(c => c.Abonnement.AccompagenementCoach)
             </div>
-            <button id="next-step">Étape suivante</button>
+            <button type="button" id="next-step">Étape suivante</button>
         </div>
 
-    <div id="step2" style="display: none;">
+        <div id="step2" style="display: none;">
 
             <div class="fieldsetModifier">
                 <fieldset>
@@ -41,36 +47,17 @@
                 </fieldset>
             </div>
 
-    </div>}
+        </div>
+    }
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>$(document).ready(function () {
-    $("#next-step").click(function () {
-        $("#step1").slideUp("fast", function () {
-            $("#step2").slideDown("fast");
+<script>
+    $(document).ready(function () {
+        $("#next-step").on("click", function () {
+            $("#step1").slideUp("fast", function () {
+                $("#step2").slideDown("fast");
+            });
         });
     });
-
-    $("#client-form").submit(function (e) {
-        e.preventDefault();
-        var formData = $(this).serializeArray();
-        console.log(formData);
-        
-        formData.push({ name: "Abonnement.ReservEquipement", value: $("#ReservEquipement").is(":checked") });
-        formData.push({ name: "Abonnement.AccesPiscine", value: $("#AccesPiscine").is(":checked") });
-
-        $.ajax({
-            type: "POST",
-            url: "@Url.Action("CreerClient", "Client")",
-            data: formData,
-            success: function (data) {
-                console.log("Le client a été créé avec succès.");
-
-            },
-            error: function () {
-                console.log("Une erreur s'est produite lors de la création du client.");
-            }
-        });
-    });
-});</script>
+</script>
 

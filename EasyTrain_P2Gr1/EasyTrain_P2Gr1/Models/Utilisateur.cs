@@ -1,6 +1,7 @@
 ﻿using EasyTrain_P2Gr1.Models.CustomValidations;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EasyTrain_P2Gr1.Models
 {
@@ -39,6 +40,7 @@ namespace EasyTrain_P2Gr1.Models
         //[Required(ErrorMessage = "La vérification du mot de passe doit être renseignée.")]
         [Compare("MotDePasse", ErrorMessage = "Les mots de passe ne correspondent pas.")]// Permet de comparer les deux champs et retourne un message d'erreur
         [Display(Name = " Confirmer le nouveau mot de passe")]
+        [NotMapped]
         public string VerifMotDePasse { get; set; }
 
         [Display(Name = "Date de création de compte ")]
