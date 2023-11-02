@@ -8,9 +8,12 @@
 <head>
     <meta charset="UTF-8" />
     <title>Liste des Cours</title>
+    <link rel="stylesheet" href="~/css/Listes.css">
 </head>
 <body>
-    <table class="mytable">
+    <div class="container">
+    <table>
+        <thead>
         <tr>
             <th>Id</th>
             <th>Titre</th>
@@ -18,10 +21,15 @@
             <th>Prix</th>
             <th>Coach</th>
             <th>Salle</th>
+            <th>Suppression</th>
 
         </tr>
+        </thead>
+      
         @foreach (EasyTrain_P2Gr1.Models.Cours cours in Model)
         {
+          <tbody>
+        
             <tr>
                 <td>@cours.Id</td>
                 <td>@cours.Titre</td>
@@ -29,12 +37,14 @@
                 <td>@cours.Prix</td>
                 <td>@cours.Coach.Nom @cours.Coach.Prenom </td>
                 <td>@cours.Salle.Nom</td>
-                <td><a href="/cours/modifiercours/@cours.Id">Modifier</a></td>
-                <td><a href="cours/supprimercours/@cours.Id">Supprimer</a></td>
+
+                        <td><button class="btnlisteCoach" onclick="window.location.href='/cours/SupprimerCours'">Supprimer</button></td>
 
             </tr>
+                </tbody>
         }
     </table>
-    <button class="btnRouge" onclick="window.location.href='/Cours/CreerCours'">Nouveau cours</button>
+</div>
+    <button class="btnNouveauCours" onclick="window.location.href='/Cours/CreerCours'">Créer un nouveau cours</button>
 </body>
 </html>

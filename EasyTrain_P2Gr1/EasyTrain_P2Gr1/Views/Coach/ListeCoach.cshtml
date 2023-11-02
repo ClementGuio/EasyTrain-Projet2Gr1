@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Liste des coachs</title>
-    <link rel="stylesheet" href="/css/Sabrine.css">
+    <link rel="stylesheet" href="~/css/Listes.css">
 </head>
 <body>
 
@@ -26,10 +26,11 @@
 
                     <th width="100">Id</th>
                     <th>Nom</th>
-                    <th>Prenom</th>
+                    <th>Prénom</th>
                     <th>Date de naissance</th>
                     <th>Adresse mail</th>
-                  
+                    <th>Modification</th>
+                    <th>Suppression</th>
                    
 
                 </tr>
@@ -46,16 +47,17 @@
                         <td>@coach.Prenom</td>
                         <td>@coach.DateNaissance</td>
                         <td>@coach.AdresseMail</td>
-                   
-                        
+
+                        <td><button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button></td>
+                        <td><button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button></td>
                     </tr>
                 </tbody>
             }
 
         </table>
-        <br />
-        <button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button>
-        <button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
+    
+        
+        
     </div>
 
 

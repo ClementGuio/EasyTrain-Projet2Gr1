@@ -1,9 +1,8 @@
 ﻿
-.tableSupprimer {
+.tableProfil {
     color: black;
     padding: inherit;
     color: black;
-  
 }
 
 table, th, td {
@@ -17,13 +16,21 @@ th, td {
 }
 
 
-input[type="submit"] {
+.btnProfil {
     position: relative;
     bottom: -10px;
-    left: 10%;
+    left: 20%;
     transform: translateX(-10%);
+    width: 150px; 
+    height: 40px;
 }
 
-.submitBoutton:hover {
-    background-color: red;
+    .btnProfil:hover {
+        background-color: goldenrod;
+    }
+caption {
+    background-color: goldenrod;
+    color: white;
+    padding: 30px;
 }
+

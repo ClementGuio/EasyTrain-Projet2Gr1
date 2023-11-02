@@ -1,8 +1,6 @@
-﻿<html >
-<head >
-<meta charset="UTF-8" / >
-<title > Liste des coachs</title >
-<style >
+﻿
+
+
 
 .mytable {
     width: 800px;
@@ -52,8 +50,19 @@ td {
     z-index: -1;
 }
 
+.btnNouveauCours {
 
-</style >
+    position: relative;
+    bottom: -10px;
+    left: 30%;
+    transform: translateX(-20%);
+    color: red;
+
+}
+
+
+
+
 
 
 
