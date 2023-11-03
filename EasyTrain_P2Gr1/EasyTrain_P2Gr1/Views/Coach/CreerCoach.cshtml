@@ -7,12 +7,14 @@
 }
 <div class="fieldsetModifier">
     <fieldset>
-        <legend><h2>Nouveau Coach</h2></legend>
+        <legend><h2>Ajouter un coach : </h2></legend>
 
         @Html.Partial("_CreerUtilisateur")
 
         <div class="btnCoachModifier">
-            <input type="submit" value="Créer" />
+
+            <input type="button" value="Retour" onclick=" history.back();" class="btnStandard" />
+            <input type="submit" value="Créer" class="btnConfirmer" />
         </div>
     </fieldset>
 </div>

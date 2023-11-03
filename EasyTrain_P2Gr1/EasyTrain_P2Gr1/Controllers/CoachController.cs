@@ -92,6 +92,36 @@ namespace EasyTrain_P2Gr1.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult GestionnaireModifierCoach(int id)
+        {
+             Coach coach;
+            using (IDalCoach service = new CoachService())
+            {
+                coach = service.GetCoach(id);
+
+            }
+            if (coach != null)
+            {
+                return View("ModifierCoach",coach);
+            }
+
+
+            return View("Error");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult GestionnaireModifierCoach(Coach coach)
+        {
+            using (IDalCoach service = new CoachService())
+            {
+                service.UpdateCoach(coach);
+            }
+            return RedirectToAction("ListeCoach");
+        }
+
         [Authorize(Roles = "Coach")]
         [HttpGet]
         public IActionResult SupprimerCoach()
