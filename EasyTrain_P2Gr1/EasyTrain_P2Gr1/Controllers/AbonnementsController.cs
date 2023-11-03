@@ -41,6 +41,7 @@ namespace EasyTrain_P2Gr1.Controllers
             abonnement.DateAbonnement = DateTime.Now;
             return RedirectToAction();//TODO : trouver comment rediriger vers une page externe au controller
         }
+
         [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult ModifierAbonnement()

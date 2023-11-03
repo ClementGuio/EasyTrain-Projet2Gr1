@@ -22,7 +22,7 @@ namespace EasyTrain_P2Gr1.ViewModels
             this.PlanningJours = new List<PlanningJour>();
 
             //Algo de création du calendrier
-            DateTime prochaineDate = coursProgrammes[0].DateDebut;
+            DateTime prochaineDate = DateTime.Now;
             DateTime dateCourante = new DateTime(prochaineDate.Year, prochaineDate.Month, prochaineDate.Day);       //On stocke la date du prochain cours
             DateTime derniereDate = dateCourante.AddDays(NbJoursAffiches);                                          //On stocke la date du dernier jour affiché                                                                                           
             Console.WriteLine("=> dernierDate : "+derniereDate);

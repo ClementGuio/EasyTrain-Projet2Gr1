@@ -2,31 +2,20 @@
 @{
     Layout = "_LayoutVisiteur";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="~/css/stylesAccueil.css" />
-</head>
-<body>
-
     <div class="conteneurWrap gris">
     @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
     {
         <div class="carteCoach">
-            <img src="/images/Loic/Image01.jpg" alt="">
+            <img src="/images/Image01.jpg" alt="">
             <div>
-                <span>@coach.Prenom</span>
+                <h3>@coach.Prenom</h3>
                 <br>
-                <span>@coach.Nom</span>
-                <h3 class="carteTitre">titre</h3>
+                <h3>@coach.Nom</h3>
+                
                 <div>
-                    <p>Lorem</p>
+                    <blockquote><i>@coach.Description</i></blockquote>
                 </div>
             </div>
         </div>
     }
     </div>
-</body>
-</html>

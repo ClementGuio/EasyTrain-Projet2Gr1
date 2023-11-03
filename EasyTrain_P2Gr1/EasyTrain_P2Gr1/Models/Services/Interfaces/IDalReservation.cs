@@ -8,6 +8,9 @@ namespace EasyTrain_P2Gr1.Models.Services.Interfaces
         List<Reservation> GetReservations();
         List<Reservation> GetReservationsClient(int idClient);
         List<Reservation> GetReservationsClient(string strId);
+        List<Reservation> GetReservationsCoach(int idCoach);
+        List<Reservation> GetReservationsCoach(string strId);
+        List<Client> GetClientsInscrits(CoursProgramme coursProgramme);
         Reservation GetReservation(int Id);
         Reservation GetReservation(string StrId);
         int CreateReservation(Reservation reservation);

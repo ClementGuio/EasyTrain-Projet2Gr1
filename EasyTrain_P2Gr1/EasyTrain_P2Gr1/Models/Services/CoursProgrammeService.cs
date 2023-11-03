@@ -13,6 +13,7 @@ namespace EasyTrain_P2Gr1.Models.Services
          return this._bddContext.CoursProgrammes
                 .Include(c => c.Cours)
                 .Include(c => c.Cours.Coach)
+                .Include(c => c.Cours.Salle)
                 .OrderBy(c => c.DateDebut).ToList(); 
         }
 
@@ -52,20 +53,19 @@ namespace EasyTrain_P2Gr1.Models.Services
             _bddContext.SaveChanges();
         }
 
-        public void DeleteCoursProgramme(int id) // TODO : Supprimer les réservations
+        public void DeleteCoursProgramme(int id) 
         {
-            CoursProgramme nouveauCoursProgramme = this._bddContext.CoursProgrammes.Find(id);
-            if (nouveauCoursProgramme != null)
+            CoursProgramme coursProgramme = this._bddContext.CoursProgrammes.Find(id);
+            List<Reservation> reservations = _bddContext.Reservations.Where(r => r.CoursProgramme.Id == coursProgramme.Id).ToList();
+            if (coursProgramme != null)
             {
-                _bddContext.CoursProgrammes.Remove(nouveauCoursProgramme);
+                if (reservations.Count > 0)
+                {
+                    _bddContext.Reservations.RemoveRange(reservations);
+                }
+                _bddContext.CoursProgrammes.Remove(coursProgramme);
                 _bddContext.SaveChanges();
             }
-        }
-
-        public List<CoursProgramme> GetListCoursProgramme()
-        {
-            return this._bddContext.CoursProgrammes.ToList();
-
         }
     }
 }

@@ -15,6 +15,21 @@ namespace EasyTrain_P2Gr1.Controllers
     {
         public IActionResult Index()
         {
+            if (HttpContext.User.Identity.Name != null)
+            {
+                if (HttpContext.User.IsInRole("Client"))
+                {
+                    ViewData["role"] = "Client";
+                }
+                else if (HttpContext.User.IsInRole("Coach"))
+                {
+                    ViewData["role"] = "Coach";
+                }
+                else if (HttpContext.User.IsInRole("Gestionnaire"))
+                {
+                    ViewData["role"] = "Gestionnaire";
+                }
+            }
             return View();
         }
 
@@ -34,8 +49,8 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 listeCoursProgrammes = service.GetCoursProgrammesAVenir();
             }
-            CalendrierViewModel cvm = new CalendrierViewModel(listeCoursProgrammes, 90);
-            return View(listeCoursProgrammes);
+            CalendrierViewModel cvm = new CalendrierViewModel(listeCoursProgrammes, 30);
+            return View(cvm);
         }
 
         [HttpGet]

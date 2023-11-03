@@ -12,6 +12,7 @@ namespace EasyTrain_P2Gr1.Controllers
     //TODO : Créer viewmodel pour modifier (problème de validation)
     public class ClientController : Controller
     {
+
         [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult Index()
@@ -41,29 +42,38 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreerClient(Abonnement abonnement)
+        public IActionResult CreerClient()
         {
-            Client client = new Client { Abonnement = abonnement };
+            Client client = new Client { Abonnement = new Abonnement() , DateNaissance = new DateTime()};
             return View(client);
         }
 
+
         [HttpPost]
-        public IActionResult CreerClient(Client client)
+        public IActionResult CreerClient(Client client) //TODO : Abonnement pour un ancien client qui se réinscrit
         {
             if (!ModelState.IsValid)
             {
                 return View(client);
             }
 
-            //client.DateCreationCompte = client.Abonnement.DateAbonnement;
+            client.DateCreationCompte = DateTime.Now;
+
+            client.Abonnement.DateAbonnement = client.DateCreationCompte;
 
             using (IDalClient service = new ClientService())
             {
+
+                //bool isReservEquipement = Request.Form["ReservEquipement"] == "true";
+                //bool isAccesPiscine = Request.Form["AccesPiscine"] == "true";
                 service.CreateClient(client);
+                
+                
+
+
             }
             return View();
         }
-
 
 
         [Authorize(Roles = "Client")]

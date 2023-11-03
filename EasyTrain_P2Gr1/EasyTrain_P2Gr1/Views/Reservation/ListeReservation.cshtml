@@ -1,6 +1,6 @@
 ﻿@model List<EasyTrain_P2Gr1.Models.Reservation>
 @{
-    Layout = "_LayoutClient";
+    Layout = (string) ViewData["Layout"];
 }
 
 <!DOCTYPE html>
@@ -8,105 +8,34 @@
 <head>
     <meta charset="UTF-8" />
     <title>Liste des Cours programmés</title>
-    <style>
 
-        table {
-            width: 900px;
-            border-collapse: collapse;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            background: coral;
-        }
+    <link href="~/css/vincent.css" rel="stylesheet">
 
-        .center {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn1Rouge {
-            margin: 0;
-            position: absolute;
-            top: 90%;
-            left: 34%;
-            background-color: #F2CB05;
-        }
-
-        th,
-        td {
-            padding: 15px;
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        th {
-            text-align: left;
-        }
-
-        thead {
-            th
-
-        {
-            background-color: #55608f;
-        }
-
-        }
-
-        tbody {
-            tr
-
-        {
-            &:hover;
-
-
-        {
-            background-color: rgba(255,255,255,0.3);
-        }
-
-        }
-
-        td {
-            position: relative;
-            &:hover;
-
-        {
-            &:before;
-
-        {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: -9999px;
-            bottom: -9999px;
-            background-color: rgba(255,255,255,0.2);
-            z-index: -1;
-        }
-
-        }
-        }
-        }
-    </style>
 
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <th>Id</th>
-            <th>Titre du cours</th>
-            <th>Date du cours</th>
-            <th>Client</th>
-           
-          
-        </tr>
-        @foreach (EasyTrain_P2Gr1.Models.Reservation reservation in Model)
-        {
+    <div class="container">
+        <table border="3">
             <tr>
-                <td>@reservation.Id</td>
-                <td>@reservation.CoursProgramme.Cours.Titre</td>
-                <td>@reservation.CoursProgramme.DateDebut</td>
-                <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
+                <th>Id</th>
+                <th>Titre du cours</th>
+                <th>Date du cours</th>
+                <th>Client</th>
+
+
             </tr>
-        }
-    </table>
-    <button class="btnRouge" onclick="window.location.href='/Reservation/CreerReservation'">Réserver</button>
+            @foreach (EasyTrain_P2Gr1.Models.Reservation reservation in Model)
+            {
+                <tr>
+                    <td>@reservation.Id</td>
+                    <td>@reservation.CoursProgramme.Cours.Titre</td>
+                    <td>@reservation.CoursProgramme.DateDebut</td>
+                    <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
+
+                </tr>
+            }
+        </table>
+        <button class="btnRouge" onclick="window.location.href='/Reservation/CreerReservation'">Réserver</button>
+    </div>
 </body>
 </html>

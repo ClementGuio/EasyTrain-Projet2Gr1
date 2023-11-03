@@ -8,22 +8,24 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="~/css/stylesLayout.css"/> 
-    
+    <link rel="stylesheet" href="~/css/stylesLayout.css" />
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,500;1,700&family=Taviraj:wght@100&display=swap" rel="stylesheet">
+
     <title>@ViewData["Title"]</title>
-    
 </head>
 <body class="bodyLayout">
     <header>
         <div class="logo">
-            <a href="#"><img src="/images/Logo_easy_trainSF.png" alt="Logo EASY TRAIN"></a>
+            <a href="/"><img src="/images/Logo_easy_trainSF.png" alt="Logo EASY TRAIN"></a>
         </div>
         <div class="dropdown">
             <button class="dropbtn"><img src="/images/deconnexion.svg" alt="log-out"></button>
             <div class="dropdown-content">
-                <a href="#">Mon profile</a>
-                <a href="/Login/Deconnexion">Se deconnecter</a>
-                <a href="#">Link 3</a>
+                <a href="/coach">Mon profil</a>
+                <a href="/Login/Deconnexion">Se déconnecter</a>
             </div>
         </div>
     </header>
@@ -33,7 +35,7 @@
             <a href="/coach">Profil</a>
         </div>
         <div class="sidebarLink">
-            <a href="CoursProgramme/ListeCoursProgramme">Mon planning</a>
+            <a href="/coursprogramme">Mon planning</a>
         </div>
         
 

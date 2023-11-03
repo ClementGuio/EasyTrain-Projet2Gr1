@@ -3,12 +3,13 @@
     Layout = "_LayoutGestionnaire";
 }
 
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
     <title>Liste des Cours</title>
-    <style>
+    @* <style>
 
         table {
             width: 800px;
@@ -69,10 +70,11 @@
         
         
         
-    </style>
+    </style> *@
 
 </head>
-<body>
+
+
     <div class="container">
 
         @if (TempData.ContainsKey("Message"))
@@ -81,7 +83,7 @@
         }
         <a href="creerabonnements"> Ajouter </a>
 
-        <table>
+        <table class="tableauL">
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
@@ -103,5 +105,3 @@
             }
         </table>
     </div>
-</body>
-</html>

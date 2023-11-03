@@ -28,44 +28,5 @@ namespace EasyTrain_P2Gr1.Controllers
             
             return View(listePresences);
         }
-
-
-        [HttpGet]
-        public IActionResult CreerPresences()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreerPresences(Presence Presences)
-        { 
-                using (IDalPresence service= new PresenceService())
-              
-                    service.CreatePresences(Presences);
-                    TempData["Message"] = "nouvel Presences crée";
-                    return RedirectToAction("ListePresencess");        
-        }
-
-        [HttpPost]
-        public IActionResult SupprimerPresences(int id)
-        {
-            using (IDalPresence service = new PresenceService())
-            {
-                Presence Presences = service.GetPresence(id);
-
-                if (Presences != null)
-                {
-                    service.DeletePresence(id);
-                    TempData["Message"] = "Presences supprimé avec succès";
-                }
-                else
-                {
-                    TempData["Message"] = "Presences introuvable";
-                }
-
-                return RedirectToAction("ListePresencess");
-            }
-        }
     }
-
 }

@@ -47,9 +47,10 @@
                         <td>@coach.Prenom</td>
                         <td>@coach.DateNaissance</td>
                         <td>@coach.AdresseMail</td>
-
-                        <td><button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button></td>
-                        <td><button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button></td>
+                        <button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach/@coach.Id'">Modifier</button>
+                        <button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
+                   
+                        
                     </tr>
                 </tbody>
             }

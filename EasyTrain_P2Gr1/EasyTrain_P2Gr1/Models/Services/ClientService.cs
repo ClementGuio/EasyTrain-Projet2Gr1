@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EasyTrain_P2Gr1.Models.Services
 {
     public class ClientService : DisposableService, IDalClient
-    {   
+    {   //TODO: prendre en compte deletedAt
         public List<Client> GetClients()
         {
             return this._bddContext.Clients.Include(c => c.Abonnement).ToList();

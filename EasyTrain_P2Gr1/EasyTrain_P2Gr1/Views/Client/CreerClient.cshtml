@@ -7,38 +7,57 @@
     Layout = "_LayoutVisiteur";
 }
 
+@if (TempData.ContainsKey("Message"))
+{
+    <div class="message">@TempData["Message"]</div>
+}
 
-<div class="container">
+<div class="container" id="registration-form" style="height: 100vh; padding-top:10em">
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("CreerClient", "Client", FormMethod.Post))
     {
+        <div id="step1">
+            <div>
+                @Html.LabelFor(c => c.Abonnement.NbCours)
+                @Html.TextBoxFor(c => c.Abonnement.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })
+                <br />
+                @Html.LabelFor(c => c.Abonnement.AccesPiscine)
+                @Html.CheckBoxFor(c => c.Abonnement.AccesPiscine)
+                <br />
+                @Html.LabelFor(c => c.Abonnement.AccesEscalade)
+                @Html.CheckBoxFor(c => c.Abonnement.AccesEscalade)
+                <br />
+                @Html.LabelFor(c => c.Abonnement.AccompagenementCoach)
+                @Html.CheckBoxFor(c => c.Abonnement.AccompagenementCoach)
+            </div>
+            <button type="button" id="next-step">Étape suivante</button>
+        </div>
 
+        <div id="step2" style="display: none;">
 
-        <!--@Html.LabelFor(c => c.Nom)-->
-        @Html.TextBoxFor(c => c.Nom, new { @class = "InputText", placeholder = "Nom" })
-        @Html.ValidationMessageFor(c => c.Nom)
+            <div class="fieldsetModifier">
+                <fieldset>
+                    <legend><h2>Inscription</h2></legend>
 
-        <!-- // @Html.LabelFor(c => c.Prenom)-->
-        @Html.TextBoxFor(c => c.Prenom, new { @class = "InputText", placeholder = "Prenom" })
-        @Html.ValidationMessageFor(c => c.Prenom)
+                    @Html.Partial("_CreerUtilisateur")
 
+                    <div class="btnCoachModifier">
+                        <input type="submit" value="Confirmer" />
+                    </div>
+                </fieldset>
+            </div>
 
-        <br />
-        //@Html.LabelFor(c => c.DateNaissance)
-        @Html.TextBoxFor(c => c.DateNaissance, new { @class = "InputText", placeholder = "DateNaissance" })
-        @Html.ValidationMessageFor(c => c.DateNaissance)
-        <br />
-        //@Html.LabelFor(c => c.AdresseMail)
-        @Html.TextBoxFor(c => c.AdresseMail, new { @class = "InputText", placeholder = "Mail" })
-        @Html.ValidationMessageFor(c => c.AdresseMail)
-        <br />
-        //@Html.LabelFor(c => c.MotDePasse)
-        @Html.TextBoxFor(c => c.MotDePasse, new { @class = "InputText", placeholder = "Mot de passe" })
-        @Html.ValidationMessageFor(c => c.MotDePasse)
-        <br />
-        //@Html.LabelFor(c => c.MotDePasse)
-        @Html.TextBoxFor(c => c.VerifMotDePasse, new { @class = "InputText", placeholder = "Retapez votre mot de passe" })
-        @Html.ValidationMessageFor(c => c.VerifMotDePasse)
-        <input type="submit" value="Valider">
+        </div>
     }
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#next-step").on("click", function () {
+            $("#step1").slideUp("fast", function () {
+                $("#step2").slideDown("fast");
+            });
+        });
+    });
+</script>
+

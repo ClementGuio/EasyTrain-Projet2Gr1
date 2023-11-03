@@ -52,8 +52,6 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 return View(model);
             }
-
-            //Console.WriteLine($"SalleId : {model.SalleId} ; CoachId : {model.CoachId}");
             Salle salle;
             using (IDalSalle service = new SalleService())
             {
@@ -64,12 +62,12 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 coach = service.GetCoach(model.CoachId);
             }
-            //Console.WriteLine($"Salle : {salle.Id}, {salle.Nom}");
             Cours cours = new Cours
             {
                 Titre = model.Titre,
                 NbParticipants = model.NbParticipants,
                 Prix = model.Prix,
+                DureeMinutes = model.DureeMinutes,
                 Salle = salle,
                 Coach = coach
             };
@@ -80,73 +78,28 @@ namespace EasyTrain_P2Gr1.Controllers
             return RedirectToAction("Index");
         }
 
-        //TODO : Pas de modification des cours
-        //[Authorize(Roles = "Gestionnaire")]
-        //[HttpGet]
-        //public IActionResult ModifierCours(int id)
-        //{
-        //    Cours cours;
-        //    using (IDalCours service = new CoursService())
-        //    {
-        //        cours = service.GetCours(id);
-        //    }
-        //    List<Salle> salles;
-        //    using (IDalSalle service = new SalleService())
-        //    {
-        //        salles = service.GetSalles();
-        //    }
-        //    List<Coach> coachs;
-        //    using (IDalCoach service = new CoachService())
-        //    {
-        //        coachs = service.GetCoachs();
-        //    }
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult SupprimerCours(int id)
+        {
+            Cours cours;
+            using (IDalCours service = new CoursService())
+            {
+                cours = service.GetCours(id);
+            }
+            return View(cours);
+        }
 
-        //    FormulaireCoursViewModel fcm = new FormulaireCoursViewModel
-        //    {
-        //        Titre = cours.Titre,
-        //        NbParticipants = cours.NbParticipants,
-        //        Prix = cours.Prix,
-        //        SalleId = cours.Salle.Id,
-        //        CoachId = cours.Coach.Id,
-        //        Salles = salles,
-        //        Coachs = coachs
-        //    };
-        //    return View(fcm);
-        //}
-
-        //[Authorize(Roles = "Gestionnaire")]
-        //[HttpPost]
-        //public IActionResult ModifierCours(FormulaireCoursViewModel model)
-        //{
-        //    Salle salle;
-        //    using (IDalSalle service = new SalleService())
-        //    {
-        //        salle = service.GetSalle(model.SalleId);
-        //    };
-        //    Coach coach;
-        //    using (IDalCoach service = new CoachService())
-        //    {
-        //        coach = service.GetCoach(model.CoachId);
-        //    }
-
-        //    Cours cours = new Cours
-        //    {
-        //        Id = model.Id,
-        //        Titre = model.Titre,
-        //        NbParticipants = model.NbParticipants,
-        //        Prix = model.Prix,
-        //        Coach = coach,
-        //        Salle = salle
-        //    };
-
-        //    using (IDalCours service = new CoursService())
-        //    {
-        //        service.UpdateCours(cours);
-        //    }
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //TODO : Il manque les methodes GET/POST SupprimerCours
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult SupprimerCours(Cours cours)
+        {
+            cours.Supprime = true;
+            using (IDalCours service = new CoursService())
+            {
+                service.UpdateCours(cours);
+            }
+            return View("Index");
+        }
     }
 }

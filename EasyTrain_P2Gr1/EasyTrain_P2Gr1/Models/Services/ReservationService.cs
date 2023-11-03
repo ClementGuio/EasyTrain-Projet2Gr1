@@ -8,16 +8,29 @@ namespace EasyTrain_P2Gr1.Models.Services
     public class ReservationService : DisposableService, IDalReservation
     {
 
+        public List<Reservation> GetReservations()
+        {
+            return this._bddContext.Reservations
+                .Include(c => c.CoursProgramme)
+                .ThenInclude(c => c.Cours)
+                .ThenInclude(c => c.Coach)
+                .Include(c => c.Client)
+                .ToList();
+        }
 
         public Reservation GetReservation(int id)
         {
             return _bddContext.Reservations.Include(c => c.CoursProgramme).Include(c => c.Client).FirstOrDefault(r => r.Id == id);
         }
-
-        public List<Reservation> GetReservations()
+        public Reservation GetReservation(string strId)
         {
-            return this._bddContext.Reservations.Include(c => c.CoursProgramme).Include(c => c.Client).ToList();
+            if (int.TryParse(strId, out int id))
+            {
+                return GetReservation(id);
+            }
+            return null;
         }
+
 
         public List<Reservation> GetReservationsClient(int idClient)
         {
@@ -31,6 +44,25 @@ namespace EasyTrain_P2Gr1.Models.Services
                 return GetReservationsClient(id);
             }
             return new List<Reservation>();
+        }
+
+        public List<Reservation> GetReservationsCoach(int idCoach)
+        {
+            return GetReservations().Where(r => r.CoursProgramme.Cours.Coach.Id == idCoach).ToList();
+        }
+
+        public List<Reservation> GetReservationsCoach(string strId)
+        {
+            if (int.TryParse(strId, out int id))
+            {
+                return GetReservationsCoach(id);
+            }
+            return new List<Reservation>();
+        }
+
+        public List<Client> GetClientsInscrits(CoursProgramme coursProgramme)
+        {
+            return this._bddContext.Reservations.Where(r => r.CoursProgramme.Id == coursProgramme.Id).Select(r => r.Client).ToList();
         }
 
         public int CreateReservation(Reservation reservation)
@@ -58,9 +90,5 @@ namespace EasyTrain_P2Gr1.Models.Services
             }
         }
 
-        Reservation IDalReservation.GetReservation(string StrId)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

@@ -5,33 +5,14 @@
 @{
     Layout = "_LayoutCoach";
 }
-<main>
-    @using (Html.BeginForm())
-    {
-        //-----------Formulaire Gestionnaire
-        <fieldset>
-            <legend>Créer un coach : </legend>
-            @Html.LabelFor(m => Model.Prenom)
-            @Html.TextBoxFor(m => Model.Prenom)
-            @Html.ValidationMessageFor(m => Model.Prenom)
-            <br />
-            @Html.LabelFor(m => Model.Nom)
-            @Html.TextBoxFor(m => Model.Nom)
-            @Html.ValidationMessageFor(m => Model.Nom)
-            <br />
-            @Html.LabelFor(m => Model.DateNaissance)
-            @Html.TextBoxFor(m => Model.DateNaissance)
-            @Html.ValidationMessageFor(m => Model.DateNaissance)
-            <br />
-            @Html.LabelFor(m => Model.AdresseMail)
-            @Html.TextBoxFor(m => Model.DateNaissance)
-            @Html.ValidationMessageFor(m => Model.AdresseMail)
-            <br />
-            @Html.LabelFor(m => Model.MotDePasse)
-            @Html.TextBoxFor(m => Model.MotDePasse)
-            @Html.ValidationMessageFor(m => Model.MotDePasse)
-            <br />
-            <input type="submit" value="Creer" />
-        </fieldset>
-    }
-</main>
+<div class="fieldsetModifier">
+    <fieldset>
+        <legend><h2>Nouveau Coach</h2></legend>
+
+        @Html.Partial("_CreerUtilisateur")
+
+        <div class="btnCoachModifier">
+            <input type="submit" value="Créer" />
+        </div>
+    </fieldset>
+</div>

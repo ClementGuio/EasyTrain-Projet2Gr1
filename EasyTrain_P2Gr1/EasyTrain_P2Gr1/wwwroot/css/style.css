@@ -35,11 +35,14 @@ h2 {
     margin-bottom: 1em;
 }
 
- /*composants*/ 
+ /*composants*/
 
 
 
-
+.message {
+    box-shadow: var(--main-shaddow-primary);
+    color: var(--main-text-color-fort)
+}
 
  /*Organisations*/ 
 .container {
@@ -77,7 +80,7 @@ h2 {
 }
 
 .col-8 {
-    width: 38.33%;
+    width: 72.33%;
     margin: 0 10px 0 10px;
 }
 
@@ -172,20 +175,20 @@ h2 {
     background-color: var(--main-color-secondaire);
 }
 
- /*autres*/ 
+ /*autres*/
 
 .herO01 {
     display: flex;
     height: 100vh;
-    padding-right: 30em;
+    padding-right: 40vw;
     background-position: top center;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 23%, rgba(4, 4, 4, 1) 96%), url(../asset/img/hero01.png), linear-gradient(rgba(38, 38, 38, 0.5),
-    rgba(17, 17, 17, 0.5));
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 23%, rgba(4, 4, 4, 1) 96%), url(/images/hero01.png), linear-gradient(rgba(38, 38, 38, 0.5), rgba(17, 17, 17, 0.5));
     align-content: center;
     justify-content: center;
     align-items: center;
+    margin-top: -4em;
 }
 
 .herO01 div {
@@ -197,7 +200,7 @@ h2 {
     margin-bottom: 0.7em;
     width: 4em;
     line-height: 0.7em;
-    font-size: 13em;
+    font-size: 10vw;
 }
 
  /*Cartes*/ 
@@ -287,7 +290,81 @@ h2 {
     justify-content: space-evenly;
 }
 
-     /*Css Specifique*/   
+     /*Css Specifique*/
+
+
+.tableauL {
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+    .tableauL th,
+    td {
+        padding: 15px;
+        background-color: rgba(255,255,255,0.2);
+    }
+
+th {
+    text-align: left;
+}
+
+thead {
+    th
+
+{
+    background-color: #55608f;
+}
+
+}
+
+tbody {
+    tr
+
+{
+    &:hover
+
+{
+    background-color: rgba(255,255,255,0.3);
+}
+
+}
+
+.tableauL tr td {
+    position: relative;
+    &:hover
+
+{
+    &:before
+
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -9999px;
+    bottom: -9999px;
+    background-color: rgba(255,255,255,0.2);
+    z-index: -1;
+}
+
+}
+}
+}
+
+
+
+/* Navivation */
+.logo img {
+    max-width: 11em;
+    height: auto;
+}
+
+
+.dropbtn img {
+    height: 100%
+}
 
 
 
@@ -319,7 +396,7 @@ h2 {
     }
 
     .col-8 {
-        width: 38.33%;
+        width: 58.33%;
         margin: 0 10px 0 10px;
     }
 
@@ -357,6 +434,28 @@ h2 {
         width: 6.33%;
         margin: 0 10px 0 10px;
     }
+
+
+    .cardsurvole { 
+        height: 25em;
+        width: 25em  
+    }
+    .cardsurvole h3 {
+            font-size: 2vw;
+
+    }
+
+    .dropbtn {
+        height: 100%
+    }
+
+    .dropbtn {
+       
+        height: 50px;
+        width: 50px;
+       
+    }
+
 
 
 }
