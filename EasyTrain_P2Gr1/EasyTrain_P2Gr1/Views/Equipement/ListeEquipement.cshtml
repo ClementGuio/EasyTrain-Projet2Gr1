@@ -3,5 +3,26 @@
 *@
 @{
 }
+@model List<EasyTrain_P2Gr1.Models.Equipement>
+@{
+    Layout = "_LayoutVisiteur";
+}
+<div class="conteneurWrap gris">
+    @foreach (EasyTrain_P2Gr1.Models.Equipement equipement in Model)
+    {
+        <div class="carteCoach">
+            <img src="@equipement.imageEquipement">
+            <div>
+               
+                <div>
+                    <blockquote><i>@equipement.Nom</i></blockquote>
+                </div>
+            </div>
+        </div>
+        
+    }
+    
+</div>
+
 <button class="button" onclick="window.location.href='/Equipement/ModifierEquipement'">Modifier</button>
 <button class="button" onclick="window.location.href='/Equipement/SupprimerEquipement'">Supprimer</button>
