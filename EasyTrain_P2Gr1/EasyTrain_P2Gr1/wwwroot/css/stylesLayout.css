@@ -56,10 +56,10 @@
 .dropbtn {
     background-color: white;
     color: white;
-    padding: 12px;
-    border-radius: 100px;
-    height: 60px;
-    width: 60px;
+    padding: 0.6em;
+    border-radius: 3em;
+    height: 3em;
+    width: 3em;
     border: none;
     cursor: pointer;
     transition-duration: 0.2s;
