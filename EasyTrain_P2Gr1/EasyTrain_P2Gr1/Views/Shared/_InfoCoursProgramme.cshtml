@@ -4,15 +4,53 @@
 @model EasyTrain_P2Gr1.Models.CoursProgramme
 @{
 }
-@Html.LabelFor(c => c.DateDebut)
-@Html.DisplayFor(c => c.DateDebut)
-<br />
-@Html.LabelFor(c => c.DateFin)
-@Html.DisplayFor(c => c.DateFin)
-<br />
-@Html.LabelFor(c => c.PlacesLibres)
-@Html.DisplayFor(c => c.PlacesLibres)
-<br />
-@Html.LabelFor(c => c.Cours)
-@Html.DisplayFor(c => c.Cours)
+
+<html>
+<head>
+    <link rel="stylesheet" href="/css/SupprimerProfil.css">
+</head>
+    <body>
+        <main>
+            <div class="TableSupprimerCoursProgramme">
+                <h3>Supprimer ce cours</h3>
+                <table>
+                  
+                    <tr>
+                    <td>@Html.LabelFor(c => c.DateDebut)</td>
+                    <td>@Html.DisplayFor(c => c.DateDebut)</td>
+                    </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.DateFin)</td>
+                    <td>@Html.DisplayFor(c => c.DateFin)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.PlacesLibres)</td>
+                    <td>@Html.DisplayFor(c => c.PlacesLibres)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Cours.Titre)</td>
+                    <td>@Html.DisplayFor(c => c.Cours.Titre)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Cours.DureeMinutes)</td>
+                    <td>@Html.DisplayFor(c => c.Cours.DureeMinutes)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Cours.Coach)</td>
+                    <td>@Html.DisplayFor(c => c.Cours.Coach)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Cours.Prix)</td>
+                    <td>@Html.DisplayFor(c => c.Cours.Prix)</td>
+                </tr>
+
+                </table>
+                
+            </div>
+        </main>
+    </body>
+</html>
+
+
+
 

@@ -1,0 +1,31 @@
+﻿
+.tableSupprimer {
+    color: black;
+    padding: inherit;
+    color: black;
+    padding:10px;
+}
+
+table, th, td {
+    border: 1px solid #000;
+    border-collapse: separate;
+    font-size: 1.1em;
+}
+
+th, td {
+    text-align: center;
+}
+
+
+input[type="submit"] {
+    position: relative;
+    bottom: -10px;
+    left: 10%;
+    transform: translateX(-10%);
+}
+
+.submitBoutton:hover {
+    background-color: peachpuff;
+}
+
+

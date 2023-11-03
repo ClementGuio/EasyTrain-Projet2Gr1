@@ -8,6 +8,7 @@ namespace EasyTrain_P2Gr1.ViewModels
     public class FormulaireCoursProgrammeViewModel
     {
         public DateTime DateDebut { get; set; }
+
         public DateTime DateFin { get; set; }
 
         public int CoursId { get; set; }
