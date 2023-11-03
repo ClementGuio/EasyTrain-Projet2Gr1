@@ -175,8 +175,84 @@ h2 {
     background-color: var(--main-color-secondaire);
 }
 
- /*autres*/
+.btnStandard {
+    background-color: white;
+    color: black;
+    border: 2px solid #F2CB05;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
 
+    .btnStandard:hover {
+        background-color: #F2CB05;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+.btnStandardbleu {
+    background-color: white;
+    color: black;
+    border: 2px solid #22427C;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+
+.btnStandardbleu:hover {
+    background-color: #22427C;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.btnSuppression {
+    background-color: white;
+    color: black;
+    border: 2px solid #F00020;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+    .btnSuppression:hover {
+        background-color: #F00020;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+.btnConfirmer {
+    background-color: white;
+    color: black;
+    border: 2px solid #03AC13;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+
+    .btnConfirmer:hover {
+        background-color: #03AC13;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+
+
+/*autres*/
 .herO01 {
     display: flex;
     height: 100vh;
