@@ -1,5 +1,4 @@
-﻿﻿
-  ﻿@model List<EasyTrain_P2Gr1.Models.Cours>
+﻿@model List<EasyTrain_P2Gr1.Models.Cours>
 @{
     Layout = "_LayoutGestionnaire";
 }
@@ -38,12 +37,15 @@
                 <td>@cours.Prix</td>
                 <td>@cours.Coach.Nom @cours.Coach.Prenom </td>
                 <td>@cours.Salle.Nom</td>
-                <td><a href="cours/supprimercours/@cours.Id">Supprimer</a></td>
+
+
+                        <td><button class="btnlisteCoach" onclick="window.location.href='/cours/SupprimerCours'">Supprimer</button></td>
 
             </tr>
                 </tbody>
         }
     </table>
-    <button class="btnRouge" onclick="window.location.href='/Cours/CreerCours'">Nouveau cours</button>
+</div>
+    <button class="btnNouveauCours" onclick="window.location.href='/Cours/CreerCours'">Créer un nouveau cours</button>
 </body>
 </html>
