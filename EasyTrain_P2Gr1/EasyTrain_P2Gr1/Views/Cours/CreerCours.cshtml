@@ -5,33 +5,66 @@
 @{  
     Layout = "_LayoutGestionnaire";
 }
-<main>
-    @using (Html.BeginForm())
-    {
-        //-----------Formulaire Cours
-        <fieldset>
-            <legend>Creer un cours : </legend>
-            @Html.LabelFor(m => Model.Titre)
-            @Html.TextBoxFor(m => Model.Titre)
-            @Html.ValidationMessageFor(m => Model.Titre)
-            <br />
-            @Html.LabelFor(m => Model.NbParticipants)
-            @Html.TextBoxFor(m => Model.NbParticipants)
-            @Html.ValidationMessageFor(m => Model.NbParticipants)
-            <br />
-            @Html.LabelFor(m => Model.Prix)
-            @Html.TextBoxFor(m => Model.Prix)
-            @Html.ValidationMessageFor(m => Model.Prix)
-            <br />
-            @Html.LabelFor(m => m.Coachs) 
-            @Html.DropDownListFor(m => m.CoachId, new SelectList(Model.Coachs, "Id", "Nom" ))
-            @Html.ValidationMessageFor(m => Model.CoachId)
-            <br />
-            @Html.LabelFor(m => m.Salles)
-            @Html.DropDownListFor(m => m.SalleId, new SelectList(Model.Salles, "Id", "Nom" ))
-            @Html.ValidationMessageFor(m => Model.SalleId)
-            <br /> 
-            <input type="submit" value="Creer" />
-        </fieldset>
-    }
-</main>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/CreerCours.css">
+    </head>
+    <body>
+    <main>
+        @using (Html.BeginForm())
+        {
+           <div class="fieldsetModifier">
+            <fieldset>
+                <legend>Créer un cours</legend>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <div class="TableCreerCours">
+                    <table>
+                        <tr>
+                            <td> @Html.LabelFor(m => Model.Titre)</td>
+                            <td> @Html.TextBoxFor(m => Model.Titre)</td>
+                            <td>@Html.ValidationMessageFor(m => Model.Titre)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.LabelFor(m => Model.NbParticipants)</td>
+                            <td> @Html.TextBoxFor(m => Model.NbParticipants)</td>
+                            <td>@Html.ValidationMessageFor(m => Model.NbParticipants)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.LabelFor(m => Model.Prix)</td>
+                            <td>@Html.TextBoxFor(m => Model.Prix)</td>
+                            <td> @Html.ValidationMessageFor(m => Model.Prix)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Salles)</td>
+                            <td>@Html.DropDownListFor(m => m.SalleId, new SelectList(Model.Salles, "Id", "Nom" ))</td>
+                            <td>@Html.ValidationMessageFor(m => Model.SalleId)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Coachs)</td>
+                            <td>@Html.DropDownListFor(m => m.CoachId, new SelectList(Model.Coachs, "Id", "Nom" ))</td>
+                            <td> @Html.ValidationMessageFor(m => Model.CoachId)</td>
+                        </tr>
+
+
+                    </table>
+                    </div>
+                <br>
+                <br>
+                <button class="btnCreerCours" onclick="window.location.href='/Cours/ListeCours'">Créer</button>
+                 
+               
+                
+            </fieldset>
+            </div>
+        }
+    </main>
+
+    </body>
+</html>
