@@ -27,3 +27,9 @@ input[type="submit"] {
 .submitBoutton:hover {
     background-color: red;
 }
+.btnPageSupprimerUtilisateur {
+    position: relative;
+    bottom: -10px;
+    left: 10%;
+    transform: translateX(-10%);
+}
