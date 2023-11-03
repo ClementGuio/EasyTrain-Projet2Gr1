@@ -194,6 +194,25 @@ h2 {
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
 
+.btnStandardbleu {
+    background-color: white;
+    color: black;
+    border: 2px solid #22427C;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+
+.btnStandardbleu:hover {
+    background-color: #22427C;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 .btnSuppression {
     background-color: white;
     color: black;

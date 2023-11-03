@@ -63,6 +63,37 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
+        public IActionResult GestionnaireModifierGestionnaire(int id)
+        {
+            Gestionnaire gestionnaire;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                gestionnaire = service.GetGestionnaire(id);
+
+            }
+
+            if (gestionnaire != null)
+            {
+                return View("ModifierGestionnaire",gestionnaire);
+            }
+
+            return View("Error");
+
+        }
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult GestionnaireModifierGestionnaire(Gestionnaire gestionnaire)
+        {
+            using (IDalGestionnaire dal = new GestionnaireService())
+            {
+                dal.UpdateGestionnaire(gestionnaire);
+            }
+
+            return RedirectToAction("ListeGestionnaire");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
         public IActionResult ModifierGestionnaire() 
         {
             string id = HttpContext.User.Identity.Name;//AIDE : Recupération de l'id dans le cookie
@@ -93,7 +124,7 @@ namespace EasyTrain_P2Gr1.Controllers
                 dal.UpdateGestionnaire(gestionnaire);
             }
 
-            return View(gestionnaire);
+            return RedirectToAction("Index",gestionnaire);
 
         }
 
@@ -125,6 +156,34 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             HttpContext.SignOutAsync(); 
             return Redirect("/");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult GestionnaireSupprimerGestionnaire(int id)
+        {
+
+            Gestionnaire gestionnaire;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                gestionnaire = service.GetGestionnaire(id);
+            }
+            if (gestionnaire != null)
+            {
+                return View("SupprimerGestionnaire", gestionnaire);
+            }
+            return View("Error");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult GestionnaireSupprimerGestionnaire(Gestionnaire gestionnaire)
+        {
+            using (IDalGestionnaire dal = new GestionnaireService())
+            {
+                dal.DeleteGestionnaire(gestionnaire.Id);
+            }
+            return RedirectToAction("ListeGestionnaire");
         }
     }
 }
