@@ -189,6 +189,7 @@ header {
 .mainVisiteur {
     z-index: 1;
     min-height: 100vh;
+    padding-top:5em;
 }
 
 a modifier

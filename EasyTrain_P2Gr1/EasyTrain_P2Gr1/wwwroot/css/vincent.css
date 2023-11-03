@@ -5,7 +5,9 @@
     justify-content: center;
     flex-direction: column;
 }
-
+.hauteurTotal{
+    height:100vh;
+}
 table {
     width: 900px;
     border-collapse: collapse;

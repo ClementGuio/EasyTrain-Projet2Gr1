@@ -3,10 +3,13 @@
 *@
 @model EasyTrain_P2Gr1.Models.Equipement
 @{
-    Layout = "_LayoutVisiteur";
+    Layout = "_LayoutGestionnaire";
 }
-@Html.Partial("_InfoEquipement")
-@using(Html.BeginForm()){
-    @Html.Label("Etes-vous sûr de vouloir supprimer cet équipement ?")
-    <input type="submit" value="Confirmer">
-}
+<div class="Container hauteurTotal" >
+    @Html.Partial("_InfoEquipement")
+    @using (Html.BeginForm())
+    {
+        @Html.Label("Etes-vous sûr de vouloir supprimer cet équipement ?")
+        <input type="submit" value="Confirmer">
+    }
+</div>

@@ -24,7 +24,7 @@ namespace EasyTrain_P2Gr1.Models
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain");
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables
@@ -156,23 +156,23 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Equipements.AddRange(new List<Equipement>()
             {
-                new Equipement(){ Nom = "Banc de musculation"},
-                new Equipement(){ Nom = "Banc de musculation"},
-                new Equipement(){ Nom = "Banc de musculation"},
-                new Equipement(){ Nom = "Cage de musculation"},
-                new Equipement(){ Nom = "Cage de musculation"},
-                new Equipement(){ Nom = "Cage de musculation"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Vélo"},
-                new Equipement(){ Nom = "Vélo"},
-                new Equipement(){ Nom = "Vélo"},
-                new Equipement(){ Nom = "Vélo elliptique"},
-                new Equipement(){ Nom = "Vélo elliptique"},
-                new Equipement(){ Nom = "Vélo elliptique"}
+                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/halter.jpg" },
+                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/halter.jpg"},
+                new Equipement(){ Nom = "Banc de musculation", imageEquipement = "/images/vincent/halter.jpg"},
+                new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/halter.jpg"},
+                new Equipement(){ Nom = "Cage de musculation", imageEquipement = "/images/vincent/halter.jpg"},
+                new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/halter.jpg"},
+                new Equipement(){ Nom = "Set d'haltères", imageEquipement = "/images/vincent/set-halter.jpg"},
+                new Equipement(){ Nom = "Set d'haltères", imageEquipement="/images/vincent/set-halter.jpg"},
+                new Equipement(){ Nom = "Set d'haltères", imageEquipement = "/images/vincent/set-halter.jpg"},
+                new Equipement(){ Nom = "Set d'haltères", imageEquipement="/images/vincent/set-halter.jpg"},
+                new Equipement(){ Nom = "Set d'haltères", imageEquipement = "/images/vincent/set-halter.jpg"},
+                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo.jpg"},
+                new Equipement(){ Nom = "Vélo", imageEquipement = "/images/vincent/velo.jpg"},
+                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/velo.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement="/images/vincent/velo.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement="/images/vincent/velo.jpg"}
             });
 
             this.SaveChanges();
