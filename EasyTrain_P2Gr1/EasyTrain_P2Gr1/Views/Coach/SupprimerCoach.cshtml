@@ -1,24 +1,30 @@
-﻿
-@model EasyTrain_P2Gr1.Models.Coach
+﻿@model EasyTrain_P2Gr1.Models.Coach
 @{
-    Layout = "_LayoutCoach";
+    @if (ViewData["role"].Equals("Coach"))
+    {
+        Layout = "_LayoutCoach";
+    }
+    else if (ViewData["role"].Equals("Gestionnaire"))
+    {
+        Layout = "_LayoutGestionnaire";
+    }
+    else
+    {
+        Layout = "_LayoutClient";
+    }
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="~/css/SupprimerProfil.css">
-</head>
-<body>
-    <main>
 @using (Html.BeginForm())
-{  
-    <div class="tableSupprimer">
-        <table>
-            <tr>
+{
+    <div class="fieldsetModifier">
+        <fieldset>
+            <legend><h2>Confirmer la suppression</h2></legend>
+            <div class="tableModifier">
+                <table>
+                    <tr>
                         <td>@Html.LabelFor(c => c.Nom)</td>
                         <td>@Html.DisplayFor(c => c.Nom)</td>
-            </tr>
+                    </tr>
                     <tr>
                         <td>@Html.LabelFor(c => c.Prenom)</td>
                         <td>@Html.DisplayFor(c => c.Prenom)</td>
@@ -31,22 +37,16 @@
                     <tr>
                         <td>@Html.LabelFor(c => c.AdresseMail)</td>
                         <td>@Html.DisplayFor(c => c.AdresseMail)</td>
-                   </tr>
-                   <tr>
+                    </tr>
+                    <tr>
                         <td>@Html.LabelFor(c => c.DateCreationCompte)</td>
                         <td>@Html.DisplayFor(c => c.DateCreationCompte)</td>
                     </tr>
+                </table>
 
-                    
-        </table>
-        <br>
-        <br>
-                <td>@Html.HiddenFor(c => c.MotDePasse) </td>
+            </div>
+            <input type="button" value="Retour" onclick=" history.back();" class="btnStandard" />
+            <input type="submit" value="Confirmer la supression" class="btnSuppression" />
+        </fieldset>
     </div>
-    
-    
-    <input type="submit" class="submitBoutton" value="Confirmer la supression" />
 }
-    </main>
-</body>
-</html>
