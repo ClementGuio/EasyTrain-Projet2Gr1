@@ -4,7 +4,9 @@ using EasyTrain_P2Gr1.Models.Services;
 using EasyTrain_P2Gr1.Models.Services.Interfaces;
 using EasyTrain_P2Gr1.ViewModels;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -48,22 +50,31 @@ namespace EasyTrain_P2Gr1.Controllers
                         //Console.WriteLine("Authentifié");
                         //On construit le cookie
                         var userClaims = new List<Claim>()
+
                         {
-                            
+
                             new Claim(ClaimTypes.Name, utilisateur.Id.ToString()),
                             new Claim(ClaimTypes.Role, utilisateur.GetType().Name)
                         };
 
-                        var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity"); //???
+                    var ClaimIdentity = new ClaimsIdentity(userClaims, "User Identity"); //???
 
-                        var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity }); //???
+                    var userPrincipal = new ClaimsPrincipal(new[] { ClaimIdentity }); //???
 
-                        HttpContext.SignInAsync(userPrincipal); // Crée le cookie => L'utilisateur est connecté
+                    HttpContext.SignInAsync(userPrincipal); // Crée le cookie => L'utilisateur est connecté
 
-                        if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
-                        {
-                            return Redirect(returnUrl);
-                        }
+                    //if (httpContext.User.IsInRole("Client"))
+                    //{
+                    //    return View("client/afficherprofilclient");
+                    //}
+                    //else if (httpContext.User.IsInRole("Coach"))
+                    //{
+                    //    return View("coach/afficherprofilcoach") 
+                    //}
+                    //else if (httpContext.User.IsInRole("Gestionnaire"))
+                    //{
+                    //    return View("");
+                    //}
 
 
                         // Redirection Utilisateur
@@ -85,6 +96,17 @@ namespace EasyTrain_P2Gr1.Controllers
                         // Méssages d'érreurs
                 ModelState.AddModelError("Utilisateur.AdresseMail","AdresseMail incorrect");
                 ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
+          /*          if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+            
+                    return Redirect("/");
+                }
+                ModelState.AddModelError("Utilisateur.AdresseMail", "AdresseMail incorrect");
+                ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
+                //}*/
+
             }
             return View(viewModel);
         }

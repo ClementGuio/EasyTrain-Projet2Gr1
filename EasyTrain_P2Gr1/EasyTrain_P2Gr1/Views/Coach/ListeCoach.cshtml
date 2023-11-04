@@ -3,65 +3,53 @@
 *@
 @model List<EasyTrain_P2Gr1.Models.Coach>
 @{
-    Layout = "_LayoutCoach";
+    @if (ViewData["role"].Equals("Coach"))
+    {
+        Layout = "_LayoutCoach";
+    }
+    else if (ViewData["role"].Equals("Gestionnaire"))
+    {
+        Layout = "_LayoutGestionnaire";
+    }
+    else
+    {
+        Layout = "_LayoutClient";
+    }
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Liste des coachs</title>
-    <link rel="stylesheet" href="~/css/Listes.css">
-</head>
-<body>
-
-    <div class="container">
-
-        <table>
-           
-
-            <thead>
-
+<link rel="stylesheet" href="~/css/Jeanleo.css">
+<div class="fieldsetModifier">
+    <fieldset class="tableForm">
+        <legend><h2>Les Coachs</h2></legend>
+        <div class="tableModifier">
+            <table>
                 <tr>
-
-
                     <th width="100">Id</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Date de naissance</th>
                     <th>Adresse mail</th>
-                    <th>Modification</th>
-                    <th>Suppression</th>
-                   
-
+                    <th></th>
                 </tr>
-            </thead>
-
-
-
-            @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
-            {
-                <tbody>
+                @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
+                {   
                     <tr>
                         <td> @coach.Id </td>
                         <td>@coach.Nom</td>
                         <td>@coach.Prenom</td>
-                        <td>@coach.DateNaissance</td>
+                        <td>@coach.DateNaissance.ToString("dd/MM/yyyy")</td>
                         <td>@coach.AdresseMail</td>
-                        <button class="btnlisteCoach" onclick="window.location.href='/coach/ModifierCoach/@coach.Id'">Modifier</button>
-                        <button class="btnlisteCoach" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
-                   
-                        
+                        <td>
+                            <button class="btnStandard" onclick="window.location.href='/coach/GestionnaireModifierCoach/@coach.Id'">Modifier</button>
+                            <button class="btnSuppression" onclick="window.location.href='/coach/GestionnaireSupprimerCoach/@coach.Id'">Supprimer</button>
+                        </td>
+
                     </tr>
-                </tbody>
-            }
+                }
+                <tr>
+                    <td><button onclick="window.location.href='/Coach/CreerCoach'" class="btnStandardbleu">Ajouter</button></td>
+                </tr>
 
-        </table>
-    
-        
-        
-    </div>
-
-
-
-</body>
-</html>
+            </table>
+        </div>
+    </fieldset>
+</div>

@@ -13,12 +13,6 @@ namespace EasyTrain_P2Gr1.ViewModels
         public List<Coach> Coachs { get; internal set; }
         public List<Equipement> Equipements { get; internal set; }
         public List<Client> Clients { get; set; }
-
-       
-
-
-
-
         public List<EquipementInfo> GetEquipementInfo()
         {
 
