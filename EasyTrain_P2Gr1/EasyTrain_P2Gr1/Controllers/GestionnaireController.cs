@@ -15,6 +15,7 @@ namespace EasyTrain_P2Gr1.Controllers
     public class GestionnaireController : Controller
     {
         private object service;
+        private object listClients;
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
@@ -133,12 +134,13 @@ namespace EasyTrain_P2Gr1.Controllers
 
 
         [Authorize(Roles = "Gestionnaire")]
-        public IActionResult DashbordGestionnaire()
+        public IActionResult DashboardGestionnaire()
         {
             List<Coach> listeCoach;
             List<Cours> listCours;
             List<Equipement> listeEquipements;
-            List<Client> listClient;
+            List<Client> listeClients;
+            List<Salle> listeSalles;
 
 
             using (IDalCoach service = new CoachService())
@@ -155,19 +157,29 @@ namespace EasyTrain_P2Gr1.Controllers
                 listeEquipements = service.GetEquipements();
             }
 
-            using (IDalClient clientService = new ClientService())
+            using (IDalSalle service = new SalleService())
             {
-                listClient = null;
+                listeSalles = service.GetSalles();
             }
+
+            using (IDalClient service = new ClientService())
+            {
+                listeClients = service.GetClients();
+            }
+
+
+
 
             var model = new DashboardGestionnaireViewModel
             {
                 Coachs = listeCoach,
                 Courses = listCours,
                 Equipements = listeEquipements,
-                Clients = listClient
-            };
-
+                Clients = listeClients,
+                Salles = listeSalles,
+                
+        };
+           
             return View(model);
         }
     }
