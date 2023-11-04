@@ -68,7 +68,21 @@ namespace EasyTrain_P2Gr1.Controllers
                             return Redirect(returnUrl);
                         }
 
-                        return Redirect("/");
+
+
+                    if (utilisateur is Gestionnaire)
+                    {
+
+                        return RedirectToAction("dashbordgestionnaire", "Gestionnaire");
+                    }
+                    
+                    else if (utilisateur is Coach)
+                    {
+                        // Rediriger vers une page spécifique pour les clients
+                        return RedirectToAction("dashbordcoach", "Coach");
+                    }
+
+                    return Redirect("/");
                     }
                     ModelState.AddModelError("Utilisateur.AdresseMail","AdresseMail incorrect");
                     ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");

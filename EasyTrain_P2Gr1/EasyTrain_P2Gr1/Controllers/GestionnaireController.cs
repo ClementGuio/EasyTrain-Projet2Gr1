@@ -6,12 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication;
 using System;
+using EasyTrain_P2Gr1.Models.Services.Interfaces;
+using EasyTrain_P2Gr1.ViewModels;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
     //TODO : Créer viewmodel pour modifier (problème de validation)
     public class GestionnaireController : Controller
     {
+        private object service;
+
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
         public IActionResult Index()
@@ -65,8 +69,8 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult ModifierGestionnaire() 
         {
-            string id = HttpContext.User.Identity.Name;//AIDE : Recupération de l'id dans le cookie
-
+            string id = HttpContext.User.Identity.Name;
+            //AIDE : Recupération de l'id dans le cookie
 
             Gestionnaire gestionnaire;
             using (IDalGestionnaire service = new GestionnaireService())
@@ -125,6 +129,46 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             HttpContext.SignOutAsync(); 
             return Redirect("/");
+        }
+
+
+        [Authorize(Roles = "Gestionnaire")]
+        public IActionResult DashbordGestionnaire()
+        {
+            List<Coach> listeCoach;
+            List<Cours> listCours;
+            List<Equipement> listeEquipements;
+            List<Client> listClient;
+
+
+            using (IDalCoach service = new CoachService())
+            {
+                listeCoach = service.GetCoachs();
+            }
+
+            using (IDalCours coursService = new CoursService())
+            {
+                listCours = coursService.GetCours();
+            }
+            using (IDalEquipement service = new EquipementService())
+            {
+                listeEquipements = service.GetEquipements();
+            }
+
+            using (IDalClient clientService = new ClientService())
+            {
+                listClient = null;
+            }
+
+            var model = new DashboardGestionnaireViewModel
+            {
+                Coachs = listeCoach,
+                Courses = listCours,
+                Equipements = listeEquipements,
+                Clients = listClient
+            };
+
+            return View(model);
         }
     }
 }

@@ -70,7 +70,6 @@ namespace EasyTrain_P2Gr1.Controllers
             using (IDalCoach service = new CoachService())
             {
                 coach = service.GetCoach(id);
-
             }
             if (coach != null)
             {
@@ -99,7 +98,7 @@ namespace EasyTrain_P2Gr1.Controllers
             string id = HttpContext.User.Identity.Name;
 
             Coach coach;
-            using (IDalCoach service = new CoachService())
+            using (IDalCoach service = new CoachService() )
             {
                 coach = service.GetCoach(id);
             }

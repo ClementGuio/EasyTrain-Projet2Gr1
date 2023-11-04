@@ -10,6 +10,5 @@ namespace EasyTrain_P2Gr1.Models.Services.Interfaces
         int CreateEquipement(Equipement equipement);
         void UpdateEquipement(Equipement equipement);
         void DeleteEquipement(int id);
-      
     }
 }
