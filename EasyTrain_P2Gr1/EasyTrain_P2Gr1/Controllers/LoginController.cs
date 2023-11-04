@@ -38,17 +38,14 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult Connexion(ClientViewModel viewModel, string returnUrl)
         {
-            Console.WriteLine("OK");
-
-            //if (ModelState.IsValid) 
-            //{
-                Console.WriteLine("model valid");
+            //Console.WriteLine("OK");   
+                //Console.WriteLine("model valid");
                 using (IDalUtilisateur service = new UtilisateurService())
                 {
                     Utilisateur utilisateur = service.Authentifier(viewModel.Utilisateur.AdresseMail, viewModel.Utilisateur.MotDePasse); // On vérifie les identifiants en base de données
                     if (utilisateur != null)
                     {
-                        Console.WriteLine("Authentifié");
+                        //Console.WriteLine("Authentifié");
                         //On construit le cookie
                         var userClaims = new List<Claim>()
                         {
@@ -68,11 +65,26 @@ namespace EasyTrain_P2Gr1.Controllers
                             return Redirect(returnUrl);
                         }
 
-                        return Redirect("/");
+
+                        // Redirection Utilisateur
+                    if (utilisateur is Gestionnaire)
+                    {
+                        // Rediriger vers une page spécifique pour les Gestionnaires
+                        return RedirectToAction("dashboardgestionnaire", "Gestionnaire");
                     }
-                    ModelState.AddModelError("Utilisateur.AdresseMail","AdresseMail incorrect");
-                    ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
-                //}
+                    
+                    else if (utilisateur is Coach)
+                    {
+                        // Rediriger vers une page spécifique pour les coachs
+                        return RedirectToAction("dashboardcoach", "Coach");
+                    }
+                        // Rediriger vers le site
+                    return Redirect("/");
+                    }
+
+                        // Méssages d'érreurs
+                ModelState.AddModelError("Utilisateur.AdresseMail","AdresseMail incorrect");
+                ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
             }
             return View(viewModel);
         }

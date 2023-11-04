@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Authentication;
+using EasyTrain_P2Gr1.Models.Services.Interfaces;
+using EasyTrain_P2Gr1.ViewModels;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -70,7 +72,6 @@ namespace EasyTrain_P2Gr1.Controllers
             using (IDalCoach service = new CoachService())
             {
                 coach = service.GetCoach(id);
-
             }
             if (coach != null)
             {
@@ -99,7 +100,7 @@ namespace EasyTrain_P2Gr1.Controllers
             string id = HttpContext.User.Identity.Name;
 
             Coach coach;
-            using (IDalCoach service = new CoachService())
+            using (IDalCoach service = new CoachService() )
             {
                 coach = service.GetCoach(id);
             }
@@ -120,6 +121,45 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             HttpContext.SignOutAsync();
             return Redirect("/");
+        }
+
+        [Authorize(Roles = "Coach")]
+        public IActionResult DashboardCoach()
+        {
+            List<Coach> listeCoach;
+            List<Cours> listCours;
+            List<CoursProgramme> listecoursProgramme;
+            List<Client> listClient;
+
+
+            using (IDalCoach service = new CoachService())
+            {
+                listeCoach = service.GetCoachs();
+            }
+
+            using (IDalCours coursService = new CoursService())
+            {
+                listCours = coursService.GetCours();
+            }
+            using (IDalCoursProgramme service = new CoursProgrammeService())
+            {
+                listecoursProgramme = service.GetCoursProgrammes();
+            }
+
+            using (IDalClient clientService = new ClientService())
+            {
+                listClient = null;
+            }
+
+            var model = new DashboardCoachViewModel
+            {
+                Coachs = listeCoach,
+                Courses = listCours,
+                CoursProg = listecoursProgramme,
+                Clients = listClient
+            };
+
+            return View(model);
         }
     }
 }

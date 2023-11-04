@@ -53,5 +53,22 @@ namespace EasyTrain_P2Gr1.Models.Services
                 _bddContext.SaveChanges();
             }
         }
+
+        public List<Cours> GetCoursByCoach(string strCoachId)
+        {
+            int coachId;
+            if (int.TryParse(strCoachId, out coachId))
+            {
+                List<Cours> coursList = _bddContext.Cours
+                    .Include(c => c.Coach)
+                    .Include(c => c.Salle)
+                    .Where(c => c.Supprime == false && c.CoachId == coachId)
+                    .ToList();
+
+                return coursList;
+            }
+
+            return null;
+        }
     }
 }
