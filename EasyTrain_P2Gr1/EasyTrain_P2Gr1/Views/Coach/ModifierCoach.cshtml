@@ -5,18 +5,5 @@
     Layout = "_LayoutCoach";
 }
 
-
-<fieldset>
-
-        <legend><h2>Modifier le profil</h2></legend>
-        @Html.Partial("_InfoCompteCoach")
-        <br />
-        <div class="ligne">
-        <button class="btnProfil" onclick="window.location.href='/coach/ModifierCoach'">Modifier</button>
-        <button class="btnProfil" onclick="window.location.href='/coach/SupprimerCoach'">Supprimer</button>
-         </div>
-          </div>
-</fieldset class="fieldsetModifier">
-    <div class="container">
-
+@Html.Partial("_ModifierUtilisateur")
     
