@@ -7,7 +7,7 @@ namespace EasyTrain_P2Gr1.ViewModels
 {
     public class DashboardGestionnaireViewModel
     {
-        public List<Coach> Coaches { get; set; }
+        
         public List<Cours> Courses { get; set; }
         public List<Salle> Salles { get; set; }
         public List<Coach> Coachs { get; internal set; }
