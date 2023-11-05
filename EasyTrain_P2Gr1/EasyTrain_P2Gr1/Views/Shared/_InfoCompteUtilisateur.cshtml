@@ -1,0 +1,88 @@
+<<<<<<< HEAD:EasyTrain_P2Gr1/EasyTrain_P2Gr1/Views/Shared/_InfoCompteCoach.cshtml
+﻿@model EasyTrain_P2Gr1.Models.Coach
+@{
+}
+
+<div class="tableModifier">
+    <table>
+        <tr>
+            <td>
+                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.DateCreationCompte)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c => c.Nom)</td>
+            <td>@Html.DisplayFor(c => c.Nom)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c => c.Prenom)</td>
+            <td>@Html.DisplayFor(c => c.Prenom)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c => c.DateNaissance)</td>
+            <td>@Html.DisplayFor(c => c.DateNaissance)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c => c.AdresseMail)</td>
+            <td>@Html.DisplayFor(c => c.AdresseMail)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c => c.MotDePasse)</td>
+            <td>@Html.DisplayFor(c => c.MotDePasse)</td>
+        </tr>
+    </table>
+</div>  
+=======
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EasyTrain_P2Gr1.Models.Utilisateur
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/Jeanleo.css">
+</head>
+<body>
+    <main>
+        <div class="tableProfil">
+            <table>
+               
+                <tr>
+                    <td>@Html.LabelFor(c => c.Nom)</td>
+                    <td>@Html.DisplayFor(c => c.Nom)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Prenom)</td>
+                    <td>@Html.DisplayFor(c => c.Prenom)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.DateNaissance)</td>
+                    <td>@Html.DisplayFor(c => c.DateNaissance)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.AdresseMail)</td>
+                    <td>@Html.DisplayFor(c => c.AdresseMail)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.MotDePasse)</td>
+                    <td>@Html.DisplayFor(c => c.MotDePasse)</td>
+                </tr>
+
+                <tr>
+                    <td>@Html.LabelFor(c => c.DateCreationCompte)</td>
+                    <td>@Html.DisplayFor(c => c.DateCreationCompte)</td>
+                </tr>
+
+            </table>
+        </div>  
+         
+   </main> 
+</body>
+                    
+</html>                  
+                           
+>>>>>>> origin/Sabrine_J10_APREM:EasyTrain_P2Gr1/EasyTrain_P2Gr1/Views/Shared/_InfoCompteUtilisateur.cshtml

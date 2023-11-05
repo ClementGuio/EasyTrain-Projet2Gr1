@@ -8,6 +8,7 @@ using System;
 using Microsoft.AspNetCore.Authentication;
 using EasyTrain_P2Gr1.Models.Services.Interfaces;
 using EasyTrain_P2Gr1.ViewModels;
+using System.Linq;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -195,43 +196,52 @@ namespace EasyTrain_P2Gr1.Controllers
             return Redirect("/");
         }
 
-        /*<<<<<<< HEAD*/
+       
         [Authorize(Roles = "Coach")]
         public IActionResult DashboardCoach()
         {
-            List<Coach> listeCoach;
+            List<Reservation> listeReservation;
             List<Cours> listCours;
-            List<CoursProgramme> listecoursProgramme;
-            List<Client> listClient;
-
+            List<Client> listeClients;
+            List<CoursProgramme> listeCoursProgrammes;
+            Coach coach;
 
             using (IDalCoach service = new CoachService())
             {
-                listeCoach = service.GetCoachs();
+                coach = service.GetCoach(User.Identity.Name);
             }
+
+            if (coach == null)
+            {
+                // Gérez le cas où le coach n'est pas trouvé (éventuellement redirigez vers une page d'erreur).
+                return View("Error");
+            }
+
+
+            using (IDalReservation reservationService = new ReservationService())
+            {
+                listeReservation = reservationService.GetReservationsCoach(coach.Id);
+            }
+
 
             using (IDalCours coursService = new CoursService())
             {
-                listCours = coursService.GetCours();
-            }
-            using (IDalCoursProgramme service = new CoursProgrammeService())
-            {
-                listecoursProgramme = service.GetCoursProgrammes();
+                listCours = coursService.GetCoursByCoach(coach.Id);
             }
 
-            using (IDalClient clientService = new ClientService())
+            using (IDalCoursProgramme coursProgrammeService = new CoursProgrammeService())
             {
-                listClient = null;
+                listeCoursProgrammes = coursProgrammeService.GetCoursProgrammes();
             }
 
             var model = new DashboardCoachViewModel
             {
-                Coachs = listeCoach,
-                Courses = listCours,
-                CoursProg = listecoursProgramme,
-                Clients = listClient
-            };
+                CoachReservations = listeReservation,
+                CoursProg = listeCoursProgrammes,
 
+              
+                
+            };
             return View(model);
         }
 

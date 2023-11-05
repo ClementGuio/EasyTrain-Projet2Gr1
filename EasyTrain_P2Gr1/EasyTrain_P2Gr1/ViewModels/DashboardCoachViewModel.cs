@@ -15,7 +15,7 @@ namespace EasyTrain_P2Gr1.ViewModels
         public List<Salle> Salles { get; set; }
         public List<Equipement> Equipements { get; internal set; }
         public List<CoursProgramme> CoursProg { get; internal set; }
-        public List<Reservation> Reservations { get; internal set; }
+        public List<Reservation> CoachReservations { get; internal set; }
     }
       
 }

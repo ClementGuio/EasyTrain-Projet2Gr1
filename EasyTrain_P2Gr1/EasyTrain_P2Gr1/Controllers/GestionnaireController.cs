@@ -14,9 +14,7 @@ namespace EasyTrain_P2Gr1.Controllers
     //TODO : Créer viewmodel pour modifier (problème de validation)
     public class GestionnaireController : Controller
     {
-        private object service;
-        private object listClients;
-
+        
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
         public IActionResult Index()

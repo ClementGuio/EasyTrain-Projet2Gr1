@@ -1,4 +1,4 @@
-﻿.fieldsetModifier {
+﻿﻿.fieldsetModifier {
     border: 2px solid #999;
     border-radius: 5px;
     padding: 40px;
@@ -17,7 +17,6 @@ td {
 
 input[type="submit"] {
     position: absolute;
-    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     width: 150px;
@@ -30,3 +29,4 @@ input[type="submit"] {
     margin-top: 200px;
     font-family: 'Montserrat', sans-serif;
 }
+
