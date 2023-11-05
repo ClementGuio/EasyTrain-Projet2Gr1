@@ -374,38 +374,27 @@ h2 {
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    font-size:1.2em;
 }
 
-    .tableauL th,
-    td {
-        padding: 15px;
-        background-color: rgba(255,255,255,0.2);
-    }
+.tableauL,
+td {
+   
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    font-size: 1.5em;
+}
 
 th {
     text-align: left;
+    background-color: lightseagreen;
+    font-size: 1.5em;
+    height: 40px;
 }
 
-thead {
-    th
 
-{
-    background-color: #55608f;
-}
 
-}
 
-tbody {
-    tr
-
-{
-    &:hover
-
-{
-    background-color: rgba(255,255,255,0.3);
-}
-
-}
 
 .tableauL tr td {
     position: relative;
@@ -425,9 +414,7 @@ tbody {
     z-index: -1;
 }
 
-}
-}
-}
+
 
 
 
@@ -553,9 +540,21 @@ tbody {
 
 
 }
-.caption1{ 
+.legend{
 
-    font-size:1.2em;
+}
+fieldset {
+    border: 1px solid #ccc; /* Bordure de 1 pixel solide */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 20px; /* Espace intérieur autour des éléments à l'intérieur du fieldset */
+    margin: 20px; /* Marge extérieure autour du fieldset */
 }
 
+legend {
+    text-align: center; /* Centre le texte de la légende */
+    background-color: #f2f2f2; /* Couleur de fond de la légende */
+    padding: 5px 10px; /* Espace intérieur autour du texte de la légende */
+    border: 1px solid #ccc; /* Bordure de 1 pixel solide pour la légende */
+    border-radius: 5px; /* Coins arrondis pour la légende */
+}
 
