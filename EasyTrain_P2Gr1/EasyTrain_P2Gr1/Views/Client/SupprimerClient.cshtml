@@ -3,21 +3,26 @@
 *@
 @model EasyTrain_P2Gr1.Models.Client
 
-@{
-    Layout = "_LayoutCompte";
+@if (ViewData["role"].Equals("Coach"))
+{
+    Layout = "_LayoutCoach";
+}
+else if (ViewData["role"].Equals("Gestionnaire"))
+{
+    Layout = "_LayoutGestionnaire";
+}
+else
+{
+    Layout = "_LayoutClient";
 }
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="~/css/SupprimerProfil.css">
-</head>
-<body>
-    <main>
-        @using (Html.BeginForm())
-        {
-            <div class="tableSupprimer">
+@using (Html.BeginForm())
+{
+    <div class="fieldsetModifier">
+        <fieldset>
+            <legend><h2>Confirmer la suppression</h2></legend>
+            <div class="tableModifier">
                 <table>
                     <tr>
                         <td>@Html.LabelFor(c => c.Nom)</td>
@@ -40,17 +45,11 @@
                         <td>@Html.LabelFor(c => c.DateCreationCompte)</td>
                         <td>@Html.DisplayFor(c => c.DateCreationCompte)</td>
                     </tr>
-
-
                 </table>
-                <br>
-                <br>
-                <td>@Html.HiddenFor(c => c.MotDePasse) </td>
+
             </div>
-
-
-            <input type="submit" class="submitBoutton" value="Confirmer la supression" />
-        }
-    </main>
-</body>
-</html>
+            <input type="button" value="Retour" onclick=" history.back();" class="btnStandard" />
+            <input type="submit" value="Confirmer la supression" class="btnSuppression" />
+        </fieldset>
+    </div>
+}

@@ -33,6 +33,18 @@ namespace EasyTrain_P2Gr1.Controllers
         [Authorize(Roles = "Gestionnaire")]
         public IActionResult ListeClient() // Le nom de la méthode doit avoir le même nom que la vue
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             List<Client> listeClient;
             using (IDalClient service = new ClientService())
             {
@@ -112,6 +124,61 @@ namespace EasyTrain_P2Gr1.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult GestionnaireModifierClient(int id)
+        {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+            Client client;
+            using (IDalClient service = new ClientService())
+            {
+                client = service.GetClient(id);
+
+            }
+            if (client != null)
+            {
+                return View("ModifierClient",client);
+            }
+
+
+            return View("Error");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult GestionnaireModifierClient(Client client)
+        {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+
+            using (IDalClient service = new ClientService())
+            {
+                service.UpdateClient(client);
+            }
+            return RedirectToAction("ListeClient");
+        }
+
         [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult SupprimerClient()
@@ -145,6 +212,59 @@ namespace EasyTrain_P2Gr1.Controllers
             return Redirect("/");
         }
 
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult GestionnaireSupprimerClient(int id)
+        {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+            Client client;
+            using (IDalClient service = new ClientService())
+            {
+                client = service.GetClient(id);
+            }
+            if (client != null)
+            {
+                return View("SupprimerClient",client);
+            }
+
+
+            return View("Error");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult GestionnaireSupprimerClient(Client client) //TODO Remplacer par la version soft
+        {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+            using (IDalClient service = new ClientService())
+            {
+                service.DeleteClient(client.Id);
+            }
+
+            return RedirectToAction("ListeClient");
+        }
         public IActionResult SoftSupprimerClient(int clientId)
         {
             using (IDalClient service = new ClientService())
