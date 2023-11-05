@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Authentication;
+using EasyTrain_P2Gr1.ViewModels;
+using EasyTrain_P2Gr1.Models.Services.Interfaces;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -44,7 +46,7 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult CreerClient()
         {
-            Client client = new Client { Abonnement = new Abonnement() , DateNaissance = new DateTime()};
+            Client client = new Client { Abonnement = new Abonnement(), DateNaissance = new DateTime() };
             return View(client);
         }
 
@@ -67,8 +69,8 @@ namespace EasyTrain_P2Gr1.Controllers
                 //bool isReservEquipement = Request.Form["ReservEquipement"] == "true";
                 //bool isAccesPiscine = Request.Form["AccesPiscine"] == "true";
                 service.CreateClient(client);
-                
-                
+
+
 
 
             }
@@ -162,5 +164,53 @@ namespace EasyTrain_P2Gr1.Controllers
             return Redirect("/");
         }
 
+
+
+        public IActionResult DashboardClient()
+        {
+            List<Coach> listeCoach;
+            List<Cours> listCours;
+            List<Equipement> listeEquipements;
+            List<Salle> listeSalles;
+
+
+            using (IDalCoach service = new CoachService())
+            {
+                listeCoach = service.GetCoachs();
+            }
+
+            using (IDalCours coursService = new CoursService())
+            {
+                listCours = coursService.GetCours();
+            }
+            using (IDalEquipement service = new EquipementService())
+            {
+                listeEquipements = service.GetEquipements();
+            }
+
+            using (IDalSalle service = new SalleService())
+            {
+                listeSalles = service.GetSalles();
+            }
+
+            
+
+
+
+
+            var model = new DashboardClientViewModel
+            {
+                Coachs = listeCoach,
+                Cours = listCours,
+                Equipements = listeEquipements,
+           
+                Salles = listeSalles,
+
+            };
+
+            return View(model);
+        }
+
     }
-}
+    }
+
