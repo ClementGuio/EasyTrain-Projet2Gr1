@@ -1,0 +1,39 @@
+﻿@model List<EasyTrain_P2Gr1.Models.Cours>
+@{
+    Layout = "_LayoutGestionnaire";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des Cours</title>
+</head>
+<body>
+    <table class="mytable">
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>NbParticipants</th>
+            <th>Prix</th>
+            <th>Coach</th>
+            <th>Salle</th>
+
+        </tr>
+        @foreach (EasyTrain_P2Gr1.Models.Cours cours in Model)
+        {
+            <tr>
+                <td>@cours.Id</td>
+                <td>@cours.Titre</td>
+                <td>@cours.NbParticipants</td>
+                <td>@cours.Prix</td>
+                <td>@cours.Coach.Nom @cours.Coach.Prenom </td>
+                <td>@cours.Salle.Nom</td>
+                <td><a href="cours/supprimercours/@cours.Id">Supprimer</a></td>
+
+            </tr>
+        }
+    </table>
+    <button class="btnRouge" onclick="window.location.href='/Cours/CreerCours'">Nouveau cours</button>
+</body>
+</html>

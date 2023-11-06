@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EasyTrain_P2Gr1.Models.Client
+@{
+    Layout = "_LayoutVisiteur";
+}
+@using (Html.BeginForm())
+{
+
+    <div class="container fieldsetFormulaire">
+        <fieldset>
+            <legend><h2>Abonnement</h2></legend>
+
+            <div class="tableModifier">
+                <table>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Abonnement.NbCours)</td>
+                        <td>@Html.TextBoxFor(c => c.Abonnement.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Abonnement.AccesPiscine)</td>
+                        <td>@Html.CheckBoxFor(c => c.Abonnement.AccesPiscine)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Abonnement.AccesEscalade)</td>
+                        <td>@Html.CheckBoxFor(c => c.Abonnement.AccesEscalade)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Abonnement.AccompagnementCoach)</td>
+                        <td>@Html.CheckBoxFor(c => c.Abonnement.AccompagnementCoach)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="btnCoachModifier">
+                <input type="submit" value="Créer votre compte" />
+            </div>
+        </fieldset>
+    </div>
+
+
+   
+
+}

@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List< EasyTrain_P2Gr1.Models.Salle>
+@{
+    Layout = "_LayoutGestionnaire";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des Cours programmés</title>
+    <link href="~/css/vincent.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Equipements</th>
+            </tr>
+            @foreach (EasyTrain_P2Gr1.Models.Salle salle in Model)
+            {
+                <tr>
+                    <td>@salle.Id</td>
+                    <td>@salle.Nom</td>
+                    <td>@salle.Type</td>
+                    <td>@salle.Equipements</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</body>
+
+</html>
+
