@@ -37,19 +37,32 @@
                             <div class="coursProgramme">
                                 @using (Html.BeginForm())
                                 {
-                                    @Html.LabelFor(c => coursProgramme.Cours.Titre)
-                                    @Html.DisplayFor(c => coursProgramme.Cours.Titre)
-                                    <br />
-                                    <label>Heure de début : </label>
-                                    @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
-                                    <span> h  </span>
-                                    @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
-                                    <span> min  </span>
-                                    <br />
-                                    <label>Votre Coach : </label>
-                                    @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
-                                    <br />
-                                    <input type="submit" value="S'inscrire" />
+                                    <div class="fieldsetModifier">
+                                        <fieldset class="tableForm">
+                                            <legend><h2>@Html.DisplayFor(c => coursProgramme.Cours.Titre)<h2></legend>
+                                            <div class="tableModifier">
+                                                <table>
+                                                    <tr>
+                                                        <td><label>Heure de début : </label></td>
+                                                        <td>
+                                                            @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
+                                                            <span> h  </span>
+                                                            @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
+                                                            <span> min  </span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <label>Votre Coach : </label>
+                                                        @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
+                                                    </tr>
+                                                    <tr>
+                                                        <input type="submit" value="S'inscrire" class="btnStandard" />
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+
                                 }
 
                             </div>
@@ -74,19 +87,32 @@
                                 <div class="coursProgramme">
                                     @using (Html.BeginForm())
                                     {
-                                        @Html.LabelFor(c => coursProgramme.Cours.Titre)
-                                        @Html.DisplayFor(c => coursProgramme.Cours.Titre)
-                                        <br />
-                                        <label>Heure de début : </label>
-                                        @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
-                                        <span> h  </span>
-                                        @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
-                                        <span> min  </span>
-                                        <br />
-                                        <label>Votre Coach : </label>
-                                        @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
-                                        <br />
-                                        <input type="submit" value="S'inscrire" />
+                                        <div class="fieldsetModifier">
+                                            <fieldset class="tableForm">
+                                                <legend><h2>@Html.DisplayFor(c => coursProgramme.Cours.Titre)<h2></legend>
+                                                <div class="tableModifier">
+                                                    <table>
+                                                        <tr>
+                                                            <td><label>Heure de début : </label></td>
+                                                            <td>
+                                                                @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
+                                                                <span> h  </span>
+                                                                @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
+                                                                <span> min  </span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <label>Votre Coach : </label>
+                                                            @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
+                                                        </tr>
+                                                        <tr>
+                                                            <input type="submit" value="S'inscrire" class="btnStandard" />
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
                                     }
 
                                 </div>
