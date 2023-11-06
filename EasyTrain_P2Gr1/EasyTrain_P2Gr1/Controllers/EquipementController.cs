@@ -15,9 +15,18 @@ namespace EasyTrain_P2Gr1.Controllers
         {
             return View();
         }
-    
 
-    public IActionResult ListeEquipement()
+        public IActionResult GestionnaireListeEquipement()
+        {
+            List<Equipement> listeEquipement;
+
+            using (IDalEquipement service = new EquipementService())
+            {
+                listeEquipement = service.GetEquipements();
+            }
+            return View(listeEquipement);
+        }
+        public IActionResult ListeEquipement()
         {
             List<Equipement>listeEquipement;
 

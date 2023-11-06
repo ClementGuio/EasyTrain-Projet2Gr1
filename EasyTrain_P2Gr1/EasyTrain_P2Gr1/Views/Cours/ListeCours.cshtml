@@ -1,53 +1,46 @@
-﻿﻿
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model List<EasyTrain_P2Gr1.Models.Cours>
+﻿@model List<EasyTrain_P2Gr1.Models.Cours>
 @{
     Layout = "_LayoutGestionnaire";
 }
+<link rel="stylesheet" href="~/css/Jeanleo.css">
+<div class="fieldsetModifier">
+    <fieldset class="tableForm">
+        <legend><h2>Les Cours</h2></legend>
+        <div class="tableModifier">
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>NbParticipants</th>
+                    <th>Prix</th>
+                    <th>Coach</th>
+                    <th>Salle</th>
+                    <th></th>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Liste des Cours</title>
+                </tr>
 
-</head>
-<body>
-    <div class="container">
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Titre</th>
-            <th>NbParticipants</th>
-            <th>Prix</th>
-            <th>Coach</th>
-            <th>Salle</th>
-            <th>Suppression</th>
+                @foreach (EasyTrain_P2Gr1.Models.Cours cours in Model)
+                {
 
-        </tr>
-        </thead>
-      
-        @foreach (EasyTrain_P2Gr1.Models.Cours cours in Model)
-        {
-          <tbody>
-        
-            <tr>
-                <td>@cours.Id</td>
-                <td>@cours.Titre</td>
-                <td>@cours.NbParticipants</td>
-                <td>@cours.Prix</td>
-                <td>@cours.Coach.Nom @cours.Coach.Prenom </td>
-                <td>@cours.Salle.Nom</td>
-                <td><a href="/cours/supprimerCours/@cours.Id">Supprimer</a></td>
+                    <tr>
+                        <td>@cours.Id</td>
+                        <td>@cours.Titre</td>
+                        <td>@cours.NbParticipants</td>
+                        <td>@cours.Prix</td>
+                        <td>@cours.Coach.Nom @cours.Coach.Prenom </td>
+                        <td>@cours.Salle.Nom</td>
+                        <td>
+                            <button class="btnSuppression" onclick="window.location.href='/cours/SupprimerCours/@cours.Id'">Supprimer</button>
+                        </td>
 
-            </tr>
-                </tbody>
-        }
-    </table>
+                    </tr>
+                }
+                <tr>
+                    <td><button onclick="window.location.href='/Cours/CreerCours'" class="btnStandardbleu">Ajouter</button></td>
+                </tr>
+
+            </table>
+        </div>
+    </fieldset>
 </div>
-    <button class="btnNouveauCours" onclick="window.location.href='/Cours/CreerCours'">Créer un nouveau cours</button>
-</body>
-</html>
+

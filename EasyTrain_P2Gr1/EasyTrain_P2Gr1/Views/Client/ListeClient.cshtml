@@ -2,102 +2,48 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model List<EasyTrain_P2Gr1.Models.Client>
-@{
+@if (ViewData["role"].Equals("Coach"))
+{
+    Layout = "_LayoutCoach";
+}
+else if (ViewData["role"].Equals("Gestionnaire"))
+{
+    Layout = "_LayoutGestionnaire";
+}
+else
+{
     Layout = "_LayoutClient";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Liste des Clients</title>
-    <style>
 
-        table {
-            width: 800px;
-            border-collapse: collapse;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
+<link rel="stylesheet" href="~/css/Jeanleo.css">
+<div class="fieldsetModifier">
+    <fieldset class="tableForm">
+        <legend><h2>Les clients</h2></legend>
+        <div class="tableModifier">
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Date de création de compte</th>
+                </tr>
+                <!--foreach (Client client in List<Client>)-->
+                @foreach (EasyTrain_P2Gr1.Models.Client client in Model)
+                {
+                    <tr>
+                        <td>@client.Id</td>
+                        <td>@client.Nom</td>
+                        <td>@client.Prenom</td>
+                        <td>@client.DateCreationCompte.ToString("dd/MM/yyyy")</td>
 
-        th,
-        td {
-            padding: 15px;
-            background-color: rgba(255,255,255,0.2);
-        }
+                        <td>
+                            <button class="btnStandard" onclick="window.location.href='/client/GestionnaireModifierClient/@client.Id'">Modifier</button>
+                            <button class="btnSuppression" onclick="window.location.href='/client/GestionnaireSupprimerClient/@client.Id'">Supprimer</button>
+                        </td>
 
-        th {
-            text-align: left;
-        }
-
-        thead {
-            th
-
-        {
-            background-color: #55608f;
-        }
-
-        }
-
-        tbody {
-            tr
-
-        {
-            &:hover
-
-        {
-            background-color: rgba(255,255,255,0.3);
-        }
-
-        }
-
-        td {
-            position: relative;
-            &:hover
-
-        {
-            &:before
-
-        {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: -9999px;
-            bottom: -9999px;
-            background-color: rgba(255,255,255,0.2);
-            z-index: -1;
-        }
-
-        }
-        }
-
-        }
-    </style>
-</head>
-<body>
-    <table class="mytable">
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Date d'embauche</th>
-        </tr>
-        <!--foreach (Client client in List<Client>)-->
-        @foreach (EasyTrain_P2Gr1.Models.Client client in Model)  
-        {
-            <tr>
-                <td>@client.Id</td>
-                <td>@client.Nom</td>
-                <td>@client.Prenom</td>
-                <td>@client.DateCreationCompte.ToString("dd/MM/yyyy")</td>
-            </tr>
-        }
-    </table>
-    <br />
-    <button class="btnlisteCoach" onclick="window.location.href='/client/ModifierClient'">Modifier</button>
-    <button class="btnlisteCoach" onclick="window.location.href='/client/SupprimerClient'">Supprimer</button>
-</body>
-
-
-
-</html>
+                    </tr>
+                }
+            </table>
+        </div>
+    </fieldset>
+</div>

@@ -2,27 +2,20 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model EasyTrain_P2Gr1.ViewModels.FormulaireCoursViewModel;
-@{  
+@{
     Layout = "_LayoutGestionnaire";
 }
 
-<html>
-    <head>
-        <link rel="stylesheet" href="/css/CreerCours.css">
-    </head>
-    <body>
-    <main>
-        @using (Html.BeginForm())
-        {
-           <div class="fieldsetModifier">
-            <fieldset>
-                <legend>Créer un cours</legend>
-                <br>
-                <br>
-                <br>
-                <br>
 
-                <div class="TableCreerCours">
+@using (Html.BeginForm())
+{
+
+    <div class="fieldsetModifier">
+        <fieldset>
+            <legend><h2>Ajouter un cours : </h2></legend>
+            @using (Html.BeginForm())
+            {
+                <div class="tableModifier">
                     <table>
                         <tr>
                             <td> @Html.LabelFor(m => Model.Titre)</td>
@@ -51,20 +44,13 @@
                             <td>@Html.DropDownListFor(m => m.CoachId, new SelectList(Model.Coachs, "Id", "Nom" ))</td>
                             <td> @Html.ValidationMessageFor(m => Model.CoachId)</td>
                         </tr>
-
-
                     </table>
-                    </div>
-                <br>
-                <br>
-                <button class="btnCreerCours" onclick="window.location.href='/Cours/ListeCours'">Créer</button>
-                 
-               
-                
-            </fieldset>
-            </div>
-        }
-    </main>
+                </div>
+                <input type="button" value="Retour" onclick=" history.back();" class="btnStandard" />
+                <input type="submit" value="Creer" class="btnConfirmer" />
+            }
+        </fieldset>
+    </div>
 
-    </body>
-</html>
+}
+

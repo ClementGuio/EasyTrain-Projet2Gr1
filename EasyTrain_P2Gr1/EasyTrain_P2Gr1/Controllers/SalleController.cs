@@ -4,6 +4,7 @@ using EasyTrain_P2Gr1.Models;
 using Microsoft.AspNetCore.Mvc;
 using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -68,5 +69,31 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             return View(salle);
         }
+
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult ListeSalleEquipement(int id)
+        {
+            Salle salle;
+            using (IDalSalle service = new SalleService())
+            {
+                salle = service.GetSalle(id);
+             }
+            return View(salle);
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult ListeSalleEquipement(Salle salle)
+        {
+            using (IDalSalle service = new SalleService())
+            {
+                service.UpdateSalle(salle);
+
+            }
+            return View("ListeSalle");
+        }
+
     }
 }

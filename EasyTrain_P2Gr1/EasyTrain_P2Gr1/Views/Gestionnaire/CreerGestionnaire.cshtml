@@ -33,7 +33,7 @@
                             </tr>
                             <tr>
                                 <td>@Html.LabelFor(m => m.DateNaissance) </td>
-                                <td>@Html.TextBoxFor(m => Model.DateNaissance, new { @class = "InputText"})</td>
+                                <td>@Html.TextBoxFor(m => m.DateNaissance, new { @type="date", @class = "InputText" })</td>
                                 <td>@Html.ValidationMessageFor(m => m.DateNaissance) </td>
                             </tr>
                             <tr>

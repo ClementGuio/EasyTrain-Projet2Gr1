@@ -3,8 +3,22 @@
 *@
 @model EasyTrain_P2Gr1.Models.Client
 
-@{
+@if (ViewData["role"].Equals("Coach"))
+{
+    Layout = "_LayoutCoach";
+}
+else if (ViewData["role"].Equals("Gestionnaire"))
+{
+    Layout = "_LayoutGestionnaire";
+}
+else
+{
     Layout = "_LayoutClient";
 }
 
- @Html.Partial("_ModifierUtilisateur")
+
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_ModifierUtilisateur")
+}
