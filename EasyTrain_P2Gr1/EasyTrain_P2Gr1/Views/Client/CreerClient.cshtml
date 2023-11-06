@@ -15,14 +15,14 @@
 <div class="container" id="registration-form" style="height: 100vh; padding-top:10em">
 
     @using (Html.BeginForm("CreerClient", "Client", FormMethod.Post))
-    {
+    { 
         <div class="cardeLoic">
 
             <div id="step1">
                 <h2>Démarrez votre inscription  </h2>
                 <h3>Sélectionnez vos services</h3>
                 <div>
-                    @Html.LabelFor(c => c.Abonnement.NbCours)
+                    Nombre de cours
                     @Html.TextBoxFor(c => c.Abonnement.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })
                     <br />
                     @Html.LabelFor(c => c.Abonnement.AccesPiscine)
@@ -55,6 +55,7 @@
             </div>
         </div>
     }
+
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

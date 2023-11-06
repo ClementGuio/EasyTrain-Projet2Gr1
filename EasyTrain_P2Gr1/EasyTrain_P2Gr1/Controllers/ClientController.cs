@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Authentication;
-using EasyTrain_P2Gr1.ViewModels;
 using EasyTrain_P2Gr1.Models.Services.Interfaces;
+using EasyTrain_P2Gr1.ViewModels;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -86,7 +86,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
 
             }
-            return View();
+            return RedirectToAction("Connexion", "login");
         }
 
 
@@ -94,9 +94,19 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult ModifierClient()
         {
-            
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             string id = HttpContext.User.Identity.Name;
-
 
             Client client;
             using (IDalClient service = new ClientService())
@@ -117,12 +127,28 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult ModifierClient(Client client)
         {
-            
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(client);
+            }
             using (IDalClient service = new ClientService())
             {
                 service.UpdateClient(client);
             }
-            return RedirectToAction("Index",client);
+            return RedirectToAction("Index", client);
         }
 
         [Authorize(Roles = "Gestionnaire")]
@@ -149,7 +175,7 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             if (client != null)
             {
-                return View("ModifierClient",client);
+                return View("ModifierClient", client);
             }
 
 
@@ -236,7 +262,7 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             if (client != null)
             {
-                return View("SupprimerClient",client);
+                return View("SupprimerClient", client);
             }
 
 
@@ -283,21 +309,16 @@ namespace EasyTrain_P2Gr1.Controllers
             return Redirect("/");
         }
 
-
-
         public IActionResult DashboardClient()
         {
             List<Coach> listeCoach;
             List<Cours> listCours;
             List<Equipement> listeEquipements;
             List<Salle> listeSalles;
-
-
             using (IDalCoach service = new CoachService())
             {
                 listeCoach = service.GetCoachs();
             }
-
             using (IDalCours coursService = new CoursService())
             {
                 listCours = coursService.GetCours();
@@ -306,30 +327,20 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 listeEquipements = service.GetEquipements();
             }
-
             using (IDalSalle service = new SalleService())
             {
                 listeSalles = service.GetSalles();
             }
-
-            
-
-
-
-
             var model = new DashboardClientViewModel
             {
                 Coachs = listeCoach,
                 Cours = listCours,
                 Equipements = listeEquipements,
-           
                 Salles = listeSalles,
-
             };
-
             return View(model);
         }
-
     }
-    }
+}
 
+    

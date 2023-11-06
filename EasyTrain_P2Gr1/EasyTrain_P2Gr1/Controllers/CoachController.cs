@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Authentication;
-using EasyTrain_P2Gr1.Models.Services.Interfaces;
-using EasyTrain_P2Gr1.ViewModels;
-using System.Linq;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -35,6 +32,21 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult ListeCoach() // Le nom de la méthode doit avoir le même nom que la vue
         {
+            if (HttpContext.User.Identity.Name != null)
+            {
+                if (HttpContext.User.IsInRole("Client"))
+                {
+                    ViewData["role"] = "Client";
+                }
+                else if (HttpContext.User.IsInRole("Coach"))
+                {
+                    ViewData["role"] = "Coach";
+                }
+                else if (HttpContext.User.IsInRole("Gestionnaire"))
+                {
+                    ViewData["role"] = "Gestionnaire";
+                }
+            }
             List<Coach> listeCoach;
             using (IDalCoach service = new CoachService())
             {
@@ -67,12 +79,14 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult ModifierCoach()
         {
+
             string id = HttpContext.User.Identity.Name;
 
             Coach coach;
             using (IDalCoach service = new CoachService())
             {
                 coach = service.GetCoach(id);
+
             }
             if (coach != null)
             {
@@ -91,10 +105,64 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 service.UpdateCoach(coach);
             }
-            return RedirectToAction("Index",coach);
+            return RedirectToAction("Index", coach);
         }
 
-        
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult GestionnaireModifierCoach(int id)
+        {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+
+            Coach coach;
+            using (IDalCoach service = new CoachService())
+            {
+                coach = service.GetCoach(id);
+
+            }
+            if (coach != null)
+            {
+                return View("ModifierCoach", coach);
+            }
+
+
+            return View("Error");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult GestionnaireModifierCoach(Coach coach)
+        {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+
+            using (IDalCoach service = new CoachService())
+            {
+                service.UpdateCoach(coach);
+            }
+            return RedirectToAction("ListeCoach");
+        }
 
         [Authorize(Roles = "Coach")]
         [HttpGet]
@@ -103,7 +171,7 @@ namespace EasyTrain_P2Gr1.Controllers
             string id = HttpContext.User.Identity.Name;
 
             Coach coach;
-            using (IDalCoach service = new CoachService() )
+            using (IDalCoach service = new CoachService())
             {
                 coach = service.GetCoach(id);
             }
@@ -125,5 +193,61 @@ namespace EasyTrain_P2Gr1.Controllers
             HttpContext.SignOutAsync();
             return Redirect("/");
         }
+
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult GestionnaireSupprimerCoach(int id)
+        {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+
+            Coach coach;
+            using (IDalCoach service = new CoachService())
+            {
+                coach = service.GetCoach(id);
+            }
+            if (coach != null)
+            {
+                return View("SupprimerCoach", coach);
+            }
+            return View("Error");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult GestionnaireSupprimerCoach(Coach coach)
+        {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
+
+            using (IDalCoach service = new CoachService())
+            {
+                service.DeleteCoach(coach.Id);
+            }
+            return RedirectToAction("ListeCoach");
+        }
+
+
     }
 }
