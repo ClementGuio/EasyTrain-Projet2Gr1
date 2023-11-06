@@ -29,7 +29,7 @@
 
                 <div class="carousel-item active">
                     <div class="carteCarousel" style="background-color:lightgray;height:100vh;padding:4em;overflow-y: scroll">
-                        <h1>@Model.PlanningJours[0].Date.ToString("dddd dd MMMM yyyy", new CultureInfo("fr-FR"))</h1>
+                        <h1 style="text-transform : capitalize">@Model.PlanningJours[0].Date.ToString("dddd dd MMMM yyyy", new CultureInfo("fr-FR"))</h1>
                         <br />
 
                         @foreach (EasyTrain_P2Gr1.Models.CoursProgramme coursProgramme in Model.PlanningJours[0].CoursProgrammes)
@@ -78,7 +78,7 @@
 
                     <div class="carousel-item">
                         <div class="carteCarousel" style="background-color:lightgray;height:100vh;padding:4em;overflow-y: scroll">
-                            <h1>
+                            <h1 style="text-transform : capitalize">
                                 @jour.Date.ToString("dddd dd MMMM yyyy", new CultureInfo("fr-FR"))
                             </h1>
                             @foreach (EasyTrain_P2Gr1.Models.CoursProgramme coursProgramme in jour.CoursProgrammes)
@@ -106,7 +106,11 @@
                                                             @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
                                                         </tr>
                                                         <tr>
-                                                            <input type="submit" value="S'inscrire" class="btnStandard" />
+                                                        @{
+                                                                string a; 
+                                                                if (coursProgramme.PlacesLibres > 1) { a = "places libres"; } else { a = "place libre"; }
+                                                            }
+                                                            <input type="submit" value="S'inscrire, @coursProgramme.PlacesLibres @a" , class="btnStandard" />
                                                         </tr>
                                                     </table>
                                                 </div>

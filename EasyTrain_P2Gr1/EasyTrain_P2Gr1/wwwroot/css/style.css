@@ -383,7 +383,7 @@ h2 {
     margin-right: 0em;
     padding-left: 10em;
     padding-top: 1em;
-    border-top:solid;
+    border-top:solid 1px;
 }
 /*Css Specifique*/
 .tableauL {
