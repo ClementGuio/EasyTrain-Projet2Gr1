@@ -10,7 +10,8 @@ namespace EasyTrain_P2Gr1.Models
     {
         public virtual Abonnement Abonnement { get; set; }
         public virtual List<Presence> Presences { get; set; }
-        
+        public DateTime DeletedAt { get; internal set; }
+
         public bool ReserverCoursProgramme(CoursProgramme coursProgramme)
         {
             if (coursProgramme.PlacesLibres > 0)

@@ -88,25 +88,6 @@ namespace EasyTrain_P2Gr1.Controllers
                         // Rediriger vers le site
                     return Redirect("/");
                     }
-
-                        // Méssages d'érreurs
-                ModelState.AddModelError("Utilisateur.AdresseMail","AdresseMail incorrect");
-                ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
-          /*          if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
-
-                  
-                    //TODO : à voir si c'est possible
-                    //string role = RoleResolver.GetRole(HttpContext);
-                    //if (role.Length != 0)
-                    //{
-                    //    return Redirect($"/{role}");
-                    //}
-
-                    return Redirect("/");
-                }
                 ModelState.AddModelError("Utilisateur.AdresseMail", "AdresseMail incorrect");
                 ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
 

@@ -33,8 +33,9 @@
                 <td>@coursProgramme.DateFin.ToString("dd/MM/yyyy")</td>
                 <td>@coursProgramme.PlacesLibres</td>
                 <td>@coursProgramme.Cours.Titre</td>
-                <td><button class="btnRouge" 
-                    onclick="window.location.href=
+                <td>
+                    <button class="btnSuppression"
+                            onclick="window.location.href=
                     '/CoursProgramme/SupprimerCoursProgramme/@coursProgramme.Id'">
                     Supprimer</button></td>
             </tr>
