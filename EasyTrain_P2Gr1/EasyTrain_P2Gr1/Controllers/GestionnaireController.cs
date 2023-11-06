@@ -61,7 +61,6 @@ namespace EasyTrain_P2Gr1.Controllers
             }
 
             return View(gestionnaire);
-
         }
 
         [Authorize(Roles = "Gestionnaire")]
@@ -164,9 +163,6 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 listeClients = service.GetClients();
             }
-
-
-
 
             var model = new DashboardGestionnaireViewModel
             {

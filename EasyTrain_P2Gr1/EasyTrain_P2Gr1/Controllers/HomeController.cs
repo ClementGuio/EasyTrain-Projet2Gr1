@@ -110,7 +110,7 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [HttpPost]
-        public IActionResult ModifierGestionnaire(Gestionnaire gestionnaire)
+        public IActionResult ModifierGestionnaire(Gestionnaire gestionnaire) // Le nom de la méthode doit avoir le même nom que la vue
         {
             if (!ModelState.IsValid)
                 return View(gestionnaire);
@@ -150,6 +150,17 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult Inscription()
         {
 
+            return View();
+        }
+
+
+        public IActionResult Tarifs()
+        {
+                return View();  
+        }
+
+        public IActionResult Presentation()
+        {
             return View();
         }
     }

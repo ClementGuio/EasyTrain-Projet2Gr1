@@ -41,9 +41,10 @@
 
                     @Html.Partial("_CreerUtilisateur")
 
-                    <div class="btnCoachModifier">
-                        <input type="submit" value="Confirmer" />
-                    </div>
+                <div class="btnCoachModifier">
+                    <input type="submit" value="Confirmer" />
+                    <button type="button" id="retour">Étape suivante</button>
+                </div>
                 </fieldset>
             </div>
 
@@ -58,6 +59,14 @@
                 $("#step2").slideDown("fast");
             });
         });
+
+        $(document).ready(function () {
+            $("#retour").on("click", function () {
+                $("#step2").slideUp("fast", function () {
+                    $("#step1").slideDown("fast");
+                });
+            });
+        })
     });
 </script>
 

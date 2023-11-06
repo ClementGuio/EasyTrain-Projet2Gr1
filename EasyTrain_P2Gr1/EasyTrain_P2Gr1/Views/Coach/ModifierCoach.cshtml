@@ -1,71 +1,7 @@
 ﻿@model EasyTrain_P2Gr1.Models.Coach
 @{
-    @if (ViewData["role"].Equals("Coach"))
-    {
+   
         Layout = "_LayoutCoach";
-    }
-    else if (ViewData["role"].Equals("Gestionnaire"))
-    {
-        Layout = "_LayoutGestionnaire";
-    }
-    else
-    {
-        Layout = "_LayoutClient";
-    }
+   
 }
-@using (Html.BeginForm())
-{
-    <div class="fieldsetModifier">
-        <fieldset>
-            <legend><h2>Modifier le profil</h2></legend>
-            <div class="tableModifier">
-                <table>
-                    <tr>
-                        <td>
-                            @Html.HiddenFor(m => m.Id)
-                            @Html.HiddenFor(m => m.DateCreationCompte)
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => m.Prenom) </td>
-                        <td>@Html.TextBoxFor(m => m.Prenom, new { @class = "InputText"}) </td>
-                        <td>@Html.ValidationMessageFor(m => m.Prenom) </td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => m.Nom) </td>
-                        <td>@Html.TextBoxFor(m => m.Nom, new { @class = "InputText"})  </td>
-                        <td>@Html.ValidationMessageFor(m => m.Nom) </td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => m.AdresseMail)</td>
-                        <td>@Html.TextBoxFor(m => m.AdresseMail, new { @class = "InputText"}) </td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => m.DateNaissance) </td>
-                        <td><input type="date" class="InputText" value="@Model.DateNaissance" /></td>
-                        <td>@Html.ValidationMessageFor(m => m.DateNaissance) </td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => m.MotDePasse) </td>
-                        <td>@Html.PasswordFor(m => m.MotDePasse, new { @class = "InputText"}) </td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(m => m.VerifMotDePasse) </td>
-                        <td>@Html.PasswordFor(m => m.VerifMotDePasse, new { @class = "InputText"}) </td>
-                        <td>@Html.ValidationMessageFor(m => m.VerifMotDePasse) </td>
-                    </tr>
-                </table>
-            </div>
-            <input type="button" value="Retour" onclick=" history.back();" class="btnStandard" />
-            <input type="submit" value="Confirmer" class="btnConfirmer" />
-        </fieldset>
-    </div>
-
-}
-
-<<<<<<< HEAD
-=======
 @Html.Partial("_ModifierUtilisateur")
-    
->>>>>>> origin/Sabrine_J10_APREM
