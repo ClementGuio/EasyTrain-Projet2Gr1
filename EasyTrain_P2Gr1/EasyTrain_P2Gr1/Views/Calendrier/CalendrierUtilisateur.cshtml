@@ -43,20 +43,36 @@
                                             <div class="tableModifier">
                                                 <table>
                                                     <tr>
-                                                        <td><label>Heure de début : </label></td>
-                                                        <td>
-                                                            @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
-                                                            <span> h  </span>
-                                                            @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
-                                                            <span> min  </span>
-                                                        </td>
+                                                        <label>Heure de début : </label>
+
+                                                        @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
+                                                        <span> h  </span>
+                                                        @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
+                                                        <span> min  </span>
+
                                                     </tr>
                                                     <tr>
-                                                        <label>Votre Coach : </label>
+                                                        <label> avec votre Coach : </label>
                                                         @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
                                                     </tr>
                                                     <tr>
-                                                        <input type="submit" value="S'inscrire" class="btnStandard" />
+                                                        @{
+                                                            string a;
+                                                            if (coursProgramme.PlacesLibres > 1) { a = "places libres"; } else { a = "place libre"; }
+                                                        }
+                                                        @{
+                                                            string complet;
+                                                            if (coursProgramme.PlacesLibres < 1)
+                                                            {
+                                                                <button disabled class="btndisabled" onclick="window.location.href='/calendrier/CalendrierReservation/@coursProgramme.Id'">Complet !</button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <input type="button" class="btnStandard" onclick="window.location.href='/Calendrier/CalendrierReservation/@coursProgramme.Id'" value="S'inscrire, @coursProgramme.PlacesLibres @a" />
+                                                            }
+                                                        }
+                                                        <!--  <input type="submit" value="S'inscrire" class="btnStandard" /> -->
+                                                        @Html.HiddenFor(c => coursProgramme.Id)
                                                     </tr>
                                                 </table>
                                             </div>
@@ -93,24 +109,38 @@
                                                 <div class="tableModifier">
                                                     <table>
                                                         <tr>
-                                                            <td><label>Heure de début : </label></td>
-                                                            <td>
+                                                            <label>Heure de début : </label>
+                                                            
                                                                 @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
                                                                 <span> h  </span>
                                                                 @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
                                                                 <span> min  </span>
-                                                            </td>
+                                                          
                                                         </tr>
                                                         <tr>
-                                                            <label>Votre Coach : </label>
+                                                            <label> avec votre Coach : </label>
                                                             @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
                                                         </tr>
                                                         <tr>
-                                                        @{
+                                                            
+                                                            @{
                                                                 string a; 
                                                                 if (coursProgramme.PlacesLibres > 1) { a = "places libres"; } else { a = "place libre"; }
                                                             }
-                                                            <input type="submit" value="S'inscrire, @coursProgramme.PlacesLibres @a" , class="btnStandard" />
+
+                                                            @{
+                                                                if (coursProgramme.PlacesLibres < 1)
+                                                                {
+                                                                    <button disabled class="btndisabled" onclick="window.location.href='/calendrier/CalendrierReservation/@coursProgramme.Id'">Complet !</button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input type="button" class="btnStandard" onclick="window.location.href='/Calendrier/CalendrierReservation/@coursProgramme.Id'" value="S'inscrire, @coursProgramme.PlacesLibres @a"/>
+                                                                    }
+                                                            }
+                                                            
+                                                            <!--  <input type="submit" value="S'inscrire, @coursProgramme.PlacesLibres @a" , class="btnStandard" />  -->
+                                                            
                                                         </tr>
                                                     </table>
                                                 </div>
