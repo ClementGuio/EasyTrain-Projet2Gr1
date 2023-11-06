@@ -12,8 +12,24 @@ using System.Collections.Generic;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
-    public class AbonnementsController : Controller
+    public class AbonnementController : Controller
     {
+
+        [Authorize(Roles = "Client")]
+        [HttpGet]
+        public IActionResult Index()
+        {
+            Client client;
+            using (IDalClient service = new ClientService())
+            {
+                client = service.GetClient(HttpContext.User.Identity.Name);
+            }
+            client.Abonnement.CalculerMensualite();
+            Console.WriteLine(client.Abonnement.Mensualite);
+            AbonnementViewModel avm = new AbonnementViewModel { Abonnement = client.Abonnement };
+            return View("AfficherAbonnement",avm);
+        }
+
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
         public IActionResult ListeAbonnements()
@@ -22,66 +38,43 @@ namespace EasyTrain_P2Gr1.Controllers
             using (IDalAbonnement service = new AbonnementService())
             {
                 listeAbonnements = service.GetAbonnements();
-
             }
-
             return View(listeAbonnements);
         }
 
-
         [HttpGet]
-        public IActionResult CreerAbonnements()
+        public IActionResult CreerAbonnement()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult CreerAbonnements(Abonnement abonnement)
+        public IActionResult CreerAbonnement(Abonnement abonnement)
         {
+            Abonnement.CalculerMensualite(abonnement);
             abonnement.DateAbonnement = DateTime.Now;
-            return RedirectToAction();//TODO : trouver comment rediriger vers une page externe au controller
+            return RedirectToAction("CreerClient", "Client", abonnement);
         }
 
         [Authorize(Roles = "Client")]
-        [HttpGet]
-        public IActionResult ModifierAbonnement()
-        {
-            Client client;
-            using (IDalClient service = new ClientService())
-            {
-                client = service.GetClient(HttpContext.User.Identity.Name);
-            }
-            if (client != null)
-            {
-                return View(client.Abonnement);
-            }
-            return View("Error");
-        }
-
         [HttpPost]
         public IActionResult ModifierAbonnement(Abonnement abonnement)
         {
+            Client client;
+            using (IDalClient service = new ClientService()) 
+            {
+                client = service.GetClient(HttpContext.User.Identity.Name);
+            }
+            abonnement.Id = client.Abonnement.Id;
+            Console.WriteLine("ModifierAbonnement : "+abonnement.Id);
             using (IDalAbonnement service = new AbonnementService())
             {
-                Abonnement existingAbonnement = service.GetAbonnement(abonnement.Id);
-
-                if (existingAbonnement == null)
-                {
-                    TempData["Message"] = "Abonnement introuvable";
-                    return RedirectToAction("ListeAbonnements");
-                }
-                else
-                {
-                    // Mettez à jour d'autres propriétés si nécessaire
-
-                    service.UpdateAbonnement(existingAbonnement);
-                    TempData["Message"] = "Abonnement modifié avec succès";
-                    return RedirectToAction("ListeAbonnements");
-                }
+                service.UpdateAbonnement(abonnement);
             }
+            return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Client")]
         [HttpGet]
         public IActionResult SupprimerAbonnement(int id)
         {
@@ -96,11 +89,11 @@ namespace EasyTrain_P2Gr1.Controllers
                 {
                     return View(abonnement);
                 }
-
             }
             return View("Error");
         }
 
+        [Authorize(Roles = "Client")]
         [HttpPost]
         public IActionResult SupprimerAbonnement(Abonnement abonnement)
         {

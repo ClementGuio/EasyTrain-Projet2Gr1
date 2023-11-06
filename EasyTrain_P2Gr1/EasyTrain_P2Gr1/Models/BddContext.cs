@@ -21,7 +21,7 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Presence> Presences { get; set; }
 
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=EasyTrain");
@@ -35,11 +35,28 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Abonnements.AddRange(new List<Abonnement>()
             {
-                new Abonnement(){ Mensualite = 20},
-                new Abonnement(){ Mensualite = 200},
+                new Abonnement
+                {
+                    Id = 1,
+                    NbCours = 3,
+                    AccesPiscine = true,
+                    AccesEscalade = true,
+                    AccompagnementCoach = true,
+                    DateAbonnement = new DateTime(2022, 5, 30),
+                    
+                },
+                new Abonnement{
+                    Id = 2,
+                    NbCours = 5,
+                    AccesPiscine = false,
+                    AccesEscalade = false,
+                    AccompagnementCoach = true,
+                    DateAbonnement = new DateTime(2022, 7, 28)
+                }
             });
+            
             this.SaveChanges();
-            //Remplissage des tables
+            
             this.Clients.AddRange(new List<Client>()
             {
                 new Client
@@ -49,8 +66,7 @@ namespace EasyTrain_P2Gr1.Models
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Prune"),
-                /*Abonnement= Abonnements.First(a => a.Titre == "Mensuel"),*/
-                //DateAbonnement = new DateTime(2023, 3, 15),
+                Abonnement = this.Abonnements.Find(1),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             },
             new Client
@@ -60,10 +76,10 @@ namespace EasyTrain_P2Gr1.Models
                 DateNaissance = new DateTime(1975, 12, 12),
                 AdresseMail = "dupont.pierre@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Datte"),
-                //DateAbonnement = new DateTime(2022, 3, 15),
-                //Abonnement= Abonnements.First(a => a.Titre == "Annuel"),
+                Abonnement = this.Abonnements.Find(2),
                 DateCreationCompte = new DateTime(2022, 7, 27)
-            } });
+            }
+            });
 
             this.Coachs.AddRange(new List<Coach>()
             {
@@ -177,9 +193,6 @@ namespace EasyTrain_P2Gr1.Models
 
             this.SaveChanges();
 
-
-
-
             this.Salles.AddRange(new List<Salle>()
             {
                 new Salle(){Nom = "The Rock", Type = "Musculation", Equipements = Equipements.Where(e => (e.Nom == "Cage de musculation")
@@ -239,7 +252,7 @@ namespace EasyTrain_P2Gr1.Models
             {
 
                 new Reservation(){
-                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation avancé").ToList()[0], 
+                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation avancé").ToList()[0],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
                 },
                 new Reservation(){

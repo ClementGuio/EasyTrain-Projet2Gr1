@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Authentication;
+using EasyTrain_P2Gr1.ViewModels;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -42,37 +43,52 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreerClient()
+        public IActionResult CreerClient(Abonnement abonnement)
         {
-            Client client = new Client { Abonnement = new Abonnement() , DateNaissance = new DateTime()};
-            return View(client);
+            InscriptionViewModel ivm = new InscriptionViewModel
+            {
+                NbCours = abonnement.NbCours,
+                AccesPiscine = abonnement.AccesPiscine,
+                AccesEscalade = abonnement.AccesEscalade,
+                AccompagnementCoach = abonnement.AccompagnementCoach
+            };
+            return View(ivm);
         }
 
 
         [HttpPost]
-        public IActionResult CreerClient(Client client) //TODO : Abonnement pour un ancien client qui se réinscrit
+        public IActionResult CreerClient(InscriptionViewModel ivm) //TODO : Abonnement pour un ancien client qui se réinscrit
         {
             if (!ModelState.IsValid)
             {
-                return View(client);
+                return View(ivm);
             }
+            DateTime date = DateTime.Now;
+            Client client = new Client
+            {
+                Nom = ivm.Nom,
+                Prenom = ivm.Prenom,
+                DateNaissance = ivm.DateNaissance,
+                AdresseMail = ivm.AdresseMail,
+                MotDePasse = ivm.MotDePasse,
+                DateCreationCompte = date,
+                Abonnement = new Abonnement
+                {
+                    NbCours = ivm.NbCours,
+                    AccesPiscine = ivm.AccesPiscine,
+                    AccesEscalade = ivm.AccesEscalade,
+                    AccompagnementCoach = ivm.AccompagnementCoach,
+                    //TODO: calcul Mensualité
+                    DateAbonnement = date,
+                }
 
-            client.DateCreationCompte = DateTime.Now;
-
-            client.Abonnement.DateAbonnement = client.DateCreationCompte;
+            };
 
             using (IDalClient service = new ClientService())
             {
-
-                //bool isReservEquipement = Request.Form["ReservEquipement"] == "true";
-                //bool isAccesPiscine = Request.Form["AccesPiscine"] == "true";
                 service.CreateClient(client);
-                
-                
-
-
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
 
@@ -86,14 +102,11 @@ namespace EasyTrain_P2Gr1.Controllers
             using (IDalClient service = new ClientService())
             {
                 client = service.GetClient(id);
-
             }
             if (client != null)
             {
                 return View(client);
             }
-
-
             return View("Error");
         }
 
@@ -134,7 +147,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpPost]
-        public IActionResult SupprimerClient(Client client) //TODO Remplacer par la version soft
+        public IActionResult SupprimerClient(Client client) 
         {
 
             using (IDalClient service = new ClientService())
@@ -144,23 +157,5 @@ namespace EasyTrain_P2Gr1.Controllers
             HttpContext.SignOutAsync();//suppression du cookie de l'utilisateur
             return Redirect("/");
         }
-
-        public IActionResult SoftSupprimerClient(int clientId)
-        {
-            using (IDalClient service = new ClientService())
-            {
-                // Au lieu de supprimer le client, marquez-le comme supprimé en définissant la date de suppression
-                Client client = service.GetClient(clientId);
-                if (client != null)
-                {
-                    client.DeletedAt = DateTime.Now;
-                    service.UpdateClient(client); // Mettre à jour le client pour enregistrer la date de suppression
-                }
-            }
-
-            HttpContext.SignOutAsync();
-            return Redirect("/");
-        }
-
     }
 }

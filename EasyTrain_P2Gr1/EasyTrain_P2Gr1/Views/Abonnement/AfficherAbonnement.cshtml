@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVab for empty projeabts, visit https://go.miabrosoft.abom/fwlink/?LinkID=397860
+*@
+@model EasyTrain_P2Gr1.ViewModels.AbonnementViewModel
+@{
+    Layout = "_LayoutClient";
+}
+@using (Html.BeginForm("ModifierAbonnement", "Abonnement", FormMethod.Post))
+{
+
+    <div class="container fieldsetFormulaire">
+        <fieldset>
+            <legend><h2>Abonnement</h2></legend>
+            <div class="tableModifier">
+                <table>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Abonnement.NbCours)</td>
+                        <td>@Html.TextBoxFor(c => c.Abonnement.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })</td>
+                        <td> x @Html.DisplayFor(c => c.TarifCours) euros</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Abonnement.AccesPiscine)</td>
+                        <td>@Html.CheckBoxFor(c => c.Abonnement.AccesPiscine)</td>
+                        <td>@Html.DisplayFor(c => c.TarifPiscine) euros</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Abonnement.AccesEscalade)</td>
+                        <td>@Html.CheckBoxFor(c => c.Abonnement.AccesEscalade)</td>
+                        <td>@Html.DisplayFor(c => c.TarifEscalade) euros</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Abonnement.AccompagnementCoach)</td>
+                        <td>@Html.CheckBoxFor(c => c.Abonnement.AccompagnementCoach)</td>
+                        <td>@Html.DisplayFor(c => c.TarifCoaching) euros</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(a => a.Abonnement.Mensualite)</td>
+                        <td>@Html.DisplayFor(a => a.Abonnement.Mensualite) euros</td>
+                    </tr>
+                    
+                </table>
+            </div>
+
+            <div class="btnCoachModifier">
+                <input type="submit" value="Modifier mon abonnement" />
+            </div>
+        </fieldset>
+    </div>
+
+
+
+
+}

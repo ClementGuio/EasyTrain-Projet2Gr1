@@ -3,19 +3,10 @@
     Layout = "_LayoutVisiteur";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="~/css/ModifierProfilCss.css">
-</head>
-
-
-                        
-                    @if (Model.Authentifie)
-                    {    
-         <div class="messageDeconnecter">
+@if (Model.Authentifie)
+{
+    <div class="messageDeconnecter">
         <h2>
-
             Vous êtes déjà authentifié avec le login
             @if (Model.Utilisateur != null)
             {
@@ -27,55 +18,39 @@
         <h2>
             @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
         </h2>
-         </div>             
-        
-                            
-                    }
-                        
+    </div>
+}
+else
+{
+    @using (Html.BeginForm())
+    {
+        <div class="fieldsetModifier">
 
-                          
-                    else
-                    {
- 
-                     <body>
-                        <main>
-                         @using (Html.BeginForm())
-                        {
-                <div class="fieldsetModifier">
+            <fieldset>
+                <legend><h2>Se connecter</h2></legend>
+                <div class="tableModifier">
+                    <table>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Utilisateur.AdresseMail)</td>
+                            <td>@Html.TextBoxFor(m => m.Utilisateur.AdresseMail)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Utilisateur.MotDePasse)</td>
+                            <td>@Html.PasswordFor(m => m.Utilisateur.MotDePasse)</td>
+                        </tr>
+                    </table>
+                </div>
 
-                          <fieldset>
-                            <legend><h2>Se connecter</h2></legend>
-                            <div class="tableModifier">
-                                <table>
-                                    <tr>
-                                        <td>@Html.LabelFor(m => m.Utilisateur.AdresseMail)</td>
-                                        <td>@Html.TextBoxFor(m => m.Utilisateur.AdresseMail)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>@Html.LabelFor(m => m.Utilisateur.MotDePasse)</td>
-                                        <td>@Html.PasswordFor(m => m.Utilisateur.MotDePasse)</td>
-                                    </tr>
-                                </table>
-                            </div>
+                <div class="btnSeConnecter">
 
-                            <div ="btnSeConnecter">
+                    <input type="submit" value="Se connecter" />
+                </div>
 
-                            <input type="submit" value="Se connecter" />
-                            </div>
-                            
-                            <br />
-                            @Html.ActionLink("Créer un compte client", "CreerClient","Client")
+                <br />
+                @Html.ActionLink("Créer un compte client", "CreerClient","Client")
 
-                          </fieldset>
-                            </div>
-                         } 
-                          </main>
-                         </body>
+            </fieldset>
+        </div>
+    }
+}
 
-
-        
-                        
-                 }     
-        
-</html>
- 

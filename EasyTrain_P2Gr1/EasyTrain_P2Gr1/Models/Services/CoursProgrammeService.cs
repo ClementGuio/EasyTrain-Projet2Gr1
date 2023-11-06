@@ -10,23 +10,26 @@ namespace EasyTrain_P2Gr1.Models.Services
     {
         public List<CoursProgramme> GetCoursProgrammes()
         {
-         return this._bddContext.CoursProgrammes
-                .Include(c => c.Cours)
-                .Include(c => c.Cours.Coach)
-                .Include(c => c.Cours.Salle)
-                .OrderBy(c => c.DateDebut).ToList(); 
+            return this._bddContext.CoursProgrammes
+                   .Include(c => c.Cours)
+                   .Include(c => c.Cours.Coach)
+                   .Include(c => c.Cours.Salle)
+                   .OrderBy(c => c.DateDebut).ToList();
         }
 
         public List<CoursProgramme> GetCoursProgrammesAVenir()
         {
-            return GetCoursProgrammes().Where(c => c.DateDebut.CompareTo(DateTime.Now) > 0).ToList();
+            return GetCoursProgrammes()
+                .Where(c => c.DateDebut.CompareTo(DateTime.Now) > 0).ToList();
         }
-
-
 
         public CoursProgramme GetCoursProgramme(int id)
         {
-            return this._bddContext.CoursProgrammes.Include(c => c.Cours).FirstOrDefault(c => c.Id == id);
+            return this._bddContext.CoursProgrammes
+                .Include(c => c.Cours)
+                .Include(c => c.Cours.Coach)
+                .Include(c => c.Cours.Salle)
+                .FirstOrDefault(c => c.Id == id);
         }
 
         public CoursProgramme GetCoursProgramme(string strId)
@@ -53,7 +56,7 @@ namespace EasyTrain_P2Gr1.Models.Services
             _bddContext.SaveChanges();
         }
 
-        public void DeleteCoursProgramme(int id) 
+        public void DeleteCoursProgramme(int id)
         {
             CoursProgramme coursProgramme = this._bddContext.CoursProgrammes.Find(id);
             List<Reservation> reservations = _bddContext.Reservations.Where(r => r.CoursProgramme.Id == coursProgramme.Id).ToList();

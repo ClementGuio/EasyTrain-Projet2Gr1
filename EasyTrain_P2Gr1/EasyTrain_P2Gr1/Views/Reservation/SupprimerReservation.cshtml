@@ -3,7 +3,7 @@
 *@
 @{
 }
-@model EasyTrain_P2Gr1.Models.Reservation
+@model EasyTrain_P2Gr1.ViewModels.ReservationViewModel
 @{
     Layout = "_LayoutGestionnaire";
 }
@@ -18,18 +18,13 @@
     {
         <fieldset>
             <legend>Supprimer une Réservation : </legend>
-            @Html.LabelFor(m => Model.Client.Prenom)
-            @Html.DisplayFor(m => Model.Client.Prenom)
+            
             <br />
-            @Html.LabelFor(m => Model.Client.Nom)
-            @Html.DisplayFor(m => Model.Client.Nom)
+            @Html.LabelFor(m => m.Reservation.CoursProgramme.DateDebut)
+            @Html.DisplayFor(m => m.Reservation.CoursProgramme.DateDebut)
             <br />
-            @Html.LabelFor(m => Model.CoursProgramme.Cours.Titre)
-            @Html.DisplayFor(m => Model.CoursProgramme.Cours.Titre)
-            <br />
-            @Html.LabelFor(m => Model.CoursProgramme.DateDebut)
-            @Html.DisplayFor(m => Model.CoursProgramme.DateDebut)
-            <br />
+            @Html.HiddenFor(m => m.SelectCoursProgrammeId)
+            @Html.HiddenFor(m => m.Reservation.Id)
             <input type="submit" value="Supprimer" />
         </fieldset>
     }

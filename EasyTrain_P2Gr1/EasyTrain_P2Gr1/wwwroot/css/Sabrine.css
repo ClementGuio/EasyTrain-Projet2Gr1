@@ -1,8 +1,4 @@
-﻿<html >
-<head >
-<meta charset="UTF-8" / >
-<title > Liste des coachs</title >
-<style >
+﻿
 
 .mytable {
     width: 800px;
@@ -51,9 +47,6 @@ td {
     background-color: rgba(255,255,255,0.2);
     z-index: -1;
 }
-
-
-</style >
 
 
 
