@@ -57,7 +57,7 @@ namespace EasyTrain_P2Gr1.Controllers
                 dal.CreateGestionnaire(gestionnaire);
             }
 
-            return View(gestionnaire);
+            return View("ListeGestionnaire");
 
         }
 
@@ -97,7 +97,7 @@ namespace EasyTrain_P2Gr1.Controllers
         public IActionResult ModifierGestionnaire() 
         {
             string id = HttpContext.User.Identity.Name;//AIDE : Recupération de l'id dans le cookie
-
+            
 
             Gestionnaire gestionnaire;
             using (IDalGestionnaire service = new GestionnaireService())

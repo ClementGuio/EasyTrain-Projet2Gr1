@@ -40,6 +40,7 @@ namespace EasyTrain_P2Gr1.Models.Services
         
         public void UpdateClient(Client client)
         {
+            client.MotDePasse = UtilisateurService.EncodeMD5(client.MotDePasse);
             this._bddContext.Clients.Update(client);
             this._bddContext.SaveChanges();
         }

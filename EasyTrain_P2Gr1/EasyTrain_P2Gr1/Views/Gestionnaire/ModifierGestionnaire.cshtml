@@ -3,5 +3,10 @@
     Layout = "_LayoutGestionnaire";
 }
 
-@Html.Partial("_ModifierUtilisateur")
+@using (Html.BeginForm())
+{
+    @Html.Partial("_ModifierUtilisateur")
+}
+
+
 

@@ -44,7 +44,8 @@
                         </tr>
                         <tr>
                             <td>@Html.LabelFor(m => m.DateNaissance) </td>
-                            <td><input type="date" class="InputText" value="@Model.DateNaissance" /></td>
+                            <td>@Html.TextBoxFor(m => m.DateNaissance,"{0:dd-MM-yyyy}",new { @class = "InputText", type="Date"}) </td>
+                            
                             <td>@Html.ValidationMessageFor(m => m.DateNaissance) </td>
                         </tr>
                         <tr>

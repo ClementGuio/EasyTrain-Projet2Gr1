@@ -92,19 +92,9 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult ModifierClient()
         {
-            if (HttpContext.User.IsInRole("Client"))
-            {
-                ViewData["role"] = "Client";
-            }
-            else if (HttpContext.User.IsInRole("Coach"))
-            {
-                ViewData["role"] = "Coach";
-            }
-            else if (HttpContext.User.IsInRole("Gestionnaire"))
-            {
-                ViewData["role"] = "Gestionnaire";
-            }
+            
             string id = HttpContext.User.Identity.Name;
+
 
             Client client;
             using (IDalClient service = new ClientService())
@@ -125,28 +115,12 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult ModifierClient(Client client)
         {
-            if (HttpContext.User.IsInRole("Client"))
-            {
-                ViewData["role"] = "Client";
-            }
-            else if (HttpContext.User.IsInRole("Coach"))
-            {
-                ViewData["role"] = "Coach";
-            }
-            else if (HttpContext.User.IsInRole("Gestionnaire"))
-            {
-                ViewData["role"] = "Gestionnaire";
-            }
-
-            if (!ModelState.IsValid)
-            {
-                return View(client);
-            }
+            
             using (IDalClient service = new ClientService())
             {
                 service.UpdateClient(client);
             }
-            return View();
+            return RedirectToAction("Index",client);
         }
 
         [Authorize(Roles = "Gestionnaire")]

@@ -25,20 +25,16 @@
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.DateNaissance)</td>
-                    <td>@Html.DisplayFor(c => c.DateNaissance)</td>
+                    <td>@Html.DisplayFor(c => c.DateNaissance,"{0:dd-MM-yyyy}")</td>
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.AdresseMail)</td>
                     <td>@Html.DisplayFor(c => c.AdresseMail)</td>
                 </tr>
-                <tr>
-                    <td>@Html.LabelFor(c => c.MotDePasse)</td>
-                    <td>@Html.DisplayFor(c => c.MotDePasse)</td>
-                </tr>
-
+                
                 <tr>
                     <td>@Html.LabelFor(c => c.DateCreationCompte)</td>
-                    <td>@Html.DisplayFor(c => c.DateCreationCompte)</td>
+                    <td>@Html.DisplayFor(c => c.DateCreationCompte,"{0:dd-MM-yyyy}")</td>
                 </tr>
 
             </table>

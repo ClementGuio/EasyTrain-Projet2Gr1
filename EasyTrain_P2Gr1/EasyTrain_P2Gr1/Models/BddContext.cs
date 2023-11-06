@@ -46,7 +46,7 @@ namespace EasyTrain_P2Gr1.Models
                 {
                 Nom = "Bonner",
                 Prenom = "Henri",
-                DateNaissance = new DateTime(1980, 12, 12),
+                DateNaissance = new DateTime(1985, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Prune"),
                 /*Abonnement= Abonnements.First(a => a.Titre == "Mensuel"),*/
@@ -68,7 +68,7 @@ namespace EasyTrain_P2Gr1.Models
             this.Coachs.AddRange(new List<Coach>()
             {
                 new Coach() {
-                    Nom = "Dupont",
+                    Nom = "Dupond",
                     Prenom = "Pierre",
                     DateNaissance = new DateTime(1975, 12, 12),
                     AdresseMail = "dupont.pierre@gmail.com",
@@ -129,7 +129,7 @@ namespace EasyTrain_P2Gr1.Models
                 new Gestionnaire(){
                     Nom = "Dubois",
                     Prenom = "Stella",
-                    DateNaissance = new DateTime(1989,6,10),
+                    DateNaissance = new DateTime(1990,6,10),
                     AdresseMail = "stella.dubois@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Fraise"),
                     DateCreationCompte = new DateTime(2019, 7, 27),
