@@ -40,19 +40,17 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult Connexion(ClientViewModel viewModel, string returnUrl)
         {
-            Console.WriteLine("OK");
-
-            //if (ModelState.IsValid) 
-            //{
-            Console.WriteLine("model valid");
-            using (IDalUtilisateur service = new UtilisateurService())
-            {
-                Utilisateur utilisateur = service.Authentifier(viewModel.Utilisateur.AdresseMail, viewModel.Utilisateur.MotDePasse); // On vérifie les identifiants en base de données
-                if (utilisateur != null)
+            //Console.WriteLine("OK");   
+                //Console.WriteLine("model valid");
+                using (IDalUtilisateur service = new UtilisateurService())
                 {
-                    Console.WriteLine("Authentifié");
-                    //On construit le cookie
-                    var userClaims = new List<Claim>()
+                    Utilisateur utilisateur = service.Authentifier(viewModel.Utilisateur.AdresseMail, viewModel.Utilisateur.MotDePasse); // On vérifie les identifiants en base de données
+                    if (utilisateur != null)
+                    {
+                        //Console.WriteLine("Authentifié");
+                        //On construit le cookie
+                        var userClaims = new List<Claim>()
+
                         {
 
                             new Claim(ClaimTypes.Name, utilisateur.Id.ToString()),
@@ -79,7 +77,26 @@ namespace EasyTrain_P2Gr1.Controllers
                     //}
 
 
-                    if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        // Redirection Utilisateur
+                    if (utilisateur is Gestionnaire)
+                    {
+                        // Rediriger vers une page spécifique pour les Gestionnaires
+                        return RedirectToAction("dashboardgestionnaire", "Gestionnaire");
+                    }
+                    
+                    else if (utilisateur is Coach)
+                    {
+                        // Rediriger vers une page spécifique pour les coachs
+                        return RedirectToAction("dashboardcoach", "Coach");
+                    }
+                        // Rediriger vers le site
+                    return Redirect("/");
+                    }
+
+                        // Méssages d'érreurs
+                ModelState.AddModelError("Utilisateur.AdresseMail","AdresseMail incorrect");
+                ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
+          /*          if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
                     }
@@ -88,7 +105,8 @@ namespace EasyTrain_P2Gr1.Controllers
                 }
                 ModelState.AddModelError("Utilisateur.AdresseMail", "AdresseMail incorrect");
                 ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
-                //}
+                //}*/
+
             }
             return View(viewModel);
         }

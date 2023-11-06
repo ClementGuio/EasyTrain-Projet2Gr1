@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication;
 using System;
+using EasyTrain_P2Gr1.Models.Services.Interfaces;
+using EasyTrain_P2Gr1.ViewModels;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
     //TODO : Créer viewmodel pour modifier (problème de validation)
     public class GestionnaireController : Controller
     {
+        
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
         public IActionResult Index()
@@ -63,37 +66,6 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
-        public IActionResult GestionnaireModifierGestionnaire(int id)
-        {
-            Gestionnaire gestionnaire;
-            using (IDalGestionnaire service = new GestionnaireService())
-            {
-                gestionnaire = service.GetGestionnaire(id);
-
-            }
-
-            if (gestionnaire != null)
-            {
-                return View("ModifierGestionnaire",gestionnaire);
-            }
-
-            return View("Error");
-
-        }
-        [Authorize(Roles = "Gestionnaire")]
-        [HttpPost]
-        public IActionResult GestionnaireModifierGestionnaire(Gestionnaire gestionnaire)
-        {
-            using (IDalGestionnaire dal = new GestionnaireService())
-            {
-                dal.UpdateGestionnaire(gestionnaire);
-            }
-
-            return RedirectToAction("ListeGestionnaire");
-        }
-
-        [Authorize(Roles = "Gestionnaire")]
-        [HttpGet]
         public IActionResult ModifierGestionnaire() 
         {
             string id = HttpContext.User.Identity.Name;//AIDE : Recupération de l'id dans le cookie
@@ -124,7 +96,7 @@ namespace EasyTrain_P2Gr1.Controllers
                 dal.UpdateGestionnaire(gestionnaire);
             }
 
-            return RedirectToAction("Index",gestionnaire);
+            return View(gestionnaire);
 
         }
 
@@ -158,32 +130,55 @@ namespace EasyTrain_P2Gr1.Controllers
             return Redirect("/");
         }
 
-        [Authorize(Roles = "Gestionnaire")]
-        [HttpGet]
-        public IActionResult GestionnaireSupprimerGestionnaire(int id)
-        {
-
-            Gestionnaire gestionnaire;
-            using (IDalGestionnaire service = new GestionnaireService())
-            {
-                gestionnaire = service.GetGestionnaire(id);
-            }
-            if (gestionnaire != null)
-            {
-                return View("SupprimerGestionnaire", gestionnaire);
-            }
-            return View("Error");
-        }
 
         [Authorize(Roles = "Gestionnaire")]
-        [HttpPost]
-        public IActionResult GestionnaireSupprimerGestionnaire(Gestionnaire gestionnaire)
+        public IActionResult DashboardGestionnaire()
         {
-            using (IDalGestionnaire dal = new GestionnaireService())
+            List<Coach> listeCoach;
+            List<Cours> listCours;
+            List<Equipement> listeEquipements;
+            List<Client> listeClients;
+            List<Salle> listeSalles;
+
+
+            using (IDalCoach service = new CoachService())
             {
-                dal.DeleteGestionnaire(gestionnaire.Id);
+                listeCoach = service.GetCoachs();
             }
-            return RedirectToAction("ListeGestionnaire");
+
+            using (IDalCours coursService = new CoursService())
+            {
+                listCours = coursService.GetCours();
+            }
+            using (IDalEquipement service = new EquipementService())
+            {
+                listeEquipements = service.GetEquipements();
+            }
+
+            using (IDalSalle service = new SalleService())
+            {
+                listeSalles = service.GetSalles();
+            }
+
+            using (IDalClient service = new ClientService())
+            {
+                listeClients = service.GetClients();
+            }
+
+
+
+
+            var model = new DashboardGestionnaireViewModel
+            {
+                Coachs = listeCoach,
+                Courses = listCours,
+                Equipements = listeEquipements,
+                Clients = listeClients,
+                Salles = listeSalles,
+                
+        };
+           
+            return View(model);
         }
     }
 }

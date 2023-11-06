@@ -29,5 +29,6 @@ namespace EasyTrain_P2Gr1.Models
 
         
         public bool Supprime { get; set; }
+        public int CoachId { get; internal set; }
     }
 }
