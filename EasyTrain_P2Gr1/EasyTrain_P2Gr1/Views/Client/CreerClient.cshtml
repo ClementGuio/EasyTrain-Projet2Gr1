@@ -16,23 +16,31 @@
 
     @using (Html.BeginForm("CreerClient", "Client", FormMethod.Post))
     { 
+       
         <div class="cardeLoic">
 
             <div id="step1">
                 <h2>Démarrez votre inscription  </h2>
                 <h3>Sélectionnez vos services</h3>
+                <br>
+                <br>
                 <div>
                     Nombre de cours
                     @Html.TextBoxFor(c => c.Abonnement.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })
                     <br />
-                    @Html.LabelFor(c => c.Abonnement.AccesPiscine)
+                    <br>
+                    Accès à la Piscine
                     @Html.CheckBoxFor(c => c.Abonnement.AccesPiscine)
                     <br />
-                    @Html.LabelFor(c => c.Abonnement.AccesEscalade)
+                    <br>
+                    Accès à la salle d'escalade
                     @Html.CheckBoxFor(c => c.Abonnement.AccesEscalade)
                     <br />
-                    @Html.LabelFor(c => c.Abonnement.AccompagenementCoach)
+                    <br>
+                    Coaching personnalisé
                     @Html.CheckBoxFor(c => c.Abonnement.AccompagenementCoach)
+                    <br>
+                    <br>
                 </div>
                 <button type="button" id="next-step">Étape suivante</button>
             </div>
@@ -54,6 +62,7 @@
 
             </div>
         </div>
+        
     }
 
 </div>

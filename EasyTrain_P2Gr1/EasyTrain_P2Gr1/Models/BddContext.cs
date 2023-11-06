@@ -21,7 +21,7 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Presence> Presences { get; set; }
 
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
 
@@ -168,7 +168,7 @@ namespace EasyTrain_P2Gr1.Models
                 new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo1.jpg"},
                 new Equipement(){ Nom = "Aquabiking", imageEquipement="/images/vincent/aquabiking.jpg"},
                 new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
-              
+
             });
 
             this.SaveChanges();
@@ -244,7 +244,7 @@ namespace EasyTrain_P2Gr1.Models
             {
 
                 new Reservation(){
-                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation avancé").ToList()[0], 
+                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation avancé").ToList()[0],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
                 },
                 new Reservation(){
@@ -255,7 +255,7 @@ namespace EasyTrain_P2Gr1.Models
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation débutant").ToList()[0],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
                 },
-                
+
 
                 new Reservation(){
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Cyclisme").ToList()[2],
@@ -288,5 +288,4 @@ namespace EasyTrain_P2Gr1.Models
         }
 
     }
-
 }
