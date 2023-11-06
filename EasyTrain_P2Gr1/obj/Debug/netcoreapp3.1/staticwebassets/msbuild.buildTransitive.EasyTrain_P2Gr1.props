@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/EasyTrain_P2Gr1.props" />
+</Project>

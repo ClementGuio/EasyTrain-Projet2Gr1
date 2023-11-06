@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EasyTrain_P2Gr1.Models.Equipement
+@{
+    Layout = "_LayoutVisiteur";
+}
+@using (Html.BeginForm()){
+    @Html.LabelFor(c => c.Nom)
+    @Html.TextBoxFor(c => c.Nom)
+    <br />
+    <input type="submit" value="Valider">
+}

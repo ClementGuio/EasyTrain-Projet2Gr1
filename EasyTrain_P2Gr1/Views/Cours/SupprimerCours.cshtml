@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EasyTrain_P2Gr1.Models.Cours
+@{
+    Layout = "_LayoutGestionnaire";
+}
+@using (Html.BeginForm())
+{
+    <br />
+    @Html.LabelFor(m => m.Coach.Prenom)
+    @Html.DisplayFor(m => m.Coach.Nom)
+    <br />
+    @Html.LabelFor(m => m.Coach.Nom)
+    @Html.DisplayFor(m => m.Coach.Nom)
+    <br />
+    @Html.LabelFor(m => m.Titre)
+    @Html.DisplayFor(m => m.Titre)
+    <br />
+    @Html.LabelFor(m => m.NbParticipants)
+    @Html.DisplayFor(m => m.NbParticipants)
+    <br />
+    <input type="submit" value="Supprimer">
+}
+

@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutVisiteur";
+}
+
+    <div class="conteneur haut gris">
+        <div class="contenuHaut">
+            <h1 class="start"> start at zero</h1>
+            <a class="btn btn-principal" href="/Client/creerclient">S'inscrire ici -></a>
+        </div>
+    </div>
+
+    <div class="conteneur jaune">
+        <!--Carousel-->
+        <div id="carouselAccueil" class="carousel slide" data-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselAccueil" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselAccueil" data-bs-slide-to="1"></button>
+            </div>
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="carteCarousel">
+                        <a href="/Home/CartesCoachs">
+                            <img src="~/images/Loic/Image01.jpg" />
+                            <h3>Nos coachs</h3>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="carousel-item">
+                    <div class="carteCarousel">
+                        <a href="/Client/creerclient">
+                            <img src="~/images/Loic/Image02.jpg" />
+                            <h3>Nos équipements</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselAccueil" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" role="button" data-bs-target="#carouselAccueil" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

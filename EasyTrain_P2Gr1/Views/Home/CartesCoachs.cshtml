@@ -1,0 +1,21 @@
+﻿@model List<EasyTrain_P2Gr1.Models.Coach>
+@{
+    Layout = "_LayoutVisiteur";
+}
+    <div class="conteneurWrap gris">
+    @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
+    {
+        <div class="carteCoach">
+            <img src="/images/Image01.jpg" alt="">
+            <div>
+                <h3>@coach.Prenom</h3>
+                <br>
+                <h3>@coach.Nom</h3>
+                
+                <div>
+                    <blockquote><i>@coach.Description</i></blockquote>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

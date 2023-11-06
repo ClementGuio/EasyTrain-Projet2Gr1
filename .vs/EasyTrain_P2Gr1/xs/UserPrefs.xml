@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{3844F18B-669F-49EF-97E7-3803EA9CEC31}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.EasyTrain__P2Gr1 PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EasyTrain_P2Gr1/Models/BddContext.cs">
+    <Files>
+      <File FileName="EasyTrain_P2Gr1/Models/BddContext.cs" Line="27" Column="81" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EasyTrain_P2Gr1" expanded="True">
+            <Node name="EasyTrain_P2Gr1" expanded="True">
+              <Node name="Models" expanded="True">
+                <Node name="BddContext.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

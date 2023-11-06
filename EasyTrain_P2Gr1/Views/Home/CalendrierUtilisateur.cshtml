@@ -1,0 +1,117 @@
+﻿@using System.Globalization;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EasyTrain_P2Gr1.ViewModels.CalendrierViewModel
+@{
+    Layout = "_LayoutClient";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Calendrier des cours</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="conteneurCarouselCal">
+        <!-- Debut Carousel-->
+        <div id="carouselAccueil" class="carousel slide" data-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselAccueil" data-bs-slide-to="0" class="active"></button>
+                @for (int i = 1; i <= Model.NbJoursAffiches; i++)
+                {
+                    <button type="button" data-bs-target="#carouselAccueil" data-bs-slide-to="@i"></button>  <!-- A repeter le nombre de jour a affiche-->
+                }
+            </div>
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="carteCarousel" style="background-color:lightgray;height:100vh;padding:4em">
+                        <h1>@Model.PlanningJours[0].Date.ToString("dddd dd MMMM yyyy", new CultureInfo("fr-FR"))</h1>
+                        <br />
+
+                        @foreach (EasyTrain_P2Gr1.Models.CoursProgramme coursProgramme in Model.PlanningJours[0].CoursProgrammes)
+                        {
+                            <div class="coursProgramme">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.LabelFor(c => coursProgramme.Cours.Titre)
+                                    @Html.DisplayFor(c => coursProgramme.Cours.Titre)
+                                    <br />
+                                    <label>Heure de début : </label>
+                                    @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
+                                    <span> h  </span>
+                                    @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
+                                    <span> min  </span>
+                                    <br />
+                                    <label>Votre Coach : </label>
+                                    @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
+                                    <br />
+                                    <input type="submit" value="S'inscrire" />
+                                }
+
+                            </div>
+
+                        }
+
+
+                    </div>
+                </div>
+
+                @foreach (EasyTrain_P2Gr1.ViewModels.CalendrierViewModel.PlanningJour jour in Model.PlanningJours.Skip(1))
+                {
+
+                    <div class="carousel-item">
+                        <div class="carteCarousel" style="background-color:lightgray;height:100vh;padding:4em">
+                            <h1>
+                                @jour.Date.ToString("dddd dd MMMM yyyy", new CultureInfo("fr-FR"))
+                            </h1>
+                            @foreach (EasyTrain_P2Gr1.Models.CoursProgramme coursProgramme in jour.CoursProgrammes)
+                            {
+
+                                <div class="coursProgramme">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.LabelFor(c => coursProgramme.Cours.Titre)
+                                        @Html.DisplayFor(c => coursProgramme.Cours.Titre)
+                                        <br />
+                                        <label>Heure de début : </label>
+                                        @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
+                                        <span> h  </span>
+                                        @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
+                                        <span> min  </span>
+                                        <br />
+                                        <label>Votre Coach : </label>
+                                        @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
+                                        <br />
+                                        <input type="submit" value="S'inscrire" />
+                                    }
+
+                                </div>
+
+
+                            }
+                        </div>
+                    </div>
+
+                }
+
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselAccueil" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" role="button" data-bs-target="#carouselAccueil" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- Fin du carroussel -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>

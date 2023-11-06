@@ -1,0 +1,45 @@
+﻿@model List<EasyTrain_P2Gr1.Models.Presence>
+@{
+    Layout = "_LayoutCompte";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des presences</title>
+</head>
+<body>
+
+    @if (TempData.ContainsKey("Message"))
+    {
+        <div>@TempData["Message"]</div>
+    }
+
+    <a href="CreerPresences"> Ajouter </a>
+
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>heure arrivee</th>
+            <th>heure départ</th>
+            <th>Date</th>
+            <th>id client</th>
+            <th>Action</th>
+        </tr>
+        @foreach (EasyTrain_P2Gr1.Models.Presence presences in Model)
+        {
+            <tr>
+                <td>@presences.Id</td>
+                <td>@presences.HeureArrivee</td>
+                <td>@presences.HeureDepart</td>
+                <td>@presences.Client</td>
+                <td>
+                    <a class=" btn btn-secondaire" href="supprimerpresence/@presences.Id"> suprimer </a>
+                </td>
+
+            </tr>
+        }
+    </table>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Eletelekeli\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Eletelekeli\\.nuget\\packages"
+    ]
+  }
+}

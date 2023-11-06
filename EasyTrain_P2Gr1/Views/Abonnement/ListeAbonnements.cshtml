@@ -1,0 +1,107 @@
+@model List<EasyTrain_P2Gr1.Models.Abonnement>
+@{
+    Layout = "_LayoutGestionnaire";
+}
+
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des Cours</title>
+    @* <style>
+
+        table {
+            width: 800px;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        th {
+            text-align: left;
+        }
+
+        thead {
+            th
+
+        {
+            background-color: #55608f;
+        }
+
+        
+
+        tbody tr {
+            
+
+        
+            &:hover
+
+        
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        
+
+        td {
+            position: relative;
+            &:hover
+
+        {
+            &:before
+
+        {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255,255,255,0.2);
+            z-index: -1;
+        }
+
+        
+        
+        
+    </style> *@
+
+</head>
+
+
+    <div class="container">
+
+        @if (TempData.ContainsKey("Message"))
+        {
+            <div>@TempData["Message"]</div>
+        }
+        <a href="creerabonnements"> Ajouter </a>
+
+        <table class="tableauL">
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Action</th>
+
+            </tr>
+            @foreach (EasyTrain_P2Gr1.Models.Abonnement abonnement in Model)
+            {
+
+                <tr>
+                    <td>@abonnement.Id</td>
+                    <td>@abonnement.Mensualite</td>
+                    <td>
+                        <a class=" btn btn-secondaire" href="modifierabonnement/@abonnement.Id"> modifier </a>
+                        <a class=" btn btn-secondaire" href="supprimerabonnement/@abonnement.Id"> suprimer </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
