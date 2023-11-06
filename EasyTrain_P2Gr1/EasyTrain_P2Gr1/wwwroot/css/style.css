@@ -194,6 +194,25 @@ h2 {
         box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
 
+.btndisabled {
+    background-color: #F00020;
+    color: white;
+    border: 0px solid #F2CB05;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+
+.btndisabled:hover {
+    background-color: #F00020;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 .btnStandardbleu {
     background-color: white;
     color: black;
@@ -366,9 +385,26 @@ h2 {
     justify-content: space-evenly;
 }
 
-     /*Css Specifique*/
+.tableform {
+    padding: 2em;
+}
 
+.thListe {
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    font-weight: bold;
+}
 
+.coursProgramme {
+    margin-left: 0em;
+    margin-right: 0em;
+    padding-left: 10em;
+    padding-top: 1em;
+    border-top:solid 1px;
+}
+/*Css Specifique*/
 .tableauL {
     width: 800px;
     border-collapse: collapse;

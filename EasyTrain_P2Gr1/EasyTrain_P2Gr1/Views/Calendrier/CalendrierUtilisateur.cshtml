@@ -28,13 +28,13 @@
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <div class="carteCarousel" style="background-color:lightgray;height:100vh;padding:4em">
-                        <h1>@Model.PlanningJours[0].Date.ToString("dddd dd MMMM yyyy", new CultureInfo("fr-FR"))</h1>
+                    <div class="carteCarousel" style="background-color:lightgray;height:100vh;padding:4em;overflow-y: scroll">
+                        <h1 style="text-transform : capitalize">@Model.PlanningJours[0].Date.ToString("dddd dd MMMM yyyy", new CultureInfo("fr-FR"))</h1>
                         <br />
 
                         @foreach (EasyTrain_P2Gr1.Models.CoursProgramme coursProgramme in Model.PlanningJours[0].CoursProgrammes)
                         {
-                            <div class="coursProgramme">
+                            <div class="coursProgramme" style="margin-left:6em">
                                 @using (Html.BeginForm())
                                 {
                                     <div class="fieldsetModifier">
@@ -43,20 +43,36 @@
                                             <div class="tableModifier">
                                                 <table>
                                                     <tr>
-                                                        <td><label>Heure de début : </label></td>
-                                                        <td>
-                                                            @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
-                                                            <span> h  </span>
-                                                            @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
-                                                            <span> min  </span>
-                                                        </td>
+                                                        <label>Heure de début : </label>
+
+                                                        @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
+                                                        <span> h  </span>
+                                                        @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
+                                                        <span> min  </span>
+
                                                     </tr>
                                                     <tr>
-                                                        <label>Votre Coach : </label>
+                                                        <label> avec votre Coach : </label>
                                                         @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
                                                     </tr>
                                                     <tr>
-                                                        <input type="submit" value="S'inscrire" class="btnStandard" />
+                                                        @{
+                                                            string a;
+                                                            if (coursProgramme.PlacesLibres > 1) { a = "places libres"; } else { a = "place libre"; }
+                                                        }
+                                                        @{
+                                                            string complet;
+                                                            if (coursProgramme.PlacesLibres < 1)
+                                                            {
+                                                                <button disabled class="btndisabled" onclick="window.location.href='/calendrier/CalendrierReservation/@coursProgramme.Id'">Complet !</button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <input type="button" class="btnStandard" onclick="window.location.href='/Calendrier/CalendrierReservation/@coursProgramme.Id'" value="S'inscrire, @coursProgramme.PlacesLibres @a" />
+                                                            }
+                                                        }
+                                                        <!--  <input type="submit" value="S'inscrire" class="btnStandard" /> -->
+                                                        @Html.HiddenFor(c => coursProgramme.Id)
                                                     </tr>
                                                 </table>
                                             </div>
@@ -77,8 +93,8 @@
                 {
 
                     <div class="carousel-item">
-                        <div class="carteCarousel" style="background-color:lightgray;height:100vh;padding:4em">
-                            <h1>
+                        <div class="carteCarousel" style="background-color:lightgray;height:100vh;padding:4em;overflow-y: scroll">
+                            <h1 style="text-transform : capitalize">
                                 @jour.Date.ToString("dddd dd MMMM yyyy", new CultureInfo("fr-FR"))
                             </h1>
                             @foreach (EasyTrain_P2Gr1.Models.CoursProgramme coursProgramme in jour.CoursProgrammes)
@@ -93,20 +109,38 @@
                                                 <div class="tableModifier">
                                                     <table>
                                                         <tr>
-                                                            <td><label>Heure de début : </label></td>
-                                                            <td>
+                                                            <label>Heure de début : </label>
+                                                            
                                                                 @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
                                                                 <span> h  </span>
                                                                 @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
                                                                 <span> min  </span>
-                                                            </td>
+                                                          
                                                         </tr>
                                                         <tr>
-                                                            <label>Votre Coach : </label>
+                                                            <label> avec votre Coach : </label>
                                                             @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
                                                         </tr>
                                                         <tr>
-                                                            <input type="submit" value="S'inscrire" class="btnStandard" />
+                                                            
+                                                            @{
+                                                                string a; 
+                                                                if (coursProgramme.PlacesLibres > 1) { a = "places libres"; } else { a = "place libre"; }
+                                                            }
+
+                                                            @{
+                                                                if (coursProgramme.PlacesLibres < 1)
+                                                                {
+                                                                    <button disabled class="btndisabled" onclick="window.location.href='/calendrier/CalendrierReservation/@coursProgramme.Id'">Complet !</button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input type="button" class="btnStandard" onclick="window.location.href='/Calendrier/CalendrierReservation/@coursProgramme.Id'" value="S'inscrire, @coursProgramme.PlacesLibres @a"/>
+                                                                    }
+                                                            }
+                                                            
+                                                            <!--  <input type="submit" value="S'inscrire, @coursProgramme.PlacesLibres @a" , class="btnStandard" />  -->
+                                                            
                                                         </tr>
                                                     </table>
                                                 </div>

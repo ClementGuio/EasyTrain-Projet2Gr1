@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Calendrier\" />
     <Folder Include="Views\Utilisateur\" />
     <Folder Include="Views\Presence\" />
   </ItemGroup>
