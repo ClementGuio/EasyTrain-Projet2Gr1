@@ -5,13 +5,15 @@
     justify-content: center;
     flex-direction: column;
 }
-
+.hauteurTotal{
+    height:100vh;
+}
 table {
     width: 900px;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    background: coral;
+    
 }
 
 .center {

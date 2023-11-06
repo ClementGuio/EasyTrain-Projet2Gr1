@@ -5,20 +5,19 @@
 @{
     Layout = "_LayoutGestionnaire";
 }
-@Html.LabelFor(c => c.Nom)
-@Html.DisplayFor(c => c.Nom)
-<br />
-@Html.LabelFor(c => c.Prenom)
-@Html.DisplayFor(c => c.Prenom)
-<br />
-@Html.LabelFor(c => c.DateNaissance)
-@Html.DisplayFor(c => c.DateNaissance)
-<br />
-@Html.LabelFor(c => c.AdresseMail)
-@Html.DisplayFor(c => c.AdresseMail)
-<br />
-@Html.LabelFor(c => c.DateCreationCompte)
-@Html.DisplayFor(c => c.DateCreationCompte)
-<br />
-<button class="btnRouge" onclick="window.location.href='/Gestionnaire/ModifierGestionnaire'">Modifier</button>
-<button class="btnRouge" onclick="window.location.href='/Gestionnaire/SupprimerGestionnaire'">Supprimer</button>
+
+<div class="fieldsetModifier">
+    <fieldset class="tableForm">
+        <legend><h2>Mon profil</h2></legend>
+        <div class="tableModifier">
+            @Html.Partial("_InfoCompteUtilisateur")
+
+        </div>
+        <br />
+        <br />
+        <button class="btnStandard  " onclick="window.location.href='/Gestionnaire/ModifierGestionnaire'">Modifier</button>
+        <button class="btnSuppression" onclick="window.location.href='/Gestionnaire/SupprimerGestionnaire'">Supprimer</button>
+        <br />
+        <br />
+    </fieldset>
+</div>

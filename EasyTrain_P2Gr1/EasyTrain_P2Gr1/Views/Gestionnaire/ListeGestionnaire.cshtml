@@ -4,38 +4,40 @@
 }
 
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <title>Liste des Gestionnaires</title>
-    <link rel="stylesheet"  href="/css/Sabrine.css">
-</head>
-<body>
-    <table class="mytable">
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Date de naissance</th>
-            <th>Adresse mail</th>
-            <th>Mot de passe</th>
-            <th>Date d'embauche</th>
-
-        </tr>
-        @foreach (EasyTrain_P2Gr1.Models.Gestionnaire gestionnaire in Model)
-        {
-            <tr>
-                <td>@gestionnaire.Id</td>
-                <td>@gestionnaire.Nom</td>
-                <td>@gestionnaire.Prenom</td>
-                <td>@gestionnaire.DateNaissance</td>
-                <td>@gestionnaire.AdresseMail</td>
-                <td>@gestionnaire.MotDePasse</td>
-                <td>@gestionnaire.DateCreationCompte.ToString("dd/MM/yyyy")</td>
-            </tr>
-        }
-    </table>
-    
-</body>
-</html>
+<link rel="stylesheet" href="~/css/Jeanleo.css">
+<div class="fieldsetModifier">
+    <fieldset class="tableForm">
+        <legend><h2>Les gestionnaires</h2></legend>
+        <div class="tableModifier">
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Date de naissance</th>
+                    <th>Adresse mail</th>
+                    <th>Date d'embauche</th>
+                    <th></th>
+                </tr>
+                @foreach (EasyTrain_P2Gr1.Models.Gestionnaire gestionnaire in Model)
+                {
+                    <tr>
+                        <td>@gestionnaire.Id</td>
+                        <td>@gestionnaire.Nom</td>
+                        <td>@gestionnaire.Prenom</td>
+                        <td>@gestionnaire.DateNaissance</td>
+                        <td>@gestionnaire.AdresseMail</td>
+                        <td>@gestionnaire.DateCreationCompte.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <button class="btnStandard" onclick="window.location.href='/Gestionnaire/GestionnaireModifierGestionnaire/@gestionnaire.Id'">Modifier</button>
+                            <button class="btnSuppression" onclick="window.location.href='/Gestionnaire/GestionnaireSupprimerGestionnaire/@gestionnaire.Id'">Supprimer</button>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td><button onclick="window.location.href='/Gestionnaire/CreerGestionnaire'" class="btnStandardbleu">Ajouter</button></td>
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+</div>

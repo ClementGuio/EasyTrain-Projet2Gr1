@@ -1,0 +1,96 @@
+﻿@model EasyTrain_P2Gr1.ViewModels.DashboardClientViewModel
+@{
+    Layout = "_LayoutClient";
+    
+}
+<style>
+    h3 {
+        margin-bottom: 0.5em;
+        font-weight: bold;
+        font-size: 2em;
+    }
+
+    .totalWidth {
+        width: 100vw;
+        margin-top: 2em;
+        padding: 2em
+    }
+
+    .scrollist {
+        width: 100%;
+        height: 90%;
+        overflow: scroll;
+    }
+</style>
+
+<div class=" container">
+    <div class="ligne">
+        <div class="col-5 " style="padding:1em">
+            <div class="cardeFlatLoic espace_autour">
+                <h3>Coachs</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Date d'inscription</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var coach in Model.Coachs)
+                        {
+                            <tr onclick="window.location.href='/coach/AfficherProfilCoach/@coach.Id'">
+                                <td>@coach.Nom </td>
+                                <td>@coach.Prenom</td>
+                                <td>@coach.DateCreationCompte</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+              
+            </div>
+        </div>
+        <div class="card col-8 ">
+            <div class="cardeLoic j espace_autour">
+                <h3>Cours</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Salle</th>
+                            <th>Durée</th>
+                            <th>Participant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cours in Model.Cours)
+                        {
+                            <tr>
+                                <td>@cours.Titre</td>
+                                <td>@cours.Salle.Nom</td>
+                                <td>@cours.DureeMinutes</td>
+                                <td>@cours.NbParticipants</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <a class="btn btn-principal" onclick="window.location.href='/Cours/ListeCours'"> voir plus </a>
+
+
+            </div>
+
+          
+        </div>
+
+        <div class="ligne espace_autour totalWidth">
+
+           
+            <div class="ligne espace_autour">
+               
+            </div>
+        </div>
+    </div>

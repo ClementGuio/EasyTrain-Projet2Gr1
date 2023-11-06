@@ -37,6 +37,7 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public void UpdateCoach(Coach coach)
         {
+            coach.MotDePasse = UtilisateurService.EncodeMD5(coach.MotDePasse);
             this._bddContext.Coachs.Update(coach);
             this._bddContext.SaveChanges();
         }

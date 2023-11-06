@@ -1,15 +1,14 @@
 ﻿
-
 .tableSupprimer {
     color: black;
     padding: inherit;
     color: black;
-   
+  
 }
 
 table, th, td {
-    border: 1px solid #000;
-    border-collapse:separate;
+    border: 1px solid goldenrod;
+    border-collapse: separate;
     font-size: 1.1em;
 }
 
@@ -23,15 +22,14 @@ input[type="submit"] {
     bottom: -10px;
     left: 10%;
     transform: translateX(-10%);
-  
 }
 
-.submitBoutton:hover{
-    background-color:peachpuff;
+.submitBoutton:hover {
+    background-color: red;
 }
-
-
-
-
-
-
+.btnPageSupprimerUtilisateur {
+    position: relative;
+    bottom: -10px;
+    left: 10%;
+    transform: translateX(-10%);
+}

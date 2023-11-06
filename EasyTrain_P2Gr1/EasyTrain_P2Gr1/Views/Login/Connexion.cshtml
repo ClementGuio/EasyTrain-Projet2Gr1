@@ -3,6 +3,14 @@
     Layout = "_LayoutVisiteur";
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/LoginConnexion.css">
+</head>
+
+
+
 @if (Model.Authentifie)
 {
     <div class="messageDeconnecter">
@@ -19,38 +27,53 @@
             @Html.ActionLink("Voulez-vous vous déconnecter ?", "Deconnexion")
         </h2>
     </div>
+
+
 }
+
+
+
 else
 {
-    @using (Html.BeginForm())
-    {
-        <div class="fieldsetModifier">
 
-            <fieldset>
-                <legend><h2>Se connecter</h2></legend>
-                <div class="tableModifier">
-                    <table>
-                        <tr>
-                            <td>@Html.LabelFor(m => m.Utilisateur.AdresseMail)</td>
-                            <td>@Html.TextBoxFor(m => m.Utilisateur.AdresseMail)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(m => m.Utilisateur.MotDePasse)</td>
-                            <td>@Html.PasswordFor(m => m.Utilisateur.MotDePasse)</td>
-                        </tr>
-                    </table>
+    <body>
+        <main>
+            @using (Html.BeginForm())
+            {
+                <div class="fieldsetModifier">
+
+                    <fieldset>
+                        <legend><h2>Se connecter</h2></legend>
+                        <div class="tableModifier">
+                            <table>
+                                <tr>
+                                    <td>@Html.LabelFor(m => m.Utilisateur.AdresseMail)</td>
+                                    <td>@Html.TextBoxFor(m => m.Utilisateur.AdresseMail)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(m => m.Utilisateur.MotDePasse)</td>
+                                    <td>@Html.PasswordFor(m => m.Utilisateur.MotDePasse)</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div ="btnSeConnecter">
+
+                            <input type="submit" value="Se connecter" />
+                        </div>
+
+                        <br />
+                        @Html.ActionLink("Créer un compte client", "CreerClient","Client")
+
+                    </fieldset>
                 </div>
+            }
+        </main>
+    </body>
 
-                <div class="btnSeConnecter">
 
-                    <input type="submit" value="Se connecter" />
-                </div>
 
-                <br />
-                @Html.ActionLink("Créer un compte client", "CreerClient","Client")
 
-            </fieldset>
-        </div>
-    }
 }
 
+</html>

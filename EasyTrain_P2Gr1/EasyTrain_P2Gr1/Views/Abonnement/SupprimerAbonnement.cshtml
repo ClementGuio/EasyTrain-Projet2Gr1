@@ -5,7 +5,8 @@
 @{
     Layout = "_LayoutGestionnaire";
 }
-@Html.Partial("_InfoAbonnement")
+<partial name="_InfoAbonnement"/>
+
 @using(Html.BeginForm()){
     @Html.Label("Etes-vous sûr de vouloir supprimer l'abonnement?")
     <input type="submit" value="Confirmer">

@@ -11,6 +11,8 @@ namespace EasyTrain_P2Gr1.Models
         public string Titre { get; set; }
 
         [Required(ErrorMessage = "Le nombre de participants doit être renseigné.")]
+
+        [Display(Name = "Nombre de participants")]
         public int NbParticipants { get; set; }
 
         [Required(ErrorMessage = "La durée du cours doit être renseignée")]

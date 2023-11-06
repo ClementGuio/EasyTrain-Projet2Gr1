@@ -7,6 +7,7 @@ using EasyTrain_P2Gr1.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -72,16 +73,28 @@ namespace EasyTrain_P2Gr1.Controllers
 
 
 
+                        // Redirection Utilisateur
                     if (utilisateur is Gestionnaire)
                     {
-
-                        return RedirectToAction("dashbordgestionnaire", "Gestionnaire");
+                        // Rediriger vers une page spécifique pour les Gestionnaires
+                        return RedirectToAction("dashboardgestionnaire", "Gestionnaire");
                     }
                     
                     else if (utilisateur is Coach)
                     {
-                        // Rediriger vers une page spécifique pour les clients
-                        return RedirectToAction("dashbordcoach", "Coach");
+                        // Rediriger vers une page spécifique pour les coachs
+                        return RedirectToAction("dashboardcoach", "Coach");
+                    }
+                        // Rediriger vers le site
+                    return Redirect("/");
+                    }
+
+                        // Méssages d'érreurs
+                ModelState.AddModelError("Utilisateur.AdresseMail","AdresseMail incorrect");
+                ModelState.AddModelError("Utilisateur.MotDePasse", "Mot de passe incorrect");
+          /*          if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
                     }
 
                   

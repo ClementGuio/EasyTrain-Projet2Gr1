@@ -2,6 +2,7 @@
 using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using EasyTrain_P2Gr1.Models.Services;
 using EasyTrain_P2Gr1.Models.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,18 @@ namespace EasyTrain_P2Gr1.Controllers
         {
             return View();
         }
-    
 
-    public IActionResult ListeEquipement()
+        public IActionResult GestionnaireListeEquipement()
+        {
+            List<Equipement> listeEquipement;
+
+            using (IDalEquipement service = new EquipementService())
+            {
+                listeEquipement = service.GetEquipements();
+            }
+            return View(listeEquipement);
+        }
+        public IActionResult ListeEquipement()
         {
             List<Equipement>listeEquipement;
 
@@ -58,6 +68,7 @@ namespace EasyTrain_P2Gr1.Controllers
         return View();
     }
 
+    [Authorize(Roles = "Gestionnaire")]
     [HttpGet]
     public IActionResult SupprimerEquipement(int id)
     {
@@ -77,6 +88,7 @@ namespace EasyTrain_P2Gr1.Controllers
         return View("Error");
     }
 
+    [Authorize(Roles = "Gestionnaire")]
     [HttpPost]
     public IActionResult SupprimerEquipement(Equipement equipement)
     {

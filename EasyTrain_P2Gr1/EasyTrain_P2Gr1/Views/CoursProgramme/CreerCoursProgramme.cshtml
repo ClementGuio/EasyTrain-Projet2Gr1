@@ -5,17 +5,38 @@
 @{
     Layout = "_LayoutCoach";
 }
+
+
 @using (Html.BeginForm())
-{
-    @Html.LabelFor(c => c.DateDebut)
-    @Html.TextBoxFor(c => c.DateDebut, new { @type="date-time" })
+{    <div class="container">
+        <caption class="caption1"> Créer un cours Programmé </caption>
+        <br>
+    <table>
+        
+        <tr>
+            <td>@Html.LabelFor(c => c.DateDebut)</td>
+            <td>@Html.TextBoxFor(c => c.DateDebut)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c => c.DateFin)</td>
+            <td>@Html.TextBoxFor(c => c.DateFin)</td>
+        </tr>
+
+        <tr>
+                <td>@Html.LabelFor(c => c.Cours)</td>
+            <td> @Html.DropDownListFor(m => m.CoursId, new SelectList(Model.Cours, "Id", "Titre"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c => c.Cours)</td>
+            <td> @Html.DropDownListFor(m => m.CoursId, new SelectList(Model.Cours, "Id", "Prix"))</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(c => c.Cours)</td>
+            <td> @Html.DropDownListFor(m => m.CoursId, new SelectList(Model.Cours, "Id", "Salle"))</td>
+        </tr>
+    </table>
     <br />
-    @Html.LabelFor(c => c.DateFin)
-    @Html.TextBoxFor(c => c.DateFin, new { @type="date-time" })
     <br />
-    
-    <br />
-    @Html.DropDownListFor(m => m.CoursId, new SelectList(Model.Cours, "Id", "Titre"))
-    
     <input type="submit" value="Valider">
+    </div>
 }

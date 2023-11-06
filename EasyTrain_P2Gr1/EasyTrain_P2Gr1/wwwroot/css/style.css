@@ -85,7 +85,7 @@ h2 {
 }
 
 .col-7 {
-    width: 38.33%;
+    width: 58.33%;
     margin: 0 10px 0 10px;
 }
 
@@ -130,7 +130,7 @@ h2 {
 
 .j {
     background-color: var(--main-color-principale);
-    height: 50em;
+    /*height: 50em;*/
 }
 
 .g {
@@ -140,9 +140,10 @@ h2 {
 
  /*bouttons*/ 
 .btn {
-    font-size: 2em;
-    padding: 0.5em;
-    border-radius: 15px;
+    text-align:center;
+    margin:1em;
+    padding: 0.2em;
+    border-radius: 5px;
     text-decoration: none;
     box-shadow: var(--main-shaddow-primary);
 }
@@ -152,7 +153,7 @@ h2 {
 }
 
 .btn-principal {
-    font-size: 2em;
+    font-size: 1em;
     padding: 0.5em;
     color: var(--main-text-color-light);
     background-color: var(--main-color-intermediaire);
@@ -175,8 +176,103 @@ h2 {
     background-color: var(--main-color-secondaire);
 }
 
- /*autres*/
+.btnStandard {
+    background-color: white;
+    color: black;
+    border: 2px solid #F2CB05;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
 
+    .btnStandard:hover {
+        background-color: #F2CB05;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+.btndisabled {
+    background-color: #F00020;
+    color: white;
+    border: 0px solid #F2CB05;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+
+.btndisabled:hover {
+    background-color: #F00020;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.btnStandardbleu {
+    background-color: white;
+    color: black;
+    border: 2px solid #22427C;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+
+.btnStandardbleu:hover {
+    background-color: #22427C;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.btnSuppression {
+    background-color: white;
+    color: black;
+    border: 2px solid #F00020;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+    .btnSuppression:hover {
+        background-color: #F00020;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+.btnConfirmer {
+    background-color: white;
+    color: black;
+    border: 2px solid #03AC13;
+    transition-duration: 0.4s;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 6em;
+    border-radius: 3px;
+}
+
+    .btnConfirmer:hover {
+        background-color: #03AC13;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+
+
+/*autres*/
 .herO01 {
     display: flex;
     height: 100vh;
@@ -203,7 +299,25 @@ h2 {
     font-size: 10vw;
 }
 
- /*Cartes*/ 
+ /*Cartes*/
+.cardeLoic {
+    overflow: hidden;
+    padding:1em;
+    box-shadow: var(--main-shaddow-primary);
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+}
+
+.cardeFlatLoic {
+    overflow: hidden;
+    padding: 1em;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:105%;
+}
 
 .cardsurvole {
     position: relative;
@@ -290,46 +404,52 @@ h2 {
     justify-content: space-evenly;
 }
 
-     /*Css Specifique*/
+.tableform {
+    padding: 2em;
+}
 
+.thListe {
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    font-weight: bold;
+}
 
+.coursProgramme {
+    margin-left: 0em;
+    margin-right: 0em;
+    padding-left: 10em;
+    padding-top: 1em;
+    border-top:solid 1px;
+}
+/*Css Specifique*/
 .tableauL {
     width: 800px;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    font-size:1.2em;
 }
 
-    .tableauL th,
-    td {
-        padding: 15px;
-        background-color: rgba(255,255,255,0.2);
-    }
+.tableauL,
+td {
+   
+    padding: 15px;
+    background-color: rgba(255,255,255,0.2);
+    font-size: 1.5em;
+}
 
 th {
     text-align: left;
+    background-color: lightseagreen;
+    font-size: 1.5em;
+    height: 40px;
 }
 
-thead {
-    th
 
-{
-    background-color: #55608f;
-}
 
-}
 
-tbody {
-    tr
-
-{
-    &:hover
-
-{
-    background-color: rgba(255,255,255,0.3);
-}
-
-}
 
 .tableauL tr td {
     position: relative;
@@ -349,9 +469,7 @@ tbody {
     z-index: -1;
 }
 
-}
-}
-}
+
 
 
 
@@ -476,5 +594,22 @@ tbody {
     
 
 
-}*/
+}
+.legend{
+
+}
+fieldset {
+    border: 1px solid #ccc; /* Bordure de 1 pixel solide */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 20px; /* Espace intérieur autour des éléments à l'intérieur du fieldset */
+    margin: 20px; /* Marge extérieure autour du fieldset */
+}
+
+legend {
+    text-align: center; /* Centre le texte de la légende */
+    background-color: #f2f2f2; /* Couleur de fond de la légende */
+    padding: 5px 10px; /* Espace intérieur autour du texte de la légende */
+    border: 1px solid #ccc; /* Bordure de 1 pixel solide pour la légende */
+    border-radius: 5px; /* Coins arrondis pour la légende */
+}
 

@@ -14,8 +14,6 @@ namespace EasyTrain_P2Gr1.Controllers
     //TODO : Créer viewmodel pour modifier (problème de validation)
     public class GestionnaireController : Controller
     {
-        private object service;
-
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
         public IActionResult Index()
@@ -34,7 +32,7 @@ namespace EasyTrain_P2Gr1.Controllers
         }
 
         [Authorize(Roles = "Gestionnaire")]
-        public IActionResult ListeGestionnaire() 
+        public IActionResult ListeGestionnaire()
         {
             List<Gestionnaire> listeGestionnaire;
             using (IDalGestionnaire service = new GestionnaireService())
@@ -46,14 +44,14 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
-        public IActionResult CreerGestionnaire() 
+        public IActionResult CreerGestionnaire()
         {
             return View();
         }
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpPost]
-        public IActionResult CreerGestionnaire(Gestionnaire gestionnaire) 
+        public IActionResult CreerGestionnaire(Gestionnaire gestionnaire)
         {
             gestionnaire.DateCreationCompte = DateTime.Now;
             using (IDalGestionnaire dal = new GestionnaireService())
@@ -67,11 +65,8 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
-        public IActionResult ModifierGestionnaire() 
+        public IActionResult GestionnaireModifierGestionnaire(int id)
         {
-            string id = HttpContext.User.Identity.Name;
-            //AIDE : Recupération de l'id dans le cookie
-
             Gestionnaire gestionnaire;
             using (IDalGestionnaire service = new GestionnaireService())
             {
@@ -81,29 +76,63 @@ namespace EasyTrain_P2Gr1.Controllers
 
             if (gestionnaire != null)
             {
-                return View(gestionnaire);
+                return View("ModifierGestionnaire", gestionnaire);
             }
 
             return View("Error");
 
         }
-
         [Authorize(Roles = "Gestionnaire")]
         [HttpPost]
-        public IActionResult ModifierGestionnaire(Gestionnaire gestionnaire) 
+        public IActionResult GestionnaireModifierGestionnaire(Gestionnaire gestionnaire)
         {
             using (IDalGestionnaire dal = new GestionnaireService())
             {
                 dal.UpdateGestionnaire(gestionnaire);
             }
 
-            return View(gestionnaire);
+            return RedirectToAction("ListeGestionnaire");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult ModifierGestionnaire()
+        {
+            string id = HttpContext.User.Identity.Name;//AIDE : Recupération de l'id dans le cookie
+
+
+            Gestionnaire gestionnaire;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                gestionnaire = service.GetGestionnaire(id);
+
+            }
+
+            if (gestionnaire != null)
+            {
+                return View(gestionnaire);
+            }
+
+            return View("Error");
+
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult ModifierGestionnaire(Gestionnaire gestionnaire)
+        {
+            using (IDalGestionnaire dal = new GestionnaireService())
+            {
+                dal.UpdateGestionnaire(gestionnaire);
+            }
+
+            return RedirectToAction("Index", gestionnaire);
 
         }
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpGet]
-        public IActionResult SupprimerGestionnaire() 
+        public IActionResult SupprimerGestionnaire()
         {
             string id = HttpContext.User.Identity.Name;
 
@@ -121,31 +150,56 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Gestionnaire")]
         [HttpPost]
-        public IActionResult SupprimerGestionnaire(Gestionnaire gestionnaire) 
+        public IActionResult SupprimerGestionnaire(Gestionnaire gestionnaire)
         {
             using (IDalGestionnaire dal = new GestionnaireService())
             {
                 dal.DeleteGestionnaire(gestionnaire.Id);
             }
-            HttpContext.SignOutAsync(); 
+            HttpContext.SignOutAsync();
             return Redirect("/");
         }
 
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult GestionnaireSupprimerGestionnaire(int id)
+        {
+
+            Gestionnaire gestionnaire;
+            using (IDalGestionnaire service = new GestionnaireService())
+            {
+                gestionnaire = service.GetGestionnaire(id);
+            }
+            if (gestionnaire != null)
+            {
+                return View("SupprimerGestionnaire", gestionnaire);
+            }
+            return View("Error");
+        }
 
         [Authorize(Roles = "Gestionnaire")]
-        public IActionResult DashbordGestionnaire()
+        [HttpPost]
+        public IActionResult GestionnaireSupprimerGestionnaire(Gestionnaire gestionnaire)
+        {
+            using (IDalGestionnaire dal = new GestionnaireService())
+            {
+                dal.DeleteGestionnaire(gestionnaire.Id);
+            }
+            return RedirectToAction("ListeGestionnaire");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        public IActionResult DashboardGestionnaire()
         {
             List<Coach> listeCoach;
             List<Cours> listCours;
             List<Equipement> listeEquipements;
-            List<Client> listClient;
-
-
+            List<Client> listeClients;
+            List<Salle> listeSalles;
             using (IDalCoach service = new CoachService())
             {
                 listeCoach = service.GetCoachs();
             }
-
             using (IDalCours coursService = new CoursService())
             {
                 listCours = coursService.GetCours();
@@ -154,20 +208,22 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 listeEquipements = service.GetEquipements();
             }
-
-            using (IDalClient clientService = new ClientService())
+            using (IDalSalle service = new SalleService())
             {
-                listClient = null;
+                listeSalles = service.GetSalles();
             }
-
+            using (IDalClient service = new ClientService())
+            {
+                listeClients = service.GetClients();
+            }
             var model = new DashboardGestionnaireViewModel
             {
                 Coachs = listeCoach,
                 Courses = listCours,
                 Equipements = listeEquipements,
-                Clients = listClient
+                Clients = listeClients,
+                Salles = listeSalles,
             };
-
             return View(model);
         }
     }

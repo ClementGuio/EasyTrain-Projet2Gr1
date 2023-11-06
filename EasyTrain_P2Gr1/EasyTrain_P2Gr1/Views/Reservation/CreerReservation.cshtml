@@ -1,4 +1,4 @@
-﻿@*
+﻿﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
@@ -14,10 +14,16 @@
 
         <fieldset>
             <legend>Effectuer une réservation: </legend>
+
+            
+
             <br />
-            @Html.DropDownListFor(m => m.SelectCoursProgrammeId, 
-                new SelectList(Model.CoursProgrammes, "Id", "DateDebut"))
             <br />
+            @Html.LabelFor(m => m.SelectCoursProgrammeId)
+            @Html.DropDownListFor(m => m.SelectCoursProgrammeId,
+            new SelectList(Model.CoursProgrammes, "Id", "DateDebut"))
+
+           
             <br />
             <input type="submit" value="Valider la réservation" />
         </fieldset>

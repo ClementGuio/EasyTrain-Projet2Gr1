@@ -24,7 +24,9 @@ namespace EasyTrain_P2Gr1.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=EasyTrain");
+
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=EasyTrain");
+
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables
@@ -63,7 +65,7 @@ namespace EasyTrain_P2Gr1.Models
                 {
                 Nom = "Bonner",
                 Prenom = "Henri",
-                DateNaissance = new DateTime(1980, 12, 12),
+                DateNaissance = new DateTime(1985, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = UtilisateurService.EncodeMD5("Prune"),
                 Abonnement = this.Abonnements.Find(1),
@@ -84,7 +86,7 @@ namespace EasyTrain_P2Gr1.Models
             this.Coachs.AddRange(new List<Coach>()
             {
                 new Coach() {
-                    Nom = "Dupont",
+                    Nom = "Dupond",
                     Prenom = "Pierre",
                     DateNaissance = new DateTime(1975, 12, 12),
                     AdresseMail = "dupont.pierre@gmail.com",
@@ -145,7 +147,7 @@ namespace EasyTrain_P2Gr1.Models
                 new Gestionnaire(){
                     Nom = "Dubois",
                     Prenom = "Stella",
-                    DateNaissance = new DateTime(1989,6,10),
+                    DateNaissance = new DateTime(1990,6,10),
                     AdresseMail = "stella.dubois@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Fraise"),
                     DateCreationCompte = new DateTime(2019, 7, 27),
@@ -172,23 +174,17 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Equipements.AddRange(new List<Equipement>()
             {
-                new Equipement(){ Nom = "Banc de musculation"},
-                new Equipement(){ Nom = "Banc de musculation"},
-                new Equipement(){ Nom = "Banc de musculation"},
-                new Equipement(){ Nom = "Cage de musculation"},
-                new Equipement(){ Nom = "Cage de musculation"},
-                new Equipement(){ Nom = "Cage de musculation"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Set d'haltères"},
-                new Equipement(){ Nom = "Vélo"},
-                new Equipement(){ Nom = "Vélo"},
-                new Equipement(){ Nom = "Vélo"},
-                new Equipement(){ Nom = "Vélo elliptique"},
-                new Equipement(){ Nom = "Vélo elliptique"},
-                new Equipement(){ Nom = "Vélo elliptique"}
+                new Equipement(){ Nom = "Halter" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/bancmusculation.jpg"},
+                new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/cage-de-musculation.jpg"},
+                new Equipement(){ Nom = "Rameur", imageEquipement = "/images/vincent/rameur2.jpg"},
+                new Equipement(){ Nom = "Tapis de course", imageEquipement="/images/vincent/tapis-de-course.jpg"},
+                new Equipement(){ Nom = "Cage à cuisses", imageEquipement = "/images/vincent/cage-a-cuisse.jpg"},
+                new Equipement(){ Nom = "Mur d'escalade", imageEquipement = "/images/vincent/escalade.jpg"},
+                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo1.jpg"},
+                new Equipement(){ Nom = "Aquabiking", imageEquipement="/images/vincent/aquabiking.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
+
             });
 
             this.SaveChanges();
@@ -236,6 +232,15 @@ namespace EasyTrain_P2Gr1.Models
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
                     Cours = Cours.First(c => c.Titre == "Musculation avancé"),
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
+                                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
+                    Cours = Cours.First(c => c.Titre == "Musculation avancé"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
+                                                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
+                    Cours = Cours.First(c => c.Titre == "Musculation avancé"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
+                                                                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
+                    Cours = Cours.First(c => c.Titre == "Musculation avancé"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 16, 0, 0), DateFin = new DateTime(2023, 11, 8, 16, 45, 0),
                     Cours = Cours.First(c => c.Titre == "Musculation avancé"),
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
@@ -263,6 +268,8 @@ namespace EasyTrain_P2Gr1.Models
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation débutant").ToList()[0],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
                 },
+
+
                 new Reservation(){
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Cyclisme").ToList()[2],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "dupont.pierre@gmail.com")
@@ -294,5 +301,4 @@ namespace EasyTrain_P2Gr1.Models
         }
 
     }
-
 }
