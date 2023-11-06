@@ -259,6 +259,8 @@ namespace EasyTrain_P2Gr1.Models
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation débutant").ToList()[0],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
                 },
+                
+
                 new Reservation(){
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Cyclisme").ToList()[2],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "dupont.pierre@gmail.com")

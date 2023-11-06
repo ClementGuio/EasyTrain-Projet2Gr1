@@ -5,7 +5,23 @@
 @{
     Layout = "_LayoutClient";
 }
-@Html.Partial("_InfoCompteClient")
-<br />
-<button class="btnProfil" onclick="window.location.href='/client/ModifierClient'">Modifier</button>
-<button class="btnProfil" onclick="window.location.href='/client/SupprimerClient'">Supprimer</button>
+
+<div class="fieldsetModifier">
+    <fieldset class="tableForm">
+        <legend><h2>Mon profil</h2></legend>
+        <div class="tableModifier">
+            @Html.Partial("_InfoCompteUtilisateur")
+
+        </div>
+        <br />
+        <br />
+        <button class="btnStandard" onclick="window.location.href='/client/ModifierClient'">Modifier</button>
+        <button class="btnSuppression" onclick="window.location.href='/client/SupprimerClient'">Supprimer</button>
+        <br />
+        <br />
+    </fieldset>
+</div>
+
+
+
+   

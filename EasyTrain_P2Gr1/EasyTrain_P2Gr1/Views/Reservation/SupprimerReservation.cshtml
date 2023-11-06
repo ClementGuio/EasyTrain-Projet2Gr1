@@ -5,17 +5,19 @@
 }
 @model EasyTrain_P2Gr1.Models.Reservation
 @{
-    Layout = "_LayoutGestionnaire";
+    
+    Layout = "_LayoutClient";
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>SupprimerReservation</title>
+    <link href="~/css/style.css" rel="stylesheet">
 </head>
 <body>
     @using (Html.BeginForm())
-    {
+    {  <div class="container">
         <fieldset>
             <legend>Supprimer une Réservation : </legend>
             @Html.LabelFor(m => Model.Client.Prenom)
@@ -32,6 +34,7 @@
             <br />
             <input type="submit" value="Supprimer" />
         </fieldset>
+        </div>
     }
 </body>
 </html>
