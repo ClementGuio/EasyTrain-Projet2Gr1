@@ -16,37 +16,43 @@
 
     @using (Html.BeginForm("CreerClient", "Client", FormMethod.Post))
     {
-        <div id="step1">
-            <div>
-                @Html.LabelFor(c => c.Abonnement.NbCours)
-                @Html.TextBoxFor(c => c.Abonnement.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })
-                <br />
-                @Html.LabelFor(c => c.Abonnement.AccesPiscine)
-                @Html.CheckBoxFor(c => c.Abonnement.AccesPiscine)
-                <br />
-                @Html.LabelFor(c => c.Abonnement.AccesEscalade)
-                @Html.CheckBoxFor(c => c.Abonnement.AccesEscalade)
-                <br />
-                @Html.LabelFor(c => c.Abonnement.AccompagenementCoach)
-                @Html.CheckBoxFor(c => c.Abonnement.AccompagenementCoach)
+        <div class="cardeLoic">
+
+            <div id="step1">
+                <h2>Démarrez votre inscription  </h2>
+                <h3>Sélectionnez vos services</h3>
+                <div>
+                    @Html.LabelFor(c => c.Abonnement.NbCours)
+                    @Html.TextBoxFor(c => c.Abonnement.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })
+                    <br />
+                    @Html.LabelFor(c => c.Abonnement.AccesPiscine)
+                    @Html.CheckBoxFor(c => c.Abonnement.AccesPiscine)
+                    <br />
+                    @Html.LabelFor(c => c.Abonnement.AccesEscalade)
+                    @Html.CheckBoxFor(c => c.Abonnement.AccesEscalade)
+                    <br />
+                    @Html.LabelFor(c => c.Abonnement.AccompagenementCoach)
+                    @Html.CheckBoxFor(c => c.Abonnement.AccompagenementCoach)
+                </div>
+                <button type="button" id="next-step">Étape suivante</button>
             </div>
-            <button type="button" id="next-step">Étape suivante</button>
-        </div>
 
-        <div id="step2" style="display: none;">
+            <div id="step2" style="display: none;">
+                <h3>Renseignez vos informations</h3>
 
-            <div class="fieldsetModifier">
-                <fieldset>
-                    <legend><h2>Inscription</h2></legend>
+                <div class="fieldsetModifier">
+
 
                     @Html.Partial("_CreerUtilisateur")
 
                     <div class="btnCoachModifier">
                         <input type="submit" value="Confirmer" />
+                        <button type="button" id="retour">Retour</button>
                     </div>
-                </fieldset>
-            </div>
 
+                </div>
+
+            </div>
         </div>
     }
 </div>
@@ -58,6 +64,14 @@
                 $("#step2").slideDown("fast");
             });
         });
+
+        $(document).ready(function () {
+            $("#retour").on("click", function () {
+                $("#step2").slideUp("fast", function () {
+                    $("#step1").slideDown("fast");
+                });
+            });
+        })
     });
 </script>
 

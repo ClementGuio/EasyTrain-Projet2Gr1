@@ -158,23 +158,17 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Equipements.AddRange(new List<Equipement>()
             {
-                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/halter.jpg" },
-                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/halter.jpg"},
-                new Equipement(){ Nom = "Banc de musculation", imageEquipement = "/images/vincent/halter.jpg"},
-                new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/halter.jpg"},
-                new Equipement(){ Nom = "Cage de musculation", imageEquipement = "/images/vincent/halter.jpg"},
-                new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/halter.jpg"},
-                new Equipement(){ Nom = "Set d'haltères", imageEquipement = "/images/vincent/set-halter.jpg"},
-                new Equipement(){ Nom = "Set d'haltères", imageEquipement="/images/vincent/set-halter.jpg"},
-                new Equipement(){ Nom = "Set d'haltères", imageEquipement = "/images/vincent/set-halter.jpg"},
-                new Equipement(){ Nom = "Set d'haltères", imageEquipement="/images/vincent/set-halter.jpg"},
-                new Equipement(){ Nom = "Set d'haltères", imageEquipement = "/images/vincent/set-halter.jpg"},
-                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo.jpg"},
-                new Equipement(){ Nom = "Vélo", imageEquipement = "/images/vincent/velo.jpg"},
-                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo.jpg"},
-                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/velo.jpg"},
-                new Equipement(){ Nom = "Vélo elliptique", imageEquipement="/images/vincent/velo.jpg"},
-                new Equipement(){ Nom = "Vélo elliptique", imageEquipement="/images/vincent/velo.jpg"}
+                new Equipement(){ Nom = "Halter" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/bancmusculation.jpg"},
+                new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/cage-de-musculation.jpg"},
+                new Equipement(){ Nom = "Rameur", imageEquipement = "/images/vincent/rameur2.jpg"},
+                new Equipement(){ Nom = "Tapis de course", imageEquipement="/images/vincent/tapis-de-course.jpg"},
+                new Equipement(){ Nom = "Cage à cuisses", imageEquipement = "/images/vincent/cage-a-cuisse.jpg"},
+                new Equipement(){ Nom = "Mur d'escalade", imageEquipement = "/images/vincent/escalade.jpg"},
+                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo1.jpg"},
+                new Equipement(){ Nom = "Aquabiking", imageEquipement="/images/vincent/aquabiking.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
+              
             });
 
             this.SaveChanges();
