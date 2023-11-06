@@ -1,19 +1,19 @@
 
 /*EasyTrain Css
 */
-/*Propriétées de base et variables*/   
-* {
+Propriétées de base et variables   
+*{
      /*supprimer les valeurs par default de navigateur*/
     margin: 0;
     padding: 0;
 
-     /*comportement par default des box*/ 
+    /*comportement par default des box*/ 
     box-sizing: border-box;
 
-    /* police par default*/ 
+     /*police par default*/ 
     font-family: 'Roboto', sans-serif;
 
-   /* Variables */
+    /*Variables*/ 
     --main-color-principale: #F2CB05;
     --main-color-secondaire: #95D904;
     --main-color-intermediaire: #84BF04;
@@ -463,8 +463,8 @@ tbody {
 
 
     /*affichage deskktop*/    
-@media only screen and (min-width: 1824px) { /*Faire ça pour tous les types d'écran*/
-    :root {
+/*@media only screen and (min-width: 1824px) {*/ /*Faire ça pour tous les types d'écran*/
+    /*:root {
         font-size: 100%;
     }
 
@@ -476,5 +476,5 @@ tbody {
     
 
 
-}
+}*/
 

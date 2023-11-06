@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
@@ -23,7 +24,7 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 cours = service.GetCours();
             }
-            return View("ListeCours",cours);
+            return View("ListeCours", cours);
         }
 
         [Authorize(Roles = "Gestionnaire")]
@@ -31,7 +32,7 @@ namespace EasyTrain_P2Gr1.Controllers
         public ActionResult CreerCours()
         {
             FormulaireCoursViewModel model = new FormulaireCoursViewModel();
-            using(IDalCoach service = new CoachService())
+            using (IDalCoach service = new CoachService())
             {
                 model.Coachs = service.GetCoachs();
             };
@@ -94,12 +95,14 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult SupprimerCours(Cours cours)
         {
-            cours.Supprime = true;
+            Console.WriteLine(cours.Id);
             using (IDalCours service = new CoursService())
             {
-                service.UpdateCours(cours);
+                Cours coursSupp = service.GetCours(cours.Id);
+                coursSupp.Supprime = true;
+                service.UpdateCours(coursSupp);
             }
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }

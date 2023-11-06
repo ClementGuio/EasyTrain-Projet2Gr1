@@ -36,18 +36,18 @@ namespace EasyTrain_P2Gr1.Models.Services
             return abonnement.Id;
         }
 
-        public void UpdateAbonnement(Abonnement Abonnement)
+        public void UpdateAbonnement(Abonnement abonnement)
         {
-            _bddContext.Abonnements.Update(Abonnement);
+            _bddContext.Abonnements.Update(abonnement);
             _bddContext.SaveChanges();
         }
 
         public void DeleteAbonnement(int id)
         {
-            Abonnement nouveauAbonnements = this._bddContext.Abonnements.Find(id);
-            if (nouveauAbonnements != null)
+            Abonnement abonnement = this._bddContext.Abonnements.Find(id);
+            if (abonnement != null)
             {
-                _bddContext.Abonnements.Remove(nouveauAbonnements);
+                _bddContext.Abonnements.Remove(abonnement);
                 _bddContext.SaveChanges();
             }
         }

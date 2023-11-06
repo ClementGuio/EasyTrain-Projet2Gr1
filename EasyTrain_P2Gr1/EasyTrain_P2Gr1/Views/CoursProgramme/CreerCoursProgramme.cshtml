@@ -8,12 +8,12 @@
 @using (Html.BeginForm())
 {
     @Html.LabelFor(c => c.DateDebut)
-    @Html.TextBoxFor(c => c.DateDebut)
+    @Html.TextBoxFor(c => c.DateDebut, new { @type="date-time" })
     <br />
     @Html.LabelFor(c => c.DateFin)
-    @Html.TextBoxFor(c => c.DateFin)
+    @Html.TextBoxFor(c => c.DateFin, new { @type="date-time" })
     <br />
-  
+    
     <br />
     @Html.DropDownListFor(m => m.CoursId, new SelectList(Model.Cours, "Id", "Titre"))
     

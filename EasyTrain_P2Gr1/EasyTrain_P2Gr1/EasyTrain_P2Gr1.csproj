@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Calendrier\**" />
+    <Content Remove="Views\Calendrier\**" />
+    <EmbeddedResource Remove="Views\Calendrier\**" />
+    <None Remove="Views\Calendrier\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dynamitey" Version="2.0.10.189" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
@@ -15,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Calendrier\" />
     <Folder Include="Views\Utilisateur\" />
     <Folder Include="Views\Presence\" />
   </ItemGroup>

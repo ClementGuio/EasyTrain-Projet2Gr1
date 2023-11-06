@@ -108,11 +108,16 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult SupprimerCoursProgramme(CoursProgramme coursProgramme)
         {
+            CoursProgramme cp;
+            using (IDalCoursProgramme service = new CoursProgrammeService())
+            {
+                cp = service.GetCoursProgramme(coursProgramme.Id);
+            }
             using (IDalReservation service = new ReservationService())
             {
                 foreach (Client inscrit in service.GetClientsInscrits(coursProgramme))
                 {
-                    Console.WriteLine($"On rembourse le client {inscrit.Prenom} {inscrit.Nom} (Id = {inscrit.Id}) : {coursProgramme.Cours.Prix}");
+                    Console.WriteLine($"On rembourse le client {inscrit.Prenom} {inscrit.Nom} (Id = {inscrit.Id}) : {cp.Cours.Prix}");
                 }
             }
             using (IDalCoursProgramme service = new CoursProgrammeService())

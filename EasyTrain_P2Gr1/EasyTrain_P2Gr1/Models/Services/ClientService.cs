@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace EasyTrain_P2Gr1.Models.Services
 {
     public class ClientService : DisposableService, IDalClient
-    {   //TODO: prendre en compte deletedAt
+    {   
         public List<Client> GetClients()
         {
             return this._bddContext.Clients.Include(c => c.Abonnement).ToList();
@@ -17,7 +17,7 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public Client GetClient(int id)
         {
-            return this._bddContext.Clients.Find(id);
+            return this._bddContext.Clients.Include(c => c.Abonnement).FirstOrDefault(c => c.Id == id);
         }
 
         public Client GetClient(string strId)
@@ -40,29 +40,21 @@ namespace EasyTrain_P2Gr1.Models.Services
         
         public void UpdateClient(Client client)
         {
+            //this._bddContext.Attach(client.Abonnement);
             this._bddContext.Clients.Update(client);
             this._bddContext.SaveChanges();
         }
 
         public void DeleteClient(int id)
         {
-            Client oldClient = this._bddContext.Clients.Find(id);
-            if (oldClient != null)
+            Client client = this._bddContext.Clients.Find(id);
+            if (client != null)
             {
-                _bddContext.Clients.Remove(oldClient);
+                _bddContext.Clients.Remove(client);
                 _bddContext.SaveChanges();
             }
         }
 
-        /* Soft delete */
-        public void SoftSupprimerClient(int clientId)
-        {
-            Client client = GetClient(clientId);
-            if (client != null)
-            {
-                client.DeletedAt = DateTime.Now;
-                UpdateClient(client);
-            }
-        }
+     
     }
 }

@@ -5,9 +5,10 @@
 @{
     Layout = "_LayoutCoach";
 }
-@using(Html.BeginForm()){
-@Html.Partial("_InfoCoursProgramme")
-
-@Html.Label("Etes-vous sûr de vouloir supprimer le compte ?")
-<input type="submit" value="Confirmer">
+@using (Html.BeginForm())
+{
+    @Html.Partial("_InfoCoursProgramme")
+    <br />
+    @Html.Label("Etes-vous sûr de vouloir supprimer le cours ?")
+    <input type="submit" value="Confirmer">
 }
