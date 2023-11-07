@@ -16,7 +16,7 @@
 
             <tr>
                 <td>@Html.LabelFor(c => c.DateDebut)</td>
-                <td>@Html.TextBoxFor(c => c.DateDebut)</td>
+                <td>@Html.TextBoxFor(c => c.DateDebut, new {@type ="datetime-local"})</td>
             </tr>
             <tr>
                 <td>@Html.Label("Titre")</td>

@@ -1,6 +1,6 @@
 ﻿@model List<EasyTrain_P2Gr1.Models.Cours>
 @{
-    Layout = "_LayoutGestionnaire";
+    Layout = (string)ViewData["Layout"];
 }
 <link rel="stylesheet" href="~/css/Jeanleo.css">
 <div class="fieldsetModifier">
@@ -9,7 +9,6 @@
         <div class="tableModifier">
             <table>
                 <tr>
-                    <th>Id</th>
                     <th>Titre</th>
                     <th>NbParticipants</th>
                     <th>Prix</th>
@@ -23,22 +22,23 @@
                 {
 
                     <tr>
-                        <td>@cours.Id</td>
                         <td>@cours.Titre</td>
                         <td>@cours.NbParticipants</td>
                         <td>@cours.Prix</td>
                         <td>@cours.Coach.Nom @cours.Coach.Prenom </td>
                         <td>@cours.Salle.Nom</td>
-                        <td>
-                            <button class="btnSuppression" onclick="window.location.href='/cours/SupprimerCours/@cours.Id'">Supprimer</button>
-                        </td>
+                        @if ((string) ViewData["role"] == "Gestionnaire"){
+                            <td><button class="btnSuppression" onclick="window.location.href='/cours/SupprimerCours/@cours.Id'">Supprimer</button></td>
+                        }
 
                     </tr>
                 }
-                <tr>
-                    <td><button onclick="window.location.href='/Cours/CreerCours'" class="btnStandardbleu">Ajouter</button></td>
-                </tr>
-
+                @if ((string)ViewData["role"] == "Gestionnaire")
+                {
+                    <tr>
+                        <td><button onclick="window.location.href='/Cours/CreerCours'" class="btnStandardbleu">Ajouter</button></td>
+                    </tr>
+                }
             </table>
         </div>
     </fieldset>

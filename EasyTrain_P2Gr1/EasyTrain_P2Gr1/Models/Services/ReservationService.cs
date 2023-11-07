@@ -1,5 +1,6 @@
 ﻿using EasyTrain_P2Gr1.Models.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,7 +35,8 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public List<Reservation> GetReservationsClient(int idClient)
         {
-            return GetReservations().Where(r => r.Client.Id == idClient).ToList();
+            DateTime jour = DateTime.Now;
+            return GetReservations().Where(r => r.Client.Id == idClient && r.CoursProgramme.DateDebut.CompareTo(jour) > 0).ToList();
         }
 
         public List<Reservation> GetReservationsClient(string strId)
@@ -48,7 +50,8 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public List<Reservation> GetReservationsCoach(int idCoach)
         {
-            return GetReservations().Where(r => r.CoursProgramme.Cours.Coach.Id == idCoach).ToList();
+            DateTime jour = DateTime.Now;
+            return GetReservations().Where(r => r.CoursProgramme.Cours.Coach.Id == idCoach && r.CoursProgramme.DateDebut.CompareTo(jour) > 0).ToList();
         }
 
         public List<Reservation> GetReservationsCoach(string strId)
@@ -62,7 +65,8 @@ namespace EasyTrain_P2Gr1.Models.Services
 
         public List<Client> GetClientsInscrits(CoursProgramme coursProgramme)
         {
-            return this._bddContext.Reservations.Where(r => r.CoursProgramme.Id == coursProgramme.Id).Select(r => r.Client).ToList();
+            DateTime jour = DateTime.Now;
+            return this._bddContext.Reservations.Where(r => r.CoursProgramme.Id == coursProgramme.Id && r.CoursProgramme.DateDebut.CompareTo(jour) > 0).Select(r => r.Client).ToList();
         }
 
         public int CreateReservation(Reservation reservation)

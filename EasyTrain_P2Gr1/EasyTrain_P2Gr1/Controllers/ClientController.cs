@@ -112,10 +112,6 @@ namespace EasyTrain_P2Gr1.Controllers
             using (IDalClient service = new ClientService())
             {
                 service.CreateClient(client);
-
-
-
-
             }
             return RedirectToAction("Connexion", "login");
         }

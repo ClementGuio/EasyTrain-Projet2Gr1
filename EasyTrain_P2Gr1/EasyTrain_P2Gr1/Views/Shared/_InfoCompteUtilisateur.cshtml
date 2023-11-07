@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.DateNaissance)</td>
-                    <td>@Html.DisplayFor(c => c.DateNaissance,"{0:dd-MM-yyyy}")</td>
+                    <td>@Model.DateNaissance.ToString("dd/MM/yyyy")</td>
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.AdresseMail)</td>
@@ -34,7 +34,7 @@
                 
                 <tr>
                     <td>@Html.LabelFor(c => c.DateCreationCompte)</td>
-                    <td>@Html.DisplayFor(c => c.DateCreationCompte,"{0:dd-MM-yyyy}")</td>
+                    <td>@Model.DateCreationCompte.ToString("dd/MM/yyyy")</td>
                 </tr>
 
             </table>

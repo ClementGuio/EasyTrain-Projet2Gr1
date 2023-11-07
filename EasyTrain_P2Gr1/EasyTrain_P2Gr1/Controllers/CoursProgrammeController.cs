@@ -22,7 +22,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                listeCoursProgramme = service.GetCoursProgrammes();
+                listeCoursProgramme = service.GetCoursProgrammesAVenir();
             }
             return View("ListeCoursProgramme", listeCoursProgramme);
         }

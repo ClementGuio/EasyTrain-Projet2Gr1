@@ -28,7 +28,7 @@ namespace EasyTrain_P2Gr1.Controllers
         }
         public IActionResult ListeEquipement()
         {
-            List<Equipement>listeEquipement;
+            List<Equipement> listeEquipement;
 
             using (IDalEquipement service = new EquipementService())
             {
@@ -36,66 +36,68 @@ namespace EasyTrain_P2Gr1.Controllers
             }
             return View(listeEquipement);
         }
-    public IActionResult AfficherEquipement(int id)
-    {
-        Equipement equipement;
-        using (IDalEquipement service = new EquipementService())
-        {
-            equipement = service.GetEquipement(id);
-
-        }
-        if (equipement != null)
-        {
-            return View(equipement);
-        }
-        return View("Error");
-    }
-
-    [HttpGet]
-    public IActionResult CreerEquipement()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public IActionResult CreerEquipement(Equipement equipement)
-    {
-       
-        using (IDalEquipement service = new EquipementService())
-        {
-            service.CreateEquipement(equipement);
-        }
-        return View();
-    }
-
-    [Authorize(Roles = "Gestionnaire")]
-    [HttpGet]
-    public IActionResult SupprimerEquipement(int id)
-    {
-        if (id != 0)
+        public IActionResult AfficherEquipement(int id)
         {
             Equipement equipement;
             using (IDalEquipement service = new EquipementService())
             {
                 equipement = service.GetEquipement(id);
+
             }
             if (equipement != null)
             {
                 return View(equipement);
             }
-
+            return View("Error");
         }
-        return View("Error");
-    }
 
-    [Authorize(Roles = "Gestionnaire")]
-    [HttpPost]
-    public IActionResult SupprimerEquipement(Equipement equipement)
-    {
-        using (IDalEquipement service = new EquipementService())
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult CreerEquipement()
         {
-            service.DeleteEquipement(equipement.Id);
+            return View();
         }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult CreerEquipement(Equipement equipement)
+        {
+
+            using (IDalEquipement service = new EquipementService())
+            {
+                service.CreateEquipement(equipement);
+            }
+            return RedirectToAction("GestionnaireListeEquipement", "Equipement");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpGet]
+        public IActionResult SupprimerEquipement(int id)
+        {
+            if (id != 0)
+            {
+                Equipement equipement;
+                using (IDalEquipement service = new EquipementService())
+                {
+                    equipement = service.GetEquipement(id);
+                }
+                if (equipement != null)
+                {
+                    return View(equipement);
+                }
+
+            }
+            return View("Error");
+        }
+
+        [Authorize(Roles = "Gestionnaire")]
+        [HttpPost]
+        public IActionResult SupprimerEquipement(Equipement equipement)
+        {
+            using (IDalEquipement service = new EquipementService())
+            {
+                service.DeleteEquipement(equipement.Id);
+            }
             return View();
         }
     }

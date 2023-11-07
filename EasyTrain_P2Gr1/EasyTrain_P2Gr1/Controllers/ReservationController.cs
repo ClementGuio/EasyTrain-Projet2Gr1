@@ -99,18 +99,14 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpGet]
-        public IActionResult SupprimerReservation(int id) //TODO : faire un viewmodel
+        public IActionResult SupprimerReservation(int id) 
         {
             Reservation reservation;
             using (IDalReservation service = new ReservationService())
             {
                 reservation = service.GetReservation(id);
             }
-            //CoursProgramme cp;
-            //using (IDalCoursProgramme service = new CoursProgrammeService())
-            //{
-            //    cp = service.GetCoursProgramme(reservation.CoursProgramme.Id);
-            //}
+            
             if (reservation != null)
             {
                 return View(new ReservationViewModel { Reservation = reservation, SelectCoursProgrammeId = reservation.CoursProgramme.Id});
@@ -132,7 +128,7 @@ namespace EasyTrain_P2Gr1.Controllers
             DateTime firstDate = DateTime.Now;
             DateTime secondDate = cp.DateDebut;
             TimeSpan diffOfDate = firstDate - secondDate;
-            if (diffOfDate.Hours > 48) //TODO : Faire un fichier de constantes
+            if (diffOfDate.Hours > 48) 
             {
                 Console.WriteLine(" vous avez droit à un remboursement...");
             }

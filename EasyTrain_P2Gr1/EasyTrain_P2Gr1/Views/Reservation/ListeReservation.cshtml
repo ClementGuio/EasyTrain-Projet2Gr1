@@ -34,9 +34,9 @@
                 }
 
                 <th>Titre du cours</th>
-                <th>Date du cours</th>
-                <th>Supprimer la réservation</th>
-                <th>Client</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Salle</th>
 
 
             </tr>
@@ -59,6 +59,7 @@
 
                     <td>@reservation.CoursProgramme.Cours.Titre</td>
                     <td>@reservation.CoursProgramme.DateDebut</td>
+                    <td>@reservation.CoursProgramme.DateFin</td>
                     <td><button class="btnSuppression" onclick="window.location.href='/Reservation/SupprimerReservation/@reservation.Id'">Supprimer</button></td>
                     
 

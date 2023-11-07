@@ -1,4 +1,5 @@
-﻿using EasyTrain_P2Gr1.Models;
+﻿using EasyTrain_P2Gr1.Controllers.Outils;
+using EasyTrain_P2Gr1.Models;
 using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using EasyTrain_P2Gr1.Models.Services;
 using EasyTrain_P2Gr1.Models.Services.Interfaces;
@@ -15,10 +16,12 @@ namespace EasyTrain_P2Gr1.Controllers
 {
     public class CoursController : Controller
     {
-        [Authorize(Roles = "Gestionnaire")]
+        [Authorize(Roles = "Gestionnaire, Client")]
         [HttpGet]
         public IActionResult Index()
         {
+            ViewData["Layout"] = RoleResolver.GetRoleLayout(HttpContext);
+            ViewData["role"] = RoleResolver.GetRole(HttpContext);
             List<Cours> cours;
             using (IDalCours service = new CoursService())
             {
