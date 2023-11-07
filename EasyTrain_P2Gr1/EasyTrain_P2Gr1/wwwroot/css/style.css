@@ -270,8 +270,12 @@ h2 {
     overflow-x: auto;
     height: 27em;
     flex-direction: row;
+    margin-left:1em;
 }
 
+.ml-3{
+    margin-left:3em
+}
 
 /*autres*/
 .herO01 {
@@ -391,7 +395,7 @@ h2 {
     display: flex;
     overflow: hidden;
     height: 24em;
-    width: 35em; 
+    max-width: 35em; 
     align-items: center;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -477,7 +481,8 @@ h2 {
 }
 
 .cardTitre {
-    font-size: 5em;
+    font-size: 3em;
+    margin: 0.5em;
 }
 
 .herO03 {
