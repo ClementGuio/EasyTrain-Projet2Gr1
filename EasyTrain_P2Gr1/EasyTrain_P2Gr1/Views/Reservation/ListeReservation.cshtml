@@ -17,7 +17,6 @@
     <div class="container">
         <table class="tableauL">
             <tr>
-                <th>Id</th>
                 @if (ViewData["role"] == "Coach")
                 {
                     <th>Client</th>
@@ -33,16 +32,17 @@
                     <th>Coach</th>
 
                 }
+
                 <th>Titre du cours</th>
                 <th>Date du cours</th>
                 <th>Supprimer la réservation</th>
+                <th>Client</th>
 
 
             </tr>
             @foreach (EasyTrain_P2Gr1.Models.Reservation reservation in Model)
             {
                 <tr>
-                    <td>@reservation.Id</td>
                     @if (ViewData["role"] == "Coach")
                     {
                         <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
@@ -56,6 +56,7 @@
                         <td>@reservation.CoursProgramme.Cours.Coach.Prenom&nbsp;@reservation.CoursProgramme.Cours.Coach.Nom</td>
 
                     }
+
                     <td>@reservation.CoursProgramme.Cours.Titre</td>
                     <td>@reservation.CoursProgramme.DateDebut</td>
                     <td><button class="btnSuppression" onclick="window.location.href='/Reservation/SupprimerReservation/@reservation.Id'">Supprimer</button></td>

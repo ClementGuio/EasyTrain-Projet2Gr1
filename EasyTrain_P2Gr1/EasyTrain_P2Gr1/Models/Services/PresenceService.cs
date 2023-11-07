@@ -19,6 +19,15 @@ namespace EasyTrain_P2Gr1.Models.Services
             return this._bddContext.Presences.Include(p => p.Client).Where(p => p.Client.Id == clientId).ToList();
         }
 
+        public List<Presence> GetPresencesClient(string strClientId)
+        {
+            if (int.TryParse(strClientId, out int id))
+            {
+                return GetPresencesClient(id);
+            }
+            return new List<Presence>();
+        }
+
         public Presence GetPresence(int id)
         {
             return _bddContext.Presences.Include(p => p.Client).FirstOrDefault(p => p.Id == id);

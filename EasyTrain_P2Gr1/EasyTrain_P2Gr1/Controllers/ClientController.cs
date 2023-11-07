@@ -19,6 +19,18 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             Client client;
             using (IDalClient service = new ClientService())
             {
@@ -226,6 +238,18 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult SupprimerClient()
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             string id = HttpContext.User.Identity.Name;
 
             Client client;
@@ -244,8 +268,20 @@ namespace EasyTrain_P2Gr1.Controllers
 
         [Authorize(Roles = "Client")]
         [HttpPost]
-        public IActionResult SupprimerClient(Client client) 
+        public IActionResult SupprimerClient(Client client)
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
 
             using (IDalClient service = new ClientService())
             {

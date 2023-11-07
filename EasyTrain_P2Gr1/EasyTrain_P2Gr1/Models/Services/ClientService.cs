@@ -46,7 +46,7 @@ namespace EasyTrain_P2Gr1.Models.Services
         }
 
         public void DeleteClient(int id)
-        {
+        {//TODO: supprimer les reservations, l'abonnement, etc...
             Client client = this._bddContext.Clients.Find(id);
             if (client != null)
             {

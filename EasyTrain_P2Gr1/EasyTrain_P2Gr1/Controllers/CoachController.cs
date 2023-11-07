@@ -18,6 +18,18 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             Coach coach;
             using (IDalCoach service = new CoachService())
             {
@@ -61,6 +73,18 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult CreerCoach()
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             Coach coach = new Coach { DateCreationCompte = DateTime.Now };
             return View(coach);
         }
@@ -69,18 +93,42 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult CreerCoach(Coach coach)
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             coach.DateCreationCompte = DateTime.Now;
             using (IDalCoach service = new CoachService())
             {
                 service.CreateCoach(coach);
             }
-            return View();
+            return RedirectToAction("ListeCoach");
         }
 
         [Authorize(Roles = "Coach")]
         [HttpGet]
         public IActionResult ModifierCoach()
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
 
             string id = HttpContext.User.Identity.Name;
 
@@ -103,6 +151,18 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult ModifierCoach(Coach coach)
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             using (IDalCoach service = new CoachService())
             {
                 service.UpdateCoach(coach);
@@ -170,6 +230,18 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpGet]
         public IActionResult SupprimerCoach()
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             string id = HttpContext.User.Identity.Name;
 
             Coach coach;
@@ -188,6 +260,18 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult SupprimerCoach(Coach coach)
         {
+            if (HttpContext.User.IsInRole("Client"))
+            {
+                ViewData["role"] = "Client";
+            }
+            else if (HttpContext.User.IsInRole("Coach"))
+            {
+                ViewData["role"] = "Coach";
+            }
+            else if (HttpContext.User.IsInRole("Gestionnaire"))
+            {
+                ViewData["role"] = "Gestionnaire";
+            }
             using (IDalCoach service = new CoachService())
             {
                 service.DeleteCoach(coach.Id);

@@ -7,6 +7,7 @@ namespace EasyTrain_P2Gr1.Models.Services.Interfaces
     {
         List<Presence> GetPresences();
         List<Presence> GetPresencesClient(int clientId);
+        List<Presence> GetPresencesClient(string strClientId);
         Presence GetPresence(int id);
         Presence GetPresence(string StrId);
         int CreatePresence(Presence presence);

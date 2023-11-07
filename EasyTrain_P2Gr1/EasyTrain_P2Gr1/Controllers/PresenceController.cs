@@ -17,16 +17,14 @@ namespace EasyTrain_P2Gr1.Controllers
     {
 
         [HttpGet]
-        public IActionResult ListePresences()
+        public IActionResult Index()
         {
             List<Presence> listePresences;
             using (IDalPresence service = new PresenceService())
             {
-                listePresences = service.GetPresences();
-
+                listePresences = service.GetPresencesClient(HttpContext.User.Identity.Name);
             }
-            
-            return View(listePresences);
+            return View("ListePresences",listePresences);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace EasyTrain_P2Gr1.Models
         public string Nom { get; set; }
 
         [Required(ErrorMessage = "Le type de la salle doit être renseigné")]
-        public string Type { get; set; } //TODO :  créer un enum pour le type de salle ??
+        public string Type { get; set; } 
         
         public virtual List<Equipement> Equipements { get; set; }
     }

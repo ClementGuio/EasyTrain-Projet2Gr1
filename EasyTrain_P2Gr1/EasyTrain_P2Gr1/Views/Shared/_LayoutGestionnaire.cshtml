@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,500;1,700&family=Taviraj:wght@100&display=swap" rel="stylesheet">
     <title>@ViewData["Title"]</title>
 </head>
@@ -29,19 +30,22 @@
     <!--Modifier les boutons dans la sidebar-->
     <nav class="sidebar">
         <div class="sidebarLink">
-            <a href="/gestionnaire/ListeGestionnaire">Gérer les gestionnaires</a>
+            <a href="/gestionnaire/ListeGestionnaire">Gérer les Gestionnaires</a>
         </div>
         <div class="sidebarLink">
-            <a href="/coach/ListeCoach">Gérer les coachs</a>
+            <a href="/coach/ListeCoach">Gérer les Coachs</a>
         </div>
         <div class="sidebarLink">
-            <a href="/Client/ListeClient">Gérer les clients</a>
+            <a href="/Client/ListeClient">Gérer les Clients</a>
         </div>
         <div class="sidebarLink">
-            <a href="/cours">Gérer les cours</a>
+            <a href="/cours">Gérer les Cours</a>
         </div>
         <div class="sidebarLink">
             <a href="/Salle/listeSalle">Gérer les Salles</a>
+        </div>
+        <div class="sidebarLink">
+            <a href="/reservation">Consulter les Réservations</a>
         </div>
     </nav>
     <!--Render section jusque la-->
@@ -50,15 +54,27 @@
         @RenderBody()
     </main>
     <footer>
-        <div>
-            div1
-        </div>
-        <div>
-            div2
-        </div>
-        <div>
-            div3
-        </div>
+                <div>
+                    <h3>Contact</h3>
+                    <p>Adresse : 123 Rue de la Salle, Ville</p>
+                    <p>Téléphone : 03 81 81 81 81</p>
+                    <p>Email : contact@easytrain.fr</p>
+                </div>
+                <div>
+                    <h3>Horaires</h3>
+                    <p>Lundi - Vendredi : 8h00 - 22h00</p>
+                    <p>Samedi : 5h00 - 23h00</p>
+                    <p>Dimanche : 5h00 - 00h00</p>
+                </div>
+                <div>
+                    <h3>Suivez-nous</h3>
+                    <ul class="social-media">
+                        <li><a href="#"><i class="fab fa-facebook" style="color:white"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter" style="color:white"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram" style="color:white"></i></a></li>
+                    </ul>
+                </div>
     </footer>
+
 </body>
 </html>

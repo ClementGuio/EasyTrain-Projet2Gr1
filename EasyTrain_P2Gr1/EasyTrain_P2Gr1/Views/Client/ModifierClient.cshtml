@@ -1,6 +1,17 @@
 ﻿@model EasyTrain_P2Gr1.Models.Client
 @{
-    Layout = "_LayoutClient";
+    @if (ViewData["role"].Equals("Coach"))
+    {
+        Layout = "_LayoutCoach";
+    }
+    else if (ViewData["role"].Equals("Gestionnaire"))
+    {
+        Layout = "_LayoutGestionnaire";
+    }
+    else
+    {
+        Layout = "_LayoutClient";
+    }
 }
 
 @using (Html.BeginForm())
