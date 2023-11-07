@@ -1,6 +1,6 @@
 ﻿@model List<EasyTrain_P2Gr1.Models.Reservation>
 @{
-    Layout = (string) ViewData["Layout"];
+    Layout = (string)ViewData["Layout"];
 }
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
     <title>Liste des Cours programmés</title>
 
     <link href="~/css/style.css" rel="stylesheet">
-    
+
 
 </head>
 <body>
@@ -45,11 +45,14 @@
                     @if (ViewData["role"] == "Coach")
                     {
                         <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
-                    }else if(ViewData["role"] == "Client")
+                    }
+                    else if (ViewData["role"] == "Client")
                     {
                         <td>@reservation.CoursProgramme.Cours.Coach.Prenom&nbsp;@reservation.CoursProgramme.Cours.Coach.Nom</td>
 
-                    }else if(ViewData["role"] == "Gestionnaire" ){
+                    }
+                    else if (ViewData["role"] == "Gestionnaire")
+                    {
                         <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
 
                         <td>@reservation.CoursProgramme.Cours.Coach.Prenom&nbsp;@reservation.CoursProgramme.Cours.Coach.Nom</td>
@@ -59,13 +62,16 @@
                     <td>@reservation.CoursProgramme.Cours.Titre</td>
                     <td>@reservation.CoursProgramme.DateDebut</td>
                     <td>@reservation.CoursProgramme.DateFin</td>
-                    <td><button class="btnSuppression" onclick="window.location.href='/Reservation/SupprimerReservation/@reservation.Id'">Supprimer</button></td>
-                    
+                    @if (ViewData["role"] == "Client")
+                    {
+                        <td><button class="btnSuppression" onclick="window.location.href='/Reservation/SupprimerReservation/@reservation.Id'">Supprimer</button></td>
+                    }
+
 
                 </tr>
             }
         </table>
-        
+
     </div>
 </body>
 </html>

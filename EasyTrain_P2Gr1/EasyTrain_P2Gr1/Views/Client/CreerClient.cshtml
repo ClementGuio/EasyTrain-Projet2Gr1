@@ -1,4 +1,4 @@
-﻿@*
+﻿﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model EasyTrain_P2Gr1.ViewModels.InscriptionViewModel
@@ -14,43 +14,11 @@
 
 <div class="container" style="height: 100vh; padding-top:7em">
 
-    @using (Html.BeginForm("CreerClient", "Client", FormMethod.Post,new {id = "client_form"}))
-    { 
-       
-        <div class="cardeLoic">
-
-            <div id="step1">
-                
-                <h2>Démarrez votre inscription  </h2>
-                <h3>Sélectionnez vos services</h3>
-                <br>
-                <br>
-                <div>
-                    Nombre de cours
-                    @Html.TextBoxFor(c => c.NbCours, new { @placeholder = "Nb Cours", @type = "number", @min = 0, @max = 10 })
-                    <br />
-                    <br>
-                    Accès à la Piscine
-                    @Html.CheckBoxFor(c => c.AccesPiscine)
-                    <br />
-                    <br>
-                    Accès à la salle d'escalade
-                    @Html.CheckBoxFor(c => c.AccesEscalade)
-                    <br />
-                    <br>
-                    Coaching personnalisé
-                    @Html.CheckBoxFor(c => c.AccompagnementCoach)
-                    <br>
-                    <br>
-                </div>
-                <button type="button" id="next-step">Étape suivante</button>
-            </div>
-
-            <div id="step2" style="display: none;">
-                <h3>Renseignez vos informations</h3>
-
-                <div class="fieldsetModifier">
-
+    @using (Html.BeginForm())
+    {
+        <div class="fieldsetModifier">
+            <fieldset>
+                <legend><h2>Inscription</h2></legend>
 
                 <div class="tableModifier">
                     <table>
@@ -86,40 +54,16 @@
                         </tr>
                     </table>
                 </div>
-                
+                @Html.DisplayFor(m => m.DateAbonnement)
+                @Html.DisplayFor(m => m.AccesEscalade)
+                @Html.DisplayFor(m => m.AccesPiscine)
+                @Html.DisplayFor(m => m.AccompagnementCoach)
+                @Html.DisplayFor(m => m.Mensualite)
 
-                    <div class="btnCoachModifier">
-                        <input type="submit" value="Confirmer" />
-                        <button type="button" id="retour">Retour</button>
-                    </div>
-
+                <div class="btnCoachModifier">
+                    <input type="submit" value="Confirmer" />
                 </div>
-
-            </div>
+            </fieldset>
         </div>
-        
     }
-
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#next-step").on("click", function () {
-            $("#step1").slideUp("fast", function () {
-                $("#step2").slideDown("fast");
-            });
-        });
-
-        $(document).ready(function () {
-            $("#retour").on("click", function () {
-                $("#step2").slideUp("fast", function () {
-                    $("#step1").slideDown("fast");
-                });
-            });
-        })
-    });
-    $("#client_form").submit(function (e) {
-        e.preventDefault();
-    })
-</script>
-
