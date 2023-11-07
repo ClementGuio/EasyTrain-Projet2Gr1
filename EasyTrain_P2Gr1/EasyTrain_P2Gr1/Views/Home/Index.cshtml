@@ -1,6 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model List<EasyTrain_P2Gr1.Models.Coach>
 @{
     Layout = "_LayoutVisiteur";
 }
@@ -46,23 +47,24 @@
     </div>
 
     <div class="ligne">
-        <div class="col-3">
-            <div class="cardcoatch">
-                <img src="../asset/img/image02.jpg" alt="">
-                <div>
-                    <span>lol</span>
-                    <h3 class="cardTitre">titre</h3>
+
+        @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
+        {
+            <div class="col-3">
+                <div class="cardcoatch">
+                    <img src=@coach.ImgPath alt="">
                     <div>
-                        <p>Lorem</p>
+                        <span>@coach.Specialité</span>
+                        <h3 class="cardTitre">@coach.Nom</h3>
+                        <div>
+                            <p>@coach.Description</p>
+                        </div>
+                        <a class=" btn btn-secondaire" onclick="window.location.href='/coach/GestionnaireModifierCoach/@coach.Id'" href="">voir</a>
                     </div>
-
-                    <a class=" btn btn-secondaire" href="">s'incrire ici -></a>
-
                 </div>
-
             </div>
-        </div>
 
+        }
 
     </div>
 </div>
