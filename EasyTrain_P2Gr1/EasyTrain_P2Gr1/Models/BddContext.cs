@@ -150,7 +150,7 @@ namespace EasyTrain_P2Gr1.Models
                     ImgPath = "/images/coach/image11.jpg",
                     DateCreationCompte = DateTime.Now,
                     Description = "Je pratique les sports de combats depuis 15 ans."
-                }
+                },
 
                  new Coach() {
                     Nom = "Seelen",

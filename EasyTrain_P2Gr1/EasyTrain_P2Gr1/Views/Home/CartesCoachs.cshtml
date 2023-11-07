@@ -2,20 +2,22 @@
 @{
     Layout = "_LayoutVisiteur";
 }
-    <div class="conteneurWrap gris">
+<div class="conteneurWrap gris">
     @foreach (EasyTrain_P2Gr1.Models.Coach coach in Model)
     {
-        <div class="carteCoach">
-            <img src="/images/Image01.jpg" alt="">
-            <div>
-                <h3>@coach.Prenom</h3>
-                <br>
-                <h3>@coach.Nom</h3>
-                
+        <div class="col-3">
+            <div class="cardcoatch">
+                <img src=@coach.ImgPath alt="">
+
                 <div>
-                    <blockquote><i>@coach.Description</i></blockquote>
+                    <span>@coach.Specialité</span>
+                    <h3 class="cardTitre">@coach.Nom</h3>
+                    <div>
+                        <p>@coach.Description</p>
+                    </div>
                 </div>
             </div>
         </div>
+
     }
-    </div>
+</div>
