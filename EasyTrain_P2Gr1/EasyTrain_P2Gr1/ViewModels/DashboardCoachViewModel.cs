@@ -8,7 +8,7 @@ namespace EasyTrain_P2Gr1.ViewModels
     public class DashboardCoachViewModel
     {
         
-        public List<Cours> Courses { get; set; }
+        public List<Cours> Cours { get; set; }
         public List<Coach> Coachs { get; internal set; }
         public List<Client> Clients { get; set; }
         //public List<Equipement> listeEquipements { get; set; }

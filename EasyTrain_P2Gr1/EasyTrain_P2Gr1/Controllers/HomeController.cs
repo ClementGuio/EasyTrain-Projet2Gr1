@@ -152,5 +152,15 @@ namespace EasyTrain_P2Gr1.Controllers
 
             return View();
         }
+
+        public IActionResult Tarifs()
+        {
+            return View();
+        }
+
+        public IActionResult Presentation()
+        {
+            return View();
+        }
     }
 }
