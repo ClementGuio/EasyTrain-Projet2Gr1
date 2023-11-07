@@ -51,7 +51,7 @@ namespace EasyTrain_P2Gr1.Controllers
 
             using (IDalCours service = new CoursService())
             {
-                model.Cours = service.GetCours();
+                model.Cours = service.GetCoursCoach(HttpContext.User.Identity.Name);
             }
             return View(model);
         }

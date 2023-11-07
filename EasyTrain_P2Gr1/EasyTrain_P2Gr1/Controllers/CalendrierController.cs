@@ -6,19 +6,29 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using EasyTrain_P2Gr1.Models.DAL.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using EasyTrain_P2Gr1.Controllers.Outils;
 
 namespace EasyTrain_P2Gr1.Controllers
 {
 
     public class CalendrierController : Controller
     {
+        [Authorize(Roles = "Coach, Client")]
         [HttpGet]
         public IActionResult CalendrierUtilisateur()
         {
-            List<CoursProgramme> listeCoursProgrammes;
+            ViewData["Layout"] = RoleResolver.GetRoleLayout(HttpContext);
+            ViewData["role"] = RoleResolver.GetRole(HttpContext);
+            List<CoursProgramme> listeCoursProgrammes = new List<CoursProgramme>();
             using (IDalCoursProgramme service = new CoursProgrammeService())
             {
-                listeCoursProgrammes = service.GetCoursProgrammesAVenir();
+                if (HttpContext.User.IsInRole("Client"))
+                {
+                    listeCoursProgrammes = service.GetCoursProgrammesAVenir();
+                }else if (HttpContext.User.IsInRole("Coach")){
+                    listeCoursProgrammes = service.GetCoursProgrammesAVenirCoach(HttpContext.User.Identity.Name);
+                }
             }
             CalendrierViewModel cvm = new CalendrierViewModel(listeCoursProgrammes, 30);
             return View(cvm);
@@ -57,11 +67,11 @@ namespace EasyTrain_P2Gr1.Controllers
                 }
                 return RedirectToAction("Index", "Reservation");
             }
-            return View ("CalendrierUtilisateur");
+            return View("CalendrierUtilisateur");
 
 
 
-            
+
 
         }
     }

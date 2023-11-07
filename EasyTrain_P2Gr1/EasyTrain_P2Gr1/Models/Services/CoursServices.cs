@@ -28,6 +28,20 @@ namespace EasyTrain_P2Gr1.Models.Services
             return null;
         }
 
+        public List<Cours> GetCoursCoach(int coachId)
+        {
+            return this._bddContext.Cours.Include(c => c.Coach).Include(c => c.Salle).Where(c => c.Coach.Id == coachId && c.Supprime == false).ToList();
+        }
+
+        public List<Cours> GetCoursCoach(string strCoachId)
+        {
+            if (int.TryParse(strCoachId, out int id))
+            {
+                return GetCoursCoach(id);
+            }
+            return new List<Cours>();
+        }
+
         public int CreateCours(Cours cours)
         {
             cours.Supprime = false;
@@ -54,19 +68,19 @@ namespace EasyTrain_P2Gr1.Models.Services
             }
         }
 
-        public List<Cours> GetCoursByCoach(int CoachId)
-        {
+        //public List<Cours> GetCoursByCoach(int CoachId)
+        //{
            
             
-                List<Cours> coursList = _bddContext.Cours
-                    .Include(c => c.Coach)
-                    .Include(c => c.Salle)
-                    .Where(c => c.Supprime == false && c.CoachId == CoachId)
-                    .ToList();
+        //        List<Cours> coursList = _bddContext.Cours
+        //            .Include(c => c.Coach)
+        //            .Include(c => c.Salle)
+        //            .Where(c => c.Supprime == false && c.CoachId == CoachId)
+        //            .ToList();
 
-                return coursList;
+        //        return coursList;
            
-        }
+        //}
 
         /*public List<Cours> GetCoursByCoach(string strCoachId)
         {

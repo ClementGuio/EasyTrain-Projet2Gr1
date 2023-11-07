@@ -128,12 +128,15 @@ h2 {
 }
 
 
-.j {
+.jaunenatre {
+    --main-color-principale: #F2CB05;
     background-color: var(--main-color-principale);
-    /*height: 50em;*/
 }
 
 .g {
+    --main-color-principale: #F2CB05;
+    --main-color-secondaire: #95D904;
+    --main-color-intermediaire: #84BF04;
     background-color: #3b3b3b;
     padding: 10vh 0;
 }
@@ -150,10 +153,16 @@ h2 {
         color: white;
     }
 
- /*bouttons*/ 
+ /*bouttons*/
 .btn {
-    text-align:center;
-    margin:1em;
+    --main-color-principale: #F2CB05;
+    --main-color-secondaire: #95D904;
+    --main-color-intermediaire: #84BF04;
+    --main-text-color-principale: #414040;
+    --main-text-color-light: #ffffff;
+    --main-text-color-fort: #2d2b2b;
+    text-align: center;
+    margin: 1em;
     padding: 0.2em;
     border-radius: 5px;
     text-decoration: none;
@@ -165,28 +174,51 @@ h2 {
 }
 
 .btn-principal {
+    --main-color-principale: #F2CB05;
+    --main-color-secondaire: #95D904;
+    --main-color-intermediaire: #84BF04;
+    --main-text-color-principale: #414040;
+    --main-text-color-light: #ffffff;
+    --main-text-color-fort: #2d2b2b;
     font-size: 1em;
     padding: 0.5em;
     color: var(--main-text-color-light);
     background-color: var(--main-color-intermediaire);
 }
 
-.btn-principal:hover {
-    color: var(--main-text-color-fort);
-    background-color: var(--main-color-secondaire);
-}
+    .btn-principal:hover {
+        --main-color-principale: #F2CB05;
+        --main-color-secondaire: #95D904;
+        --main-color-intermediaire: #84BF04;
+        --main-text-color-principale: #414040;
+        --main-text-color-light: #ffffff;
+        --main-text-color-fort: #2d2b2b;
+        color: var(--main-text-color-fort);
+        background-color: var(--main-color-secondaire);
+    }
 
 .btn-secondaire {
+    --main-color-principale: #F2CB05;
+    --main-color-secondaire: #95D904;
+    --main-color-intermediaire: #84BF04;
+    --main-text-color-principale: #414040;
+    --main-text-color-light: #ffffff;
+    --main-text-color-fort: #2d2b2b;
     padding: 0.2em 0.4em;
     color: var(--main-text-color-fort);
     background-color: var(--main-color-principale);
-
 }
 
-.btn-secondaire:hover {
-    color: var(--main-text-color-fort);
-    background-color: var(--main-color-secondaire);
-}
+    .btn-secondaire:hover {
+        --main-color-principale: #F2CB05;
+        --main-color-secondaire: #95D904;
+        --main-color-intermediaire: #84BF04;
+        --main-text-color-principale: #414040;
+        --main-text-color-light: #ffffff;
+        --main-text-color-fort: #2d2b2b;
+        color: var(--main-text-color-fort);
+        background-color: var(--main-color-secondaire);
+    }
 
 .btnStandard {
     background-color: white;
@@ -270,14 +302,19 @@ h2 {
     overflow-x: auto;
     height: 27em;
     flex-direction: row;
+    margin-left:1em;
 }
 
 .coursProgramme {
     border-top:solid 1px;
     padding-top:0.5em;
     padding-left:7em;
-
 }
+
+.ml-3{
+    margin-left:3em
+}
+
 /*autres*/
 .herO01 {
     display: flex;
@@ -290,7 +327,7 @@ h2 {
     align-content: center;
     justify-content: center;
     align-items: center;
-    margin-top: -4em;
+    margin-top: -5em;
 }
 
 .herO02 {
@@ -298,13 +335,13 @@ h2 {
     height: 100vh;
     padding-right: 40vw;
     background-position: top center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 23%, rgba(4, 4, 4, 1) 96%), url(/images/hero01.png), linear-gradient(rgba(38, 38, 38, 0.5), rgba(17, 17, 17, 0.5));
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 23%, rgba(4, 4, 4, 1) 96%), url(/images/hero05.jpeg), linear-gradient(rgba(38, 38, 38, 0.5), rgba(17, 17, 17, 0.5));
     align-content: center;
     justify-content: center;
     align-items: center;
-    margin-top: -4em;
+    margin-top: -5em;
     padding-left: 8em;
 }
 
@@ -363,13 +400,12 @@ h2 {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.textblanc{
+    color:white;
+}
+
 .cardsurvole:hover {
-    box-shadow:
-        rgba(0, 0, 0, 0.25) 0px 54px 55px,
-        rgba(0, 0, 0, 0.12) 0px -12px 30px,
-        rgba(0, 0, 0, 0.12) 0px 4px 6px,
-        rgba(0, 0, 0, 0.17) 0px 12px 13px,
-        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .cardsurvole h3 {
@@ -382,13 +418,17 @@ h2 {
     text-align: center;
 }
 
-.cardsurvole img {
-    opacity: 0.80;
-}
+    .cardsurvole img {
+        opacity: 0.80;
+        height: 102%;
+        width: 102%;
+    }
 
-.cardsurvole:hover img {
-    opacity: 0.60;
-}
+    .cardsurvole:hover img {
+        opacity: 0.60;
+        height: 102%;
+        width: 102%;
+    }
 
 .cardcoatch {
     background-color: white;
@@ -396,7 +436,7 @@ h2 {
     display: flex;
     overflow: hidden;
     height: 24em;
-    width: 35em; 
+    max-width: 35em; 
     align-items: center;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -482,11 +522,17 @@ h2 {
 }
 
 .cardTitre {
-    font-size: 5em;
+    font-size: 3em;
+    margin: 0.5em;
 }
 
 .herO03 {
-    flex-direction: column background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 23%, rgba(4, 4, 4, 1) 96%), url(/images/hero03.png), linear-gradient(rgba(38, 38, 38, 0.5), rgba(17, 17, 17, 0.5));
+    display: flex;
+    height: 100vh;
+    background-size: cover;
+    flex-direction: column;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 23%, rgba(4, 4, 4, 1) 96%), url(/images/hero03.jpeg), linear-gradient(rgba(38, 38, 38, 0.5), rgba(17, 17, 17, 0.5));
+    margin-top: -5em;
 }
 
 

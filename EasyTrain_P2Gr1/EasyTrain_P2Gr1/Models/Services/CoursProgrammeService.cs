@@ -23,6 +23,25 @@ namespace EasyTrain_P2Gr1.Models.Services
                 .Where(c => c.DateDebut.CompareTo(DateTime.Now) > 0).ToList();
         }
 
+        public List<CoursProgramme> GetCoursProgrammesAVenirCoach(int coachId)
+        {
+            DateTime jour = DateTime.Now;
+            return this._bddContext.CoursProgrammes
+                .Include(c => c.Cours)
+                .ThenInclude(c => c.Coach)
+                .Where(c => c.Cours.Coach.Id == coachId && c.DateDebut.CompareTo(jour) > 0)
+                .ToList();
+        }
+
+        public List<CoursProgramme> GetCoursProgrammesAVenirCoach(string strCoachId)
+        {
+            if (int.TryParse(strCoachId, out int id))
+            {
+                return GetCoursProgrammesAVenirCoach(id);
+            }
+            return new List<CoursProgramme>();
+        }
+
         public CoursProgramme GetCoursProgramme(int id)
         {
             return this._bddContext.CoursProgrammes

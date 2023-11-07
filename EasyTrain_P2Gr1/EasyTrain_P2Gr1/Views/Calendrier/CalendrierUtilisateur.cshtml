@@ -4,7 +4,7 @@
 *@
 @model EasyTrain_P2Gr1.ViewModels.CalendrierViewModel
 @{
-    Layout = "_LayoutClient";
+    Layout = (string)ViewData["Layout"];
 }
 <!DOCTYPE html>
 <html>
@@ -51,29 +51,32 @@
                                                         <span> min  </span>
 
                                                     </tr>
-                                                    <tr>
-                                                        <label> avec votre Coach : </label>
-                                                        @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
-                                                    </tr>
-                                                    <tr>
-                                                        @{
-                                                            string a;
-                                                            if (coursProgramme.PlacesLibres > 1) { a = "places libres"; } else { a = "place libre"; }
-                                                        }
-                                                        @{
-                                                            string complet;
-                                                            if (coursProgramme.PlacesLibres < 1)
-                                                            {
-                                                                <button disabled class="btndisabled" onclick="window.location.href='/calendrier/CalendrierReservation/@coursProgramme.Id'">Complet !</button>
+                                                    @if (((string)ViewData["role"]) == "Client")
+                                                    {
+                                                        <tr>
+                                                            <label> avec votre Coach : </label>
+                                                            @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
+                                                        </tr>
+                                                        <tr>
+                                                            @{
+                                                                string a;
+                                                                if (coursProgramme.PlacesLibres > 1) { a = "places libres"; } else { a = "place libre"; }
                                                             }
-                                                            else
-                                                            {
-                                                                <input type="button" class="btnStandard" onclick="window.location.href='/Calendrier/CalendrierReservation/@coursProgramme.Id'" value="S'inscrire, @coursProgramme.PlacesLibres @a" />
+                                                            @{
+                                                                string complet;
+                                                                if (coursProgramme.PlacesLibres < 1)
+                                                                {
+                                                                    <button disabled class="btndisabled" onclick="window.location.href='/calendrier/CalendrierReservation/@coursProgramme.Id'">Complet !</button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input type="button" class="btnStandard" onclick="window.location.href='/Calendrier/CalendrierReservation/@coursProgramme.Id'" value="S'inscrire, @coursProgramme.PlacesLibres @a" />
+                                                                }
                                                             }
-                                                        }
-                                                        <!--  <input type="submit" value="S'inscrire" class="btnStandard" /> -->
-                                                        @Html.HiddenFor(c => coursProgramme.Id)
-                                                    </tr>
+                                                            <!--  <input type="submit" value="S'inscrire" class="btnStandard" /> -->
+                                                            @Html.HiddenFor(c => coursProgramme.Id)
+                                                        </tr>
+                                                    }
                                                 </table>
                                             </div>
                                         </fieldset>
@@ -110,21 +113,21 @@
                                                     <table>
                                                         <tr>
                                                             <label>Heure de début : </label>
-                                                            
-                                                                @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
-                                                                <span> h  </span>
-                                                                @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
-                                                                <span> min  </span>
-                                                          
+
+                                                            @Html.DisplayFor(c => coursProgramme.DateDebut.Hour)
+                                                            <span> h  </span>
+                                                            @Html.DisplayFor(c => coursProgramme.DateDebut.Minute)
+                                                            <span> min  </span>
+
                                                         </tr>
                                                         <tr>
                                                             <label> avec votre Coach : </label>
                                                             @Html.DisplayFor(c => coursProgramme.Cours.Coach.Prenom)
                                                         </tr>
                                                         <tr>
-                                                            
+
                                                             @{
-                                                                string a; 
+                                                                string a;
                                                                 if (coursProgramme.PlacesLibres > 1) { a = "places libres"; } else { a = "place libre"; }
                                                             }
 
@@ -135,12 +138,12 @@
                                                                 }
                                                                 else
                                                                 {
-                                                                    <input type="button" class="btnStandard" onclick="window.location.href='/Calendrier/CalendrierReservation/@coursProgramme.Id'" value="S'inscrire, @coursProgramme.PlacesLibres @a"/>
-                                                                    }
+                                                                    <input type="button" class="btnStandard" onclick="window.location.href='/Calendrier/CalendrierReservation/@coursProgramme.Id'" value="S'inscrire, @coursProgramme.PlacesLibres @a" />
+                                                                }
                                                             }
-                                                            
+
                                                             <!--  <input type="submit" value="S'inscrire, @coursProgramme.PlacesLibres @a" , class="btnStandard" />  -->
-                                                            
+
                                                         </tr>
                                                     </table>
                                                 </div>

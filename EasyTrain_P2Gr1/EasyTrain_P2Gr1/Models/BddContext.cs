@@ -87,37 +87,40 @@ namespace EasyTrain_P2Gr1.Models
                 new Coach() {
                     Nom = "Dupond",
                     Prenom = "Pierre",
-                    Specialité = "bobybuidding",
+                    Specialité = "fitness",
                     DateNaissance = new DateTime(1975, 12, 12),
                     AdresseMail = "dupont.pierre@gmail.com",
                     MotDePasse = UtilisateurService.EncodeMD5("Kiwi"),
-                    ImgPath = "/images/coach/image06.jpg",
+                    ImgPath = "/images/coach/image02.jpg",
                     DateCreationCompte = new DateTime(2019, 7, 27),
                     Description = "Je reviens d'un treck de 12 ans dans l'Hymalaya."
                 },
                 new Coach() {
                     Nom = "Amery",
                     Prenom = "Smet",
+                    Specialité = "bobybuidding",
                     DateNaissance = new DateTime(1985,12,1),
                     AdresseMail = "a-smet@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Abricot"),
-                    ImgPath = "/images/coach/image06.jpg",
+                    ImgPath = "/images/coach/image15.jpg",
                     DateCreationCompte = new DateTime(2020, 10, 20),
                     Description = "J'adore la raquette: tennis, ping pong, badminton et squash."
                  },
                 new Coach() {
                     Nom = "May",
                     Prenom = "Berger",
+                    Specialité = "Stepping",
                     DateNaissance = new DateTime(1961,2,13),
                     AdresseMail = "bergermay@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Poire"),
-                    ImgPath = "/images/coach/image06.jpg",
+                    ImgPath = "/images/coach/image12.jpg",
                     DateCreationCompte = new DateTime(2021, 5, 27),
                     Description = "Le vélo c'est toute ma vie."
                 },
                 new Coach() {
-                    Nom = "Reed",
+                    Nom = "Vincent",
                     Prenom = "Shaeleigh",
+                    Specialité = "bobybuidding",
                     DateNaissance = new DateTime(1977, 7, 11),
                     AdresseMail = "r.shaeleigh@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("terre"),
@@ -128,18 +131,45 @@ namespace EasyTrain_P2Gr1.Models
                 new Coach() {
                     Nom = "Patrick",
                     Prenom = "Akeem",
+                    Specialité = "bobybuidding",
                     DateNaissance = new DateTime(1989,10,1),
                     AdresseMail = "p.akeem@mail.com",
                     MotDePasse = UtilisateurService.EncodeMD5("cassette"),
+                    ImgPath = "/images/coach/image07.jpg",
                     DateCreationCompte = new DateTime(2015, 3, 30),
                     Description = "J'aime la natation et le yoga."
                  },
                 new Coach() {
                     Nom = "Levine",
                     Prenom = "Madison",
+                    Specialité = "Biking",
                     DateNaissance = new DateTime(1991,2,13),
                     AdresseMail = "madisonlevine4169@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("orphelin"),
+                    ImgPath = "/images/coach/image11.jpg",
+                    DateCreationCompte = DateTime.Now,
+                    Description = "Je pratique les sports de combats depuis 15 ans."
+                },
+
+                 new Coach() {
+                    Nom = "Seelen",
+                    Prenom = "Akeem",
+                    Specialité = "bobybuidding",
+                    DateNaissance = new DateTime(1989,10,1),
+                    AdresseMail = "p.akeem@mail.com",
+                    MotDePasse = UtilisateurService.EncodeMD5("cassette"),
+                    ImgPath = "/images/coach/image21.jpg",
+                    DateCreationCompte = new DateTime(2015, 3, 30),
+                    Description = "J'aime la natation et le yoga."
+                 },
+                new Coach() {
+                    Nom = "Ludy",
+                    Prenom = "Madison",
+                    Specialité = "Biking",
+                    DateNaissance = new DateTime(1991,2,13),
+                    AdresseMail = "madisonlevine4169@mail.fr",
+                    MotDePasse = UtilisateurService.EncodeMD5("orphelin"),
+                    ImgPath = "/images/coach/image20.jpg",
                     DateCreationCompte = DateTime.Now,
                     Description = "Je pratique les sports de combats depuis 15 ans."
                 }
