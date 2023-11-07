@@ -88,9 +88,11 @@ namespace EasyTrain_P2Gr1.Models
                 new Coach() {
                     Nom = "Dupond",
                     Prenom = "Pierre",
+                    Specialité = "bobybuidding",
                     DateNaissance = new DateTime(1975, 12, 12),
                     AdresseMail = "dupont.pierre@gmail.com",
                     MotDePasse = UtilisateurService.EncodeMD5("Kiwi"),
+                    ImgPath = "/images/coach/image06.jpg",
                     DateCreationCompte = new DateTime(2019, 7, 27),
                     Description = "Je reviens d'un treck de 12 ans dans l'Hymalaya."
                 },
@@ -100,6 +102,7 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance = new DateTime(1985,12,1),
                     AdresseMail = "a-smet@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Abricot"),
+                    ImgPath = "/images/coach/image06.jpg",
                     DateCreationCompte = new DateTime(2020, 10, 20),
                     Description = "J'adore la raquette: tennis, ping pong, badminton et squash."
                  },
@@ -109,6 +112,7 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance = new DateTime(1961,2,13),
                     AdresseMail = "bergermay@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("Poire"),
+                    ImgPath = "/images/coach/image06.jpg",
                     DateCreationCompte = new DateTime(2021, 5, 27),
                     Description = "Le vélo c'est toute ma vie."
                 },
@@ -118,6 +122,7 @@ namespace EasyTrain_P2Gr1.Models
                     DateNaissance = new DateTime(1977, 7, 11),
                     AdresseMail = "r.shaeleigh@mail.fr",
                     MotDePasse = UtilisateurService.EncodeMD5("terre"),
+                    ImgPath = "/images/coach/image06.jpg",
                     DateCreationCompte = new DateTime(2022, 1, 7),
                     Description = "Ancien bodybuilder, si vous voulez devenir énorme et sec, prenez rendez-vous avec moi."
                 },

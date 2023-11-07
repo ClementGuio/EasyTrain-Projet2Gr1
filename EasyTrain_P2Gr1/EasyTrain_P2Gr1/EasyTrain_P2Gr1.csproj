@@ -17,6 +17,9 @@
   <ItemGroup>
     <Folder Include="Views\Utilisateur\" />
     <Folder Include="Views\Presence\" />
+    <Folder Include="wwwroot\images\team\" />
+    <Folder Include="wwwroot\images\services\" />
+    <Folder Include="wwwroot\images\coach\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +29,10 @@
 
   <ItemGroup>
     <None Include="Views\Calendrier\CalendrierUtilisateur.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\images\team\" />
+    <Content Remove="wwwroot\images\services\" />
+    <Content Remove="wwwroot\images\coach\" />
   </ItemGroup>
 </Project>

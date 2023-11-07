@@ -30,7 +30,13 @@ namespace EasyTrain_P2Gr1.Controllers
                     ViewData["role"] = "Gestionnaire";
                 }
             }
-            return View();
+            List<Coach> listeCoach;
+            using (IDalCoach service = new CoachService())
+            {
+                listeCoach = service.GetCoachs();
+            }
+
+            return View(listeCoach);
         }
 
         public IActionResult Accueil()
@@ -155,7 +161,14 @@ namespace EasyTrain_P2Gr1.Controllers
 
         public IActionResult Tarifs()
         {
-            return View();
+
+            List<Coach> listeCoach;
+            using (IDalCoach service = new CoachService())
+            {
+                listeCoach = service.GetCoachs();
+            }
+         
+            return View(listeCoach);
         }
 
         public IActionResult Presentation()
