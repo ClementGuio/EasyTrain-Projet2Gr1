@@ -272,7 +272,7 @@ namespace EasyTrain_P2Gr1.Controllers
             {
                 listeSalles = service.GetSalles();
             }
-            var model = new DashboardClientViewModel
+            var model = new DashboardCoachViewModel
             {
                 Coachs = listeCoach,
                 Cours = listCours,

@@ -41,10 +41,8 @@ namespace EasyTrain_P2Gr1.Controllers
         [HttpPost]
         public IActionResult Connexion(ClientViewModel viewModel, string returnUrl)
         {
-            Console.WriteLine("OK");
-
-
-            Console.WriteLine("model valid");
+           // Console.WriteLine("OK");
+            //Console.WriteLine("model valid");
             using (IDalUtilisateur service = new UtilisateurService())
             {
                 Utilisateur utilisateur = service.Authentifier(viewModel.Utilisateur.AdresseMail, viewModel.Utilisateur.MotDePasse); // On vérifie les identifiants en base de données
@@ -54,7 +52,6 @@ namespace EasyTrain_P2Gr1.Controllers
                     //On construit le cookie
                     var userClaims = new List<Claim>()
                         {
-
                             new Claim(ClaimTypes.Name, utilisateur.Id.ToString()),
                             new Claim(ClaimTypes.Role, utilisateur.GetType().Name)
                         };
@@ -71,15 +68,12 @@ namespace EasyTrain_P2Gr1.Controllers
                             return Redirect(returnUrl);
                         }
 
-
-
                         // Redirection Utilisateur
                     if (utilisateur is Gestionnaire)
                     {
                         // Rediriger vers une page spécifique pour les Gestionnaires
                         return RedirectToAction("dashboardgestionnaire", "Gestionnaire");
-                    }
-                    
+                    }  
                     else if (utilisateur is Coach)
                     {
                         // Rediriger vers une page spécifique pour les coachs

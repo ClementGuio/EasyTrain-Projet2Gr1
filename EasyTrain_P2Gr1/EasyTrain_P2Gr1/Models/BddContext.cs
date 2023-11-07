@@ -26,7 +26,6 @@ namespace EasyTrain_P2Gr1.Models
         {
 
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rootroot;database=EasyTrain");
-
         }
 
         public void InitializeDb() // Permet la création de la Bdd et le remplissage des tables

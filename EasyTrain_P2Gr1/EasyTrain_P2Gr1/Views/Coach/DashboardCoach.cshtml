@@ -5,16 +5,28 @@
 }
 
 <div class=" container">
-    @foreach (var reservation in Model.CoachReservations)
-    {
-        <a> @reservation.Client.Nom  @reservation.Client.Prenom</a>
-    }
 
     <div class="card">
-        lol
+        @foreach (var coach in Model.Coachs)
+        {
+            <div class="ligne">
+                <a>@coach.Nom  @coach.Prenom</a>
+            </div>
+        }
     </div>
 
     <div class="card">
 
+        @foreach (var cours in Model.Cours)
+        {
+            <a>@cours.Titre</a>
+        }
+
+        <div class="card">
+            lol
+        </div>
+
+        <div class="card">
+
+        </div>
     </div>
-</div>
