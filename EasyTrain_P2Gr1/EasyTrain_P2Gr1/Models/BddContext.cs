@@ -21,6 +21,8 @@ namespace EasyTrain_P2Gr1.Models
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Presence> Presences { get; set; }
 
+        //TODO: Ajouter salles Pisicine, escalade et autres
+        //TODO: Ajouter cours, coursProgrammés et reservations
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) // Permet de se connecter à la Bdd
         {
@@ -218,7 +220,6 @@ namespace EasyTrain_P2Gr1.Models
                 new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo1.jpg"},
                 new Equipement(){ Nom = "Aquabiking", imageEquipement="/images/vincent/aquabiking.jpg"},
                 new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
-
             });
 
             this.SaveChanges();
@@ -266,13 +267,13 @@ namespace EasyTrain_P2Gr1.Models
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
                     Cours = Cours.First(c => c.Titre == "Musculation avancé"),
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
-                                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
                     Cours = Cours.First(c => c.Titre == "Musculation avancé"),
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
-                                                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
                     Cours = Cours.First(c => c.Titre == "Musculation avancé"),
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
-                                                                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 10, 30, 0), DateFin = new DateTime(2023, 11, 8, 11, 15, 0),
                     Cours = Cours.First(c => c.Titre == "Musculation avancé"),
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation avancé").NbParticipants},
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 16, 0, 0), DateFin = new DateTime(2023, 11, 8, 16, 45, 0),
@@ -302,8 +303,6 @@ namespace EasyTrain_P2Gr1.Models
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation débutant").ToList()[0],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
                 },
-
-
                 new Reservation(){
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Cyclisme").ToList()[2],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "dupont.pierre@gmail.com")
