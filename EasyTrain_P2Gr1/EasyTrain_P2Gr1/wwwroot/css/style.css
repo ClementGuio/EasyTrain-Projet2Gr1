@@ -413,6 +413,7 @@ h2 {
         width: 5em;
         color: white;
     }
+
 .cardservice {
     position: relative;
     overflow: hidden;
@@ -454,10 +455,32 @@ h2 {
     font-size: 5em;
 }
 
-.imgOut {
+.herO03 {
 
-
+    flex-direction:column
 }
+
+
+.contenther h1 {
+    color: white;
+    margin-bottom: 0.7em;
+    width: 4em;
+    line-height: 0.7em;
+    font-size: 10vw;
+}
+
+
+.contenther {
+    height: 31em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: flex-start;
+    align-items: flex-start;
+    width: 34vw;
+    margin-left: 4vw;
+}
+
 
 .imgOut img {
     height: 52em;
