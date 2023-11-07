@@ -83,7 +83,8 @@ namespace EasyTrain_P2Gr1.Controllers
                     else if (utilisateur is Coach)
                     {
                         // Rediriger vers une page spécifique pour les coachs
-                        return RedirectToAction("dashboardcoach", "Coach");
+                        //return RedirectToAction("dashbordcoach", "Coach");
+                        return RedirectToAction("Index", "Coach");
                     }
                         // Rediriger vers le site
                     return Redirect("/");

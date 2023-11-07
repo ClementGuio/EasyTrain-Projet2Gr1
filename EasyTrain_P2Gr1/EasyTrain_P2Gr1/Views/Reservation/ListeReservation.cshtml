@@ -32,7 +32,7 @@
                     <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
                     <td>@reservation.CoursProgramme.Cours.Titre</td>
                     <td>@reservation.CoursProgramme.DateDebut</td>
-                    <td><button class="btnSuppression" onclick="window.location.href='/Reservation/SupprimerReservation'">Supprimer</button></td>
+                    <td><button class="btnSuppression" onclick="window.location.href='/Reservation/SupprimerReservation/@reservation.Id'">Supprimer</button></td>
                     
 
                 </tr>
