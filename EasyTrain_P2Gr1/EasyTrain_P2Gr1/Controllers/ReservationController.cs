@@ -36,6 +36,7 @@ namespace EasyTrain_P2Gr1.Controllers
                     listeReservation = service.GetReservations();
                 }
                 ViewData["Layout"] = RoleResolver.GetRoleLayout(HttpContext);
+                ViewData["role"] = RoleResolver.GetRole(HttpContext);
             } 
             return View("ListeReservation",listeReservation);
         }

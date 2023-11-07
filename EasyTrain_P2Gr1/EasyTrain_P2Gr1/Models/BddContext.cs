@@ -44,7 +44,7 @@ namespace EasyTrain_P2Gr1.Models
                     AccesEscalade = true,
                     AccompagnementCoach = true,
                     DateAbonnement = new DateTime(2022, 5, 30),
-                    
+
                 },
                 new Abonnement{
                     Id = 2,
@@ -55,9 +55,9 @@ namespace EasyTrain_P2Gr1.Models
                     DateAbonnement = new DateTime(2022, 7, 28)
                 }
             });
-            
+
             this.SaveChanges();
-            
+
             this.Clients.AddRange(new List<Client>()
             {
                 new Client
@@ -199,13 +199,13 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Cours.AddRange(new List<Cours>()
             {
-                new Cours(){Titre = "Musculation débutant", NbParticipants = 10, Prix = 23.5,
+                new Cours(){Titre = "Musculation débutant", NbParticipants = 10, Prix = 23.5, DureeMinutes = 75,
                     Coach = Coachs.FirstOrDefault(c => (c.Nom == "Patrick") && (c.Prenom == "Akeem")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "The Rock") },
-                new Cours(){Titre = "Musculation avancé", NbParticipants = 7, Prix = 26.5,
+                new Cours(){Titre = "Musculation avancé", NbParticipants = 7, Prix = 26.5, DureeMinutes = 90,
                     Coach = Coachs.FirstOrDefault(c => (c.Nom == "Patrick") && (c.Prenom == "Akeem")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "The Rock") },
-                new Cours(){Titre = "Cyclisme", NbParticipants = 5, Prix = 20,
+                new Cours(){Titre = "Cyclisme", NbParticipants = 5, Prix = 20,DureeMinutes = 60,
                     Coach = Coachs.FirstOrDefault(c => (c.Nom == "May") && (c.Prenom == "Berger")),
                     Salle = Salles.FirstOrDefault(s => s.Nom == "Maillot jaune") }
             });

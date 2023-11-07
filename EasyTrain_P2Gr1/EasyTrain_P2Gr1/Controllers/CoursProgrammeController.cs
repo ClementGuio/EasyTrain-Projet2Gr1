@@ -75,7 +75,7 @@ namespace EasyTrain_P2Gr1.Controllers
                 service.CreateCoursProgramme(new CoursProgramme
                 {
                     DateDebut = model.DateDebut,
-                    DateFin = model.DateFin,
+                    DateFin = model.DateDebut.AddMinutes(cours.DureeMinutes),
                     Cours = cours,
                     PlacesLibres = cours.NbParticipants
                 });

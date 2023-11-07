@@ -18,7 +18,21 @@
         <table class="tableauL">
             <tr>
                 <th>Id</th>
-                <th>Client</th>
+                @if (ViewData["role"] == "Coach")
+                {
+                    <th>Client</th>
+                }
+                else if (ViewData["role"] == "Client")
+                {
+                    <th>Coach</th>
+
+                }
+                else if (ViewData["role"] == "Gestionnaire")
+                {
+                    <th>Client</th>
+                    <th>Coach</th>
+
+                }
                 <th>Titre du cours</th>
                 <th>Date du cours</th>
                 <th>Supprimer la réservation</th>
@@ -29,7 +43,19 @@
             {
                 <tr>
                     <td>@reservation.Id</td>
-                    <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
+                    @if (ViewData["role"] == "Coach")
+                    {
+                        <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
+                    }else if(ViewData["role"] == "Client")
+                    {
+                        <td>@reservation.CoursProgramme.Cours.Coach.Prenom&nbsp;@reservation.CoursProgramme.Cours.Coach.Nom</td>
+
+                    }else if(ViewData["role"] == "Gestionnaire" ){
+                        <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
+
+                        <td>@reservation.CoursProgramme.Cours.Coach.Prenom&nbsp;@reservation.CoursProgramme.Cours.Coach.Nom</td>
+
+                    }
                     <td>@reservation.CoursProgramme.Cours.Titre</td>
                     <td>@reservation.CoursProgramme.DateDebut</td>
                     <td><button class="btnSuppression" onclick="window.location.href='/Reservation/SupprimerReservation/@reservation.Id'">Supprimer</button></td>
