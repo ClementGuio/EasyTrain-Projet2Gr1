@@ -16,7 +16,6 @@
     <table border="4" class="center">
 
         <tr>
-            <th>Id</th>
             <th>Date de debut</th>
             <th>Date de fin</th>
             <th>Places libres</th>
@@ -28,7 +27,6 @@
         @foreach (EasyTrain_P2Gr1.Models.CoursProgramme coursProgramme in Model)
         {
             <tr>
-                <td>@coursProgramme.Id</td>
                 <td>@coursProgramme.DateDebut.ToString("dd/MM/yyyy")</td>
                 <td>@coursProgramme.DateFin.ToString("dd/MM/yyyy")</td>
                 <td>@coursProgramme.PlacesLibres</td>

@@ -17,7 +17,6 @@
     <div class="container">
         <table class="tableauL">
             <tr>
-                <th>Id</th>
                 <th>Client</th>
                 <th>Titre du cours</th>
                 <th>Date du cours</th>
@@ -28,7 +27,6 @@
             @foreach (EasyTrain_P2Gr1.Models.Reservation reservation in Model)
             {
                 <tr>
-                    <td>@reservation.Id</td>
                     <td>@reservation.Client.Prenom&nbsp;@reservation.Client.Nom</td>
                     <td>@reservation.CoursProgramme.Cours.Titre</td>
                     <td>@reservation.CoursProgramme.DateDebut</td>

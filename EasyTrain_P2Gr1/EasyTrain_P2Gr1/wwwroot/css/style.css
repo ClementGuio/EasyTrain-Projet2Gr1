@@ -261,7 +261,12 @@ h2 {
     flex-direction: row;
 }
 
+.coursProgramme {
+    border-top:solid 1px;
+    padding-top:0.5em;
+    padding-left:7em;
 
+}
 /*autres*/
 .herO01 {
     display: flex;
