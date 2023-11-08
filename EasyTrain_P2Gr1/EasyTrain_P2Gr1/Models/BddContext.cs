@@ -68,7 +68,7 @@ namespace EasyTrain_P2Gr1.Models
                 Prenom = "Henri",
                 DateNaissance = new DateTime(1985, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
-                MotDePasse = UtilisateurService.EncodeMD5("Prune"),
+                MotDePasse = UtilisateurService.EncodeMD5("admin"),
                 Abonnement = this.Abonnements.Find(1),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             },
@@ -78,7 +78,17 @@ namespace EasyTrain_P2Gr1.Models
                 Prenom = "Pierre",
                 DateNaissance = new DateTime(1975, 12, 12),
                 AdresseMail = "dupont.pierre@gmail.com",
-                MotDePasse = UtilisateurService.EncodeMD5("Datte"),
+                MotDePasse = UtilisateurService.EncodeMD5("admin"),
+                Abonnement = this.Abonnements.Find(2),
+                DateCreationCompte = new DateTime(2022, 7, 27)
+            },
+            new Client
+            {
+                Nom = "Sabo",
+                Prenom = "Jacques",
+                DateNaissance = new DateTime(1975, 12, 12),
+                AdresseMail = "sabo.jacques@gmail.com",
+                MotDePasse = UtilisateurService.EncodeMD5("admin"),
                 Abonnement = this.Abonnements.Find(2),
                 DateCreationCompte = new DateTime(2022, 7, 27)
             }
@@ -89,10 +99,10 @@ namespace EasyTrain_P2Gr1.Models
                 new Coach() {
                     Nom = "Dupond",
                     Prenom = "Pierre",
-                    Specialité = "fitness",
+                    Specialité = "Fitness",
                     DateNaissance = new DateTime(1975, 12, 12),
                     AdresseMail = "dupont.pierre@gmail.com",
-                    MotDePasse = UtilisateurService.EncodeMD5("Kiwi"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     ImgPath = "/images/coach/image02.jpg",
                     DateCreationCompte = new DateTime(2019, 7, 27),
                     Description = "Je reviens d'un treck de 12 ans dans l'Hymalaya."
@@ -100,10 +110,10 @@ namespace EasyTrain_P2Gr1.Models
                 new Coach() {
                     Nom = "Amery",
                     Prenom = "Smet",
-                    Specialité = "bobybuidding",
+                    Specialité = "Bodybuilding",
                     DateNaissance = new DateTime(1985,12,1),
                     AdresseMail = "a-smet@mail.fr",
-                    MotDePasse = UtilisateurService.EncodeMD5("Abricot"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     ImgPath = "/images/coach/image15.jpg",
                     DateCreationCompte = new DateTime(2020, 10, 20),
                     Description = "J'adore la raquette: tennis, ping pong, badminton et squash."
@@ -114,7 +124,7 @@ namespace EasyTrain_P2Gr1.Models
                     Specialité = "Stepping",
                     DateNaissance = new DateTime(1961,2,13),
                     AdresseMail = "bergermay@mail.fr",
-                    MotDePasse = UtilisateurService.EncodeMD5("Poire"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     ImgPath = "/images/coach/image12.jpg",
                     DateCreationCompte = new DateTime(2021, 5, 27),
                     Description = "Le vélo c'est toute ma vie."
@@ -122,10 +132,10 @@ namespace EasyTrain_P2Gr1.Models
                 new Coach() {
                     Nom = "Vincent",
                     Prenom = "Shaeleigh",
-                    Specialité = "bobybuidding",
+                    Specialité = "Bodybuilding",
                     DateNaissance = new DateTime(1977, 7, 11),
                     AdresseMail = "r.shaeleigh@mail.fr",
-                    MotDePasse = UtilisateurService.EncodeMD5("terre"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     ImgPath = "/images/coach/image06.jpg",
                     DateCreationCompte = new DateTime(2022, 1, 7),
                     Description = "Ancien bodybuilder, si vous voulez devenir énorme et sec, prenez rendez-vous avec moi."
@@ -133,10 +143,10 @@ namespace EasyTrain_P2Gr1.Models
                 new Coach() {
                     Nom = "Patrick",
                     Prenom = "Akeem",
-                    Specialité = "bobybuidding",
+                    Specialité = "Bodybuilding",
                     DateNaissance = new DateTime(1989,10,1),
                     AdresseMail = "p.akeem@mail.com",
-                    MotDePasse = UtilisateurService.EncodeMD5("cassette"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     ImgPath = "/images/coach/image07.jpg",
                     DateCreationCompte = new DateTime(2015, 3, 30),
                     Description = "J'aime la natation et le yoga."
@@ -147,7 +157,7 @@ namespace EasyTrain_P2Gr1.Models
                     Specialité = "Biking",
                     DateNaissance = new DateTime(1991,2,13),
                     AdresseMail = "madisonlevine4169@mail.fr",
-                    MotDePasse = UtilisateurService.EncodeMD5("orphelin"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     ImgPath = "/images/coach/image11.jpg",
                     DateCreationCompte = DateTime.Now,
                     Description = "Je pratique les sports de combats depuis 15 ans."
@@ -156,10 +166,10 @@ namespace EasyTrain_P2Gr1.Models
                  new Coach() {
                     Nom = "Seelen",
                     Prenom = "Akeem",
-                    Specialité = "bobybuidding",
+                    Specialité = "Bodybuilding",
                     DateNaissance = new DateTime(1989,10,1),
                     AdresseMail = "p.akeem@mail.com",
-                    MotDePasse = UtilisateurService.EncodeMD5("cassette"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     ImgPath = "/images/coach/image21.jpg",
                     DateCreationCompte = new DateTime(2015, 3, 30),
                     Description = "J'aime la natation et le yoga."
@@ -170,7 +180,7 @@ namespace EasyTrain_P2Gr1.Models
                     Specialité = "Biking",
                     DateNaissance = new DateTime(1991,2,13),
                     AdresseMail = "madisonlevine4169@mail.fr",
-                    MotDePasse = UtilisateurService.EncodeMD5("orphelin"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     ImgPath = "/images/coach/image20.jpg",
                     DateCreationCompte = DateTime.Now,
                     Description = "Je pratique les sports de combats depuis 15 ans."
@@ -185,7 +195,7 @@ namespace EasyTrain_P2Gr1.Models
                     Prenom = "Stella",
                     DateNaissance = new DateTime(1990,6,10),
                     AdresseMail = "stella.dubois@mail.fr",
-                    MotDePasse = UtilisateurService.EncodeMD5("Fraise"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     DateCreationCompte = new DateTime(2019, 7, 27),
                 },
                 new Gestionnaire(){
@@ -193,7 +203,7 @@ namespace EasyTrain_P2Gr1.Models
                     Prenom = "Vincent",
                     DateNaissance = new DateTime(2003,9,22),
                     AdresseMail = "vincent.lester@mail.fr",
-                    MotDePasse = UtilisateurService.EncodeMD5("Framboise"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     DateCreationCompte = new DateTime(2020, 3, 25),
                 },
                 new Gestionnaire(){
@@ -201,7 +211,7 @@ namespace EasyTrain_P2Gr1.Models
                     Prenom ="Hossame",
                     DateNaissance= new DateTime(1997,5,17),
                     AdresseMail = "hossame.sadeq@mail.fr",
-                    MotDePasse = UtilisateurService.EncodeMD5("Pomme"),
+                    MotDePasse = UtilisateurService.EncodeMD5("admin"),
                     DateCreationCompte = new DateTime(2018, 2, 15),
                 }
             });
@@ -210,15 +220,43 @@ namespace EasyTrain_P2Gr1.Models
 
             this.Equipements.AddRange(new List<Equipement>()
             {
-                new Equipement(){ Nom = "Halter" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Haltères" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Haltères" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Haltères" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Haltères" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Haltères" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Haltères" , imageEquipement="/images/vincent/halteres.jpg" },
+                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/bancmusculation.jpg"},
+                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/bancmusculation.jpg"},
+                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/bancmusculation.jpg"},
+                new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/bancmusculation.jpg"},
                 new Equipement(){ Nom = "Banc de musculation" , imageEquipement="/images/vincent/bancmusculation.jpg"},
                 new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/cage-de-musculation.jpg"},
+                new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/cage-de-musculation.jpg"},
+                new Equipement(){ Nom = "Cage de musculation", imageEquipement="/images/vincent/cage-de-musculation.jpg"},
+                new Equipement(){ Nom = "Rameur", imageEquipement = "/images/vincent/rameur2.jpg"},
                 new Equipement(){ Nom = "Rameur", imageEquipement = "/images/vincent/rameur2.jpg"},
                 new Equipement(){ Nom = "Tapis de course", imageEquipement="/images/vincent/tapis-de-course.jpg"},
+                new Equipement(){ Nom = "Tapis de course", imageEquipement="/images/vincent/tapis-de-course.jpg"},
+                new Equipement(){ Nom = "Tapis de course", imageEquipement="/images/vincent/tapis-de-course.jpg"},
+                new Equipement(){ Nom = "Tapis de course", imageEquipement="/images/vincent/tapis-de-course.jpg"},
+                new Equipement(){ Nom = "Tapis de course", imageEquipement="/images/vincent/tapis-de-course.jpg"},
                 new Equipement(){ Nom = "Cage à cuisses", imageEquipement = "/images/vincent/cage-a-cuisse.jpg"},
-                new Equipement(){ Nom = "Mur d'escalade", imageEquipement = "/images/vincent/escalade.jpg"},
+                new Equipement(){ Nom = "Cage à cuisses", imageEquipement = "/images/vincent/cage-a-cuisse.jpg"},
+                new Equipement(){ Nom = "Cage à cuisses", imageEquipement = "/images/vincent/cage-a-cuisse.jpg"},
+                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo1.jpg"},
+                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo1.jpg"},
+                new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo1.jpg"},
                 new Equipement(){ Nom = "Vélo", imageEquipement="/images/vincent/velo1.jpg"},
                 new Equipement(){ Nom = "Aquabiking", imageEquipement="/images/vincent/aquabiking.jpg"},
+                new Equipement(){ Nom = "Aquabiking", imageEquipement="/images/vincent/aquabiking.jpg"},
+                new Equipement(){ Nom = "Aquabiking", imageEquipement="/images/vincent/aquabiking.jpg"},
+                new Equipement(){ Nom = "Aquabiking", imageEquipement="/images/vincent/aquabiking.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
+                new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
                 new Equipement(){ Nom = "Vélo elliptique", imageEquipement = "/images/vincent/veloelliptique.jpg"},
             });
 
@@ -229,7 +267,9 @@ namespace EasyTrain_P2Gr1.Models
                 new Salle(){Nom = "The Rock", Type = "Musculation", Equipements = Equipements.Where(e => (e.Nom == "Cage de musculation")
                 || (e.Nom == "Set d'haltères") || (e.Nom == "Banc de musculation")).ToList() },
                 new Salle(){Nom = "Maillot jaune", Type = "Cyclisme", Equipements = Equipements.Where(e => (e.Nom.Contains("Vélo"))).ToList()},
-                new Salle(){Nom = "exercices collective", Type = "aérobic", Equipements = Equipements.Where(e => (e.Nom.Contains("Vélo"))).ToList()}
+                new Salle(){Nom = "Disco", Type = "Aérobic", Equipements = Equipements.Where(e => (e.Nom.Contains("Vélo"))).ToList()},
+                new Salle(){Nom = "Poseidon", Type = "Piscine", Equipements = new List<Equipement>() },
+                new Salle(){Nom = "Cliffhanger", Type = "Escalade", Equipements = new List<Equipement>()}
             });
             this.SaveChanges();
 
@@ -243,7 +283,13 @@ namespace EasyTrain_P2Gr1.Models
                     Salle = Salles.FirstOrDefault(s => s.Nom == "The Rock") },
                 new Cours(){Titre = "Cyclisme", NbParticipants = 5, Prix = 20,DureeMinutes = 60,
                     Coach = Coachs.FirstOrDefault(c => (c.Nom == "May") && (c.Prenom == "Berger")),
-                    Salle = Salles.FirstOrDefault(s => s.Nom == "Maillot jaune") }
+                    Salle = Salles.FirstOrDefault(s => s.Nom == "Maillot jaune") },
+                new Cours(){Titre = "Escalade", NbParticipants = 4, Prix = 25,DureeMinutes = 90,
+                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "May") && (c.Prenom == "Berger")),
+                    Salle = Salles.FirstOrDefault(s => s.Nom == "Cliffhanger") },
+                new Cours(){Titre = "Natation", NbParticipants = 20, Prix = 15,DureeMinutes = 75,
+                    Coach = Coachs.FirstOrDefault(c => (c.Nom == "May") && (c.Prenom == "Berger")),
+                    Salle = Salles.FirstOrDefault(s => s.Nom == "Poseidon") }
             });
             this.SaveChanges();
 
@@ -284,7 +330,31 @@ namespace EasyTrain_P2Gr1.Models
                     PlacesLibres = Cours.First(c => c.Titre == "Musculation débutant").NbParticipants},
                 new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 16, 0, 0), DateFin = new DateTime(2023, 11, 8, 16, 45, 0),
                     Cours = Cours.First(c => c.Titre == "Musculation débutant"),
-                    PlacesLibres = Cours.First(c => c.Titre == "Musculation débutant").NbParticipants}
+                    PlacesLibres = Cours.First(c => c.Titre == "Musculation débutant").NbParticipants},
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 9, 0, 0), DateFin = new DateTime(2023, 11, 8, 10, 15, 0),
+                    Cours = Cours.First(c => c.Titre == "Natation"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Natation").NbParticipants},
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 8, 12, 0, 0), DateFin = new DateTime(2023, 11, 8, 13, 30, 0),
+                    Cours = Cours.First(c => c.Titre == "Escalade"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Escalade").NbParticipants},
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 9, 9, 0, 0), DateFin = new DateTime(2023, 11, 9, 10, 15, 0),
+                    Cours = Cours.First(c => c.Titre == "Natation"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Natation").NbParticipants},
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 9, 12, 0, 0), DateFin = new DateTime(2023, 11, 9, 13, 30, 0),
+                    Cours = Cours.First(c => c.Titre == "Escalade"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Escalade").NbParticipants},
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 10, 9, 0, 0), DateFin = new DateTime(2023, 11, 10, 10, 15, 0),
+                    Cours = Cours.First(c => c.Titre == "Natation"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Natation").NbParticipants},
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 10, 12, 0, 0), DateFin = new DateTime(2023, 11, 10, 13, 30, 0),
+                    Cours = Cours.First(c => c.Titre == "Escalade"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Escalade").NbParticipants},
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 11, 9, 0, 0), DateFin = new DateTime(2023, 11, 11, 10, 15, 0),
+                    Cours = Cours.First(c => c.Titre == "Natation"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Natation").NbParticipants},
+                new CoursProgramme(){ DateDebut = new DateTime(2023, 11, 11, 12, 0, 0), DateFin = new DateTime(2023, 11, 11, 13, 30, 0),
+                    Cours = Cours.First(c => c.Titre == "Escalade"),
+                    PlacesLibres = Cours.First(c => c.Titre == "Escalade").NbParticipants}
             });
             this.SaveChanges();
 
@@ -296,16 +366,28 @@ namespace EasyTrain_P2Gr1.Models
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
                 },
                 new Reservation(){
-                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation avancé").ToList()[1],
-                    Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
-                },
-                new Reservation(){
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Musculation débutant").ToList()[0],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
                 },
                 new Reservation(){
                     CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Cyclisme").ToList()[2],
                     Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "dupont.pierre@gmail.com")
+                },
+                 new Reservation(){
+                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Natation").ToList()[0],
+                    Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
+                },
+                new Reservation(){
+                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Escalade").ToList()[1],
+                    Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "BONNER.Henri@gmail.com")
+                },
+                new Reservation(){
+                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Natation").ToList()[0],
+                    Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "sabo.jacques@gmail.com")
+                },
+                new Reservation(){
+                    CoursProgramme = this.CoursProgrammes.Where(c => c.Cours.Titre == "Escalade").ToList()[0],
+                    Client = this.Clients.FirstOrDefault(c => c.AdresseMail == "sabo.jacques@gmail.com")
                 }
             });
             this.SaveChanges();
