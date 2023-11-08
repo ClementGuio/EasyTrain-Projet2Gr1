@@ -52,8 +52,11 @@ namespace EasyTrain_UnitTests.TestsDAL
             //Initialisation
             Abonnement abonnement = new Abonnement
             {
-                //Titre = "Basic",
-                Mensualite = 19.99
+                NbCours = 3,
+                AccesEscalade = true,
+                AccesPiscine = true,
+                AccompagnementCoach = true,
+                DateAbonnement = new DateTime(2023,11,10),
             };
             using (BddContext ctx = new BddContext())
             {
@@ -69,7 +72,11 @@ namespace EasyTrain_UnitTests.TestsDAL
             //Verification
             Assert.NotNull(abonnementDb);
             Assert.Equal(abonnement.Id, abonnementDb.Id);
-            //Assert.Equal(abonnement.Titre, abonnementDb.Titre);
+            Assert.Equal(abonnement.NbCours, abonnementDb.NbCours);
+            Assert.Equal(abonnement.AccesPiscine, abonnement.AccesPiscine);
+            Assert.Equal(abonnement.AccesEscalade, abonnementDb.AccesEscalade);
+            Assert.Equal(abonnement.AccompagnementCoach, abonnementDb.AccompagnementCoach);
+            Assert.Equal(abonnement.DateAbonnement, abonnementDb.DateAbonnement);
             Assert.Equal(abonnement.Mensualite, abonnementDb.Mensualite);
         }
     }

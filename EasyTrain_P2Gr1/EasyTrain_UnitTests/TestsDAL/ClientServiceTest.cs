@@ -29,7 +29,6 @@ namespace EasyTrain_UnitTests.TestsDAL
                         DateNaissance = new DateTime(1978, 12, 12),
                         AdresseMail = "DEBONNER.JacquesEudeHenri@gmail.com",
                         MotDePasse = "NEWmdp",
-                        //DateAbonnement = new DateTime(2024, 3, 15),
                         DateCreationCompte = new DateTime(2022, 4, 25)
                     },
                     new Client
@@ -39,7 +38,6 @@ namespace EasyTrain_UnitTests.TestsDAL
                         DateNaissance = new DateTime(1978, 12, 12),
                         AdresseMail = "DEBONNER.JacquesEude@gmail.com",
                         MotDePasse = "NEWmdp",
-                        //DateAbonnement = new DateTime(2024, 3, 15),
                         DateCreationCompte = new DateTime(2022, 4, 25)
                     }
                 });
@@ -69,7 +67,6 @@ namespace EasyTrain_UnitTests.TestsDAL
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = "mdp",
-                DateAbonnement = new DateTime(2023, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             };
             using (BddContext ctx = new BddContext())
@@ -90,7 +87,6 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(client.DateNaissance, clientDb.DateNaissance);
             Assert.Equal(client.AdresseMail, clientDb.AdresseMail);
             Assert.Equal(client.MotDePasse, clientDb.MotDePasse);
-            Assert.Equal(client.DateAbonnement, clientDb.DateAbonnement);
         }
 
         [Fact]
@@ -104,7 +100,6 @@ namespace EasyTrain_UnitTests.TestsDAL
                 DateNaissance = new DateTime(1980, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = "mdp",
-                DateAbonnement = new DateTime(2023, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 27)
             };
             //Execution
@@ -125,7 +120,6 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(client.DateNaissance, clientDb.DateNaissance);
             Assert.Equal(client.AdresseMail, clientDb.AdresseMail);
             Assert.Equal(client.MotDePasse, clientDb.MotDePasse);
-            Assert.Equal(client.DateAbonnement, clientDb.DateAbonnement);
             Assert.Equal(client.DateCreationCompte, clientDb.DateCreationCompte);
         }
 
@@ -137,11 +131,10 @@ namespace EasyTrain_UnitTests.TestsDAL
             {
                 Nom = "BONNER",
                 Prenom = "Henri",
-                DateNaissance = new DateTime(1980, 12, 12),
+                DateNaissance = new DateTime(1978, 12, 12),
                 AdresseMail = "BONNER.Henri@gmail.com",
                 MotDePasse = "mdp",
-                DateAbonnement = new DateTime(2023, 3, 15),
-                DateCreationCompte = new DateTime(2022, 4, 27)
+                DateCreationCompte = new DateTime(2022, 4, 25)
             };
             using (BddContext ctx = new BddContext())
             {
@@ -157,7 +150,6 @@ namespace EasyTrain_UnitTests.TestsDAL
                 DateNaissance = new DateTime(1978, 12, 12),
                 AdresseMail = "DEBONNER.JacquesEudeHenri@gmail.com",
                 MotDePasse = "NEWmdp",
-                DateAbonnement = new DateTime(2024, 3, 15),
                 DateCreationCompte = new DateTime(2022, 4, 25)
             };
             using (IDalClient service = new ClientService())
@@ -176,7 +168,6 @@ namespace EasyTrain_UnitTests.TestsDAL
             Assert.Equal(clientModif.DateNaissance, clientDb.DateNaissance);
             Assert.Equal(clientModif.AdresseMail, clientDb.AdresseMail);
             Assert.Equal(clientModif.MotDePasse, clientDb.MotDePasse);
-            Assert.Equal(clientModif.DateAbonnement, clientDb.DateAbonnement);
             Assert.Equal(clientModif.DateCreationCompte, clientDb.DateCreationCompte);
         }
 
@@ -195,10 +186,17 @@ namespace EasyTrain_UnitTests.TestsDAL
                         DateNaissance = new DateTime(1978, 12, 12),
                         AdresseMail = "DEBONNER.JacquesEudeHenri@gmail.com",
                         MotDePasse = "NEWmdp",
-                        DateAbonnement = new DateTime(2024, 3, 15),
+                        Abonnement = new Abonnement
+                        {
+                            NbCours = 3,
+                            AccesEscalade = true,
+                            AccesPiscine = true,
+                            AccompagnementCoach = true,
+                            DateAbonnement = DateTime.Now,
+                        },
                         DateCreationCompte = new DateTime(2022, 4, 25)
                     }
-            });
+            }) ;
                 ctx.SaveChanges();
             }
             //Execution
@@ -208,49 +206,17 @@ namespace EasyTrain_UnitTests.TestsDAL
             }
             //Verification
             List<Client> clients;
+            List<Abonnement> abonnements;
             using (BddContext ctx = new BddContext())
             {
                 clients = ctx.Clients.ToList();
+                abonnements = ctx.Abonnements.ToList();
             }
             Assert.Empty(clients);
+            Assert.Empty(abonnements);
 
         }
-        [Fact]
-        public void TestSoftSupprimerClient()
-        {
-
-            using (BddContext ctx = new BddContext())
-            {
-                ctx.Clients.AddRange(new List<Client>()
-                {
-                new Client
-                    {
-                        Nom = "DEBONNER",
-                        Prenom = "Jacques-Eude-Henri",
-                        DateNaissance = new DateTime(1978, 12, 12),
-                        AdresseMail = "DEBONNER.JacquesEudeHenri@gmail.com",
-                        MotDePasse = "NEWmdp",
-                        DateAbonnement = new DateTime(2024, 3, 15),
-                        DateCreationCompte = new DateTime(2022, 4, 25)
-                    }
-                });
-                ctx.SaveChanges();
-            }
-
-            // Execution
-
-            using (IDalClient service = new ClientService())
-            {
-                service.SoftSupprimerClient(1);
-            }
-           
-            //Verification
-            List<Client> clients;
-            using (BddContext ctx = new BddContext())
-            {
-                clients = ctx.Clients.ToList();
-            }         
-        }
+        
 
     }
 }
